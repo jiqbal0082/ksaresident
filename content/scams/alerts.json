@@ -1,0 +1,28 @@
+{
+  "lastUpdated": "2026-10-23",
+  "alerts": [
+    {
+      "id": "fake-gov-sms-link",
+      "title": "SMS asking you to 'update' your government account via a link",
+      "channel": "SMS",
+      "redFlags": [
+        "Link is not on an official .gov.sa domain",
+        "Urgent threat such as account suspension or a fine",
+        "Asks for card details or a one-time code"
+      ],
+      "whatToDo": "Do not click. Open the official app or type the official address yourself. Never share a one-time code.",
+      "officialReporting": "Report through official channels listed on the authority's website."
+    },
+    {
+      "id": "whatsapp-job-advance-fee",
+      "title": "WhatsApp job offer that asks for a fee to process visa or documents",
+      "channel": "WhatsApp",
+      "redFlags": [
+        "Payment requested before a contract appears on Qiwa",
+        "Recruiter refuses a video call or office visit",
+        "Salary far above market for the role"
+      ],
+      "whatToDo": "Verify the employer and contract on Qiwa. Do not pay recruitment fees to individuals."
+    }
+  ]
+}

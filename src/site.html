@@ -1,0 +1,662 @@
+<title>KSA Resident</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Free, open-source help for residents of Saudi Arabia: end-of-service calculator, step-by-step guides and scam alerts in English, Urdu and Arabic.">
+<link rel="canonical" href="https://ksaresident.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="KSA Resident — clear help for every resident">
+<meta property="og:description" content="End-of-service calculator, step-by-step guides and scam check in English, Urdu and Arabic. Free.">
+<meta property="og:url" content="https://ksaresident.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=IBM+Plex+Mono:wght@500&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap">
+<style>
+/* Layout: a single working column, a top bar with language switch, four views switched by tabs. */
+:root {
+  --bg: #f3f5f2;
+  --surface: #ffffff;
+  --ink: #15201b;
+  --muted: #57635d;
+  --line: #d6ddd7;
+  --accent: #0b6b4e;
+  --accent-ink: #ffffff;
+  --accent-soft: #e1efe8;
+  --warn: #a35f00;
+  --warn-soft: #fbefdc;
+  --danger: #b3261e;
+  --danger-soft: #fae3e1;
+  --ok: #2d6a2f;
+  --ok-soft: #e3f0e1;
+  --display: "Bricolage Grotesque", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --urdu: "Noto Nastaliq Urdu", "IBM Plex Sans Arabic", serif;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111715; --surface: #18201d; --ink: #e8eeea; --muted: #9eaba4; --line: #2c3632;
+    --accent: #43c393; --accent-ink: #08130e; --accent-soft: #17342a;
+    --warn: #f0b45c; --warn-soft: #3a2a12; --danger: #f2877f; --danger-soft: #3d1a18;
+    --ok: #8fd18f; --ok-soft: #1b3220; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111715; --surface: #18201d; --ink: #e8eeea; --muted: #9eaba4; --line: #2c3632;
+  --accent: #43c393; --accent-ink: #08130e; --accent-soft: #17342a;
+  --warn: #f0b45c; --warn-soft: #3a2a12; --danger: #f2877f; --danger-soft: #3d1a18;
+  --ok: #8fd18f; --ok-soft: #1b3220; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); }
+html[lang="ar"] body { font-family: "IBM Plex Sans Arabic", var(--body); }
+html[lang="ur"] body { font-family: var(--urdu); line-height: 2.1; }
+html[lang="ur"] h1, html[lang="ur"] h2, html[lang="ur"] h3 { font-family: var(--urdu); line-height: 1.9; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { font-family: "IBM Plex Sans Arabic", var(--display); }
+
+.wrap { max-width: 880px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+header.top { border-bottom: 1px solid var(--line); background: var(--surface); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 12px; }
+.brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand b { font: 700 1.35rem/1 var(--display); letter-spacing: -0.01em; }
+.brand span { font: 500 .78rem/1 var(--mono); color: var(--accent); }
+.dates { font: 500 .78rem/1.3 var(--mono); color: var(--muted); }
+.langs { display: flex; gap: 4px; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+.langs button { font: 500 .85rem/1 var(--body); border: 0; background: transparent; color: var(--ink); padding: 7px 12px; border-radius: 999px; cursor: pointer; }
+.langs button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.langs button[data-lang="ar"], .langs button[data-lang="ur"] { font-family: "IBM Plex Sans Arabic", sans-serif; }
+
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+nav.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+nav.tabs a { flex: none; padding: 12px 14px; color: var(--muted); text-decoration: none; font-weight: 500; border-bottom: 2px solid transparent; white-space: nowrap; }
+nav.tabs a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+
+main .wrap { padding-block: 28px 56px; display: grid; gap: 28px; }
+section.view { display: grid; gap: 22px; }
+h1 { font: 700 clamp(1.9rem, 5vw, 2.8rem)/1.1 var(--display); letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+h2 { font: 700 1.45rem/1.2 var(--display); margin: 0; text-wrap: balance; }
+h3 { font: 600 1.05rem/1.3 var(--body); margin: 0; }
+p { margin: 0; max-width: 65ch; }
+.lead { font-size: 1.1rem; color: var(--muted); }
+.eyebrow { font: 500 .75rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+
+.hero { display: grid; gap: 14px; padding-block: 8px 4px; }
+.tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.tool { display: grid; gap: 8px; align-content: start; padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--ink); transition: border-color .15s; }
+.tool:hover, .tool:focus-visible { border-color: var(--accent); }
+.tool .go { color: var(--accent); font-weight: 600; font-size: .92rem; }
+.trust { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding-top: 6px; }
+.trust div { display: grid; gap: 4px; border-top: 2px solid var(--accent); padding-top: 10px; }
+.trust p { color: var(--muted); font-size: .94rem; }
+
+/* Calculator */
+.calc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 720px) { .calc { grid-template-columns: minmax(0, 1fr); } }
+form.panel, .result { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; gap: 14px; }
+label.f { display: grid; gap: 5px; font-weight: 600; font-size: .9rem; }
+label.f small { font-weight: 400; color: var(--muted); }
+input, select, textarea { font: inherit; font-size: 1rem; width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 420px) { .row2 { grid-template-columns: 1fr; } }
+.btn { font: 600 1rem/1 var(--body); padding: 13px 16px; border: 0; border-radius: 8px; background: var(--accent); color: var(--accent-ink); cursor: pointer; }
+html[lang="ur"] .btn, html[lang="ar"] .btn { font-family: "IBM Plex Sans Arabic", sans-serif; }
+.tag { justify-self: start; font: 500 .72rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; background: var(--warn-soft); color: var(--warn); }
+.amount { font: 700 clamp(2rem, 6vw, 2.6rem)/1.1 var(--display); color: var(--accent); font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
+html[dir="rtl"] .amount { text-align: right; }
+.bar { position: relative; height: 14px; border-radius: 999px; background: var(--accent-soft); overflow: hidden; }
+.bar i { position: absolute; inset-block: 0; inset-inline-start: 0; background: var(--accent); border-radius: 999px; transition: width .35s ease; }
+.lines { display: grid; gap: 8px; margin: 0; }
+.lines div { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--line); padding-bottom: 6px; }
+.lines dt { color: var(--muted); }
+.lines dd { margin: 0; font: 500 .95rem/1.4 var(--mono); font-variant-numeric: tabular-nums; text-align: end; direction: ltr; unicode-bidi: isolate; }
+.err { color: var(--danger); font-weight: 500; }
+.rules { display: grid; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+.rules > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 12px; padding: 12px 16px; border-top: 1px solid var(--line); }
+.rules > div:first-child { border-top: 0; }
+.rules b { font: 500 .85rem/1.5 var(--mono); color: var(--accent); }
+@media (max-width: 480px) { .rules > div { grid-template-columns: 1fr; gap: 2px; } }
+
+/* Guides */
+.guide { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.guide summary { list-style: none; cursor: pointer; padding: 16px 18px; display: grid; gap: 4px; }
+.guide summary::-webkit-details-marker { display: none; }
+.guide summary h3::after { content: " +"; color: var(--accent); }
+.guide[open] summary h3::after { content: " −"; }
+.guide summary p { color: var(--muted); font-size: .93rem; }
+.guide .body { padding: 0 18px 18px; display: grid; gap: 12px; }
+.guide ol { margin: 0; padding-inline-start: 1.3rem; display: grid; gap: 8px; }
+.guide .need { background: var(--accent-soft); border-radius: 8px; padding: 10px 12px; font-size: .93rem; }
+.meta { font: 500 .78rem/1.5 var(--mono); color: var(--muted); }
+.meta a { color: var(--accent); }
+.note { background: var(--warn-soft); color: var(--ink); border-radius: 8px; padding: 12px 14px; font-size: .93rem; }
+.note b { color: var(--warn); }
+
+/* Scams */
+.checker { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; gap: 12px; }
+textarea { min-height: 120px; resize: vertical; }
+.verdict { border-radius: 8px; padding: 14px; display: grid; gap: 8px; }
+.verdict.high { background: var(--danger-soft); }
+.verdict.high h3 { color: var(--danger); }
+.verdict.mid { background: var(--warn-soft); }
+.verdict.mid h3 { color: var(--warn); }
+.verdict.low { background: var(--ok-soft); }
+.verdict.low h3 { color: var(--ok); }
+.verdict ul { margin: 0; padding-inline-start: 1.2rem; display: grid; gap: 4px; }
+.alerts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.alert { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; gap: 10px; align-content: start; }
+.alert .chan { justify-self: start; font: 500 .72rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; background: var(--danger-soft); color: var(--danger); }
+.alert ul { margin: 0; padding-inline-start: 1.1rem; display: grid; gap: 4px; font-size: .94rem; }
+.alert .do { font-size: .93rem; border-top: 1px solid var(--line); padding-top: 10px; }
+.alert .do b { color: var(--accent); }
+
+footer { border-top: 1px solid var(--line); }
+footer .wrap { padding-block: 22px 32px; display: grid; gap: 8px; color: var(--muted); font-size: .9rem; }
+footer a { color: var(--accent); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home"><b>KSA Resident</b><span>ksaresident.com</span></a>
+    <div class="dates" id="dates"></div>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="ur" aria-pressed="false">اردو</button>
+      <button type="button" data-lang="ar" aria-pressed="false">العربية</button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <a href="#home" data-view="home" data-i18n="nav_home">Home</a>
+    <a href="#eosb" data-view="eosb" data-i18n="nav_eosb">End of service</a>
+    <a href="#guides" data-view="guides" data-i18n="nav_guides">Guides</a>
+    <a href="#scams" data-view="scams" data-i18n="nav_scams">Scam check</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <!-- HOME -->
+    <section class="view" id="v-home">
+      <div class="hero">
+        <div class="eyebrow" data-i18n="home_eyebrow">Free · Open source · No sign-up</div>
+        <h1 data-i18n="home_title">Clear answers for life and work in Saudi Arabia</h1>
+        <p class="lead" data-i18n="home_lead">Calculate your end-of-service award, follow step-by-step guides for common procedures, and check suspicious messages before you click.</p>
+      </div>
+      <div class="tools">
+        <a class="tool" href="#eosb">
+          <h3 data-i18n="tool_eosb_t">End-of-service calculator</h3>
+          <p data-i18n="tool_eosb_d">Based on Labor Law Articles 84 to 88, including resignation rules.</p>
+          <span class="go" data-i18n="open">Open →</span>
+        </a>
+        <a class="tool" href="#guides">
+          <h3 data-i18n="tool_guides_t">Step-by-step guides</h3>
+          <p data-i18n="tool_guides_d">Exit re-entry, family visit visa, Qiwa contracts, traffic fines, resigning.</p>
+          <span class="go" data-i18n="open">Open →</span>
+        </a>
+        <a class="tool" href="#scams">
+          <h3 data-i18n="tool_scams_t">Scam message check</h3>
+          <p data-i18n="tool_scams_d">Paste an SMS or WhatsApp message and see the red flags.</p>
+          <span class="go" data-i18n="open">Open →</span>
+        </a>
+      </div>
+      <div class="trust">
+        <div><h3 data-i18n="trust1_t">Private by design</h3><p data-i18n="trust1_d">Everything runs on your phone. Nothing you type is sent or stored.</p></div>
+        <div><h3 data-i18n="trust2_t">Sources listed</h3><p data-i18n="trust2_d">Every rule links to the official law or portal, with the date it was last checked.</p></div>
+        <div><h3 data-i18n="trust3_t">Community maintained</h3><p data-i18n="trust3_d">Open source. Anyone can correct a rule or add a translation.</p></div>
+      </div>
+    </section>
+
+    <!-- EOSB -->
+    <section class="view" id="v-eosb" hidden>
+      <div class="hero">
+        <div class="eyebrow" data-i18n="eosb_eyebrow">Labor Law · Articles 84–88</div>
+        <h1 data-i18n="eosb_title">End-of-service calculator</h1>
+        <p class="lead" data-i18n="eosb_lead">Enter your last monthly wage, your dates and how the job ended.</p>
+      </div>
+      <div class="calc">
+        <form class="panel" id="eosbForm" novalidate>
+          <label class="f" for="wage"><span data-i18n="f_wage">Last monthly wage (SAR)</span>
+            <small data-i18n="f_wage_h">Usually basic salary plus regular allowances such as housing and transport.</small>
+            <input id="wage" type="number" inputmode="decimal" min="1" step="0.01" value="8000">
+          </label>
+          <div class="row2">
+            <label class="f" for="start"><span data-i18n="f_start">Start date</span><input id="start" type="date" value="2019-03-01"></label>
+            <label class="f" for="end"><span data-i18n="f_end">Last working day</span><input id="end" type="date" value="2026-10-23"></label>
+          </div>
+          <label class="f" for="reason"><span data-i18n="f_reason">How did the job end?</span>
+            <select id="reason">
+              <option value="employer_termination" data-i18n="r_term">Employer ended the contract</option>
+              <option value="contract_end" data-i18n="r_end">Fixed-term contract expired</option>
+              <option value="resignation" selected data-i18n="r_resign">I resigned</option>
+              <option value="employer_breach_art81" data-i18n="r_81">I left because the employer broke the contract (Art. 81)</option>
+              <option value="force_majeure_art87" data-i18n="r_fm">I left due to force majeure (Art. 87)</option>
+              <option value="female_marriage_art87" data-i18n="r_marr">Female worker: resigned within 6 months of marriage (Art. 87)</option>
+              <option value="female_childbirth_art87" data-i18n="r_birth">Female worker: resigned within 3 months of childbirth (Art. 87)</option>
+              <option value="dismissal_art80" data-i18n="r_80">Dismissed for misconduct (Art. 80)</option>
+              <option value="probation_art54" data-i18n="r_54">Ended during probation (Art. 54)</option>
+            </select>
+          </label>
+          <button class="btn" type="submit" data-i18n="calc">Calculate</button>
+        </form>
+        <div class="result" id="result" aria-live="polite"></div>
+      </div>
+
+      <h2 data-i18n="rules_t">How the award is worked out</h2>
+      <div class="rules">
+        <div><b>Art. 84</b><p data-i18n="rule84">Half a month's wage for each of the first five years, then one month's wage for each year after. Part-years count in proportion. The last wage is used.</p></div>
+        <div><b>Art. 85</b><p data-i18n="rule85">If you resign: under 2 years nothing, 2 to 5 years one third, over 5 and under 10 years two thirds, 10 years or more the full award.</p></div>
+        <div><b>Art. 81 · 87</b><p data-i18n="rule87">Full award even when you leave yourself: employer breach, force majeure, or a female worker within 6 months of marriage or 3 months of childbirth.</p></div>
+        <div><b>Art. 80 · 54</b><p data-i18n="rule80">No award after dismissal for listed misconduct, or when the contract ends during probation.</p></div>
+      </div>
+      <p class="meta"><span data-i18n="verified">Rules last checked</span>: 2026-10-23 · <span data-i18n="amend">The February 2025 amendments did not change Articles 84–88.</span> · <a href="https://www.hrsd.gov.sa" target="_blank" rel="noopener">hrsd.gov.sa</a></p>
+    </section>
+
+    <!-- GUIDES -->
+    <section class="view" id="v-guides" hidden>
+      <div class="hero">
+        <div class="eyebrow" data-i18n="g_eyebrow">Procedures · Plain language</div>
+        <h1 data-i18n="g_title">Step-by-step guides</h1>
+        <p class="lead" data-i18n="g_lead">Short checklists for the procedures people ask about most. Fees change often, so each guide links to the official page for current amounts.</p>
+      </div>
+      <p class="note" data-i18n-html="g_lang_note"><b>Guides are in English for now.</b> Urdu and Arabic translations are open for contributors.</p>
+      <div id="guideList" style="display:grid;gap:12px"></div>
+    </section>
+
+    <!-- SCAMS -->
+    <section class="view" id="v-scams" hidden>
+      <div class="hero">
+        <div class="eyebrow" data-i18n="s_eyebrow">Security · Check before you click</div>
+        <h1 data-i18n="s_title">Is this message a scam?</h1>
+        <p class="lead" data-i18n="s_lead">Paste the text of an SMS, WhatsApp or email. The check runs on your device and looks for the tricks scammers use most.</p>
+      </div>
+      <div class="checker">
+        <label class="f" for="msg"><span data-i18n="s_paste">Message text</span>
+          <textarea id="msg" dir="auto">Your Absher account will be suspended within 24 hours. Update your data now: http://absher-sa-update.com/login and enter the verification code we send you.</textarea>
+        </label>
+        <button class="btn" type="button" id="checkBtn" data-i18n="s_check">Check message</button>
+        <div id="verdict" aria-live="polite"></div>
+      </div>
+      <h2 data-i18n="s_common">Common scams right now</h2>
+      <div class="alerts" id="alertList"></div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p data-i18n="f1">KSA Resident is not an official government website. Always confirm on the official portal before you act.</p>
+    <p data-i18n="f2">Free and open source under the MIT license. Corrections and translations welcome.</p>
+    <p><a href="/privacy.html">Privacy</a> · <a href="https://github.com/" target="_blank" rel="noopener">Source code</a></p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  /* ---------- Translations ---------- */
+  const T = {
+    en: {},
+    ur: {
+      nav_home: "ہوم", nav_eosb: "اختتامِ ملازمت", nav_guides: "رہنمائی", nav_scams: "فراڈ چیک",
+      home_eyebrow: "مفت · اوپن سورس · رجسٹریشن کی ضرورت نہیں",
+      home_title: "سعودی عرب میں رہنے اور کام کرنے کے لیے واضح جوابات",
+      home_lead: "اپنا اختتامِ ملازمت معاوضہ معلوم کریں، عام سرکاری کاموں کی مرحلہ وار رہنمائی دیکھیں، اور کسی مشکوک پیغام پر کلک کرنے سے پہلے اسے چیک کریں۔",
+      tool_eosb_t: "اختتامِ ملازمت کیلکولیٹر", tool_eosb_d: "لیبر لا کی دفعات 84 سے 88 کے مطابق، استعفیٰ کے قواعد سمیت۔",
+      tool_guides_t: "مرحلہ وار رہنمائی", tool_guides_d: "خروج و عودہ، فیملی وزٹ ویزا، قوی معاہدے، ٹریفک جرمانے، استعفیٰ۔",
+      tool_scams_t: "فراڈ پیغام چیک", tool_scams_d: "ایس ایم ایس یا واٹس ایپ پیغام پیسٹ کریں اور خطرے کی علامات دیکھیں۔",
+      open: "کھولیں ←",
+      trust1_t: "مکمل رازداری", trust1_d: "سب کچھ آپ کے فون پر چلتا ہے۔ آپ کا لکھا ہوا کچھ بھی بھیجا یا محفوظ نہیں ہوتا۔",
+      trust2_t: "ذرائع درج ہیں", trust2_d: "ہر قاعدہ سرکاری قانون یا پورٹل سے منسلک ہے، آخری جانچ کی تاریخ کے ساتھ۔",
+      trust3_t: "کمیونٹی کی مدد سے", trust3_d: "اوپن سورس۔ کوئی بھی قاعدہ درست کر سکتا ہے یا ترجمہ شامل کر سکتا ہے۔",
+      eosb_eyebrow: "لیبر لا · دفعات 84–88", eosb_title: "اختتامِ ملازمت کیلکولیٹر",
+      eosb_lead: "اپنی آخری ماہانہ تنخواہ، تاریخیں اور ملازمت ختم ہونے کی وجہ درج کریں۔",
+      f_wage: "آخری ماہانہ تنخواہ (ریال)", f_wage_h: "عموماً بنیادی تنخواہ کے ساتھ مستقل الاؤنس جیسے رہائش اور ٹرانسپورٹ۔",
+      f_start: "شروع کی تاریخ", f_end: "کام کا آخری دن", f_reason: "ملازمت کیسے ختم ہوئی؟",
+      r_term: "کمپنی نے معاہدہ ختم کیا", r_end: "مقررہ مدت کا معاہدہ ختم ہوا", r_resign: "میں نے استعفیٰ دیا",
+      r_81: "کمپنی کی خلاف ورزی کی وجہ سے چھوڑا (دفعہ 81)", r_fm: "ناگزیر حالات کی وجہ سے چھوڑا (دفعہ 87)",
+      r_marr: "خاتون: شادی کے 6 ماہ کے اندر استعفیٰ (دفعہ 87)", r_birth: "خاتون: بچے کی پیدائش کے 3 ماہ کے اندر استعفیٰ (دفعہ 87)",
+      r_80: "بدعملی پر برطرفی (دفعہ 80)", r_54: "پروبیشن کے دوران ختم (دفعہ 54)",
+      calc: "حساب لگائیں", example: "مثال", est: "اندازاً معاوضہ",
+      l_service: "مدتِ ملازمت", l_full: "مکمل معاوضہ", l_share: "ادا ہونے والا حصہ", l_basis: "قانونی بنیاد",
+      years: "سال", months: "ماہ کی تنخواہ", of_full: "مکمل معاوضے کا",
+      rules_t: "معاوضہ کیسے بنتا ہے",
+      rule84: "پہلے پانچ سال ہر سال کے لیے آدھے ماہ کی تنخواہ، پھر ہر اگلے سال کے لیے ایک ماہ کی تنخواہ۔ ادھورا سال تناسب سے شمار ہوتا ہے۔ آخری تنخواہ لی جاتی ہے۔",
+      rule85: "استعفیٰ کی صورت میں: 2 سال سے کم کچھ نہیں، 2 سے 5 سال ایک تہائی، 5 سے زیادہ اور 10 سے کم دو تہائی، 10 سال یا زیادہ مکمل معاوضہ۔",
+      rule87: "خود چھوڑنے پر بھی مکمل معاوضہ: کمپنی کی خلاف ورزی، ناگزیر حالات، یا خاتون کا شادی کے 6 ماہ یا پیدائش کے 3 ماہ کے اندر استعفیٰ۔",
+      rule80: "مقررہ بدعملی پر برطرفی یا پروبیشن کے دوران معاہدہ ختم ہونے پر کوئی معاوضہ نہیں۔",
+      verified: "قواعد کی آخری جانچ", amend: "فروری 2025 کی ترامیم نے دفعات 84–88 کو تبدیل نہیں کیا۔",
+      g_eyebrow: "طریقۂ کار · آسان زبان", g_title: "مرحلہ وار رہنمائی",
+      g_lead: "سب سے زیادہ پوچھے جانے والے کاموں کی مختصر فہرستیں۔ فیس اکثر بدلتی ہے، اس لیے ہر رہنمائی سرکاری صفحے سے منسلک ہے۔",
+      g_lang_note: "<b>رہنمائی فی الحال انگریزی میں ہے۔</b> اردو اور عربی ترجمے کے لیے رضاکاروں کو دعوت ہے۔",
+      s_eyebrow: "سیکیورٹی · کلک سے پہلے چیک کریں", s_title: "کیا یہ پیغام فراڈ ہے؟",
+      s_lead: "ایس ایم ایس، واٹس ایپ یا ای میل کا متن پیسٹ کریں۔ یہ جانچ آپ کے فون پر ہوتی ہے۔",
+      s_paste: "پیغام کا متن", s_check: "پیغام چیک کریں", s_common: "آج کل کے عام فراڈ",
+      v_high: "زیادہ امکان ہے کہ یہ فراڈ ہے", v_mid: "احتیاط کریں", v_low: "کوئی عام علامت نہیں ملی",
+      v_high_d: "لنک پر کلک نہ کریں، جواب نہ دیں، اور کوئی کوڈ یا کارڈ نمبر شیئر نہ کریں۔",
+      v_mid_d: "خود سرکاری ایپ یا ویب سائٹ کھول کر تصدیق کریں۔",
+      v_low_d: "اس کا مطلب یہ نہیں کہ پیغام محفوظ ہے۔ شک ہو تو سرکاری ایپ سے تصدیق کریں۔",
+      v_empty: "پہلے پیغام کا متن پیسٹ کریں۔",
+      flag_link: "لنک سرکاری ڈومین پر نہیں", flag_short: "چھوٹا (شارٹ) لنک جو اصل ویب سائٹ چھپاتا ہے",
+      flag_secret: "کوڈ، پاس ورڈ یا کارڈ کی تفصیلات مانگی گئی ہیں", flag_urgent: "فوری دھمکی یا جلد بازی",
+      flag_money: "ادائیگی، فیس یا جرمانہ مانگا گیا ہے", flag_prize: "انعام یا جیتنے کا دعویٰ",
+      red_flags: "خطرے کی علامات", what_do: "کیا کریں:",
+      f1: "کے ایس اے ریزیڈنٹ سرکاری ویب سائٹ نہیں ہے۔ کوئی بھی قدم اٹھانے سے پہلے سرکاری پورٹل پر تصدیق کریں۔",
+      f2: "ایم آئی ٹی لائسنس کے تحت مفت اور اوپن سورس۔ اصلاح اور ترجمے کا خیرمقدم ہے۔",
+      err_wage: "تنخواہ کی درست رقم درج کریں۔", err_dates: "دونوں تاریخیں درج کریں۔ آخری دن شروع کی تاریخ کے بعد ہونا چاہیے۔"
+    },
+    ar: {
+      nav_home: "الرئيسية", nav_eosb: "نهاية الخدمة", nav_guides: "الأدلة", nav_scams: "فحص الاحتيال",
+      home_eyebrow: "مجاني · مفتوح المصدر · بدون تسجيل",
+      home_title: "إجابات واضحة للحياة والعمل في السعودية",
+      home_lead: "احسب مكافأة نهاية الخدمة، واتبع أدلة خطوة بخطوة للإجراءات الشائعة، وافحص الرسائل المشبوهة قبل الضغط على أي رابط.",
+      tool_eosb_t: "حاسبة مكافأة نهاية الخدمة", tool_eosb_d: "وفق المواد 84 إلى 88 من نظام العمل، بما فيها أحكام الاستقالة.",
+      tool_guides_t: "أدلة خطوة بخطوة", tool_guides_d: "الخروج والعودة، تأشيرة الزيارة العائلية، عقود قوى، المخالفات المرورية، الاستقالة.",
+      tool_scams_t: "فحص رسائل الاحتيال", tool_scams_d: "الصق رسالة نصية أو واتساب واعرف علامات الخطر.",
+      open: "افتح ←",
+      trust1_t: "خصوصية تامة", trust1_d: "كل شيء يعمل على جهازك. لا يُرسل أو يُحفظ أي شيء تكتبه.",
+      trust2_t: "المصادر موضحة", trust2_d: "كل قاعدة مرتبطة بالنظام أو البوابة الرسمية مع تاريخ آخر مراجعة.",
+      trust3_t: "بمشاركة المجتمع", trust3_d: "مفتوح المصدر. يمكن لأي شخص تصحيح قاعدة أو إضافة ترجمة.",
+      eosb_eyebrow: "نظام العمل · المواد 84–88", eosb_title: "حاسبة مكافأة نهاية الخدمة",
+      eosb_lead: "أدخل آخر أجر شهري، والتواريخ، وسبب انتهاء العلاقة التعاقدية.",
+      f_wage: "آخر أجر شهري (ريال)", f_wage_h: "عادةً الأجر الأساسي مع البدلات الثابتة مثل السكن والنقل.",
+      f_start: "تاريخ المباشرة", f_end: "آخر يوم عمل", f_reason: "كيف انتهى العقد؟",
+      r_term: "صاحب العمل أنهى العقد", r_end: "انتهاء مدة العقد المحدد", r_resign: "قدمت استقالتي",
+      r_81: "تركت العمل بسبب إخلال صاحب العمل (المادة 81)", r_fm: "تركت العمل لقوة قاهرة (المادة 87)",
+      r_marr: "عاملة: استقالت خلال 6 أشهر من الزواج (المادة 87)", r_birth: "عاملة: استقالت خلال 3 أشهر من الوضع (المادة 87)",
+      r_80: "فصل بسبب مخالفة (المادة 80)", r_54: "انتهى خلال فترة التجربة (المادة 54)",
+      calc: "احسب", example: "مثال", est: "المكافأة التقديرية",
+      l_service: "مدة الخدمة", l_full: "المكافأة الكاملة", l_share: "النسبة المستحقة", l_basis: "السند النظامي",
+      years: "سنة", months: "أجر شهر", of_full: "من المكافأة الكاملة",
+      rules_t: "كيف تُحسب المكافأة",
+      rule84: "أجر نصف شهر عن كل سنة من السنوات الخمس الأولى، وأجر شهر عن كل سنة بعدها. تُحسب أجزاء السنة بنسبتها. ويُعتمد آخر أجر.",
+      rule85: "عند الاستقالة: أقل من سنتين لا شيء، من 2 إلى 5 سنوات الثلث، أكثر من 5 وأقل من 10 الثلثان، 10 سنوات فأكثر المكافأة كاملة.",
+      rule87: "مكافأة كاملة رغم ترك العمل: إخلال صاحب العمل، القوة القاهرة، أو العاملة خلال 6 أشهر من الزواج أو 3 أشهر من الوضع.",
+      rule80: "لا مكافأة عند الفصل لمخالفة منصوص عليها، أو عند انتهاء العقد خلال فترة التجربة.",
+      verified: "آخر مراجعة للأحكام", amend: "تعديلات فبراير 2025 لم تغيّر المواد 84–88.",
+      g_eyebrow: "إجراءات · لغة بسيطة", g_title: "أدلة خطوة بخطوة",
+      g_lead: "قوائم مختصرة لأكثر الإجراءات سؤالاً. الرسوم تتغير، لذا يرتبط كل دليل بالصفحة الرسمية.",
+      g_lang_note: "<b>الأدلة متوفرة بالإنجليزية حالياً.</b> الترجمة العربية والأردية مفتوحة للمساهمين.",
+      s_eyebrow: "أمن · افحص قبل أن تضغط", s_title: "هل هذه الرسالة احتيال؟",
+      s_lead: "الصق نص الرسالة النصية أو واتساب أو البريد. الفحص يتم على جهازك.",
+      s_paste: "نص الرسالة", s_check: "افحص الرسالة", s_common: "أساليب احتيال شائعة الآن",
+      v_high: "على الأرجح رسالة احتيال", v_mid: "توخَّ الحذر", v_low: "لم تُرصد علامات شائعة",
+      v_high_d: "لا تضغط على الرابط، ولا ترد، ولا تشارك أي رمز أو رقم بطاقة.",
+      v_mid_d: "تحقق بنفسك بفتح التطبيق أو الموقع الرسمي.",
+      v_low_d: "هذا لا يعني أن الرسالة آمنة. عند الشك تحقق من التطبيق الرسمي.",
+      v_empty: "الصق نص الرسالة أولاً.",
+      flag_link: "الرابط ليس على نطاق حكومي رسمي", flag_short: "رابط مختصر يخفي الموقع الحقيقي",
+      flag_secret: "يطلب رمز تحقق أو كلمة مرور أو بيانات بطاقة", flag_urgent: "تهديد أو استعجال",
+      flag_money: "يطلب دفع مبلغ أو رسوم أو مخالفة", flag_prize: "ادعاء بالفوز أو جائزة",
+      red_flags: "علامات الخطر", what_do: "ماذا تفعل:",
+      f1: "KSA Resident ليس موقعاً حكومياً رسمياً. تحقق دائماً من البوابة الرسمية قبل أي إجراء.",
+      f2: "مجاني ومفتوح المصدر بترخيص MIT. نرحب بالتصحيحات والترجمات.",
+      err_wage: "أدخل أجراً صحيحاً.", err_dates: "أدخل التاريخين، ويجب أن يكون آخر يوم بعد تاريخ المباشرة."
+    }
+  };
+  const EN = {
+    example: "Example", est: "Estimated award", l_service: "Service", l_full: "Full award", l_share: "Share paid", l_basis: "Legal basis",
+    years: "years", months: "months of wage", of_full: "of the full award",
+    v_high: "Likely a scam", v_mid: "Be careful", v_low: "No common red flags found",
+    v_high_d: "Do not click the link, do not reply, and never share a code or card number.",
+    v_mid_d: "Check it yourself by opening the official app or website directly.",
+    v_low_d: "This does not mean the message is safe. If in doubt, check in the official app.",
+    v_empty: "Paste the message text first.",
+    flag_link: "Link is not on an official government domain", flag_short: "Short link that hides the real website",
+    flag_secret: "Asks for a code, password or card details", flag_urgent: "Threat or pressure to act fast",
+    flag_money: "Asks you to pay a fee, fine or charge", flag_prize: "Claims you won a prize",
+    red_flags: "Red flags", what_do: "What to do:",
+    err_wage: "Enter a valid wage.", err_dates: "Enter both dates. The last day must be after the start date."
+  };
+  let lang = "en";
+  const tr = (k) => (T[lang] && T[lang][k]) || EN[k] || k;
+
+  // keep English originals from the markup
+  document.querySelectorAll("[data-i18n]").forEach(el => { T.en[el.dataset.i18n] = el.textContent; });
+  document.querySelectorAll("[data-i18n-html]").forEach(el => { T.en[el.dataset.i18nHtml] = el.innerHTML; });
+
+  function setLang(l) {
+    lang = l;
+    const root = document.documentElement;
+    root.lang = l;
+    root.dir = l === "en" ? "ltr" : "rtl";
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const v = T[l][el.dataset.i18n] ?? T.en[el.dataset.i18n];
+      if (v) el.textContent = v;
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach(el => {
+      el.innerHTML = T[l][el.dataset.i18nHtml] ?? T.en[el.dataset.i18nHtml];
+    });
+    document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
+    try { localStorage.setItem("ksar-lang", l); } catch (e) {}
+    renderDates(); runCalc(); renderAlerts(); if (lastCheck) runCheck();
+  }
+  document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+  /* ---------- Dates (Gregorian + Hijri Umm al-Qura) ---------- */
+  function renderDates() {
+    const loc = { en: "en-GB", ur: "ur-PK", ar: "ar-SA" }[lang];
+    const now = new Date();
+    try {
+      const g = new Intl.DateTimeFormat(loc + "-u-ca-gregory-nu-latn", { day: "numeric", month: "short", year: "numeric" }).format(now);
+      const h = new Intl.DateTimeFormat(loc + "-u-ca-islamic-umalqura-nu-latn", { day: "numeric", month: "long", year: "numeric" }).format(now);
+      document.getElementById("dates").textContent = g + " · " + h;
+    } catch (e) { document.getElementById("dates").textContent = now.toDateString(); }
+  }
+
+  /* ---------- Views ---------- */
+  const views = ["home", "eosb", "guides", "scams"];
+  function show(v) {
+    if (!views.includes(v)) v = "home";
+    views.forEach(x => { document.getElementById("v-" + x).hidden = x !== v; });
+    document.querySelectorAll("nav.tabs a").forEach(a => { if (a.dataset.view === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+  }
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const v = a.getAttribute("href").slice(1);
+    if (views.includes(v)) { e.preventDefault(); show(v); window.scrollTo({ top: 0 }); try { history.replaceState(null, "", "#" + v); } catch (err) {} }
+  });
+
+  /* ---------- EOSB logic (mirrors src/lib/eosb.js) ---------- */
+  const FULL = ["employer_termination", "contract_end", "employer_breach_art81", "force_majeure_art87", "female_marriage_art87", "female_childbirth_art87"];
+  const NONE = ["dismissal_art80", "probation_art54"];
+  const serviceYears = (s, e) => (Math.round((Date.parse(e) - Date.parse(s)) / 86400000) + 1) / 365;
+  const baseMonths = (y) => Math.min(y, 5) * 0.5 + Math.max(y - 5, 0);
+  const resignFraction = (y) => y < 2 ? 0 : y <= 5 ? 1 / 3 : y < 10 ? 2 / 3 : 1;
+  function calc(wage, start, end, reason) {
+    const y = serviceYears(start, end);
+    const m = baseMonths(y);
+    let f, basis;
+    if (NONE.includes(reason)) { f = 0; basis = reason === "probation_art54" ? "Art. 54" : "Art. 80"; }
+    else if (FULL.includes(reason)) { f = 1; basis = reason.endsWith("art87") ? "Art. 84 + 87" : reason.endsWith("art81") ? "Art. 84 + 81" : "Art. 84"; }
+    else { f = resignFraction(y); basis = "Art. 84 + 85"; }
+    return { y, m, f, full: m * wage, award: Math.round(m * wage * f * 100) / 100, basis };
+  }
+
+  const $ = (id) => document.getElementById(id);
+  let edited = false;
+  ["wage", "start", "end", "reason"].forEach(id => $(id).addEventListener("input", () => { edited = true; }));
+  const sar = (n) => "SAR " + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  function runCalc() {
+    const out = $("result");
+    const wage = Number($("wage").value), s = $("start").value, e = $("end").value;
+    if (!(wage > 0)) { out.innerHTML = `<p class="err">${tr("err_wage")}</p>`; return; }
+    if (!s || !e || Date.parse(e) < Date.parse(s)) { out.innerHTML = `<p class="err">${tr("err_dates")}</p>`; return; }
+    const r = calc(wage, s, e, $("reason").value);
+    const pct = Math.round(r.f * 1000) / 10;
+    out.innerHTML = `
+      ${edited ? "" : `<span class="tag">${tr("example")}</span>`}
+      <div><div class="eyebrow">${tr("est")}</div><div class="amount">${sar(r.award)}</div></div>
+      <div class="bar" role="img" aria-label="${pct}% ${tr("of_full")}"><i style="width:${pct}%"></i></div>
+      <dl class="lines">
+        <div><dt>${tr("l_service")}</dt><dd>${r.y.toFixed(2)} ${tr("years")}</dd></div>
+        <div><dt>${tr("l_full")}</dt><dd>${r.m.toFixed(2)} × ${wage.toLocaleString("en-US")} = ${sar(r.full)}</dd></div>
+        <div><dt>${tr("l_share")}</dt><dd>${pct}%</dd></div>
+        <div><dt>${tr("l_basis")}</dt><dd>${r.basis}</dd></div>
+      </dl>`;
+  }
+  $("eosbForm").addEventListener("submit", (e) => { e.preventDefault(); edited = true; runCalc(); });
+  $("reason").addEventListener("change", runCalc);
+
+  /* ---------- Guides ---------- */
+  const GUIDES = [
+    {
+      t: "Check and accept your work contract on Qiwa",
+      d: "See the contract your employer registered before you accept it.",
+      need: "Your Absher or Nafath login.",
+      steps: [
+        "Go to qiwa.sa and sign in as an individual using Nafath.",
+        "Open Employment Contracts.",
+        "Read the salary, allowances, job title and contract length. They must match what you were offered.",
+        "Accept if correct. If not, reject it and ask your employer to correct it before signing again.",
+        "Keep a copy. The registered contract is what counts in a dispute."
+      ],
+      src: "https://qiwa.sa"
+    },
+    {
+      t: "Exit and re-entry visa",
+      d: "Travel out of the Kingdom and come back on the same iqama.",
+      need: "A valid iqama and passport, and no unpaid traffic fines on your record.",
+      steps: [
+        "Workers: your employer issues the visa through their business account (Absher Business or Muqeem). Ask HR.",
+        "Family members: the head of the family issues it in Absher Individuals under passport services.",
+        "Choose single or multiple trips and the duration.",
+        "Pay the fee through SADAD in your bank app. The amount shows on the official page.",
+        "Print or save the visa. Return before it expires, or you may face a re-entry ban."
+      ],
+      src: "https://www.absher.sa"
+    },
+    {
+      t: "Family visit visa",
+      d: "Invite parents, spouse or children to visit you.",
+      need: "Your iqama, your profession must be eligible, and attested family documents (marriage or birth certificates).",
+      steps: [
+        "Apply on the Ministry of Foreign Affairs visa platform (visa.mofa.gov.sa) using your Absher login.",
+        "Enter each visitor's details and relationship to you. Upload the attested documents.",
+        "Choose single or multiple entry and pay the fee.",
+        "Send the application number to your family. They complete biometrics and stamping through the visa centre in their country.",
+        "Visitors need valid health insurance for the visit. Extend the visa in Absher before it expires."
+      ],
+      src: "https://visa.mofa.gov.sa"
+    },
+    {
+      t: "Check and pay traffic fines",
+      d: "Unpaid fines can block renewals and exit re-entry visas.",
+      need: "Your Absher login.",
+      steps: [
+        "Sign in to Absher and open traffic services, then violations.",
+        "Review each violation, including the date and the location.",
+        "To dispute one, submit an objection in Absher within the allowed period.",
+        "Pay through SADAD in your bank app. Payments reflect in Absher after a short delay."
+      ],
+      src: "https://www.absher.sa"
+    },
+    {
+      t: "Resign the right way (2025 rules)",
+      d: "Since 19 February 2025 the Labor Law defines resignation and sets a 30-day response window.",
+      need: "Your contract details, notice period and last working day.",
+      steps: [
+        "Submit your resignation in writing. Where your employer uses Qiwa, submit it there so it is recorded.",
+        "Your employer can accept it, delay it, or reject it.",
+        "If the employer does not respond within 30 days, the resignation is treated as accepted.",
+        "Serve your notice period as your contract and the law require.",
+        "Use the End of service calculator to check your award before your final settlement."
+      ],
+      src: "https://www.hrsd.gov.sa"
+    }
+  ];
+  $("guideList").innerHTML = GUIDES.map((g, i) => `
+    <details class="guide" ${i === 0 ? "open" : ""}>
+      <summary><h3>${g.t}</h3><p>${g.d}</p></summary>
+      <div class="body">
+        <div class="need"><b>You need:</b> ${g.need}</div>
+        <ol>${g.steps.map(s => `<li>${s}</li>`).join("")}</ol>
+        <div class="meta">Last checked: 2026-10-23 · Official source: <a href="${g.src}" target="_blank" rel="noopener">${g.src.replace("https://", "")}</a></div>
+      </div>
+    </details>`).join("");
+
+  /* ---------- Scam alerts ---------- */
+  const ALERTS = {
+    en: [
+      { c: "SMS", t: "Fake government account warning", f: ["Says your account will be suspended", "Link is not on gov.sa", "Asks for a verification code"], d: "Open the official app yourself. Government services never ask for your code by SMS link." },
+      { c: "WhatsApp", t: "Job offer that asks for a fee", f: ["Payment before a contract appears on Qiwa", "No office visit or video call", "Salary far above normal"], d: "Check the employer and contract on Qiwa. Never pay a recruiter personally." },
+      { c: "SMS", t: "Parcel held, small fee to release", f: ["You did not order anything", "Asks for card details for a few riyals", "Unknown delivery link"], d: "Track only through the courier's official app using your own tracking number." },
+      { c: "Call", t: "Caller says your bank account is frozen", f: ["Claims to be from the bank or a government body", "Asks you to read out an OTP", "Pressure to stay on the line"], d: "Hang up. Call the number printed on your bank card. Banks never ask for your OTP." }
+    ],
+    ur: [
+      { c: "SMS", t: "جعلی سرکاری اکاؤنٹ کی وارننگ", f: ["کہتا ہے آپ کا اکاؤنٹ معطل ہو جائے گا", "لنک gov.sa پر نہیں", "تصدیقی کوڈ مانگتا ہے"], d: "خود سرکاری ایپ کھولیں۔ سرکاری ادارے ایس ایم ایس لنک سے کوڈ نہیں مانگتے۔" },
+      { c: "WhatsApp", t: "نوکری کی پیشکش جس میں فیس مانگی جائے", f: ["قوی پر معاہدے سے پہلے ادائیگی", "دفتر یا ویڈیو کال سے انکار", "غیر معمولی زیادہ تنخواہ"], d: "قوی پر کمپنی اور معاہدہ چیک کریں۔ کسی فرد کو بھرتی فیس نہ دیں۔" },
+      { c: "SMS", t: "پارسل روکا گیا، معمولی فیس دیں", f: ["آپ نے کچھ آرڈر نہیں کیا", "چند ریال کے لیے کارڈ کی تفصیل", "نامعلوم ڈیلیوری لنک"], d: "صرف کورئیر کی سرکاری ایپ میں اپنے ٹریکنگ نمبر سے چیک کریں۔" },
+      { c: "Call", t: "کال کہ آپ کا بینک اکاؤنٹ منجمد ہے", f: ["بینک یا سرکاری ادارے کا نام لیتا ہے", "او ٹی پی پڑھنے کو کہتا ہے", "لائن پر رہنے کا دباؤ"], d: "کال بند کریں اور اپنے کارڈ پر لکھے نمبر پر خود کال کریں۔ بینک کبھی او ٹی پی نہیں مانگتا۔" }
+    ],
+    ar: [
+      { c: "SMS", t: "تحذير مزيف بإيقاف حساب حكومي", f: ["يدّعي أن حسابك سيُوقف", "الرابط ليس على gov.sa", "يطلب رمز التحقق"], d: "افتح التطبيق الرسمي بنفسك. الجهات الحكومية لا تطلب الرمز عبر رابط في رسالة." },
+      { c: "WhatsApp", t: "عرض وظيفة مقابل رسوم", f: ["دفع قبل ظهور العقد في قوى", "رفض زيارة المكتب أو مكالمة فيديو", "راتب أعلى بكثير من المعتاد"], d: "تحقق من المنشأة والعقد في قوى. لا تدفع رسوم توظيف لأفراد." },
+      { c: "SMS", t: "شحنة محتجزة مقابل رسوم بسيطة", f: ["لم تطلب أي شيء", "يطلب بيانات البطاقة لبضعة ريالات", "رابط توصيل مجهول"], d: "تتبع الشحنة فقط من تطبيق شركة الشحن الرسمي برقمك." },
+      { c: "Call", t: "متصل يدّعي تجميد حسابك البنكي", f: ["ينتحل صفة البنك أو جهة حكومية", "يطلب قراءة رمز OTP", "يضغط عليك للبقاء على الخط"], d: "أنهِ المكالمة واتصل بالرقم المطبوع على بطاقتك. البنوك لا تطلب رمز OTP أبداً." }
+    ]
+  };
+  function renderAlerts() {
+    $("alertList").innerHTML = ALERTS[lang].map(a => `
+      <article class="alert">
+        <span class="chan">${a.c}</span>
+        <h3>${a.t}</h3>
+        <ul>${a.f.map(x => `<li>${x}</li>`).join("")}</ul>
+        <p class="do"><b>${tr("what_do")}</b> ${a.d}</p>
+      </article>`).join("");
+  }
+
+  /* ---------- Scam checker (rule-based, on-device) ---------- */
+  const OFFICIAL = /(^|\.)(gov\.sa|absher\.sa|qiwa\.sa|mudad\.com\.sa|sadad\.com|sama\.gov\.sa)$/i;
+  const SHORT = /(^|\.)(bit\.ly|tinyurl\.com|t\.ly|cutt\.ly|rb\.gy|is\.gd|t\.co|shorturl\.at|goo\.su|s\.id)$/i;
+  const RX = {
+    secret: /\b(otp|one[- ]time|verification code|activation code|password|pin|cvv|card number|expiry)\b|رمز|كلمة المرور|كلمة السر|البطاقة|التحقق|كوڈ|پاس ورڈ|کارڈ/i,
+    urgent: /\b(urgent|immediately|within \d+ ?(hours?|hrs?)|suspend(ed)?|block(ed)?|frozen|deactivat\w*|last (warning|chance)|expire[sd]? today)\b|فورا|فوراً|عاجل|إيقاف|ايقاف|تعليق|تجميد|خلال \d+|فوری|معطل/i,
+    money: /\b(pay|payment|fee|fine|transfer|customs|parcel|shipment|delivery charge|refund)\b|سداد|ادفع|رسوم|تحويل|مخالفة|شحنة|طرد|ادائیگی|فیس|جرمانہ/i,
+    prize: /\b(congratulations|you (have )?won|winner|prize|reward|gift card|lucky)\b|مبروك|فزت|جائزة|الفائز|مبارک|انعام|جیت/i
+  };
+  let lastCheck = false;
+  function runCheck() {
+    lastCheck = true;
+    const text = $("msg").value.trim();
+    const out = $("verdict");
+    if (!text) { out.innerHTML = `<p class="err">${tr("v_empty")}</p>`; return; }
+    const flags = [];
+    const urls = text.match(/\b((?:https?:\/\/|www\.)[^\s<>"']+|[a-z0-9-]+(?:\.[a-z0-9-]+)+\/[^\s<>"']*)/gi) || [];
+    let badLink = false, shortLink = false;
+    urls.forEach(u => {
+      let host = u.replace(/^https?:\/\//i, "").split(/[\/?#:]/)[0].toLowerCase();
+      if (SHORT.test(host)) shortLink = true;
+      else if (!OFFICIAL.test(host)) badLink = true;
+    });
+    if (badLink) flags.push("flag_link");
+    if (shortLink) flags.push("flag_short");
+    ["secret", "urgent", "money", "prize"].forEach(k => { if (RX[k].test(text)) flags.push("flag_" + k); });
+    const score = flags.length + (flags.includes("flag_secret") ? 1 : 0);
+    const level = score >= 2 ? "high" : score === 1 ? "mid" : "low";
+    out.innerHTML = `
+      <div class="verdict ${level}">
+        <h3>${tr("v_" + level)}</h3>
+        ${flags.length ? `<div><b>${tr("red_flags")}</b><ul>${flags.map(f => `<li>${tr(f)}</li>`).join("")}</ul></div>` : ""}
+        <p>${tr("v_" + level + "_d")}</p>
+      </div>`;
+  }
+  $("checkBtn").addEventListener("click", runCheck);
+
+  /* ---------- Boot ---------- */
+  let saved = "en";
+  try { saved = localStorage.getItem("ksar-lang") || "en"; } catch (e) {}
+  show((location.hash || "#home").slice(1));
+  runCheck();
+  setLang(["en", "ur", "ar"].includes(saved) ? saved : "en");
+})();
+</script>
