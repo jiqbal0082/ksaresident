@@ -90,6 +90,24 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 nav.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
 nav.tabs a { flex: none; padding: 12px 14px; color: var(--muted); text-decoration: none; font-weight: 500; border-bottom: 2px solid transparent; white-space: nowrap; }
 nav.tabs a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+nav.tabs a:hover { color: var(--ink); }
+.dd { display: flex; align-items: stretch; flex: none; position: relative; }
+.ddbtn, .ddmenu { display: none; }
+@media (min-width: 1100px) {
+  nav.tabs .wrap { overflow: visible; }
+  .dd > a { padding-inline-end: 4px; }
+  .ddbtn { display: grid; place-items: center; padding: 0 10px 0 2px; border: 0; background: transparent; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; }
+  .ddbtn svg { transition: transform .15s; }
+  .dd.open .ddbtn svg { transform: rotate(180deg); }
+  .ddmenu { position: absolute; top: 100%; inset-inline-start: 0; margin-top: 1px; z-index: 30; width: 560px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 32px rgba(70, 52, 20, .16); }
+  .dd.open .ddmenu { display: grid; }
+  .ddmenu button { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: 12px; text-align: start; padding: 10px 12px; border: 0; border-radius: 10px; background: transparent; color: var(--ink); font: 600 .95rem/1.3 var(--body); cursor: pointer; }
+  .ddmenu button:hover, .ddmenu button:focus-visible { background: var(--bg); outline: none; }
+  .ddmenu .ib { grid-row: span 2; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+  .ddmenu .ib .ico { width: 18px; height: 18px; }
+  .ddmenu small { color: var(--muted); font-weight: 400; font-size: .82rem; }
+  .ddmenu .ddall { grid-column: 1 / -1; border-top: 1px solid var(--line); border-radius: 0 0 10px 10px; margin-top: 4px; padding-top: 12px; }
+}
 
 main .wrap { padding-block: 28px 56px; display: grid; gap: 28px; }
 section.view { display: grid; gap: 22px; }
@@ -252,6 +270,24 @@ html[dir="rtl"] .qbox { padding: 4px 14px 4px 6px; }
 .hstats li { display: flex; align-items: baseline; gap: 6px; color: var(--hero-muted); font-size: .92rem; }
 .hstats b { font: 700 1.5rem/1 var(--display); color: #e9c27a; }
 .hart { display: none; }
+.hsec { display: grid; gap: 14px; }
+.nums { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.num { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: 14px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); color: var(--ink); text-decoration: none; }
+.num:hover { border-color: var(--accent); }
+.num > b { min-width: 64px; padding: 8px 10px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); font: 700 1.35rem/1 var(--display); text-align: center; direction: ltr; }
+.num.hot > b { background: var(--danger); color: #fff; }
+.num strong { display: block; font-weight: 600; }
+.num small { display: block; color: var(--muted); font-size: .86rem; line-height: 1.4; }
+.num .rep { color: var(--gold); font-size: .78rem; }
+.portals { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.portal { display: grid; gap: 4px; align-content: start; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink); text-decoration: none; }
+.portal:hover { border-color: var(--accent); }
+.portal strong { font-weight: 600; font-family: "IBM Plex Sans", system-ui, sans-serif; }
+.portal small { color: var(--muted); font-size: .88rem; line-height: 1.45; }
+.portal .dom { font: 500 .8rem/1.3 var(--mono); color: var(--accent); direction: ltr; unicode-bidi: isolate; }
+.hsrc { color: var(--muted); font-size: .85rem; }
+.hsrc a { color: var(--accent); display: inline-block; font-family: "IBM Plex Sans", system-ui, sans-serif; }
+@media (min-width: 1100px) { .nums, .portals { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .quick button { font: 500 .85rem/1 var(--body); padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255, 248, 234, .35); background: rgba(255, 248, 234, .08); color: var(--hero-ink); cursor: pointer; }
 html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM Plex Sans Arabic", sans-serif; }
 .quick button:hover { background: rgba(255, 248, 234, .18); }
@@ -394,9 +430,14 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   <div class="wrap">
     <a href="#home" data-view="home" data-i18n="nav_home">Home</a>
     <a href="#eosb" data-view="eosb" data-i18n="nav_eosb">End of service</a>
-    <a href="#guides" data-view="guides" data-i18n="nav_guides">Guides</a>
+    <div class="dd" id="ddWrap">
+      <a href="#guides" data-view="guides" data-i18n="nav_guides">Guides</a>
+      <button type="button" class="ddbtn" id="ddBtn" aria-expanded="false" aria-controls="ddMenu" aria-label="Guide topics"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="ddmenu" id="ddMenu"></div>
+    </div>
     <a href="#places" data-view="places" data-i18n="nav_places">Holy places</a>
     <a href="#scams" data-view="scams" data-i18n="nav_scams">Scam check</a>
+    <a href="#help" data-view="help" data-i18n="nav_help">Numbers &amp; portals</a>
   </div>
 </nav>
 
@@ -464,6 +505,11 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
           <a class="tool" href="#scams"><span class="ib"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg></span>
             <h3 data-i18n="tool_scams_t">Scam message check</h3>
             <p data-i18n="tool_scams_d">Paste an SMS or WhatsApp message and see the red flags.</p>
+            <span class="go" data-i18n="open">Open →</span>
+          </a>
+          <a class="tool" href="#help"><span class="ib"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.3a11 11 0 0 0 6.6 6.6l1.3-2 4 1.4v2.6a2 2 0 0 1-2 2A16.5 16.5 0 0 1 4.6 5.5a2 2 0 0 1 2-2z"/></svg></span>
+            <h3 data-i18n="tool_help_t">Emergency numbers and portals</h3>
+            <p data-i18n="tool_help_d">911 and other help lines to tap and call, plus the official websites you need.</p>
             <span class="go" data-i18n="open">Open →</span>
           </a>
         </div>
@@ -581,6 +627,25 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       <div class="alerts" id="alertList"></div>
     </section>
 
+    <section class="view" id="v-help" hidden>
+      <div class="hero">
+        <div class="eyebrow" data-i18n="h_eyebrow">Save these · Tap to call</div>
+        <h1 data-i18n="h_title">Emergency numbers and official portals</h1>
+        <p class="lead" data-i18n="h_lead">The numbers to call when something goes wrong, and the official websites residents use most, in one place.</p>
+      </div>
+      <p class="warnbox" data-i18n-html="h_warn"><b>In a life-threatening emergency, call 911.</b> It is the unified emergency number in Riyadh, Makkah, Madinah and the Eastern Province. In other regions, 999 (police), 997 (ambulance) and 998 (fire) are listed.</p>
+      <div class="hsec">
+        <h2 data-i18n="h_em">Emergency and help lines</h2>
+        <div class="nums" id="nums"></div>
+      </div>
+      <div class="hsec">
+        <h2 data-i18n="h_portals">Official portals</h2>
+        <p class="note" data-i18n-html="h_pnote"><b>Type the address yourself.</b> Scammers copy these sites and send look-alike links. KSA Life Guide is not affiliated with any of these services; they are listed only so you can find them.</p>
+        <div class="portals" id="portals"></div>
+      </div>
+      <p class="meta hsrc" id="helpSrc"></p>
+    </section>
+
   </div>
 </main>
 
@@ -607,6 +672,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
           <li><a href="/places/" data-i18n="nav_places">Holy places</a></li>
           <li><a href="#eosb" data-i18n="f_eosb">End-of-service calculator</a></li>
           <li><a href="#scams" data-i18n="nav_scams">Scam check</a></li>
+          <li><a href="#help" data-i18n="nav_help">Numbers &amp; portals</a></li>
         </ul>
       </nav>
       <nav class="fcol" aria-labelledby="fh2">
@@ -637,7 +703,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   const T = {
     en: {},
     ur: {
-      brand_tag: "سعودی عرب میں زندگی، آسان انداز میں", st_g: "رہنمائیاں", st_p: "مقدس مقامات", st_l: "زبانیں", st_f: "فیس، رجسٹریشن نہیں",
+      nav_help: "نمبرز اور پورٹلز", h_eyebrow: "محفوظ کر لیں · ٹیپ کر کے کال کریں", h_title: "ایمرجنسی نمبر اور سرکاری پورٹلز", h_lead: "مشکل وقت میں کال کرنے کے نمبر، اور مقیم افراد کی سب سے زیادہ استعمال ہونے والی سرکاری ویب سائٹس، ایک جگہ۔", h_warn: "<b>جان کو خطرہ ہو تو 911 پر کال کریں۔</b> یہ ریاض، مکہ، مدینہ اور مشرقی صوبے میں متحدہ ایمرجنسی نمبر ہے۔ دوسرے علاقوں کے لیے 999 (پولیس)، 997 (ایمبولینس) اور 998 (فائر) درج ہیں۔", h_em: "ایمرجنسی اور ہیلپ لائنز", h_portals: "سرکاری پورٹلز", h_pnote: "<b>ویب سائٹ کا پتہ خود ٹائپ کریں۔</b> فراڈ کرنے والے ان سائٹس کی نقل بناتے اور ملتے جلتے لنک بھیجتے ہیں۔ کے ایس اے لائف گائیڈ کا ان میں سے کسی سروس سے کوئی تعلق نہیں؛ یہ صرف تلاش میں آسانی کے لیے درج ہیں۔", tool_help_t: "ایمرجنسی نمبر اور پورٹلز", tool_help_d: "911 اور دیگر ہیلپ لائنز ایک ٹیپ پر، اور ضروری سرکاری ویب سائٹس۔",
+            brand_tag: "سعودی عرب میں زندگی، آسان انداز میں", st_g: "رہنمائیاں", st_p: "مقدس مقامات", st_l: "زبانیں", st_f: "فیس، رجسٹریشن نہیں",
             fh_guides: "رہنمائیاں اور ٹولز", fh_site: "ویب سائٹ کے بارے میں", fh_contact: "رابطہ", f_all: "تمام رہنمائیاں", f_eosb: "اختتامِ ملازمت کیلکولیٹر", f_disc: "ڈس کلیمر", f_terms: "شرائطِ استعمال", f_priv: "پرائیویسی", f_support: "ویب سائٹ کی مدد کریں", f_report: "کوئی غلطی یا پرانی فیس نظر آئی؟ ہمیں بتائیں:",
             follow_t: "تازہ معلومات کے لیے فالو کریں", nav_places: "مقدس مقامات", nav_places_s: "مقدس مقامات", nav_eosb_s: "کیلکولیٹر", p_eyebrow: "مکہ · مدینہ", p_title: "مکہ اور مدینہ کے مقدس مقامات",
       p_lead: "13 مقامات کی تاریخ، زیارت سے پہلے ضروری معلومات، اور گوگل میپس پر راستہ۔", p_home_t: "مقدس مقامات",
@@ -697,7 +764,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       err_wage: "تنخواہ کی درست رقم درج کریں۔", err_dates: "دونوں تاریخیں درج کریں۔ آخری دن شروع کی تاریخ کے بعد ہونا چاہیے۔"
     },
     ar: {
-      brand_tag: "الحياة في السعودية بوضوح", st_g: "دليلاً", st_p: "مكاناً مقدساً", st_l: "لغات", st_f: "رسوم، بدون تسجيل",
+      nav_help: "أرقام وبوابات", h_eyebrow: "احفظها · اضغط للاتصال", h_title: "أرقام الطوارئ والبوابات الرسمية", h_lead: "الأرقام التي تتصل بها عند الحاجة، والمواقع الرسمية الأكثر استخداماً للمقيمين، في مكان واحد.", h_warn: "<b>في حالة الخطر على الحياة اتصل بالرقم 911.</b> وهو رقم الطوارئ الموحد في الرياض ومكة والمدينة والمنطقة الشرقية. وفي المناطق الأخرى تُذكر الأرقام 999 (الشرطة) و997 (الإسعاف) و998 (الدفاع المدني).", h_em: "أرقام الطوارئ والمساعدة", h_portals: "البوابات الرسمية", h_pnote: "<b>اكتب العنوان بنفسك.</b> يقلّد المحتالون هذه المواقع ويرسلون روابط مشابهة. KSA Life Guide لا يتبع أياً من هذه الخدمات، وهي مدرجة لتسهيل الوصول إليها فقط.", tool_help_t: "أرقام الطوارئ والبوابات", tool_help_d: "رقم 911 وخطوط المساعدة بضغطة واحدة، مع المواقع الرسمية التي تحتاجها.",
+            brand_tag: "الحياة في السعودية بوضوح", st_g: "دليلاً", st_p: "مكاناً مقدساً", st_l: "لغات", st_f: "رسوم، بدون تسجيل",
             fh_guides: "الأدلة والأدوات", fh_site: "عن الموقع", fh_contact: "تواصل معنا", f_all: "كل الأدلة", f_eosb: "حاسبة مكافأة نهاية الخدمة", f_disc: "إخلاء المسؤولية", f_terms: "شروط الاستخدام", f_priv: "الخصوصية", f_support: "ادعم الموقع", f_report: "وجدت خطأ أو رسوماً قديمة؟ أخبرنا:",
             follow_t: "تابعنا للتحديثات", nav_places: "الأماكن المقدسة", nav_places_s: "الأماكن", nav_eosb_s: "الحاسبة", p_eyebrow: "مكة · المدينة", p_title: "الأماكن المقدسة في مكة والمدينة",
       p_lead: "تاريخ 13 موقعاً، وما تحتاج معرفته قبل الزيارة، والاتجاهات على خرائط Google.", p_home_t: "الأماكن المقدسة",
@@ -792,7 +860,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     });
     document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
     try { localStorage.setItem("ksar-lang", l); } catch (e) {}
-    renderDates(); runCalc(); renderAlerts(); renderGuides(); renderHome(); if (lastCheck) runCheck();
+    renderDates(); runCalc(); renderAlerts(); renderGuides(); renderHome(); renderHelp(); renderDD(); if (lastCheck) runCheck();
   }
   document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
@@ -808,7 +876,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   }
 
   /* ---------- Views ---------- */
-  const views = ["home", "eosb", "guides", "places", "scams"];
+  const views = ["home", "eosb", "guides", "places", "scams", "help"];
   function show(v) {
     if (!views.includes(v)) v = "home";
     views.forEach(x => { document.getElementById("v-" + x).hidden = x !== v; });
@@ -2071,7 +2139,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   ];
 
   /* ---------- Home: tiles, popular, site-wide search ---------- */
-  const ICONS = {arrive: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16.2c.7-1.6 1.9-2.5 3.2-2.5s2.5.9 3.2 2.5M14.5 10h4M14.5 13.5h3"/>',work: '<rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/>',family: '<circle cx="8.5" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3 20c.5-3.4 2.8-5.6 5.5-5.6S13.5 16.6 14 20M14.8 20c.3-2.5 1.7-4.1 3.2-4.1s2.9 1.6 3.2 4.1"/>',drive: '<path d="M4 13.5l1.7-4.6A2 2 0 0 1 7.6 7.5h8.8a2 2 0 0 1 1.9 1.4l1.7 4.6V18a1 1 0 0 1-1 1h-1.3a1 1 0 0 1-1-1v-1H7.3v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM4 13.5h16"/><circle cx="7.8" cy="15.6" r=".9"/><circle cx="16.2" cy="15.6" r=".9"/>',travel: '<path d="M21 3.5L3.5 10.6l6.8 2.6 2.6 6.8zM10.3 13.2L21 3.5"/>',hajj: '<path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.2 6.2 0 0 0 10.1 10.1z"/><path d="M17 4.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/>',law: '<path d="M12 4v16M7.5 20h9M5 7.5h14M5 7.5l-2.6 5.6a2.9 2.9 0 0 0 5.2 0zM19 7.5l-2.6 5.6a2.9 2.9 0 0 0 5.2 0z"/>',home: '<path d="M3.5 11L12 4l8.5 7v8.5a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/>',calc: '<rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/>',shield: '<path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/>',book: '<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6"/>',search: '<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',arrow: '<path d="M9 6l6 6-6 6"/>'};
+  const ICONS = {arrive: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16.2c.7-1.6 1.9-2.5 3.2-2.5s2.5.9 3.2 2.5M14.5 10h4M14.5 13.5h3"/>',work: '<rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/>',family: '<circle cx="8.5" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3 20c.5-3.4 2.8-5.6 5.5-5.6S13.5 16.6 14 20M14.8 20c.3-2.5 1.7-4.1 3.2-4.1s2.9 1.6 3.2 4.1"/>',drive: '<path d="M4 13.5l1.7-4.6A2 2 0 0 1 7.6 7.5h8.8a2 2 0 0 1 1.9 1.4l1.7 4.6V18a1 1 0 0 1-1 1h-1.3a1 1 0 0 1-1-1v-1H7.3v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM4 13.5h16"/><circle cx="7.8" cy="15.6" r=".9"/><circle cx="16.2" cy="15.6" r=".9"/>',travel: '<path d="M21 3.5L3.5 10.6l6.8 2.6 2.6 6.8zM10.3 13.2L21 3.5"/>',hajj: '<path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.2 6.2 0 0 0 10.1 10.1z"/><path d="M17 4.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/>',law: '<path d="M12 4v16M7.5 20h9M5 7.5h14M5 7.5l-2.6 5.6a2.9 2.9 0 0 0 5.2 0zM19 7.5l-2.6 5.6a2.9 2.9 0 0 0 5.2 0z"/>',home: '<path d="M3.5 11L12 4l8.5 7v8.5a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/>',calc: '<rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/>',shield: '<path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/>',book: '<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6"/>',search: '<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',arrow: '<path d="M9 6l6 6-6 6"/>',phone: '<path d="M6.6 3.5h2.6l1.4 4-2 1.3a11 11 0 0 0 6.6 6.6l1.3-2 4 1.4v2.6a2 2 0 0 1-2 2A16.5 16.5 0 0 1 4.6 5.5a2 2 0 0 1 2-2z"/>'};
   const ico = (n) => `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]}</svg>`;
   const POPULAR = ["exit-re-entry-visa", "driving-licence", "final-exit", "family-visa", "change-employer-iqama-transfer", "traffic-fines"];
   const QUICK = ["exit-re-entry-visa", "driving-licence", "final-exit", "traffic-fines", "hajj-for-residents"];
@@ -2142,7 +2210,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   }
   const TOOLS = [
     { view: "eosb", icon: "calc", key: "tool_eosb_t", words: "end of service eosb gratuity award resign resignation termination article 84 85 calculator مكافأة نهاية الخدمة اختتام ملازمت معاوضہ استعفیٰ" },
-    { view: "scams", icon: "shield", key: "tool_scams_t", words: "scam fraud phishing sms whatsapp fake link otp احتيال رسالة فراڈ دھوکہ" }
+    { view: "scams", icon: "shield", key: "tool_scams_t", words: "scam fraud phishing sms whatsapp fake link otp احتيال رسالة فراڈ دھوکہ" },
+    { view: "help", icon: "phone", key: "tool_help_t", words: "emergency police ambulance fire 911 999 997 998 937 number phone call portal absher qiwa gosi nusuk najiz musaned ejar balady طوارئ شرطة إسعاف ایمرجنسی پولیس ایمبولینس نمبر پورٹل" }
   ];
   function runSearch() {
     const H = HT[lang] || HT.en;
@@ -2242,6 +2311,67 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       </div>`;
   }
   $("checkBtn").addEventListener("click", runCheck);
+
+
+  /* ---------- Numbers & portals ---------- */
+  const HSRC = [
+    { l: "Zawya, 911 report (June 2026)", u: "https://www.zawya.com/en/world/middle-east/saudi-911-emergency-centers-handle-26mln-calls-in-june-nu0xxnh5" },
+    { l: "Gulf News, Saudi phone numbers list (2023)", u: "https://gulfnews.com/living-in-uae/ask-us/saudi-arabia-19-telephone-numbers-every-tourist-and-resident-must-save-1.1681300190393" },
+    { l: "Ministry of Health, Contact us", u: "https://www.moh.gov.sa/en/ministry/about/pages/contactus.aspx" }
+  ];
+  const NUMS = [
+    { n: "911", hot: 1, s: 0, en: ["Unified emergency", "Police, ambulance and fire in Riyadh, Makkah, Madinah and the Eastern Province"], ur: ["متحدہ ایمرجنسی نمبر", "ریاض، مکہ، مدینہ اور مشرقی صوبے میں پولیس، ایمبولینس اور فائر"], ar: ["رقم الطوارئ الموحد", "الشرطة والإسعاف والدفاع المدني في الرياض ومكة والمدينة والمنطقة الشرقية"] },
+    { n: "999", s: 1, en: ["Police", "Listed for regions outside the 911 areas"], ur: ["پولیس", "911 والے علاقوں سے باہر کے لیے"], ar: ["الشرطة", "للمناطق خارج نطاق 911"] },
+    { n: "997", s: 1, en: ["Ambulance", "Saudi Red Crescent"], ur: ["ایمبولینس", "سعودی ہلالِ احمر"], ar: ["الإسعاف", "هيئة الهلال الأحمر السعودي"] },
+    { n: "998", s: 1, en: ["Civil Defense", "Fire and rescue"], ur: ["سول ڈیفنس", "آگ اور ریسکیو"], ar: ["الدفاع المدني", "الحريق والإنقاذ"] },
+    { n: "993", s: 1, en: ["Traffic police", "Road accidents"], ur: ["ٹریفک پولیس", "سڑک حادثات"], ar: ["المرور", "الحوادث المرورية"] },
+    { n: "996", s: 1, en: ["Highway patrol", "Accidents and help on highways between cities"], ur: ["ہائی وے پٹرول", "شہروں کے درمیان شاہراہوں پر حادثات اور مدد"], ar: ["أمن الطرق", "الحوادث والمساعدة على الطرق بين المدن"] },
+    { n: "937", s: 2, off: 1, en: ["Ministry of Health", "Medical advice and health reports, 24 hours"], ur: ["وزارتِ صحت", "طبی مشورہ اور صحت سے متعلق اطلاع، 24 گھنٹے"], ar: ["وزارة الصحة", "الاستشارات الطبية والبلاغات الصحية على مدار الساعة"] },
+    { n: "940", s: 1, en: ["Municipal services", "Report street, cleaning or building problems"], ur: ["بلدیاتی خدمات", "سڑک، صفائی یا عمارت کے مسائل کی اطلاع"], ar: ["الخدمات البلدية", "بلاغات الطرق والنظافة والمباني"] }
+  ];
+  const PORTALS = [
+    { n: "Absher", d: "absher.sa", en: "Iqama, exit re-entry, final exit, passports and traffic fines", ur: "اقامہ، خروج و عودہ، فائنل ایگزٹ، پاسپورٹ اور ٹریفک جرمانے" },
+    { n: "Qiwa", d: "qiwa.sa", en: "Work contracts, job transfer and work permits", ur: "ملازمت کے معاہدے، نوکری کی منتقلی اور ورک پرمٹ" },
+    { n: "GOSI", d: "gosi.gov.sa", en: "Social insurance and your registered salary", ur: "سوشل انشورنس اور رجسٹرڈ تنخواہ" },
+    { n: "HRSD", d: "hrsd.gov.sa", en: "Labor rights, rules and complaints", ur: "مزدوروں کے حقوق، قواعد اور شکایات" },
+    { n: "Najiz", d: "najiz.sa", en: "Courts, labor cases and legal services", ur: "عدالتیں، لیبر مقدمات اور قانونی خدمات" },
+    { n: "Musaned", d: "musaned.com.sa", en: "Domestic worker visas and contracts", ur: "گھریلو ملازمین کے ویزے اور معاہدے" },
+    { n: "MOFA Visa", d: "visa.mofa.gov.sa", en: "Visit visas, including family visit", ur: "وزٹ ویزے، بشمول فیملی وزٹ" },
+    { n: "Nusuk", d: "nusuk.sa", en: "Hajj, Umrah and Rawdah permits", ur: "حج، عمرہ اور روضہ کے پرمٹ" },
+    { n: "Ministry of Health", d: "moh.gov.sa", en: "Health services and appointments", ur: "صحت کی خدمات اور اپائنٹمنٹ" },
+    { n: "CHI", d: "chi.gov.sa", en: "Health insurance rules and complaints", ur: "ہیلتھ انشورنس کے قواعد اور شکایات" },
+    { n: "Ejar", d: "ejar.sa", en: "Registered housing rental contracts", ur: "رجسٹرڈ رہائشی کرایہ نامے" },
+    { n: "Balady", d: "balady.gov.sa", en: "Municipal services and reports", ur: "بلدیاتی خدمات اور شکایات" }
+  ];
+  const HL = {
+    en: { rep: "Reported", off: "Official", checked: "Last checked: 24 Oct 2026. Numbers and websites can change. Sources:" },
+    ur: { rep: "رپورٹ شدہ", off: "سرکاری ذریعہ", checked: "آخری جانچ: 24 اکتوبر 2026۔ نمبر اور ویب سائٹس بدل سکتی ہیں۔ ذرائع:" },
+    ar: { rep: "وفق تقارير", off: "مصدر رسمي", checked: "آخر مراجعة: 24 أكتوبر 2026. قد تتغير الأرقام والمواقع. المصادر:" }
+  };
+  function renderHelp() {
+    const H = HL[lang] || HL.en;
+    $("nums").innerHTML = NUMS.map(x => { const t = x[lang] || x.en; return `<a class="num${x.hot ? " hot" : ""}" href="tel:${x.n}"><b>${x.n}</b><span><strong>${esc(t[0])}</strong><small>${esc(t[1])}</small><small class="rep">${x.off ? H.off : H.rep}</small></span></a>`; }).join("");
+    $("portals").innerHTML = PORTALS.map(x => `<a class="portal" href="https://${x.d}" target="_blank" rel="noopener"><strong>${esc(x.n)}</strong><small>${esc(lang === "ur" ? x.ur : x.en)}</small><span class="dom">${x.d}</span></a>`).join("");
+    $("helpSrc").innerHTML = H.checked + " " + HSRC.map(x => `<a href="${x.u}" target="_blank" rel="noopener" dir="ltr">${esc(x.l)}</a>`).join(" · ");
+  }
+
+  /* ---------- Guides menu (desktop) ---------- */
+  function renderDD() {
+    const H = HT[lang] || HT.en;
+    $("ddMenu").innerHTML = CATS.filter(c => c.id !== "all").map(c => {
+      const n = GUIDES.filter(g => g.cat === c.id).length;
+      return `<button type="button" data-cat="${c.id}"><span class="ib">${ico(c.id)}</span><span>${esc(catLabel(c.id))}</span><small>${n} ${H.guides}</small></button>`;
+    }).join("") + `<button type="button" class="ddall" data-cat="all"><span class="ib">${ico("book")}</span><span>${esc(catLabel("all") === "All" ? "All guides" : (T[lang].f_all || catLabel("all")))}</span><small>${GUIDES.length} ${H.guides}</small></button>`;
+  }
+  const ddWrap = $("ddWrap"), ddBtn = $("ddBtn");
+  const ddSet = (o) => { ddWrap.classList.toggle("open", o); ddBtn.setAttribute("aria-expanded", String(o)); };
+  let ddT;
+  ddWrap.addEventListener("mouseenter", () => { if (matchMedia("(min-width: 1100px)").matches) { clearTimeout(ddT); ddSet(true); } });
+  ddWrap.addEventListener("mouseleave", () => { ddT = setTimeout(() => ddSet(false), 180); });
+  ddBtn.addEventListener("click", (e) => { e.stopPropagation(); ddSet(!ddWrap.classList.contains("open")); });
+  $("ddMenu").addEventListener("click", (e) => { const b = e.target.closest("[data-cat]"); if (!b) return; ddSet(false); openCat(b.dataset.cat); });
+  document.addEventListener("click", (e) => { if (!ddWrap.contains(e.target)) ddSet(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && ddWrap.classList.contains("open")) { ddSet(false); ddBtn.focus(); } });
 
   /* ---------- Boot ---------- */
   let saved = "en";

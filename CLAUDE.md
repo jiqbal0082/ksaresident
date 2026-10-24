@@ -65,7 +65,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 5. Update the "Last checked" date (`CHECKED` in build.mjs and the guide meta line) when facts are re-verified.
 
 ## Current state (Oct 2026)
-- Live: home with search, 8 life-stage tiles, tools, holy places, most-read; 26 guides EN/UR; 13 holy places EN/UR with Google Maps; EOSB calculator; scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
+- Live: home with search, 8 life-stage tiles, tools, holy places, most-read; desktop Guides ▾ dropdown (life stages); "Numbers & portals" view (#help: NUMS, PORTALS, HSRC in src/site.html — 8 numbers, 12 portals, last checked 24 Oct 2026); 26 guides EN/UR; 13 holy places EN/UR with Google Maps; EOSB calculator; scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
 - Week-1 launch posts written (Claude artifact "KSA Life Guide Launch Posts").
 
 ## Backlog (in priority order)
