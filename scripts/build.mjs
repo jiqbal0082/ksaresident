@@ -38,6 +38,9 @@ function literal(name, endMarker) {
 const CATS = literal('CATS', '\n  const GUIDES = ');
 const EN = literal('GUIDES', '\n  const GUIDES_UR');
 const UR = literal('GUIDES_UR', '\n  const CAT_L');
+const PLACES = literal('PLACES', '\n  const PLACES_UR');
+const PLACES_UR = literal('PLACES_UR', '\n  /* ---------- Home');
+if (PLACES.length !== PLACES_UR.length) throw new Error('English and Urdu place counts differ');
 const CAT_UR = { arrive: 'آمد اور رہائش', work: 'ملازمت اور حقوق', family: 'خاندان', drive: 'ڈرائیونگ', travel: 'سفر اور واپسی', hajj: 'حج و عمرہ', law: 'قوانین اور آداب' };
 if (EN.length !== UR.length) throw new Error('English and Urdu guide counts differ');
 
@@ -75,6 +78,14 @@ ol{margin:0;padding-inline-start:1.3rem;display:grid;gap:8px}
 .facts div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;padding:9px 12px;border-top:1px solid var(--line)}
 .facts div:first-child{border-top:0}.facts dt{color:var(--muted)}.facts dd{margin:0;font-weight:600}
 @media (max-width:480px){.facts div{grid-template-columns:1fr;gap:2px}}
+.arn{font-family:"IBM Plex Sans Arabic",sans-serif;color:var(--gold);font-size:1.15rem;direction:rtl;margin:0}
+.map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);aspect-ratio:16/10;max-width:100%;background:var(--surface)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.dirs{display:flex;flex-wrap:wrap;gap:8px}
+.dirs a{font:600 .92rem/1 var(--body);padding:11px 14px;border-radius:8px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.dirs a.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+html[lang="ur"] .dirs a{font-family:"IBM Plex Sans Arabic",sans-serif}
+.hist p{margin:0}.hist{display:grid;gap:10px}
 .warn{background:var(--danger-soft);border-radius:8px;padding:10px 12px;margin:0}.warn b{color:var(--danger)}
 .note{background:var(--warn-soft);border-radius:8px;padding:12px 14px;font-size:.92rem;margin:0}.note b{color:var(--warn)}
 .meta{font-size:.85rem;color:var(--muted)}.meta a{color:var(--accent)}
@@ -164,7 +175,7 @@ ${body}
 <footer><div class="wrap">
   <p>${L.foot1}</p>
   <p>${L.report} <span class="mail">contact@ksalifeguide.com</span></p>
-  <p><a href="/disclaimer">Disclaimer</a> · <a href="/terms">Terms of use</a> · <a href="/privacy">Privacy</a> · <a href="/support">Donate</a></p>
+  <p><a href="${lang === 'ur' ? '/ur' : ''}/guides/">${L.all}</a> · <a href="${lang === 'ur' ? '/ur' : ''}/places/">${lang === 'ur' ? 'مقدس مقامات' : 'Holy places'}</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/terms">Terms of use</a> · <a href="/privacy">Privacy</a> · <a href="/support">Donate</a></p>
 </div></footer>
 </body>
 </html>
@@ -245,6 +256,82 @@ ${sections}`;
   urls.push([path, altPath]);
 }
 
+
+/* ---------- 5b. Holy place pages ---------- */
+const PL = {
+  en: { places: 'Holy places', makkah: 'Makkah', madinah: 'Madinah', history: 'History', facts: 'Key facts', visit: 'Before you visit',
+        dir: 'Get directions', open: 'Open in Google Maps', mapTitle: (n) => `Map of ${n}`,
+        note: '<b>General information.</b> History is summarised from established sources, and visiting rules come from official guidance, which can change. For religious guidance, consult a qualified scholar.',
+        checked: (d, src, lbl) => `Last checked: ${d}. Confirm current visiting rules on the official source: <a href="${src}" target="_blank" rel="noopener">${lbl}</a>`,
+        more: 'More holy places', indexTitle: 'Holy places of Makkah and Madinah', indexLead: 'History, what to know before you visit, and directions on Google Maps for 13 places in Makkah and Madinah.' },
+  ur: { places: 'مقدس مقامات', makkah: 'مکہ مکرمہ', madinah: 'مدینہ منورہ', history: 'تاریخ', facts: 'اہم معلومات', visit: 'زیارت سے پہلے',
+        dir: 'راستہ دیکھیں', open: 'گوگل میپس میں کھولیں', mapTitle: (n) => `${n} کا نقشہ`,
+        note: '<b>عمومی معلومات۔</b> تاریخ مستند ذرائع سے مختصراً لی گئی ہے اور زیارت کے قواعد سرکاری ہدایات سے ہیں، جو بدل سکتی ہیں۔ دینی رہنمائی کے لیے مستند عالم سے رجوع کریں۔',
+        checked: (d, src, lbl) => `آخری جانچ: ${d}۔ زیارت کے موجودہ قواعد کی تصدیق سرکاری ذریعے سے کریں: <a href="${src}" target="_blank" rel="noopener" dir="ltr">${lbl}</a>`,
+        more: 'مزید مقدس مقامات', indexTitle: 'مکہ اور مدینہ کے مقدس مقامات', indexLead: 'مکہ اور مدینہ کے 13 مقامات کی تاریخ، زیارت سے پہلے ضروری معلومات، اور گوگل میپس پر راستہ۔' }
+};
+const placePath = (lang, slug) => `${lang === 'ur' ? '/ur' : ''}/places/${slug}`;
+mkdirSync('public/places', { recursive: true });
+mkdirSync('public/ur/places', { recursive: true });
+PLACES.forEach((base, i) => {
+  for (const lang of ['en', 'ur']) {
+    const L = T[lang], P = PL[lang];
+    const pl = lang === 'ur' ? { ...base, ...PLACES_UR[i] } : base;
+    const path = placePath(lang, base.slug), altPath = placePath(lang === 'en' ? 'ur' : 'en', base.slug);
+    const homeHref = lang === 'ur' ? '/?lang=ur' : '/';
+    const idxHref = `${lang === 'ur' ? '/ur' : ''}/places/`;
+    const others = PLACES.map((x, k) => ({ x, k })).filter(({ x, k }) => x.city === base.city && k !== i)
+      .map(({ x, k }) => `<li><a href="${placePath(lang, x.slug)}">${esc(lang === 'ur' ? PLACES_UR[k].name : x.name)}</a></li>`).join('');
+    const body = `
+<p class="crumbs"><a href="${homeHref}">${L.home}</a> › <a href="${idxHref}">${P.places}</a> › ${P[base.city]}</p>
+<div class="eyebrow">${P[base.city]}</div>
+<h1>${esc(pl.name)}</h1>
+<p class="arn">${base.ar}</p>
+<p class="lead">${esc(pl.d)}</p>
+<div class="map"><iframe src="https://maps.google.com/maps?q=${base.lat},${base.lng}&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="${esc(P.mapTitle(pl.name))}"></iframe></div>
+<div class="dirs"><a class="pri" href="https://www.google.com/maps/dir/?api=1&destination=${base.lat},${base.lng}" target="_blank" rel="noopener">${P.dir}</a><a href="https://www.google.com/maps/search/?api=1&query=${base.lat},${base.lng}" target="_blank" rel="noopener">${P.open}</a></div>
+<p class="note">${P.note}</p>
+<article class="box">
+  <h2>${P.history}</h2>
+  <div class="hist">${pl.history.map((h) => `<p>${esc(h)}</p>`).join('')}</div>
+  ${pl.facts ? `<h2>${P.facts}</h2><dl class="facts">${pl.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}
+  <h2>${P.visit}</h2>
+  <ol>${pl.visit.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>
+  <p class="meta">${P.checked(CHECKED, base.src, base.srcLabel)}</p>
+</article>
+<div class="share">
+  <a class="wa" href="https://wa.me/?text=${encodeURIComponent(`${pl.name}\n${SITE}${path}`)}" target="_blank" rel="noopener">${L.share}</a>
+  <button type="button" onclick="(function(b){var u=location.href;function done(){b.textContent='${L.copied}'}if(navigator.clipboard){navigator.clipboard.writeText(u).then(done,function(){prompt('',u)})}else{prompt('',u)}})(this)">${L.copy}</button>
+</div>
+${others ? `<section class="cat"><h2>${P.more}: ${P[base.city]}</h2><ul class="related">${others}</ul></section>` : ''}
+`;
+    const jsonld = { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'Place', name: pl.name, alternateName: base.ar, description: pl.d, geo: { '@type': 'GeoCoordinates', latitude: base.lat, longitude: base.lng },
+        address: { '@type': 'PostalAddress', addressLocality: base.city === 'makkah' ? 'Makkah' : 'Madinah', addressCountry: 'SA' }, url: SITE + path },
+      { '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: L.home, item: SITE + '/' },
+        { '@type': 'ListItem', position: 2, name: P.places, item: SITE + idxHref },
+        { '@type': 'ListItem', position: 3, name: pl.name, item: SITE + path } ] } ] };
+    const desc = clip(`${pl.d} ${pl.history[0]}`, 158);
+    writeFileSync(`public${path}.html`, shell({ lang, title: `${pl.name} | ${P.places} | KSA Life Guide`, desc, path, altPath, body, jsonld }));
+    urls.push([path, altPath]);
+  }
+});
+for (const lang of ['en', 'ur']) {
+  const L = T[lang], P = PL[lang];
+  const path = `${lang === 'ur' ? '/ur' : ''}/places/`, altPath = `${lang === 'ur' ? '' : '/ur'}/places/`;
+  const sections = ['makkah', 'madinah'].map((city) => `<section class="cat"><h2>${P[city]}</h2><ul class="related">${
+    PLACES.map((x, k) => ({ x, k })).filter(({ x }) => x.city === city).map(({ x, k }) => `<li><a href="${placePath(lang, x.slug)}">${esc(lang === 'ur' ? PLACES_UR[k].name : x.name)} <span class="arn" style="font-size:.9rem">${x.ar}</span></a></li>`).join('')}</ul></section>`).join('\n');
+  const body = `
+<p class="crumbs"><a href="${lang === 'ur' ? '/?lang=ur' : '/'}">${L.home}</a> › ${P.places}</p>
+<h1>${P.indexTitle}</h1>
+<p class="lead">${P.indexLead}</p>
+<p class="note">${P.note}</p>
+${sections}`;
+  writeFileSync(`public${path}index.html`, shell({ lang, title: `${P.indexTitle} | KSA Life Guide`, desc: clip(P.indexLead, 158), path, altPath, body }));
+  urls.push([path, altPath]);
+}
+
 /* ---------- 6. Sitemap ---------- */
 const single = ['/', '/disclaimer', '/terms', '/privacy', '/support'];
 const entry = (loc, alt) => `  <url>
@@ -260,4 +347,4 @@ ${urls.map(([p, a]) => entry(p, a)).join('\n')}
 </urlset>
 `);
 
-console.log(`Built index, ${EN.length * 2} guide pages, 2 guide indexes, sitemap with ${single.length + urls.length} URLs`);
+console.log(`Built index, ${EN.length * 2} guide pages, ${PLACES.length * 2} place pages, 4 index pages, sitemap with ${single.length + urls.length} URLs`);

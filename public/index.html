@@ -255,7 +255,7 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
 @media (max-width: 760px) {
   nav.tabs { display: none; }
   body { padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
-  .bnav { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; inset: auto 0 0 0; z-index: 20; background: var(--surface); border-top: 1px solid var(--line); box-shadow: 0 -4px 16px rgba(70, 52, 20, .08); padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
+  .bnav { display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; inset: auto 0 0 0; z-index: 20; background: var(--surface); border-top: 1px solid var(--line); box-shadow: 0 -4px 16px rgba(70, 52, 20, .08); padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
   .bnav a { display: grid; justify-items: center; gap: 3px; padding: 9px 4px 8px; color: var(--muted); text-decoration: none; font: 500 .72rem/1.2 var(--body); text-align: center; }
   html[lang="ur"] .bnav a, html[lang="ar"] .bnav a { font-family: "IBM Plex Sans Arabic", sans-serif; }
   .bnav a[aria-current="page"] { color: var(--accent); }
@@ -263,6 +263,34 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
   .dates { display: none; }
 }
 
+
+.cities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 640px) { .cities { grid-template-columns: 1fr; } }
+.city { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 14px; align-items: start; padding: 18px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.city:hover, .city:focus-visible { border-color: var(--accent); }
+.city .ib { grid-row: span 3; width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; background: var(--gold-soft); color: var(--gold); }
+.city b { font: 700 1.15rem/1.2 var(--display); }
+html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
+.city small { color: var(--muted); font-size: .9rem; line-height: 1.5; }
+.city .go { color: var(--accent); font-weight: 600; font-size: .9rem; }
+.placelist { display: grid; gap: 22px; }
+.pcity { display: grid; gap: 12px; }
+.pcity h2 { display: flex; align-items: center; gap: 10px; }
+.pcity h2::before { content: ""; width: 6px; height: 20px; border-radius: 3px; background: var(--gold); }
+.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.pcard { display: grid; gap: 8px; align-content: start; padding: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.pcard .arn { font-family: "IBM Plex Sans Arabic", sans-serif; color: var(--gold); font-size: .95rem; direction: rtl; }
+.pcard h3 { margin: 0; }
+.pcard p { color: var(--muted); font-size: .94rem; margin: 0; }
+.pcard .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.pcard .acts a { font-weight: 600; font-size: .88rem; text-decoration: none; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); color: var(--ink); background: var(--bg); }
+.pcard .acts a.pri { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.pcard[data-hl="1"] { outline: 2px solid var(--gold); outline-offset: 2px; }
+@media (min-width: 1100px) { #v-home .sec-places { grid-column: 1 / -1; } .pgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #city-makkah .pcard:first-child { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 24px; padding: 22px; }
+  #city-makkah .pcard:first-child > :not(.acts) { grid-column: 1; }
+  #city-makkah .pcard:first-child .acts { grid-column: 2; grid-row: 1 / span 3; }
+  #city-makkah .pcard:first-child h3 { font-size: 1.35rem; } }
 /* ---- Wide screens: use the full width ---- */
 @media (min-width: 1100px) {
   .wrap { max-width: 1240px; }
@@ -317,6 +345,7 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
     <a href="#home" data-view="home" data-i18n="nav_home">Home</a>
     <a href="#eosb" data-view="eosb" data-i18n="nav_eosb">End of service</a>
     <a href="#guides" data-view="guides" data-i18n="nav_guides">Guides</a>
+    <a href="#places" data-view="places" data-i18n="nav_places">Holy places</a>
     <a href="#scams" data-view="scams" data-i18n="nav_scams">Scam check</a>
   </div>
 </nav>
@@ -324,7 +353,8 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
 <nav class="bnav" aria-label="Sections">
   <a href="#home" data-view="home"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11L12 4l8.5 7v8.5a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/></svg><span data-i18n="nav_home">Home</span></a>
   <a href="#guides" data-view="guides"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6"/></svg><span data-i18n="nav_guides">Guides</span></a>
-  <a href="#eosb" data-view="eosb"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg><span data-i18n="nav_eosb">End of service</span></a>
+  <a href="#eosb" data-view="eosb"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg><span data-i18n="nav_eosb_s">Calculator</span></a>
+  <a href="#places" data-view="places"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.2 6.2 0 0 0 10.1 10.1z"/><path d="M17 4.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span data-i18n="nav_places_s">Holy places</span></a>
   <a href="#scams" data-view="scams"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg><span data-i18n="nav_scams">Scam check</span></a>
 </nav>
 
@@ -365,6 +395,11 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
             <span class="go" data-i18n="open">Open →</span>
           </a>
         </div>
+      </div>
+
+      <div class="sec sec-places">
+        <h2 data-i18n="p_home_t">Holy places</h2>
+        <div class="cities" id="cities"></div>
       </div>
 
       <div class="sec sec-pop">
@@ -444,6 +479,17 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
       <div id="guideList" class="glist"></div>
     </section>
 
+    <!-- HOLY PLACES -->
+    <section class="view" id="v-places" hidden>
+      <div class="hero">
+        <div class="eyebrow" data-i18n="p_eyebrow">Makkah · Madinah</div>
+        <h1 data-i18n="p_title">Holy places of Makkah and Madinah</h1>
+        <p class="lead" data-i18n="p_lead">History, what to know before you visit, and directions on Google Maps for 13 places.</p>
+      </div>
+      <p class="note" data-i18n-html="p_disc"><b>General information.</b> History is summarised from established sources, and visiting rules come from official guidance, which can change. Only Masjid al-Haram, Mina, Arafat and Muzdalifah are part of the Hajj and Umrah rites. For religious guidance, consult a qualified scholar.</p>
+      <div id="placeList" class="placelist"></div>
+    </section>
+
     <!-- SCAMS -->
     <section class="view" id="v-scams" hidden>
       <div class="hero">
@@ -474,7 +520,7 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
       <p data-i18n="f2">KSA Life Guide is free for everyone. If it helped you, you can support it with a small donation to keep it running and up to date.</p>
       <a class="btn donate-btn" href="/support.html" data-i18n="donate">Donate</a>
     </div>
-    <p><a href="/guides/">All guides</a> · <a href="/ur/guides/">اردو رہنمائیاں</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/terms.html">Terms of use</a> · <a href="/privacy.html">Privacy</a> · Report an error: <span class="mail">contact@ksalifeguide.com</span> · <a href="https://github.com/jiqbal0082/ksaresident" target="_blank" rel="noopener">Source code</a></p>
+    <p><a href="/guides/">All guides</a> · <a href="/ur/guides/">اردو رہنمائیاں</a> · <a href="/places/">Holy places</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/terms.html">Terms of use</a> · <a href="/privacy.html">Privacy</a> · Report an error: <span class="mail">contact@ksalifeguide.com</span> · <a href="https://github.com/jiqbal0082/ksaresident" target="_blank" rel="noopener">Source code</a></p>
   </div>
 </footer>
 
@@ -484,6 +530,9 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
   const T = {
     en: {},
     ur: {
+      nav_places: "مقدس مقامات", nav_places_s: "مقدس مقامات", nav_eosb_s: "کیلکولیٹر", p_eyebrow: "مکہ · مدینہ", p_title: "مکہ اور مدینہ کے مقدس مقامات",
+      p_lead: "13 مقامات کی تاریخ، زیارت سے پہلے ضروری معلومات، اور گوگل میپس پر راستہ۔", p_home_t: "مقدس مقامات",
+      p_disc: "<b>عمومی معلومات۔</b> تاریخ مستند ذرائع سے مختصراً لی گئی ہے اور زیارت کے قواعد سرکاری ہدایات سے ہیں، جو بدل سکتی ہیں۔ صرف مسجد الحرام، منیٰ، عرفات اور مزدلفہ حج و عمرہ کے مناسک کا حصہ ہیں۔ دینی رہنمائی کے لیے مستند عالم سے رجوع کریں۔",
       home_eyebrow: "مفت · رجسٹریشن کے بغیر · 3 زبانیں",
       home_title: "سعودی عرب میں زندگی، آسان الفاظ میں",
       home_lead: "اقامہ، ملازمت، خاندان، ڈرائیونگ، سفر اور حج کی آسان رہنمائی، اور مفت ٹولز۔ صرف معلومات، ہمیشہ سرکاری ذریعے کے لنک کے ساتھ۔",
@@ -539,6 +588,9 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
       err_wage: "تنخواہ کی درست رقم درج کریں۔", err_dates: "دونوں تاریخیں درج کریں۔ آخری دن شروع کی تاریخ کے بعد ہونا چاہیے۔"
     },
     ar: {
+      nav_places: "الأماكن المقدسة", nav_places_s: "الأماكن", nav_eosb_s: "الحاسبة", p_eyebrow: "مكة · المدينة", p_title: "الأماكن المقدسة في مكة والمدينة",
+      p_lead: "تاريخ 13 موقعاً، وما تحتاج معرفته قبل الزيارة، والاتجاهات على خرائط Google.", p_home_t: "الأماكن المقدسة",
+      p_disc: "<b>معلومات عامة.</b> التاريخ ملخص من مصادر معتمدة، وأنظمة الزيارة من التوجيهات الرسمية وقد تتغير. المسجد الحرام ومنى وعرفات ومزدلفة فقط من مناسك الحج والعمرة. للأحكام الشرعية راجع عالماً مؤهلاً.",
       home_eyebrow: "مجاني · بدون تسجيل · 3 لغات",
       home_title: "الحياة في السعودية بوضوح",
       home_lead: "أدلة مبسطة للإقامة والعمل والعائلة والقيادة والسفر والحج، مع أدوات مجانية. للمعلومات فقط ومرتبطة دائماً بالمصدر الرسمي.",
@@ -645,7 +697,7 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
   }
 
   /* ---------- Views ---------- */
-  const views = ["home", "eosb", "guides", "scams"];
+  const views = ["home", "eosb", "guides", "places", "scams"];
   function show(v) {
     if (!views.includes(v)) v = "home";
     views.forEach(x => { document.getElementById("v-" + x).hidden = x !== v; });
@@ -1507,6 +1559,406 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
   renderGuides();
 
 
+  /* ---------- Holy places ---------- */
+  const PLACES = [
+    {
+      slug: "masjid-al-haram", city: "makkah", name: "Masjid al-Haram", ar: "المسجد الحرام", lat: 21.4225, lng: 39.8262,
+      d: "The Sacred Mosque in Makkah, built around the Kaaba, the qibla of Muslims worldwide.",
+      history: [
+        "The Quran describes the Kaaba as the first house of worship set up for mankind, with its foundations raised by the Prophet Ibrahim and his son Ismail (peace be upon them).",
+        "When the Prophet Muhammad (peace be upon him) entered Makkah in 8 AH (630 CE), the Kaaba was cleared of idols and dedicated to the worship of Allah alone.",
+        "The mosque around it has been expanded many times over the centuries. The largest expansions were carried out by the Saudi state, and it can now hold millions of worshippers."
+      ],
+      facts: [["Inside the mosque", "The Kaaba, the Black Stone, Maqam Ibrahim, Zamzam water, and the hills of Safa and Marwah"], ["Rites", "Tawaf and Sa'i for Umrah and Hajj take place here"]],
+      visit: [
+        "Book an Umrah permit in the Nusuk app before you go. Prayer in the mosque does not need a permit, but Umrah does.",
+        "Entry to the Makkah haram area is for Muslims only.",
+        "Wear modest, clean clothing. Men performing Umrah wear ihram.",
+        "Zamzam water is available throughout the mosque.",
+        "It is most crowded on Fridays, in Ramadan and during the Hajj season. Plan extra time.",
+        "Wheelchairs and electric carts are available for elderly and disabled visitors."
+      ],
+      src: "https://www.nusuk.sa", srcLabel: "nusuk.sa"
+    },
+    {
+      slug: "mina", city: "makkah", name: "Mina", ar: "منى", lat: 21.4133, lng: 39.8933,
+      d: "The valley east of Makkah where pilgrims stay during Hajj and stone the Jamarat.",
+      history: [
+        "Mina is a valley about 7 km east of Masjid al-Haram. Pilgrims stay here on 8 Dhul Hijjah and again on the days after Eid al-Adha.",
+        "The three Jamarat pillars, which pilgrims stone during Hajj, are in Mina. Today they stand inside a multi-level bridge built to manage the crowds safely.",
+        "Masjid al-Khayf in Mina is associated in narrations with the prayers of many prophets."
+      ],
+      facts: [["Known for", "The tent city, the Jamarat bridge and Masjid al-Khayf"], ["Hajj days", "8 Dhul Hijjah, and 10–13 Dhul Hijjah"]],
+      visit: [
+        "Outside the Hajj season the area is open and can be seen by car.",
+        "During the Hajj season, entry is limited to holders of official Hajj permits.",
+        "Mina is part of the Hajj rites only. It is not part of Umrah."
+      ],
+      src: "https://www.nusuk.sa", srcLabel: "nusuk.sa"
+    },
+    {
+      slug: "arafat", city: "makkah", name: "Arafat and Jabal al-Rahmah", ar: "عرفات وجبل الرحمة", lat: 21.3549, lng: 39.9842,
+      d: "The plain where pilgrims stand on the Day of Arafah, the most important rite of Hajj.",
+      history: [
+        "Arafat is a wide plain about 20 km south-east of Makkah. Standing at Arafat on 9 Dhul Hijjah is the central pillar of Hajj.",
+        "The Prophet Muhammad (peace be upon him) delivered his Farewell Sermon here during his only Hajj in 10 AH (632 CE).",
+        "Jabal al-Rahmah, the Mount of Mercy, is a small hill in the plain. Masjid Namirah stands at its western edge."
+      ],
+      facts: [["Key day", "9 Dhul Hijjah (Day of Arafah)"], ["Landmarks", "Jabal al-Rahmah and Masjid Namirah"]],
+      visit: [
+        "Outside the Hajj season visitors can drive to the plain and see Jabal al-Rahmah.",
+        "During the Hajj season the area is restricted to official pilgrims.",
+        "Midday heat is severe for most of the year. Go early, carry water and wear a hat."
+      ],
+      src: "https://www.nusuk.sa", srcLabel: "nusuk.sa"
+    },
+    {
+      slug: "muzdalifah", city: "makkah", name: "Muzdalifah", ar: "مزدلفة", lat: 21.3836, lng: 39.9363,
+      d: "The open area between Arafat and Mina where pilgrims spend the night after the Day of Arafah.",
+      history: [
+        "After sunset on the Day of Arafah, pilgrims travel to Muzdalifah and spend the night under the open sky.",
+        "Many pilgrims collect the small pebbles here that they later use for stoning the Jamarat in Mina.",
+        "Masjid al-Mash'ar al-Haram stands in Muzdalifah. The Quran mentions remembering Allah at al-Mash'ar al-Haram."
+      ],
+      facts: [["Key night", "Night of 10 Dhul Hijjah"], ["Landmark", "Masjid al-Mash'ar al-Haram"]],
+      visit: [
+        "Outside the Hajj season it is an open area that can be seen by car on the way between Mina and Arafat.",
+        "During the Hajj season access is limited to official pilgrims."
+      ],
+      src: "https://www.nusuk.sa", srcLabel: "nusuk.sa"
+    },
+    {
+      slug: "jabal-al-nour-cave-hira", city: "makkah", name: "Jabal al-Nour and Cave Hira", ar: "جبل النور وغار حراء", lat: 21.4575, lng: 39.8592,
+      d: "The mountain whose cave is where the first verses of the Quran were revealed.",
+      history: [
+        "Before prophethood, the Prophet Muhammad (peace be upon him) used to spend time in reflection in the Cave of Hira near the top of this mountain.",
+        "Here the first revelation came to him through the angel Jibril, with the opening verses of Surah al-Alaq ('Read in the name of your Lord'), around 610 CE.",
+        "The mountain is about 4 km north-east of Masjid al-Haram."
+      ],
+      facts: [["Event", "The first revelation of the Quran"], ["At the base", "The Hira Cultural District with an exhibition about the revelation"]],
+      visit: [
+        "Climbing is not part of Hajj or Umrah. Go only if you are fit: the path is steep and usually takes about an hour each way.",
+        "Climb early in the morning or late afternoon, carry water and wear proper shoes.",
+        "The Hira Cultural District at the foot of the mountain has exhibits about the revelation. Check its opening times and tickets before you go."
+      ],
+      src: "https://visitsaudi.com/en/makkah/attractions/hira-cultural-district-tour", srcLabel: "visitsaudi.com"
+    },
+    {
+      slug: "jabal-thawr", city: "makkah", name: "Jabal Thawr", ar: "جبل ثور", lat: 21.3772, lng: 39.8497,
+      d: "The mountain whose cave sheltered the Prophet (peace be upon him) and Abu Bakr during the Hijrah.",
+      history: [
+        "When the Prophet Muhammad (peace be upon him) left Makkah for Madinah in 622 CE, he and Abu Bakr al-Siddiq hid for three nights in a cave on this mountain.",
+        "The Quran refers to this event: 'the second of two, when they were in the cave' (Surah al-Tawbah 9:40).",
+        "The mountain is south of Masjid al-Haram."
+      ],
+      facts: [["Event", "The Hijrah (migration) to Madinah, 622 CE"]],
+      visit: [
+        "The climb is steeper and longer than Jabal al-Nour. Allow plenty of time and do not go in the midday heat.",
+        "Visiting is not part of Hajj or Umrah.",
+        "Carry water and a phone, and go with others."
+      ],
+      src: "https://visitsaudi.com", srcLabel: "visitsaudi.com"
+    },
+    {
+      slug: "jannat-al-mualla", city: "makkah", name: "Jannat al-Mu'alla", ar: "مقبرة المعلاة", lat: 21.4319, lng: 39.8283,
+      d: "The historic cemetery of Makkah, where Khadijah, the Prophet's first wife, is buried.",
+      history: [
+        "Al-Mu'alla is the oldest cemetery in Makkah, a short distance north of Masjid al-Haram.",
+        "Khadijah bint Khuwaylid (may Allah be pleased with her), the first wife of the Prophet (peace be upon him) and the first person to accept Islam, is buried here, along with members of his family and many early Muslims.",
+        "It remains in use as a cemetery today."
+      ],
+      facts: [["Buried here", "Khadijah bint Khuwaylid and many early Muslims"]],
+      visit: [
+        "Follow the visiting times posted at the gate and the instructions of the staff.",
+        "Graves are kept simple and are not marked with names. Visit quietly and respectfully.",
+        "Do not take photos of funerals or mourners."
+      ],
+      src: "https://visitsaudi.com", srcLabel: "visitsaudi.com"
+    },
+    {
+      slug: "masjid-an-nabawi", city: "madinah", name: "Masjid an-Nabawi (the Prophet's Mosque)", ar: "المسجد النبوي", lat: 24.4672, lng: 39.6111,
+      d: "The mosque built by the Prophet (peace be upon him) in Madinah, where he is buried, with the Rawdah.",
+      history: [
+        "The Prophet Muhammad (peace be upon him) built this mosque after arriving in Madinah in 1 AH (622 CE), next to his home.",
+        "He is buried in what was the room of Aisha (may Allah be pleased with her), beside Abu Bakr and Umar (may Allah be pleased with them). The green dome stands above.",
+        "The Rawdah is the area between his house and his pulpit, described in a hadith as a garden from the gardens of Paradise. The mosque has been greatly expanded over the centuries."
+      ],
+      facts: [["Rawdah permit", "Book in the Nusuk app. One permit per person every 365 days"], ["Rawdah entry", "From the southern courtyards, near Makkah Gate (Gate 37)"]],
+      visit: [
+        "Visiting the mosque does not need a permit and is possible any time of year. Entering the Rawdah needs a Nusuk permit.",
+        "Rawdah times for men (not Friday): 2:00 am to Fajr, and 11:20 am to Isha.",
+        "Rawdah times for women (not Friday): after Fajr to 11:00 am, and after Isha to 2:00 am. Friday times are different; check Nusuk.",
+        "Enter with your right foot and say the supplication for entering the mosque. Greet the Prophet (peace be upon him) and his two companions calmly, without crowding or raising your voice.",
+        "Times can change. Always check the Nusuk app before you go."
+      ],
+      src: "https://www.nusuk.sa", srcLabel: "nusuk.sa"
+    },
+    {
+      slug: "masjid-quba", city: "madinah", name: "Masjid Quba", ar: "مسجد قباء", lat: 24.4393, lng: 39.6173,
+      d: "The first mosque built in Islam, about 3 km south of the Prophet's Mosque.",
+      history: [
+        "The Prophet Muhammad (peace be upon him) founded this mosque when he arrived at Quba on the outskirts of Madinah during the Hijrah in 622 CE. It is described as the first mosque built in Islam.",
+        "The Ministry of Hajj guide notes the hadith that praying here, after purifying oneself at home, carries a reward like that of an Umrah.",
+        "The mosque has been rebuilt and expanded several times and can hold tens of thousands of worshippers."
+      ],
+      facts: [["Distance", "About 3 km south of the Prophet's Mosque"], ["Walkway", "Quba Boulevard links the two mosques (about 3.6 km)"]],
+      visit: [
+        "Make wudu at your hotel before you set off, then pray two rak'ahs in the mosque.",
+        "You can walk the shaded Quba Boulevard from the Prophet's Mosque, or take a taxi or bus.",
+        "Saturday mornings are popular, following the practice of the Prophet (peace be upon him), so expect crowds."
+      ],
+      src: "https://haj.gov.sa/-/media/Project/HAJJ/Awareness-Guides/Madinah-Guide/English/EN-madinah-guide.pdf", srcLabel: "haj.gov.sa (Madinah guide)"
+    },
+    {
+      slug: "masjid-al-qiblatayn", city: "madinah", name: "Masjid al-Qiblatayn", ar: "مسجد القبلتين", lat: 24.4843, lng: 39.5791,
+      d: "The 'Mosque of the Two Qiblas', linked to the change of the prayer direction to the Kaaba.",
+      history: [
+        "Early in the Madinah period, Muslims prayed facing Jerusalem. Revelation then came to face the Kaaba in Makkah (Surah al-Baqarah 2:144).",
+        "This mosque is named after that change, in the second year after the Hijrah. It is associated with the prayer in which worshippers turned from one qibla to the other.",
+        "It is in the north-west of Madinah and has been rebuilt in modern times."
+      ],
+      facts: [["Event", "Change of qibla to the Kaaba, 2 AH"]],
+      visit: [
+        "Visiting is not part of any rite. Pray in it as you would in any mosque.",
+        "It is a short drive from the Prophet's Mosque and is often combined with a visit to the Seven Mosques area."
+      ],
+      src: "https://saudipedia.com/en/list-of-islamic-historical-sites-in-al-madinah-al-munawarah", srcLabel: "saudipedia.com"
+    },
+    {
+      slug: "mount-uhud", city: "madinah", name: "Mount Uhud and the Martyrs of Uhud", ar: "جبل أحد وشهداء أحد", lat: 24.5009, lng: 39.6125,
+      d: "The mountain north of Madinah where the Battle of Uhud took place in 3 AH.",
+      history: [
+        "The Battle of Uhud was fought here in 3 AH (625 CE). About seventy companions were martyred, including Hamzah ibn Abd al-Muttalib (may Allah be pleased with him), the Prophet's uncle, known as Sayyid al-Shuhada.",
+        "The martyrs are buried in the Uhud Martyrs Cemetery, between Mount Uhud and the small Archers' Hill (Jabal al-Rumat), where the Prophet (peace be upon him) had placed the archers.",
+        "Mount Uhud is about 4 km north of the Prophet's Mosque. A hadith describes it as 'a mountain that loves us and we love it'."
+      ],
+      facts: [["Battle", "Uhud, 3 AH (625 CE)"], ["Landmarks", "Martyrs' cemetery, Archers' Hill, Sayyid al-Shuhada Mosque"]],
+      visit: [
+        "Greet the deceased and pray for them, as the Ministry of Hajj guide recommends: 'Peace be upon you, abode of believing people.'",
+        "Archers' Hill can be climbed in a few minutes and gives a clear view of the battlefield.",
+        "Go early in the morning or after Asr to avoid the heat."
+      ],
+      src: "https://haj.gov.sa/-/media/Project/HAJJ/Awareness-Guides/Madinah-Guide/English/EN-madinah-guide.pdf", srcLabel: "haj.gov.sa (Madinah guide)"
+    },
+    {
+      slug: "jannat-al-baqi", city: "madinah", name: "Jannat al-Baqi", ar: "بقيع الغرقد", lat: 24.4673, lng: 39.6168,
+      d: "The main cemetery of Madinah, beside the Prophet's Mosque, resting place of many companions.",
+      history: [
+        "Al-Baqi, also called Baqi al-Gharqad after the trees that once grew there, is south-east of the Prophet's Mosque.",
+        "Many members of the Prophet's family and thousands of his companions are buried here, including Uthman ibn Affan (may Allah be pleased with him).",
+        "It remains the main cemetery of Madinah today."
+      ],
+      facts: [["Visiting times for men (Ministry of Hajj guide)", "After Fajr until 8:00 am, and for one hour after Asr"]],
+      visit: [
+        "Follow the visiting times and the instructions of the staff at the gate.",
+        "Graves are kept simple and are not marked with names. Visit quietly and pray for the deceased.",
+        "Do not photograph funerals or mourners."
+      ],
+      src: "https://haj.gov.sa/-/media/Project/HAJJ/Awareness-Guides/Madinah-Guide/English/EN-madinah-guide.pdf", srcLabel: "haj.gov.sa (Madinah guide)"
+    },
+    {
+      slug: "seven-mosques-khandaq", city: "madinah", name: "The Seven Mosques (Khandaq)", ar: "المساجد السبعة", lat: 24.4794, lng: 39.5967,
+      d: "Small mosques at the site of the Battle of the Trench, near Mount Sala'.",
+      history: [
+        "In 5 AH (627 CE), Muslims dug a trench (khandaq) to defend Madinah against a large alliance. The battle became known as the Battle of the Trench.",
+        "The small mosques on the western side of Mount Sala' are associated with this battle. Al-Fath Mosque, the largest, was built by Umar ibn Abd al-Aziz between 705 and 711 CE.",
+        "A larger modern mosque now stands nearby."
+      ],
+      facts: [["Battle", "Al-Khandaq (the Trench), 5 AH (627 CE)"], ["Main mosque", "Al-Fath Mosque"]],
+      visit: [
+        "Visiting is not part of any rite. Pray in the main mosque as in any other mosque.",
+        "The site is often combined with a visit to Masjid al-Qiblatayn."
+      ],
+      src: "https://saudipedia.com/en/the-seven-mosques", srcLabel: "saudipedia.com"
+    }
+  ];
+  const PLACES_UR = [
+    {
+      name: "مسجد الحرام", d: "مکہ کی مقدس مسجد، جو کعبہ کے گرد بنی ہے، دنیا بھر کے مسلمانوں کا قبلہ۔",
+      history: [
+        "قرآن کعبہ کو انسانوں کے لیے بنایا گیا پہلا عبادت گھر بتاتا ہے، جس کی بنیادیں حضرت ابراہیم اور ان کے بیٹے حضرت اسماعیل علیہما السلام نے اٹھائیں۔",
+        "8 ہجری (630 عیسوی) میں جب نبی کریم ﷺ مکہ میں داخل ہوئے تو کعبہ کو بتوں سے پاک کر کے صرف اللہ کی عبادت کے لیے مخصوص کیا گیا۔",
+        "صدیوں میں مسجد کی کئی بار توسیع ہوئی۔ سب سے بڑی توسیعات سعودی حکومت نے کیں اور اب اس میں لاکھوں نمازی سما سکتے ہیں۔"
+      ],
+      facts: [["مسجد کے اندر", "کعبہ، حجرِ اسود، مقامِ ابراہیم، آبِ زمزم، اور صفا و مروہ"], ["مناسک", "عمرہ اور حج کا طواف اور سعی یہیں ہوتے ہیں"]],
+      visit: [
+        "جانے سے پہلے نسک ایپ میں عمرہ پرمٹ بک کریں۔ مسجد میں نماز کے لیے پرمٹ نہیں چاہیے، مگر عمرہ کے لیے چاہیے۔",
+        "مکہ کے حرم کی حدود میں داخلہ صرف مسلمانوں کے لیے ہے۔",
+        "صاف اور باپردہ لباس پہنیں۔ عمرہ کرنے والے مرد احرام باندھیں۔",
+        "پوری مسجد میں آبِ زمزم دستیاب ہے۔",
+        "جمعہ، رمضان اور حج کے موسم میں سب سے زیادہ رش ہوتا ہے۔ زیادہ وقت رکھیں۔",
+        "بزرگوں اور معذور افراد کے لیے وہیل چیئر اور الیکٹرک گاڑیاں دستیاب ہیں۔"
+      ]
+    },
+    {
+      name: "منیٰ", d: "مکہ کے مشرق میں وادی جہاں حاجی حج کے دوران قیام کرتے اور جمرات کو کنکریاں مارتے ہیں۔",
+      history: [
+        "منیٰ مسجد الحرام سے تقریباً 7 کلومیٹر مشرق میں ایک وادی ہے۔ حاجی 8 ذوالحجہ کو اور پھر عید الاضحیٰ کے بعد کے دنوں میں یہاں قیام کرتے ہیں۔",
+        "تینوں جمرات، جنہیں حج میں کنکریاں ماری جاتی ہیں، منیٰ میں ہیں۔ آج یہ ہجوم کو محفوظ رکھنے کے لیے بنائے گئے کئی منزلہ پل کے اندر ہیں۔",
+        "منیٰ میں مسجد خیف کو روایات میں کئی انبیاء کی نماز سے منسوب کیا گیا ہے۔"
+      ],
+      facts: [["پہچان", "خیموں کا شہر، جمرات پل اور مسجد خیف"], ["حج کے دن", "8 ذوالحجہ، اور 10 تا 13 ذوالحجہ"]],
+      visit: [
+        "حج سیزن کے علاوہ یہ علاقہ کھلا ہوتا ہے اور گاڑی سے دیکھا جا سکتا ہے۔",
+        "حج سیزن میں داخلہ صرف سرکاری حج پرمٹ والوں کے لیے ہوتا ہے۔",
+        "منیٰ صرف حج کے مناسک کا حصہ ہے، عمرہ کا نہیں۔"
+      ]
+    },
+    {
+      name: "عرفات اور جبلِ رحمت", d: "وہ میدان جہاں حاجی یومِ عرفہ کو وقوف کرتے ہیں، جو حج کا سب سے اہم رکن ہے۔",
+      history: [
+        "عرفات مکہ سے تقریباً 20 کلومیٹر جنوب مشرق میں ایک وسیع میدان ہے۔ 9 ذوالحجہ کو عرفات میں وقوف حج کا بنیادی رکن ہے۔",
+        "نبی کریم ﷺ نے 10 ہجری (632 عیسوی) میں اپنے واحد حج کے دوران یہیں خطبۂ حجۃ الوداع دیا۔",
+        "جبلِ رحمت میدان میں ایک چھوٹی پہاڑی ہے۔ مسجد نمرہ اس کے مغربی کنارے پر ہے۔"
+      ],
+      facts: [["اہم دن", "9 ذوالحجہ (یومِ عرفہ)"], ["نشانیاں", "جبلِ رحمت اور مسجد نمرہ"]],
+      visit: [
+        "حج سیزن کے علاوہ زائرین گاڑی سے میدان تک جا کر جبلِ رحمت دیکھ سکتے ہیں۔",
+        "حج سیزن میں یہ علاقہ صرف سرکاری حاجیوں کے لیے ہوتا ہے۔",
+        "سال کے زیادہ حصے میں دوپہر کی گرمی شدید ہوتی ہے۔ صبح جلدی جائیں، پانی اور ٹوپی ساتھ رکھیں۔"
+      ]
+    },
+    {
+      name: "مزدلفہ", d: "عرفات اور منیٰ کے درمیان کھلا علاقہ جہاں حاجی یومِ عرفہ کے بعد رات گزارتے ہیں۔",
+      history: [
+        "یومِ عرفہ کو غروبِ آفتاب کے بعد حاجی مزدلفہ آتے ہیں اور کھلے آسمان تلے رات گزارتے ہیں۔",
+        "بہت سے حاجی یہیں سے چھوٹی کنکریاں جمع کرتے ہیں جو بعد میں منیٰ میں جمرات کو ماری جاتی ہیں۔",
+        "مزدلفہ میں مسجد المشعر الحرام ہے۔ قرآن میں مشعر الحرام کے پاس اللہ کو یاد کرنے کا ذکر ہے۔"
+      ],
+      facts: [["اہم رات", "10 ذوالحجہ کی رات"], ["نشانی", "مسجد المشعر الحرام"]],
+      visit: [
+        "حج سیزن کے علاوہ یہ کھلا علاقہ منیٰ اور عرفات کے درمیان راستے میں گاڑی سے دیکھا جا سکتا ہے۔",
+        "حج سیزن میں داخلہ صرف سرکاری حاجیوں کے لیے ہوتا ہے۔"
+      ]
+    },
+    {
+      name: "جبلِ نور اور غارِ حرا", d: "وہ پہاڑ جس کے غار میں قرآن کی پہلی آیات نازل ہوئیں۔",
+      history: [
+        "نبوت سے پہلے نبی کریم ﷺ اس پہاڑ کی چوٹی کے قریب غارِ حرا میں غور و فکر کے لیے وقت گزارا کرتے تھے۔",
+        "یہیں تقریباً 610 عیسوی میں حضرت جبریل علیہ السلام کے ذریعے پہلی وحی آئی، سورۃ العلق کی ابتدائی آیات ('پڑھو اپنے رب کے نام سے')۔",
+        "یہ پہاڑ مسجد الحرام سے تقریباً 4 کلومیٹر شمال مشرق میں ہے۔"
+      ],
+      facts: [["واقعہ", "قرآن کی پہلی وحی"], ["دامن میں", "حراء کلچرل ڈسٹرکٹ، جہاں وحی کے بارے میں نمائش ہے"]],
+      visit: [
+        "چڑھائی حج یا عمرہ کا حصہ نہیں۔ صرف تندرست ہوں تو جائیں: راستہ کھڑا ہے اور عموماً ایک طرف تقریباً ایک گھنٹہ لگتا ہے۔",
+        "صبح سویرے یا عصر کے بعد چڑھیں، پانی ساتھ رکھیں اور مناسب جوتے پہنیں۔",
+        "پہاڑ کے دامن میں حراء کلچرل ڈسٹرکٹ میں وحی سے متعلق نمائش ہے۔ جانے سے پہلے اوقات اور ٹکٹ چیک کریں۔"
+      ]
+    },
+    {
+      name: "جبلِ ثور", d: "وہ پہاڑ جس کے غار نے ہجرت کے دوران نبی کریم ﷺ اور حضرت ابوبکرؓ کو پناہ دی۔",
+      history: [
+        "622 عیسوی میں جب نبی کریم ﷺ مکہ سے مدینہ روانہ ہوئے تو آپ ﷺ اور حضرت ابوبکر صدیقؓ نے اس پہاڑ کے ایک غار میں تین راتیں قیام کیا۔",
+        "قرآن اس واقعے کا ذکر کرتا ہے: 'دو میں سے دوسرا، جب وہ دونوں غار میں تھے' (سورۃ التوبہ 9:40)۔",
+        "یہ پہاڑ مسجد الحرام کے جنوب میں ہے۔"
+      ],
+      facts: [["واقعہ", "مدینہ کی طرف ہجرت، 622 عیسوی"]],
+      visit: [
+        "چڑھائی جبلِ نور سے زیادہ کھڑی اور لمبی ہے۔ کافی وقت رکھیں اور دوپہر کی گرمی میں نہ جائیں۔",
+        "یہ حج یا عمرہ کا حصہ نہیں۔",
+        "پانی اور فون ساتھ رکھیں اور دوسروں کے ساتھ جائیں۔"
+      ]
+    },
+    {
+      name: "جنت المعلیٰ", d: "مکہ کا تاریخی قبرستان، جہاں نبی کریم ﷺ کی پہلی زوجہ حضرت خدیجہؓ مدفون ہیں۔",
+      history: [
+        "المعلیٰ مکہ کا قدیم ترین قبرستان ہے، مسجد الحرام سے تھوڑے فاصلے پر شمال میں۔",
+        "یہاں نبی کریم ﷺ کی پہلی زوجہ اور سب سے پہلے اسلام قبول کرنے والی حضرت خدیجہ بنت خویلدؓ، آپ ﷺ کے خاندان کے افراد اور بہت سے ابتدائی مسلمان مدفون ہیں۔",
+        "یہ آج بھی قبرستان کے طور پر استعمال ہوتا ہے۔"
+      ],
+      facts: [["مدفون", "حضرت خدیجہ بنت خویلدؓ اور بہت سے ابتدائی مسلمان"]],
+      visit: [
+        "دروازے پر لکھے اوقات اور عملے کی ہدایات پر عمل کریں۔",
+        "قبریں سادہ ہیں اور ان پر نام نہیں لکھے۔ خاموشی اور ادب سے زیارت کریں۔",
+        "جنازوں یا سوگواروں کی تصاویر نہ لیں۔"
+      ]
+    },
+    {
+      name: "مسجد نبوی", d: "مدینہ میں نبی کریم ﷺ کی بنائی ہوئی مسجد، جہاں آپ ﷺ مدفون ہیں، اور ریاض الجنہ۔",
+      history: [
+        "نبی کریم ﷺ نے 1 ہجری (622 عیسوی) میں مدینہ پہنچنے کے بعد اپنے گھر کے ساتھ یہ مسجد بنائی۔",
+        "آپ ﷺ حضرت عائشہؓ کے حجرے میں مدفون ہیں، حضرت ابوبکرؓ اور حضرت عمرؓ کے ساتھ۔ اس کے اوپر سبز گنبد ہے۔",
+        "ریاض الجنہ آپ ﷺ کے گھر اور منبر کے درمیان کا حصہ ہے، جسے حدیث میں جنت کے باغوں میں سے ایک باغ کہا گیا ہے۔ صدیوں میں مسجد کی بہت توسیع ہوئی ہے۔"
+      ],
+      facts: [["ریاض الجنہ پرمٹ", "نسک ایپ میں بک کریں۔ ہر شخص کو 365 دن میں ایک بار"], ["ریاض الجنہ داخلہ", "جنوبی صحن سے، باب مکہ (گیٹ 37) کے قریب"]],
+      visit: [
+        "مسجد میں حاضری کے لیے پرمٹ نہیں چاہیے اور سال بھر ممکن ہے۔ ریاض الجنہ کے لیے نسک پرمٹ ضروری ہے۔",
+        "مردوں کے اوقات (جمعہ کے علاوہ): رات 2 بجے سے فجر تک، اور صبح 11:20 سے عشاء تک۔",
+        "خواتین کے اوقات (جمعہ کے علاوہ): فجر کے بعد سے صبح 11 بجے تک، اور عشاء کے بعد سے رات 2 بجے تک۔ جمعہ کے اوقات مختلف ہیں؛ نسک میں دیکھیں۔",
+        "دایاں پاؤں پہلے رکھ کر مسجد میں داخلے کی دعا پڑھیں۔ نبی کریم ﷺ اور آپ کے دونوں ساتھیوں کو سکون سے سلام پیش کریں، دھکم پیل اور اونچی آواز کے بغیر۔",
+        "اوقات بدل سکتے ہیں۔ جانے سے پہلے ہمیشہ نسک ایپ دیکھیں۔"
+      ]
+    },
+    {
+      name: "مسجد قبا", d: "اسلام میں بنائی گئی پہلی مسجد، مسجد نبوی سے تقریباً 3 کلومیٹر جنوب میں۔",
+      history: [
+        "622 عیسوی میں ہجرت کے دوران مدینہ کے مضافات میں قبا پہنچنے پر نبی کریم ﷺ نے یہ مسجد قائم کی۔ اسے اسلام کی پہلی مسجد کہا جاتا ہے۔",
+        "وزارتِ حج کی گائیڈ میں حدیث بیان ہے کہ گھر سے وضو کر کے یہاں نماز پڑھنے کا ثواب عمرہ کے برابر ہے۔",
+        "مسجد کئی بار دوبارہ تعمیر اور وسیع ہوئی اور اب ہزاروں نمازی سما سکتے ہیں۔"
+      ],
+      facts: [["فاصلہ", "مسجد نبوی سے تقریباً 3 کلومیٹر جنوب"], ["پیدل راستہ", "قبا بلیوارڈ دونوں مسجدوں کو ملاتا ہے (تقریباً 3.6 کلومیٹر)"]],
+      visit: [
+        "ہوٹل سے وضو کر کے نکلیں، پھر مسجد میں دو رکعت نماز پڑھیں۔",
+        "مسجد نبوی سے سایہ دار قبا بلیوارڈ پر پیدل جا سکتے ہیں، یا ٹیکسی یا بس لیں۔",
+        "نبی کریم ﷺ کی سنت کی پیروی میں ہفتہ کی صبح بہت لوگ آتے ہیں، اس لیے رش کی توقع رکھیں۔"
+      ]
+    },
+    {
+      name: "مسجد قبلتین", d: "'دو قبلوں والی مسجد'، جو نماز کا رخ کعبہ کی طرف بدلنے سے منسوب ہے۔",
+      history: [
+        "مدنی دور کے شروع میں مسلمان بیت المقدس کی طرف رخ کر کے نماز پڑھتے تھے۔ پھر کعبہ کی طرف رخ کرنے کا حکم نازل ہوا (سورۃ البقرہ 2:144)۔",
+        "یہ مسجد ہجرت کے دوسرے سال ہونے والی اسی تبدیلی کے نام سے ہے، اور اس نماز سے منسوب ہے جس میں نمازیوں نے ایک قبلے سے دوسرے کی طرف رخ کیا۔",
+        "یہ مدینہ کے شمال مغرب میں ہے اور جدید دور میں دوبارہ تعمیر ہوئی ہے۔"
+      ],
+      facts: [["واقعہ", "قبلہ کی کعبہ کی طرف تبدیلی، 2 ہجری"]],
+      visit: [
+        "یہ کسی منسک کا حصہ نہیں۔ عام مسجد کی طرح اس میں نماز پڑھیں۔",
+        "مسجد نبوی سے مختصر سفر ہے اور اکثر مساجدِ سبعہ کے ساتھ اس کی زیارت کی جاتی ہے۔"
+      ]
+    },
+    {
+      name: "جبلِ احد اور شہدائے احد", d: "مدینہ کے شمال میں وہ پہاڑ جہاں 3 ہجری میں غزوۂ احد ہوا۔",
+      history: [
+        "غزوۂ احد 3 ہجری (625 عیسوی) میں یہیں ہوا۔ تقریباً ستر صحابہ شہید ہوئے، جن میں نبی کریم ﷺ کے چچا حضرت حمزہ بن عبدالمطلبؓ بھی تھے، جنہیں سید الشہداء کہا جاتا ہے۔",
+        "شہداء کو جبلِ احد اور چھوٹی پہاڑی جبلِ رماۃ (تیر اندازوں کی پہاڑی) کے درمیان شہدائے احد قبرستان میں دفن کیا گیا، جہاں نبی کریم ﷺ نے تیر اندازوں کو کھڑا کیا تھا۔",
+        "جبلِ احد مسجد نبوی سے تقریباً 4 کلومیٹر شمال میں ہے۔ حدیث میں اسے 'ایسا پہاڑ جو ہم سے محبت کرتا ہے اور ہم اس سے محبت کرتے ہیں' کہا گیا ہے۔"
+      ],
+      facts: [["غزوہ", "احد، 3 ہجری (625 عیسوی)"], ["نشانیاں", "شہداء کا قبرستان، جبلِ رماۃ، مسجد سید الشہداء"]],
+      visit: [
+        "وزارتِ حج کی گائیڈ کے مطابق مرحومین کو سلام کریں اور ان کے لیے دعا کریں: 'السلام علیکم اہلِ دیار المؤمنین۔'",
+        "جبلِ رماۃ پر چند منٹ میں چڑھا جا سکتا ہے اور وہاں سے میدانِ جنگ صاف نظر آتا ہے۔",
+        "گرمی سے بچنے کے لیے صبح سویرے یا عصر کے بعد جائیں۔"
+      ]
+    },
+    {
+      name: "جنت البقیع", d: "مدینہ کا مرکزی قبرستان، مسجد نبوی کے ساتھ، بہت سے صحابہ کی آرام گاہ۔",
+      history: [
+        "البقیع، جسے وہاں کبھی اگنے والے درختوں کی وجہ سے بقیع الغرقد بھی کہتے ہیں، مسجد نبوی کے جنوب مشرق میں ہے۔",
+        "یہاں نبی کریم ﷺ کے خاندان کے بہت سے افراد اور ہزاروں صحابہ مدفون ہیں، جن میں حضرت عثمان بن عفانؓ بھی شامل ہیں۔",
+        "یہ آج بھی مدینہ کا مرکزی قبرستان ہے۔"
+      ],
+      facts: [["مردوں کے لیے اوقات (وزارتِ حج گائیڈ)", "فجر کے بعد صبح 8 بجے تک، اور عصر کے بعد ایک گھنٹہ"]],
+      visit: [
+        "دروازے پر اوقات اور عملے کی ہدایات پر عمل کریں۔",
+        "قبریں سادہ ہیں اور ان پر نام نہیں لکھے۔ خاموشی سے زیارت کریں اور مرحومین کے لیے دعا کریں۔",
+        "جنازوں یا سوگواروں کی تصاویر نہ لیں۔"
+      ]
+    },
+    {
+      name: "مساجدِ سبعہ (خندق)", d: "غزوۂ خندق کے مقام پر جبلِ سلع کے قریب چھوٹی مساجد۔",
+      history: [
+        "5 ہجری (627 عیسوی) میں مسلمانوں نے ایک بڑے اتحاد سے مدینہ کے دفاع کے لیے خندق کھودی۔ یہ جنگ غزوۂ خندق کہلائی۔",
+        "جبلِ سلع کے مغربی جانب چھوٹی مساجد اسی غزوہ سے منسوب ہیں۔ سب سے بڑی مسجد الفتح عمر بن عبدالعزیز نے 705 سے 711 عیسوی کے درمیان تعمیر کروائی۔",
+        "قریب ہی اب ایک بڑی جدید مسجد بھی ہے۔"
+      ],
+      facts: [["غزوہ", "خندق، 5 ہجری (627 عیسوی)"], ["مرکزی مسجد", "مسجد الفتح"]],
+      visit: [
+        "یہ کسی منسک کا حصہ نہیں۔ مرکزی مسجد میں عام مسجد کی طرح نماز پڑھیں۔",
+        "اکثر مسجد قبلتین کے ساتھ اس کی زیارت کی جاتی ہے۔"
+      ]
+    }
+  ];
+
   /* ---------- Home: tiles, popular, site-wide search ---------- */
   const ICONS = {arrive: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16.2c.7-1.6 1.9-2.5 3.2-2.5s2.5.9 3.2 2.5M14.5 10h4M14.5 13.5h3"/>',work: '<rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/>',family: '<circle cx="8.5" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3 20c.5-3.4 2.8-5.6 5.5-5.6S13.5 16.6 14 20M14.8 20c.3-2.5 1.7-4.1 3.2-4.1s2.9 1.6 3.2 4.1"/>',drive: '<path d="M4 13.5l1.7-4.6A2 2 0 0 1 7.6 7.5h8.8a2 2 0 0 1 1.9 1.4l1.7 4.6V18a1 1 0 0 1-1 1h-1.3a1 1 0 0 1-1-1v-1H7.3v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM4 13.5h16"/><circle cx="7.8" cy="15.6" r=".9"/><circle cx="16.2" cy="15.6" r=".9"/>',travel: '<path d="M21 3.5L3.5 10.6l6.8 2.6 2.6 6.8zM10.3 13.2L21 3.5"/>',hajj: '<path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.2 6.2 0 0 0 10.1 10.1z"/><path d="M17 4.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/>',law: '<path d="M12 4v16M7.5 20h9M5 7.5h14M5 7.5l-2.6 5.6a2.9 2.9 0 0 0 5.2 0zM19 7.5l-2.6 5.6a2.9 2.9 0 0 0 5.2 0z"/>',home: '<path d="M3.5 11L12 4l8.5 7v8.5a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/>',calc: '<rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/>',shield: '<path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/>',book: '<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6"/>',search: '<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',arrow: '<path d="M9 6l6 6-6 6"/>'};
   const ico = (n) => `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]}</svg>`;
@@ -1518,6 +1970,39 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
     ar: { ph: "ابحث: خروج وعودة، رخصة، خروج نهائي، مخالفات…", guides: "دليل", none: "لا نتائج. جرّب كلمة أقصر أو تصفح المراحل أدناه.", tool: "أداة", fine: "في الدليل" }
   };
   const slugIndex = (slug) => GUIDES.findIndex(g => g.slug === slug);
+
+  const PT = {
+    en: { makkah: "Makkah", madinah: "Madinah", read: "History & visitor info", dir: "Directions", places: "places", open: "View places →" },
+    ur: { makkah: "مکہ مکرمہ", madinah: "مدینہ منورہ", read: "تاریخ اور زیارت کی معلومات", dir: "راستہ دیکھیں", places: "مقامات", open: "مقامات دیکھیں ←" },
+    ar: { makkah: "مكة المكرمة", madinah: "المدينة المنورة", read: "التاريخ ومعلومات الزيارة", dir: "الاتجاهات", places: "مواقع", open: "عرض المواقع ←" }
+  };
+  function placeIn(i) { const p = PLACES[i]; return lang === "ur" && PLACES_UR[i] ? { ...p, ...PLACES_UR[i], _dir: "rtl" } : { ...p, _dir: "ltr" }; }
+  const mapsDir = (p) => `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`;
+  function renderPlaces() {
+    const P = PT[lang] || PT.en;
+    $("placeList").innerHTML = ["makkah", "madinah"].map(city => `
+      <section class="pcity" id="city-${city}"><h2>${P[city]}</h2><div class="pgrid">${PLACES.map((_, i) => placeIn(i)).filter(p => p.city === city).map(p => `
+        <article class="pcard" data-slug="${p.slug}" dir="${p._dir}">
+          <span class="arn">${p.ar}</span>
+          <h3>${esc(p.name)}</h3>
+          <p>${esc(p.d)}</p>
+          <div class="acts"><a class="pri" href="${p._dir === "rtl" ? "/ur" : ""}/places/${p.slug}">${P.read}</a><a href="${mapsDir(p)}" target="_blank" rel="noopener">${P.dir}</a></div>
+        </article>`).join("")}</div></section>`).join("");
+    $("cities").innerHTML = ["makkah", "madinah"].map(city => {
+      const list = PLACES.map((_, i) => placeIn(i)).filter(p => p.city === city);
+      return `<button type="button" class="city" data-city="${city}"><span class="ib">${ico("hajj")}</span><b>${P[city]}</b><small>${list.slice(0, 4).map(p => esc(p.name.split(" (")[0])).join(" · ")}…</small><span class="go">${list.length} ${P.places} · ${P.open}</span></button>`;
+    }).join("");
+  }
+  function openPlaces(target) {
+    show("places"); renderPlaces();
+    const el = target && (document.getElementById("city-" + target) || document.querySelector(`.pcard[data-slug="${target}"]`));
+    if (el) { el.scrollIntoView({ block: "start", behavior: "smooth" }); if (el.classList.contains("pcard")) { el.dataset.hl = "1"; setTimeout(() => el.removeAttribute("data-hl"), 2200); } } else window.scrollTo({ top: 0 });
+    try { history.replaceState(null, "", "#places"); } catch (e) {}
+  }
+  document.addEventListener("click", (e) => {
+    const c = e.target.closest(".city[data-city]"); if (c) { openPlaces(c.dataset.city); return; }
+    const pl = e.target.closest("[data-place]"); if (pl) { e.preventDefault(); $("q").value = ""; runSearch(); openPlaces(pl.dataset.place); }
+  });
   function renderHome() {
     const H = HT[lang] || HT.en;
     $("q").placeholder = H.ph;
@@ -1527,6 +2012,7 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
     }).join("") + `<button type="button" class="tile" data-cat="all"><span class="ib">${ico("book")}</span><b>${esc(catLabel("all") === "All" ? "All guides" : catLabel("all"))}</b><small>${GUIDES.length} ${H.guides}</small></button>`;
     $("plist").innerHTML = POPULAR.map(sl => { const g = guideIn(slugIndex(sl)); return `<li><a href="#guides" data-open="${sl}">${ico(g.cat)}<span>${esc(g.t)}</span></a></li>`; }).join("");
     $("quick").innerHTML = QUICK.map(sl => `<button type="button" data-open="${sl}">${esc(guideIn(slugIndex(sl)).t)}</button>`).join("");
+    renderPlaces();
     if ($("q").value) runSearch();
   }
   function openGuide(slug) {
@@ -1563,6 +2049,7 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
       if (score) res.push({ score, html: `<button type="button" data-open="${g.slug}">${ico(g.cat)}<b>${esc(g.t)}</b><small>${esc(catLabel(g.cat))} · ${esc(g.d)}</small></button>` });
       (g.facts || []).forEach(([k, v]) => { if ((k + " " + v).toLowerCase().includes(q)) res.push({ score: 2, html: `<button type="button" data-open="${g.slug}">${ico(g.cat)}<b>${esc(k)}: ${esc(v)}</b><small>${H.fine}: ${esc(g.t)}</small></button>` }); });
     });
+    PLACES.forEach((_, i) => { const p = placeIn(i); const hay = [p.name, p.ar, p.d, ...(p.history || [])].join(" ").toLowerCase(); if (hay.includes(q)) res.push({ score: p.name.toLowerCase().includes(q) ? 5 : 2, html: `<button type="button" data-place="${p.slug}">${ico("hajj")}<b>${esc(p.name)}</b><small>${esc((PT[lang] || PT.en)[p.city])} · ${esc(p.d)}</small></button>` }); });
     res.sort((a, b) => b.score - a.score);
     box.innerHTML = res.length ? res.slice(0, 8).map(r => r.html).join("") : `<div class="none">${H.none}</div>`;
     box.hidden = false;
