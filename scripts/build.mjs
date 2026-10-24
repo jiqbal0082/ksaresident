@@ -52,7 +52,7 @@ const CSS = `
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body)}
 html[lang="ur"] body{font-family:var(--urdu);line-height:2.15}
-.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 header{background:var(--surface);border-bottom:1px solid var(--line)}
 header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-block:12px}
 .brand{text-decoration:none;color:var(--ink);display:flex;gap:8px;align-items:baseline}
