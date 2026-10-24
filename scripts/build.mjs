@@ -213,7 +213,7 @@ ${body}
   <div class="donate"><p>${L.don}</p><a class="cta" href="/support">${L.donBtn}</a></div>
   <div class="fgrid">
     <div class="fcol fabout"><b class="fname">KSA Life Guide</b><p>${L.foot1}</p>
-      <a class="fbtn" href="https://www.facebook.com/ksalifeguide" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg><span>${L.fb}</span></a><a class="fbtn yt" href="https://www.youtube.com/@ksalifeguide.official" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9l5 3-5 3z" fill="#fff"/></svg><span>YouTube</span></a></div>
+      <a class="fbtn" href="https://www.facebook.com/ksalifeguide" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg><span>${L.fb}</span></a></div>
     <nav class="fcol" aria-label="${L.fhG}"><h2>${L.fhG}</h2><ul class="flinks">
       <li><a href="${lang === 'ur' ? '/ur' : ''}/guides/">${L.all}</a></li>
       <li><a href="${lang === 'ur' ? '/guides/' : '/ur/guides/'}">${lang === 'ur' ? 'English guides' : '<span lang="ur">اردو رہنمائیاں</span>'}</a></li>
