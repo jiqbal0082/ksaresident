@@ -123,9 +123,14 @@ p { margin: 0; max-width: 65ch; }
 .tool { display: grid; gap: 8px; align-content: start; padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--ink); transition: border-color .15s; }
 .tool:hover, .tool:focus-visible { border-color: var(--accent); }
 .tool .go { color: var(--accent); font-weight: 600; font-size: .92rem; }
-.trust { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding-top: 6px; }
-.trust div { display: grid; gap: 4px; border-top: 2px solid var(--accent); padding-top: 10px; }
-.trust p { color: var(--muted); font-size: .94rem; }
+.trust { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.trust > div { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 12px; padding: 16px 18px; }
+.trust > div + div { border-inline-start: 1px solid var(--line); }
+@media (max-width: 760px) { .trust > div + div { border-inline-start: 0; border-top: 1px solid var(--line); } }
+.trust .ti { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+.trust .ti .ico { width: 20px; height: 20px; }
+.trust h3 { font-size: 1rem; margin-bottom: 2px; }
+.trust p { color: var(--muted); font-size: .9rem; line-height: 1.45; }
 
 /* Calculator */
 .calc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
@@ -489,6 +494,12 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         </svg>
       </div>
 
+      <div class="trust" role="list">
+        <div role="listitem"><span class="ti"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg></span><div><h3 data-i18n="trust2_t">Official sources</h3><p data-i18n="trust2_d">Every fee and rule links to the official portal, with the date it was last checked.</p></div></div>
+        <div role="listitem"><span class="ti"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16M9 15l2 2 4-4"/></svg></span><div><h3 data-i18n="trust3_t">Checked every month</h3><p data-i18n="trust3_d">Fees and rules are re-checked against official sources each month. Spot something outdated? Tell us.</p></div></div>
+        <div role="listitem"><span class="ti"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></span><div><h3 data-i18n="trust1_t">Private by design</h3><p data-i18n="trust1_d">The calculator and scam check run on your phone. We never ask for your iqama or documents.</p></div></div>
+      </div>
+
       <div class="sec sec-stages">
         <h2 data-i18n="stages_t">Browse by life stage</h2>
         <div class="tiles" id="tiles"></div>
@@ -525,11 +536,6 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         <ul class="plist" id="plist"></ul>
       </div>
 
-      <div class="trust">
-        <div><h3 data-i18n="trust1_t">Private by design</h3><p data-i18n="trust1_d">Everything runs on your phone. Nothing you type is sent or stored.</p></div>
-        <div><h3 data-i18n="trust2_t">Sources listed</h3><p data-i18n="trust2_d">Every rule links to the official law or portal, with the date it was last checked.</p></div>
-        <div><h3 data-i18n="trust3_t">Kept up to date</h3><p data-i18n="trust3_d">Found something outdated? Email contact@ksalifeguide.com and we will check it against the official source.</p></div>
-      </div>
     </section>
 
     <!-- EOSB -->
@@ -713,14 +719,14 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       home_title: "سعودی عرب میں زندگی کے لیے آپ کا رہنما",
       home_lead: "مقیم افراد اور زائرین کے لیے واضح اور عملی معلومات: ملازمت اور اقامہ، خاندان، سفر، حج و عمرہ، اور مکہ و مدینہ کے مقدس مقامات۔ مفت، سرکاری ذرائع کے لنک کے ساتھ۔",
       q_label: "ویب سائٹ میں تلاش کریں", stages_t: "زندگی کے مرحلے کے مطابق دیکھیں", tools_t: "مفت ٹولز", popular_t: "سب سے زیادہ پڑھی جانے والی رہنمائیاں",
-      trust3_t: "تازہ ترین رکھی جاتی ہے", trust3_d: "کوئی معلومات پرانی لگے؟ contact@ksalifeguide.com پر ای میل کریں، ہم سرکاری ذریعے سے چیک کریں گے۔",
+      trust3_t: "ہر ماہ جانچ", trust3_d: "فیس اور قواعد ہر ماہ سرکاری ذرائع سے دوبارہ چیک کیے جاتے ہیں۔ کوئی چیز پرانی لگے؟ ہمیں بتائیں۔",
       nav_home: "ہوم", nav_eosb: "اختتامِ ملازمت", nav_guides: "رہنمائی", nav_scams: "فراڈ چیک",
       tool_eosb_t: "اختتامِ ملازمت کیلکولیٹر", tool_eosb_d: "لیبر لا کی دفعات 84 سے 88 کے مطابق، استعفیٰ کے قواعد سمیت۔",
       tool_guides_t: "مقیم کی زندگی کی رہنمائی", tool_guides_d: "اقامہ، ڈرائیونگ لائسنس، فیملی ویزا، ملازمت کے حقوق، سفر، حج و عمرہ، اور وہ قوانین جن پر ہر مقیم کو عمل کرنا ہے۔",
       tool_scams_t: "فراڈ پیغام چیک", tool_scams_d: "ایس ایم ایس یا واٹس ایپ پیغام پیسٹ کریں اور خطرے کی علامات دیکھیں۔",
       open: "کھولیں ←",
-      trust1_t: "مکمل رازداری", trust1_d: "سب کچھ آپ کے فون پر چلتا ہے۔ آپ کا لکھا ہوا کچھ بھی بھیجا یا محفوظ نہیں ہوتا۔",
-      trust2_t: "ذرائع درج ہیں", trust2_d: "ہر قاعدہ سرکاری قانون یا پورٹل سے منسلک ہے، آخری جانچ کی تاریخ کے ساتھ۔",
+      trust1_t: "مکمل رازداری", trust1_d: "کیلکولیٹر اور فراڈ چیک آپ کے فون پر چلتے ہیں۔ ہم کبھی آپ کا اقامہ یا دستاویزات نہیں مانگتے۔",
+      trust2_t: "سرکاری ذرائع", trust2_d: "ہر فیس اور قاعدہ سرکاری پورٹل سے منسلک ہے، آخری جانچ کی تاریخ کے ساتھ۔",
       eosb_eyebrow: "لیبر لا · دفعات 84–88", eosb_title: "اختتامِ ملازمت کیلکولیٹر",
       eosb_lead: "اپنی آخری ماہانہ تنخواہ، تاریخیں اور ملازمت ختم ہونے کی وجہ درج کریں۔",
       f_wage: "آخری ماہانہ تنخواہ (ریال)", f_wage_h: "عموماً بنیادی تنخواہ کے ساتھ مستقل الاؤنس جیسے رہائش اور ٹرانسپورٹ۔",
@@ -774,14 +780,14 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       home_title: "رفيقك للحياة في السعودية",
       home_lead: "معلومات واضحة وعملية للمقيمين والزوار: العمل والإقامة، والعائلة، والسفر، والحج والعمرة، والأماكن المقدسة في مكة والمدينة. مجاناً، مع روابط المصادر الرسمية.",
       q_label: "ابحث في الموقع", stages_t: "تصفح حسب مرحلة الحياة", tools_t: "أدوات مجانية", popular_t: "الأدلة الأكثر قراءة",
-      trust3_t: "محدّث باستمرار", trust3_d: "وجدت معلومة قديمة؟ راسلنا على contact@ksalifeguide.com وسنراجعها مع المصدر الرسمي.",
+      trust3_t: "مراجعة شهرية", trust3_d: "تُراجع الرسوم والأنظمة شهرياً مع المصادر الرسمية. وجدت معلومة قديمة؟ أخبرنا.",
       nav_home: "الرئيسية", nav_eosb: "نهاية الخدمة", nav_guides: "الأدلة", nav_scams: "فحص الاحتيال",
       tool_eosb_t: "حاسبة مكافأة نهاية الخدمة", tool_eosb_d: "وفق المواد 84 إلى 88 من نظام العمل، بما فيها أحكام الاستقالة.",
       tool_guides_t: "أدلة خطوة بخطوة", tool_guides_d: "الإقامة، رخصة القيادة، تأشيرة العائلة، حقوق العمل، السفر، الحج والعمرة، والأنظمة التي يلتزم بها كل مقيم.",
       tool_scams_t: "فحص رسائل الاحتيال", tool_scams_d: "الصق رسالة نصية أو واتساب واعرف علامات الخطر.",
       open: "افتح ←",
-      trust1_t: "خصوصية تامة", trust1_d: "كل شيء يعمل على جهازك. لا يُرسل أو يُحفظ أي شيء تكتبه.",
-      trust2_t: "المصادر موضحة", trust2_d: "كل قاعدة مرتبطة بالنظام أو البوابة الرسمية مع تاريخ آخر مراجعة.",
+      trust1_t: "خصوصية تامة", trust1_d: "الحاسبة وفحص الرسائل يعملان على جهازك. لا نطلب رقم إقامتك أو مستنداتك أبداً.",
+      trust2_t: "مصادر رسمية", trust2_d: "كل رسم وقاعدة مرتبطة بالبوابة الرسمية مع تاريخ آخر مراجعة.",
       eosb_eyebrow: "نظام العمل · المواد 84–88", eosb_title: "حاسبة مكافأة نهاية الخدمة",
       eosb_lead: "أدخل آخر أجر شهري، والتواريخ، وسبب انتهاء العلاقة التعاقدية.",
       f_wage: "آخر أجر شهري (ريال)", f_wage_h: "عادةً الأجر الأساسي مع البدلات الثابتة مثل السكن والنقل.",
