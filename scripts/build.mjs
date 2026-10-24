@@ -41,7 +41,7 @@ const UR = literal('GUIDES_UR', '\n  const CAT_L');
 const PLACES = literal('PLACES', '\n  const PLACES_UR');
 const PLACES_UR = literal('PLACES_UR', '\n  /* ---------- Home');
 if (PLACES.length !== PLACES_UR.length) throw new Error('English and Urdu place counts differ');
-const CAT_UR = { arrive: 'آمد اور رہائش', work: 'ملازمت اور حقوق', family: 'خاندان', drive: 'ڈرائیونگ', travel: 'سفر اور واپسی', hajj: 'حج و عمرہ', law: 'قوانین اور آداب' };
+const CAT_UR = { arrive: 'آمد اور رہائش', work: 'ملازمت اور حقوق', family: 'خاندان', drive: 'ڈرائیونگ', travel: 'سفر اور پروازیں', hajj: 'حج و عمرہ', law: 'قوانین اور آداب' };
 if (EN.length !== UR.length) throw new Error('English and Urdu guide counts differ');
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -261,7 +261,7 @@ EN.forEach((base, i) => {
   ${g.facts ? `<h2>${L.facts}</h2><dl class="facts">${g.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}
   ${g.steps ? `<h2>${L.steps}</h2><ol>${g.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>` : ''}
   ${g.warn ? `<p class="warn"><b>${L.imp}</b> ${esc(g.warn)}</p>` : ''}
-  <p class="meta">${L.checked(CHECKED, base.src, base.srcLabel)}</p>
+  <p class="meta">${L.checked(CHECKED, base.src, base.srcLabel)}${base.more ? ' · ' + base.more.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener" dir="ltr">${esc(l)}</a>`).join(' · ') : ''}</p>
 </article>
 <div class="share">
   <a class="wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">${L.share}</a>

@@ -938,7 +938,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     { id: "work", label: "Work & rights" },
     { id: "family", label: "Family" },
     { id: "drive", label: "Driving" },
-    { id: "travel", label: "Travel & leaving" },
+    { id: "travel", label: "Travel & flights" },
     { id: "hajj", label: "Hajj & Umrah" },
     { id: "law", label: "Laws & conduct" }
   ];
@@ -1189,7 +1189,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       src: "https://www.najm.sa", srcLabel: "najm.sa"
     },
 
-    /* ===== Travel & leaving ===== */
+    /* ===== Travel & flights ===== */
     {
       slug: "exit-re-entry-visa", cat: "travel", t: "Exit and re-entry visa",
       d: "Travel out of the Kingdom and come back on the same iqama.",
@@ -1221,6 +1221,122 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       ],
       warn: "Keep your SIM active for a short time after leaving so you still receive OTP codes.",
       src: "https://www.absher.sa", srcLabel: "absher.sa"
+    },
+    {
+      slug: "airports-terminals-parking", cat: "travel", t: "Airports, terminals and parking",
+      d: "Find the right terminal, get there, and avoid drop-off and parking fees.",
+      need: "Your boarding pass or airline app (it shows your terminal).",
+      facts: [
+        ["Riyadh Terminal 1", "flynas and flyadeal international flights"],
+        ["Riyadh Terminal 2", "Saudia and Riyadh Air international flights"],
+        ["Riyadh Terminal 3", "flynas and flyadeal domestic flights"],
+        ["Riyadh Terminal 4", "Saudia domestic flights"],
+        ["Riyadh Terminal 5", "Foreign airlines"],
+        ["Riyadh drop-off and pick-up lanes", "5 minutes free, then a SAR 575 fee"],
+        ["Riyadh parking at Terminals 1–4", "SAR 10 an hour, up to SAR 130 a day; SAR 40 a day after 48 hours"],
+        ["Riyadh long-stay parking (next to Terminal 5)", "SAR 10 an hour, up to SAR 80 a day, free shuttle"],
+        ["Jeddah", "Terminal 1 is the main terminal. Some foreign airlines use Terminal 4 or the Hajj and Umrah terminals."]
+      ],
+      steps: [
+        "Check your terminal on the boarding pass or in the airline app on the day you fly. Terminals in Riyadh and Jeddah changed in 2026 and can change again.",
+        "Riyadh: the Riyadh Metro Yellow Line stops at Terminals 1–2, 3–4 and 5. The airport lists its hours as 6 am to midnight.",
+        "Jeddah: the Haramain High-Speed Railway station at the airport connects to Makkah and Madinah.",
+        "Use licensed airport taxis or ride-hailing apps from the official pick-up area only.",
+        "At drop-off lanes, unload and leave. Waiting longer than the free time brings a fee.",
+        "For long trips, compare long-stay parking with a taxi for the round trip. Pay at the exit kiosks or by scanning your parking ticket.",
+        "Pack checked bags in a proper suitcase or box. Jeddah airport has said it does not accept round, cloth-wrapped or rope-tied bags, or bags with long straps."
+      ],
+      warn: "Flight schedules can change at short notice. Check your flight status in the airline app before you leave for the airport.",
+      src: "https://www.kkia.sa/en/Parking-And-Transport", srcLabel: "kkia.sa (Riyadh airport)",
+      more: [["flynas, Riyadh terminal update", "https://www.flynas.com/en/riyadh-terminal-update"], ["Time Out Riyadh, terminal changes (Mar 2026)", "https://www.timeoutriyadh.com/news/king-khalid-international-airport"], ["kaia.sa (Jeddah airport)", "https://www.kaia.sa/About-KAIA"], ["Khaleej Times, Jeddah terminal moves (Oct 2026)", "https://www.khaleejtimes.com/aviation/jeddah-airport-move-north-terminal-flights-to-t4-hajj-umrah-terminals-oct-17"], ["Gulf News, Jeddah baggage advice (2023)", "https://gulfnews.com/world/gulf/saudi/saudi-arabia-airport-issues-advice-on-prohibited-baggage-1.95323464"]]
+    },
+    {
+      slug: "flight-delay-cancellation-rights", cat: "travel", t: "Flight delayed, cancelled or overbooked: your rights",
+      d: "Saudi civil aviation rules (GACA) set what the airline must give you.",
+      need: "Your booking reference, boarding pass and receipts for any costs.",
+      facts: [
+        ["Delay over 1 hour", "Refreshments"],
+        ["Delay over 2 hours", "You may cancel and get a full refund"],
+        ["Delay over 3 hours", "A suitable meal"],
+        ["Delay over 6 hours", "Hotel and transport"],
+        ["Arrive 3 to 6 hours late", "50 SDR (about SAR 255)"],
+        ["Arrive more than 6 hours late", "150 SDR (about SAR 765)"],
+        ["Flight cancelled less than 24 hours before departure", "Refund plus 150% of the remaining flight value"],
+        ["Denied boarding (overbooking) and you cancel", "Refund of the unused part plus 200% of it"],
+        ["Checked bag lost", "1,288 SDR"],
+        ["Checked bag delayed", "148 SDR for day 1, then 60 SDR a day, up to 1,288 SDR"]
+      ],
+      steps: [
+        "Ask the airline counter what you are entitled to, and keep every receipt.",
+        "Delay compensation is based on your arrival time compared with your booking.",
+        "Bag missing? Report it at the baggage desk before you leave the arrivals hall and keep the report number. A bag not delivered within 21 days can be treated as lost.",
+        "Valuables in checked bags are covered only if you declared them to the airline before check-in.",
+        "Complain to the airline first, within 60 days. The airline has 7 days to reply.",
+        "No reply, or not resolved? Escalate to GACA within the same 60 days, with the airline's complaint reference. GACA's number is 1929."
+      ],
+      warn: "Amounts are in SDR, an IMF unit. GACA uses about SAR 5.1 per SDR, and the rate changes daily. Cancellations for safety, security or force majeure reasons can change what is owed.",
+      src: "https://gaca.gov.sa/-/media/Files/PDF/Content--Pages/Know-your-rights-En.pdf", srcLabel: "GACA, Know your rights",
+      more: [["GACA, flight delays", "https://gaca.gov.sa/web/en-gb/content/is-your-flight-delayed"]]
+    },
+    {
+      slug: "missed-flight", cat: "travel", t: "Missed your flight: what to do",
+      d: "What happens next depends on your ticket, so act quickly.",
+      need: "Booking reference, passport and iqama, and your exit re-entry visa details if you are leaving KSA.",
+      steps: [
+        "Go straight to your airline's counter or call the airline. Ask what your ticket allows before you buy a new one.",
+        "Ask about the next available flight, the change fee and any fare difference. These depend on your fare rules.",
+        "Have a return or connecting flight on the same booking? Tell the airline you still plan to travel. With some tickets, missing one flight cancels the rest of the booking.",
+        "Missing a flight because you arrived late is not covered by the delay and cancellation compensation rules.",
+        "If the airline caused the problem (delay, cancellation or overbooking), you have rights under GACA rules. See the guide on flight delays and cancellations.",
+        "Leaving on an exit re-entry visa? Check its dates in Absher. An unused visa that expires while you are still in KSA costs SAR 1,000. Ask your employer, or the head of the family in Absher, about your options before it expires.",
+        "Travel insurance or your bank card may cover missed connections. Check your policy."
+      ],
+      warn: "Check-in closes before departure. Check your airline's closing time and arrive early, especially at busy times such as Eid and school holidays.",
+      src: "https://www.absher.sa", srcLabel: "absher.sa",
+      more: [["GACA, Know your rights", "https://gaca.gov.sa/-/media/Files/PDF/Content--Pages/Know-your-rights-En.pdf"]]
+    },
+    {
+      slug: "customs-cash-medicines", cat: "travel", t: "Customs: cash, medicines and banned items",
+      d: "What to declare, and what you must never carry, when you fly in or out.",
+      need: "Prescriptions and medical reports for any medicines, and receipts for valuable items.",
+      facts: [
+        ["Cash, cheques, gold and other precious metals", "Declare if over SAR 40,000 (arriving or leaving)"],
+        ["Gifts or goods beyond personal use", "Declare if over SAR 3,000"],
+        ["Tobacco", "Declare above 200 cigarettes or 500 g"],
+        ["Medicines with narcotic or psychotropic ingredients", "SFDA clearance before you travel (since 1 Nov 2025)"],
+        ["Power banks", "Cabin bag only, no more than 2, no charging on board"],
+        ["Drones", "Need approval from the authorities"]
+      ],
+      steps: [
+        "Declare online on the ZATCA customs form before you fly, or on paper at the airport: before security when leaving, or in baggage claim when arriving.",
+        "Controlled medicines: apply for a personal traveller permit on the SFDA Controlled Drugs System (cds.sfda.gov.sa) before you travel. You need a valid prescription, a medical report, your passport and the medicine details.",
+        "Keep medicines in their original packs with the prescription, and carry only the amount you need.",
+        "Never carry a bag, parcel or medicine for anyone else, even a relative, unless you packed it yourself and know exactly what is inside.",
+        "Prohibited: alcohol, narcotics, counterfeit money, and unregistered pills or creams. Smuggling can lead to prison and fines.",
+        "Not sure about an item? Ask ZATCA before you travel, not at the airport."
+      ],
+      warn: "Not declaring cash or goods that must be declared can lead to legal action and penalties.",
+      src: "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/customs-individual/Travel-pages/disclosure-amounts.aspx", srcLabel: "zatca.gov.sa",
+      more: [["SFDA Controlled Drugs System", "https://cds.sfda.gov.sa"], ["KLM notice on the SFDA rule (Nov 2025)", "https://saudi.klm.com/information/bulletin-board/mandatory-medication-clearence-for-sa"], ["GCC Business News, GACA power bank rules (May 2026)", "https://www.gccbusinessnews.com/gaca-updates-rules-on-power-banks/"]]
+    },
+    {
+      slug: "before-you-fly-checklist", cat: "travel", t: "Before you fly: checklist for residents",
+      d: "The problems that stop people at the airport, and how to check them from home.",
+      need: "Absher and Najiz accounts, passport and iqama.",
+      steps: [
+        "Iqama: check the expiry date in Absher. An exit re-entry visa cannot go beyond it.",
+        "Exit re-entry visa: make sure it is issued and covers your whole trip. Check the dates in Absher.",
+        "Passport: at least 90 days of validity is needed to issue an exit re-entry visa. Also check the entry rules of the country you are flying to.",
+        "Traffic fines: pay them first. Unpaid fines block exit re-entry and final exit.",
+        "Court cases: check Najiz for any case or enforcement request in your name. An open case can lead to a travel ban.",
+        "Domestic flights: carry your original iqama or passport.",
+        "Hajj season: a flight to Jeddah or Madinah does not give you permission to enter Makkah. During the restriction period you need a Makkah entry permit unless your iqama was issued in Makkah. See the Makkah entry permit guide.",
+        "On the day: check your flight in the airline app, check in online if you can, and confirm your terminal.",
+        "Pack by the rules: medicines with SFDA clearance if needed, power banks in your cabin bag, and nothing you did not pack yourself."
+      ],
+      warn: "Flights can change at short notice, including for safety or security reasons. Confirm your flight with the airline before you leave home, and follow official announcements from GACA and the airport.",
+      src: "https://www.absher.sa", srcLabel: "absher.sa",
+      more: [["najiz.sa", "https://najiz.sa"], ["GACA", "https://gaca.gov.sa"]]
     },
 
     /* ===== Hajj & Umrah ===== */
@@ -1588,6 +1704,112 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       ],
       warn: "جانے کے بعد کچھ عرصہ سم فعال رکھیں تاکہ او ٹی پی کوڈ آتے رہیں۔"
     },
+    /* 18a */ {
+      t: "ایئرپورٹ، ٹرمینل اور پارکنگ",
+      d: "صحیح ٹرمینل تلاش کریں، وہاں پہنچیں، اور ڈراپ آف اور پارکنگ فیس سے بچیں۔",
+      need: "بورڈنگ پاس یا ایئرلائن ایپ (اس پر آپ کا ٹرمینل لکھا ہوتا ہے)۔",
+      facts: [
+        ["ریاض ٹرمینل 1", "فلائی ناس اور فلائی ادیل کی بین الاقوامی پروازیں"],
+        ["ریاض ٹرمینل 2", "سعودیہ اور ریاض ایئر کی بین الاقوامی پروازیں"],
+        ["ریاض ٹرمینل 3", "فلائی ناس اور فلائی ادیل کی اندرونِ ملک پروازیں"],
+        ["ریاض ٹرمینل 4", "سعودیہ کی اندرونِ ملک پروازیں"],
+        ["ریاض ٹرمینل 5", "غیر ملکی ایئرلائنز"],
+        ["ریاض ڈراپ آف اور پک اپ لین", "5 منٹ مفت، اس کے بعد 575 ریال فیس"],
+        ["ریاض ٹرمینل 1 تا 4 پارکنگ", "10 ریال فی گھنٹہ، زیادہ سے زیادہ 130 ریال روزانہ؛ 48 گھنٹے بعد 40 ریال روزانہ"],
+        ["ریاض لانگ اسٹے پارکنگ (ٹرمینل 5 کے ساتھ)", "10 ریال فی گھنٹہ، زیادہ سے زیادہ 80 ریال روزانہ، مفت شٹل"],
+        ["جدہ", "ٹرمینل 1 مرکزی ٹرمینل ہے۔ کچھ غیر ملکی ایئرلائنز ٹرمینل 4 یا حج و عمرہ ٹرمینل استعمال کرتی ہیں۔"]
+      ],
+      steps: [
+        "سفر کے دن بورڈنگ پاس یا ایئرلائن ایپ میں اپنا ٹرمینل چیک کریں۔ ریاض اور جدہ میں 2026 میں ٹرمینل بدلے اور دوبارہ بدل سکتے ہیں۔",
+        "ریاض: ریاض میٹرو کی یلو لائن ٹرمینل 1–2، 3–4 اور 5 پر رکتی ہے۔ ایئرپورٹ کے مطابق اوقات صبح 6 بجے سے رات 12 بجے تک ہیں۔",
+        "جدہ: ایئرپورٹ پر حرمین ہائی اسپیڈ ریلوے اسٹیشن مکہ اور مدینہ سے ملاتا ہے۔",
+        "صرف لائسنس یافتہ ایئرپورٹ ٹیکسی یا سرکاری پک اپ ایریا سے رائیڈ ہیلنگ ایپ استعمال کریں۔",
+        "ڈراپ آف لین میں سامان اتاریں اور روانہ ہو جائیں۔ مفت وقت سے زیادہ رکنے پر فیس لگتی ہے۔",
+        "لمبے سفر کے لیے لانگ اسٹے پارکنگ اور آنے جانے کی ٹیکسی کا موازنہ کریں۔ ادائیگی ایگزٹ کیوسک پر یا پارکنگ ٹکٹ اسکین کر کے کریں۔",
+        "سامان مناسب سوٹ کیس یا ڈبے میں پیک کریں۔ جدہ ایئرپورٹ کے مطابق گول، کپڑے میں لپٹے، رسی سے بندھے یا لمبے پٹے والے بیگ قبول نہیں کیے جاتے۔"
+      ],
+      warn: "پروازوں کا شیڈول اچانک بدل سکتا ہے۔ ایئرپورٹ جانے سے پہلے ایئرلائن ایپ میں پرواز کی صورتحال چیک کریں۔"
+    },
+    /* 18b */ {
+      t: "پرواز میں تاخیر، منسوخی یا اوور بکنگ: آپ کے حقوق",
+      d: "سعودی شہری ہوابازی (GACA) کے قواعد طے کرتے ہیں کہ ایئرلائن آپ کو کیا دے گی۔",
+      need: "بکنگ ریفرنس، بورڈنگ پاس اور اخراجات کی رسیدیں۔",
+      facts: [
+        ["1 گھنٹے سے زیادہ تاخیر", "مشروبات اور ہلکا ناشتہ"],
+        ["2 گھنٹے سے زیادہ تاخیر", "آپ ٹکٹ منسوخ کر کے پوری رقم واپس لے سکتے ہیں"],
+        ["3 گھنٹے سے زیادہ تاخیر", "مناسب کھانا"],
+        ["6 گھنٹے سے زیادہ تاخیر", "ہوٹل اور ٹرانسپورٹ"],
+        ["3 سے 6 گھنٹے تاخیر سے پہنچنا", "50 SDR (تقریباً 255 ریال)"],
+        ["6 گھنٹے سے زیادہ تاخیر سے پہنچنا", "150 SDR (تقریباً 765 ریال)"],
+        ["روانگی سے 24 گھنٹے سے کم پہلے منسوخی", "رقم کی واپسی اور باقی پرواز کی قیمت کا 150%"],
+        ["اوور بکنگ کی وجہ سے سوار نہ ہونے دیا جائے اور آپ منسوخ کریں", "غیر استعمال شدہ حصے کی واپسی اور اس کا 200%"],
+        ["چیک اِن بیگ گم ہو جائے", "1,288 SDR"],
+        ["چیک اِن بیگ دیر سے ملے", "پہلے دن 148 SDR، پھر روزانہ 60 SDR، زیادہ سے زیادہ 1,288 SDR"]
+      ],
+      steps: [
+        "ایئرلائن کاؤنٹر سے پوچھیں کہ آپ کا کیا حق بنتا ہے، اور ہر رسید سنبھال کر رکھیں۔",
+        "تاخیر کا معاوضہ بکنگ کے مقابلے میں آپ کے پہنچنے کے وقت پر طے ہوتا ہے۔",
+        "بیگ نہیں ملا؟ ارائیول ہال سے نکلنے سے پہلے بیگیج ڈیسک پر رپورٹ کریں اور رپورٹ نمبر رکھیں۔ 21 دن میں نہ ملنے والا بیگ گم شدہ شمار ہو سکتا ہے۔",
+        "چیک اِن بیگ میں قیمتی اشیاء کا معاوضہ صرف تب ملتا ہے جب آپ نے چیک اِن سے پہلے ایئرلائن کو ان کا بتایا ہو۔",
+        "پہلے 60 دن کے اندر ایئرلائن کو شکایت کریں۔ ایئرلائن کو 7 دن میں جواب دینا ہوتا ہے۔",
+        "جواب نہ ملے یا مسئلہ حل نہ ہو؟ انہی 60 دن کے اندر ایئرلائن کے شکایت نمبر کے ساتھ GACA سے رجوع کریں۔ GACA کا نمبر 1929 ہے۔"
+      ],
+      warn: "رقوم SDR میں ہیں جو آئی ایم ایف کی اکائی ہے۔ GACA ایک SDR کو تقریباً 5.1 ریال شمار کرتا ہے اور شرح روزانہ بدلتی ہے۔ حفاظت، سیکیورٹی یا ناگزیر حالات کی وجہ سے منسوخی پر حقوق مختلف ہو سکتے ہیں۔"
+    },
+    /* 18c */ {
+      t: "پرواز چھوٹ گئی: اب کیا کریں",
+      d: "آگے کیا ہوگا یہ آپ کے ٹکٹ پر منحصر ہے، اس لیے فوراً قدم اٹھائیں۔",
+      need: "بکنگ ریفرنس، پاسپورٹ اور اقامہ، اور اگر سعودیہ سے جا رہے ہیں تو خروج و عودہ ویزا کی تفصیل۔",
+      steps: [
+        "فوراً ایئرلائن کاؤنٹر پر جائیں یا ایئرلائن کو کال کریں۔ نیا ٹکٹ خریدنے سے پہلے پوچھیں کہ آپ کا ٹکٹ کیا اجازت دیتا ہے۔",
+        "اگلی دستیاب پرواز، تبدیلی کی فیس اور کرائے کے فرق کے بارے میں پوچھیں۔ یہ آپ کے ٹکٹ کے قواعد پر منحصر ہیں۔",
+        "اسی بکنگ پر واپسی یا کنیکٹنگ پرواز ہے؟ ایئرلائن کو بتائیں کہ آپ اب بھی سفر کریں گے۔ کچھ ٹکٹوں میں ایک پرواز چھوٹنے سے باقی بکنگ منسوخ ہو جاتی ہے۔",
+        "دیر سے پہنچنے کی وجہ سے پرواز چھوٹ جائے تو تاخیر اور منسوخی کے معاوضے کے قواعد لاگو نہیں ہوتے۔",
+        "اگر مسئلہ ایئرلائن کی وجہ سے ہوا (تاخیر، منسوخی یا اوور بکنگ) تو GACA قواعد کے تحت آپ کے حقوق ہیں۔ پرواز میں تاخیر اور منسوخی والی رہنمائی دیکھیں۔",
+        "خروج و عودہ ویزا پر جا رہے ہیں؟ ابشر میں اس کی تاریخیں چیک کریں۔ غیر استعمال شدہ ویزا سعودیہ میں رہتے ختم ہو جائے تو 1,000 ریال لگتے ہیں۔ ختم ہونے سے پہلے اپنی کمپنی سے، یا ابشر میں سربراہِ خاندان سے، دستیاب راستوں کے بارے میں پوچھیں۔",
+        "ٹریول انشورنس یا بینک کارڈ چھوٹی ہوئی کنیکشن کو کور کر سکتا ہے۔ اپنی پالیسی چیک کریں۔"
+      ],
+      warn: "چیک اِن روانگی سے پہلے بند ہو جاتا ہے۔ اپنی ایئرلائن کا وقت چیک کریں اور جلدی پہنچیں، خاص طور پر عید اور اسکول کی چھٹیوں میں۔"
+    },
+    /* 18d */ {
+      t: "کسٹمز: نقدی، دوائیں اور ممنوعہ اشیاء",
+      d: "آتے یا جاتے وقت کیا ظاہر کرنا ہے، اور کیا کبھی ساتھ نہیں لے جانا۔",
+      need: "دواؤں کے نسخے اور میڈیکل رپورٹ، اور قیمتی اشیاء کی رسیدیں۔",
+      facts: [
+        ["نقدی، چیک، سونا اور دیگر قیمتی دھاتیں", "40,000 ریال سے زیادہ ہو تو ظاہر کریں (آتے یا جاتے)"],
+        ["ذاتی استعمال سے زیادہ تحائف یا سامان", "3,000 ریال سے زیادہ ہو تو ظاہر کریں"],
+        ["تمباکو", "200 سگریٹ یا 500 گرام سے زیادہ ہو تو ظاہر کریں"],
+        ["نشہ آور یا نفسیاتی اجزاء والی دوائیں", "سفر سے پہلے SFDA کلیئرنس (1 نومبر 2025 سے)"],
+        ["پاور بینک", "صرف کیبن بیگ میں، زیادہ سے زیادہ 2، جہاز میں چارجنگ منع"],
+        ["ڈرون", "متعلقہ اداروں کی منظوری ضروری"]
+      ],
+      steps: [
+        "سفر سے پہلے ZATCA کا کسٹمز فارم آن لائن بھریں، یا ایئرپورٹ پر کاغذی فارم: جاتے وقت سیکیورٹی سے پہلے، آتے وقت بیگیج کلیم میں۔",
+        "کنٹرولڈ دوائیں: سفر سے پہلے SFDA کنٹرولڈ ڈرگز سسٹم (cds.sfda.gov.sa) پر ذاتی مسافر پرمٹ کی درخواست دیں۔ درست نسخہ، میڈیکل رپورٹ، پاسپورٹ اور دوا کی تفصیل درکار ہے۔",
+        "دوائیں اصل پیکنگ میں نسخے کے ساتھ رکھیں، اور صرف ضرورت کے مطابق مقدار لے جائیں۔",
+        "کسی اور کا بیگ، پارسل یا دوا کبھی نہ لے جائیں، چاہے رشتہ دار ہی کیوں نہ ہو، جب تک آپ نے خود پیک نہ کیا ہو اور معلوم نہ ہو کہ اندر کیا ہے۔",
+        "ممنوع: شراب، منشیات، جعلی کرنسی، اور غیر رجسٹرڈ گولیاں یا کریمیں۔ اسمگلنگ پر قید اور جرمانہ ہو سکتا ہے۔",
+        "کسی چیز کے بارے میں یقین نہیں؟ ایئرپورٹ پر نہیں، سفر سے پہلے ZATCA سے پوچھیں۔"
+      ],
+      warn: "جو نقدی یا سامان ظاہر کرنا ضروری ہو، اسے ظاہر نہ کرنے پر قانونی کارروائی اور سزا ہو سکتی ہے۔"
+    },
+    /* 18e */ {
+      t: "سفر سے پہلے: مقیم افراد کے لیے چیک لسٹ",
+      d: "وہ مسائل جو لوگوں کو ایئرپورٹ پر روک دیتے ہیں، اور گھر بیٹھے انہیں کیسے چیک کریں۔",
+      need: "ابشر اور ناجز اکاؤنٹ، پاسپورٹ اور اقامہ۔",
+      steps: [
+        "اقامہ: ابشر میں ختم ہونے کی تاریخ چیک کریں۔ خروج و عودہ ویزا اس تاریخ سے آگے نہیں جا سکتا۔",
+        "خروج و عودہ ویزا: یقینی بنائیں کہ جاری ہو چکا ہے اور پورے سفر کو کور کرتا ہے۔ ابشر میں تاریخیں چیک کریں۔",
+        "پاسپورٹ: خروج و عودہ ویزا کے لیے کم از کم 90 دن کی میعاد ضروری ہے۔ جس ملک جا رہے ہیں اس کے داخلے کے قواعد بھی چیک کریں۔",
+        "ٹریفک جرمانے: پہلے ادا کریں۔ باقی جرمانے خروج و عودہ اور فائنل ایگزٹ روک دیتے ہیں۔",
+        "عدالتی مقدمات: ناجز میں اپنے نام پر کوئی مقدمہ یا تنفیذی درخواست چیک کریں۔ کھلا مقدمہ سفری پابندی کا سبب بن سکتا ہے۔",
+        "اندرونِ ملک پروازیں: اصل اقامہ یا پاسپورٹ ساتھ رکھیں۔",
+        "حج سیزن: جدہ یا مدینہ کی پرواز سے مکہ میں داخلے کی اجازت نہیں ملتی۔ پابندی کے دوران مکہ داخلہ پرمٹ ضروری ہے، سوائے اس کے کہ آپ کا اقامہ مکہ سے جاری ہوا ہو۔ مکہ داخلہ پرمٹ والی رہنمائی دیکھیں۔",
+        "سفر کے دن: ایئرلائن ایپ میں پرواز چیک کریں، ہو سکے تو آن لائن چیک اِن کریں، اور اپنا ٹرمینل کنفرم کریں۔",
+        "قواعد کے مطابق پیکنگ: ضرورت ہو تو SFDA کلیئرنس والی دوائیں، پاور بینک کیبن بیگ میں، اور کوئی ایسی چیز نہیں جو آپ نے خود پیک نہ کی ہو۔"
+      ],
+      warn: "پروازیں اچانک بدل سکتی ہیں، بشمول حفاظتی یا سیکیورٹی وجوہات کے۔ گھر سے نکلنے سے پہلے ایئرلائن سے پرواز کنفرم کریں، اور GACA اور ایئرپورٹ کے سرکاری اعلانات پر عمل کریں۔"
+    },
     /* 19 */ {
       t: "مقیم کے طور پر حج",
       d: "صرف نسک سے بک کیے گئے سرکاری حج پرمٹ کے ساتھ۔",
@@ -1692,8 +1914,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   let gCat = "all", gQuery = "";
   const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const CAT_L = {
-    ur: { all: "سب", arrive: "آمد اور رہائش", work: "ملازمت اور حقوق", family: "خاندان", drive: "ڈرائیونگ", travel: "سفر اور واپسی", hajj: "حج و عمرہ", law: "قوانین اور آداب" },
-    ar: { all: "الكل", arrive: "الوصول والاستقرار", work: "العمل والحقوق", family: "العائلة", drive: "القيادة", travel: "السفر والمغادرة", hajj: "الحج والعمرة", law: "الأنظمة والآداب" }
+    ur: { all: "سب", arrive: "آمد اور رہائش", work: "ملازمت اور حقوق", family: "خاندان", drive: "ڈرائیونگ", travel: "سفر اور پروازیں", hajj: "حج و عمرہ", law: "قوانین اور آداب" },
+    ar: { all: "الكل", arrive: "الوصول والاستقرار", work: "العمل والحقوق", family: "العائلة", drive: "القيادة", travel: "السفر والطيران", hajj: "الحج والعمرة", law: "الأنظمة والآداب" }
   };
   const GT = {
     en: { need: "You need:", imp: "Important:", checked: "Last checked: 24 Oct 2026 · Fees and rules change. Confirm on", one: "guide", many: "guides", empty: (q) => `No guide matches "${q}". Try a shorter word such as "visa" or "license".`, ph: "Search: licence, Hajj, final exit, overtime…" },
@@ -1722,7 +1944,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
           ${g.facts ? `<dl class="facts">${g.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : ""}
           ${g.steps ? `<ol>${g.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>` : ""}
           ${g.warn ? `<p class="warnbox"><b>${g._dir === "rtl" ? L.imp : GT.en.imp}</b> ${esc(g.warn)}</p>` : ""}
-          <div class="meta">${g._dir === "rtl" ? L.checked : GT.en.checked} <a href="${g.src}" target="_blank" rel="noopener">${g.srcLabel}</a></div>
+          <div class="meta">${g._dir === "rtl" ? L.checked : GT.en.checked} <a href="${g.src}" target="_blank" rel="noopener">${g.srcLabel}</a>${g.more ? " · " + g.more.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener" dir="ltr">${esc(l)}</a>`).join(" · ") : ""}</div>
           <a class="fullpage" href="${g._dir === "rtl" ? "/ur" : ""}/guides/${g.slug}">${g._dir === "rtl" ? "مکمل صفحہ کھولیں اور شیئر کریں ←" : "Open full page to share →"}</a>
         </div>
       </details>`).join("") : `<p class="empty">${L.empty(esc(gQuery))}</p>`;
