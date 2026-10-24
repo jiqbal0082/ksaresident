@@ -203,6 +203,7 @@ html[dir="rtl"] .amount { text-align: right; }
 .follow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: var(--ink); font-weight: 600; }
 .fbtn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--ink) !important; text-decoration: none; font-weight: 600; }
 .fbtn .ico { width: 18px; height: 18px; color: #1877f2; }
+.fbtn.yt .ico { color: #e62117; }
 .fbtn:hover { border-color: var(--accent); }
 .infobar { background: var(--warn-soft); border-bottom: 1px solid var(--line); font-size: .85rem; }
 .infobar .wrap { padding-block: 8px; }
@@ -335,6 +336,15 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
 .plist { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
 .plist a { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; color: var(--ink); text-decoration: none; font-weight: 500; }
 .plist a:hover, .plist a:focus-visible { border-color: var(--accent); }
+.updates { list-style: none; margin: 0; padding: 0; display: grid; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.updates li + li { border-top: 1px solid var(--line); }
+.updates a { display: grid; grid-template-columns: 112px minmax(0, 1fr) auto; align-items: center; gap: 4px 16px; padding: 13px 18px; color: var(--ink); text-decoration: none; }
+.updates a:hover, .updates a:focus-visible { background: var(--bg); }
+.updates time { font: 500 .8rem/1.3 var(--mono); color: var(--gold); direction: ltr; unicode-bidi: isolate; white-space: nowrap; }
+.updates b { font-weight: 600; }
+.updates small { display: block; color: var(--muted); font-size: .86rem; margin-top: 2px; }
+.updates .go { color: var(--accent); font-weight: 600; font-size: .88rem; white-space: nowrap; }
+@media (max-width: 640px) { .updates a { grid-template-columns: minmax(0, 1fr); } .updates .go { display: none; } }
 .plist .ico { color: var(--accent); }
 .guide[data-hl="1"] { outline: 2px solid var(--gold); outline-offset: 2px; }
 .bnav { display: none; }
@@ -404,7 +414,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   #v-home .sec-tools .tools2 { grid-template-columns: 1fr; grid-auto-rows: 1fr; }
   #v-home .sec-tools .tool { align-content: center; }
   p.note { max-width: none; }
-  #v-home .sec-stages, #v-home .sec-pop, #v-home .trust { grid-column: 1 / -1; }
+  #v-home .sec-stages, #v-home .sec-pop, #v-home .sec-upd, #v-home .trust { grid-column: 1 / -1; }
   .tiles { grid-template-columns: repeat(8, minmax(0, 1fr)); }
   .tile { padding: 18px 14px; }
   .plist { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -559,6 +569,11 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         <div class="cities" id="cities"></div>
       </div>
 
+      <div class="sec sec-upd">
+        <h2 data-i18n="upd_t">Latest updates</h2>
+        <ol class="updates" id="updates"></ol>
+      </div>
+
       <div class="sec sec-pop">
         <h2 data-i18n="popular_t">Most read guides</h2>
         <ul class="plist" id="plist"></ul>
@@ -696,6 +711,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         <div class="follow">
           <span data-i18n="follow_t">Follow for updates</span>
           <a class="fbtn" href="https://www.facebook.com/ksalifeguide" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg><span>Facebook</span></a>
+          <a class="fbtn yt" href="https://www.youtube.com/@ksalifeguide.official" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9l5 3-5 3z" fill="#fff"/></svg><span>YouTube</span></a>
         </div>
       </div>
       <nav class="fcol" aria-labelledby="fh1">
@@ -737,6 +753,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   const T = {
     en: {},
     ur: {
+      upd_t: "تازہ ترین تبدیلیاں",
       gs_ph: "ویب سائٹ میں تلاش کریں…",
       nav_help: "نمبرز اور پورٹلز", h_eyebrow: "محفوظ کر لیں · ٹیپ کر کے کال کریں", h_title: "ایمرجنسی نمبر اور سرکاری پورٹلز", h_lead: "مشکل وقت میں کال کرنے کے نمبر، اور مقیم افراد کی سب سے زیادہ استعمال ہونے والی سرکاری ویب سائٹس، ایک جگہ۔", h_warn: "<b>جان کو خطرہ ہو تو 911 پر کال کریں۔</b> یہ ریاض، مکہ، مدینہ اور مشرقی صوبے میں متحدہ ایمرجنسی نمبر ہے۔ دوسرے علاقوں کے لیے 999 (پولیس)، 997 (ایمبولینس) اور 998 (فائر) درج ہیں۔", h_em: "ایمرجنسی اور ہیلپ لائنز", h_portals: "سرکاری پورٹلز", h_pnote: "<b>ویب سائٹ کا پتہ خود ٹائپ کریں۔</b> فراڈ کرنے والے ان سائٹس کی نقل بناتے اور ملتے جلتے لنک بھیجتے ہیں۔ کے ایس اے لائف گائیڈ کا ان میں سے کسی سروس سے کوئی تعلق نہیں؛ یہ صرف تلاش میں آسانی کے لیے درج ہیں۔", tool_help_t: "ایمرجنسی نمبر اور پورٹلز", tool_help_d: "911 اور دیگر ہیلپ لائنز ایک ٹیپ پر، اور ضروری سرکاری ویب سائٹس۔",
             brand_tag: "سعودی عرب میں زندگی، آسان انداز میں", st_g: "رہنمائیاں", st_p: "مقدس مقامات", st_l: "زبانیں", st_f: "فیس، رجسٹریشن نہیں",
@@ -799,6 +816,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       err_wage: "تنخواہ کی درست رقم درج کریں۔", err_dates: "دونوں تاریخیں درج کریں۔ آخری دن شروع کی تاریخ کے بعد ہونا چاہیے۔"
     },
     ar: {
+      upd_t: "آخر التحديثات",
       gs_ph: "ابحث في الموقع…",
       nav_help: "أرقام وبوابات", h_eyebrow: "احفظها · اضغط للاتصال", h_title: "أرقام الطوارئ والبوابات الرسمية", h_lead: "الأرقام التي تتصل بها عند الحاجة، والمواقع الرسمية الأكثر استخداماً للمقيمين، في مكان واحد.", h_warn: "<b>في حالة الخطر على الحياة اتصل بالرقم 911.</b> وهو رقم الطوارئ الموحد في الرياض ومكة والمدينة والمنطقة الشرقية. وفي المناطق الأخرى تُذكر الأرقام 999 (الشرطة) و997 (الإسعاف) و998 (الدفاع المدني).", h_em: "أرقام الطوارئ والمساعدة", h_portals: "البوابات الرسمية", h_pnote: "<b>اكتب العنوان بنفسك.</b> يقلّد المحتالون هذه المواقع ويرسلون روابط مشابهة. KSA Life Guide لا يتبع أياً من هذه الخدمات، وهي مدرجة لتسهيل الوصول إليها فقط.", tool_help_t: "أرقام الطوارئ والبوابات", tool_help_d: "رقم 911 وخطوط المساعدة بضغطة واحدة، مع المواقع الرسمية التي تحتاجها.",
             brand_tag: "الحياة في السعودية بوضوح", st_g: "دليلاً", st_p: "مكاناً مقدساً", st_l: "لغات", st_f: "رسوم، بدون تسجيل",
@@ -896,7 +914,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     });
     document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
     try { localStorage.setItem("ksar-lang", l); } catch (e) {}
-    renderDates(); runCalc(); renderAlerts(); renderGuides(); renderHome(); renderHelp(); renderDD(); if (lastCheck) runCheck();
+    renderDates(); runCalc(); renderAlerts(); renderGuides(); renderHome(); renderHelp(); renderDD(); renderUpdates(); if (lastCheck) runCheck();
   }
   document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
@@ -2674,6 +2692,22 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   $("ddMenu").addEventListener("click", (e) => { const b = e.target.closest("[data-cat]"); if (!b) return; ddSet(false); openCat(b.dataset.cat); });
   document.addEventListener("click", (e) => { if (!ddWrap.contains(e.target)) ddSet(false); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && ddWrap.classList.contains("open")) { ddSet(false); ddBtn.focus(); } });
+
+
+  /* ---------- Latest updates (dated rule changes, newest first; every item sourced in its guide) ---------- */
+  const UPDATES = [
+    { date: "2026-10-24", open: "airports-terminals-parking", en: ["New: five guides for flights and airports", "Terminals, parking, delays and your GACA rights, missed flights, customs and a before-you-fly checklist."], ur: ["نئی: پروازوں اور ایئرپورٹس کے لیے پانچ رہنمائیاں", "ٹرمینل، پارکنگ، تاخیر اور GACA حقوق، چھوٹی پرواز، کسٹمز اور سفر سے پہلے کی چیک لسٹ۔"] },
+    { date: "2026-10-17", open: "airports-terminals-parking", en: ["Jeddah airport: North Terminal flights moved", "Reported: flights moved to Terminal 4 and the Hajj and Umrah terminals. Check your boarding pass."], ur: ["جدہ ایئرپورٹ: نارتھ ٹرمینل کی پروازیں منتقل", "رپورٹ کے مطابق پروازیں ٹرمینل 4 اور حج و عمرہ ٹرمینل منتقل ہوئیں۔ بورڈنگ پاس چیک کریں۔"] },
+    { date: "2026-05-22", open: "customs-cash-medicines", en: ["Power banks: cabin bag only, no charging on board", "Reported GACA rules: no more than two power banks per passenger."], ur: ["پاور بینک: صرف کیبن بیگ میں، جہاز میں چارجنگ منع", "رپورٹ شدہ GACA قواعد: فی مسافر زیادہ سے زیادہ دو پاور بینک۔"] },
+    { date: "2026-02-24", open: "airports-terminals-parking", en: ["Riyadh airport terminals reorganised", "Domestic and international flights moved between terminals. See which airline uses which terminal."], ur: ["ریاض ایئرپورٹ کے ٹرمینل تبدیل", "اندرونِ ملک اور بین الاقوامی پروازوں کے ٹرمینل بدلے۔ دیکھیں کون سی ایئرلائن کس ٹرمینل سے ہے۔"] },
+    { date: "2025-11-01", open: "customs-cash-medicines", en: ["Controlled medicines need SFDA clearance to travel", "Applies to medicines with narcotic or psychotropic ingredients, entering or leaving Saudi Arabia."], ur: ["کنٹرولڈ دواؤں کے ساتھ سفر کے لیے SFDA کلیئرنس ضروری", "نشہ آور یا نفسیاتی اجزاء والی دواؤں پر، سعودی عرب آتے یا جاتے وقت۔"] }
+  ];
+  function renderUpdates() {
+    const loc = lang === "ur" ? "ur-PK" : lang === "ar" ? "ar-SA" : "en-GB";
+    const fmt = d => { if (lang !== "en") return d.slice(8, 10) + "/" + d.slice(5, 7) + "/" + d.slice(0, 4); try { return new Intl.DateTimeFormat(loc + "-u-ca-gregory-nu-latn", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(d + "T00:00:00Z")); } catch (e) { return d; } };
+    const go = lang === "ur" ? "رہنمائی ←" : lang === "ar" ? "الدليل ←" : "Read guide →";
+    $("updates").innerHTML = UPDATES.map(u => { const t = (lang === "ur" ? u.ur : u.en); return `<li><a href="#guides" data-open="${u.open}"><time datetime="${u.date}">${fmt(u.date)}</time><span><b>${esc(t[0])}</b><small>${esc(t[1])}</small></span><span class="go">${go}</span></a></li>`; }).join("");
+  }
 
   /* ---------- Boot ---------- */
   let saved = "en";

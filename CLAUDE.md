@@ -29,6 +29,7 @@ Read this first. It is the single source of truth for working on this project.
 | GitHub | Repo `jiqbal0082/ksaresident` (master copy of the site) | owner's personal GitHub |
 | Google Search Console | Domain property `ksalifeguide.com`, sitemap submitted | owner's Gmail |
 | Facebook | Page **facebook.com/ksalifeguide** (category: Community) | owner's personal Facebook as admin |
+| YouTube | Channel "KSA Life Guide", @ksalifeguide.official (Brand Account under owner's personal Google account); faceless Urdu Shorts, owner's own voice | owner |
 | WhatsApp | Channel "KSA Life Guide" (planned/being set up) | owner |
 | Claude scheduled task | "KSA Life Guide monthly rules check", 1st of each month 08:47 Riyadh; reports only, never edits | owner's Claude account |
 
@@ -67,6 +68,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 
 ## Current state (Oct 2026)
 - Live: home with search, 8 life-stage tiles, tools, holy places, most-read; desktop Guides ▾ dropdown (life stages); "Numbers & portals" view (#help: NUMS, PORTALS, HSRC in src/site.html — 8 numbers, 12 portals, last checked 24 Oct 2026); 31 guides EN/UR (incl. 5 flight guides: airports-terminals-parking, flight-delay-cancellation-rights, missed-flight, customs-cash-medicines, before-you-fly-checklist; category "travel" now labelled "Travel & flights"); 14 holy places EN/UR with Google Maps (Madinah incl. Masjid al-Ghamamah); EOSB calculator; scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
+- Home "Latest updates" feed: `UPDATES` array in src/site.html (date, guide slug, EN/UR title + line), newest first. Add an item whenever a rule changes or new guides go live; every item must be sourced inside its linked guide. Footer follows: Facebook + YouTube.
 - Week-1 launch posts written (Claude artifact "KSA Life Guide Launch Posts").
 
 ## Fast-changing facts to re-check monthly
@@ -80,6 +82,6 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 2. Week-2 posts based on Web Analytics "Paths".
 3. Arabic translation of guides and holy places (with their own pages).
 4. New calculators: dependent fee, exit re-entry cost, overtime pay.
-5. New guides: Premium Residency, GOSI, car ownership transfer, disputing fines, domestic worker visas.
+5. New guides: Premium Residency, GOSI, car ownership transfer, disputing fines, domestic worker visas; long-tail practical topics (degree attestation for Pakistan/India/Philippines, number plate types, Riyadh Metro fares and hours, checking iqama/visa status, Huroob removal rules, SIM numbers in your name). Idea from comparing lifeinsaudiarabia.net: volume + freshness; never copy its text.
 6. Dedicated project Gmail as owner of all accounts; second Facebook admin; 2FA everywhere.
 7. Legal review of disclaimer by a Saudi lawyer before ads/sponsors; Pakistan business setup before any income.
