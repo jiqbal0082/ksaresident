@@ -54,7 +54,8 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 ## Design system ("Desert & oasis")
 - Tokens in `:root` of src/site.html (and mirrored in build.mjs CSS): sand `--bg #f6f1e7`, surface `#fffdf8`, palm green `--accent #0e5a43`, date gold `--gold #9a6a1c` / `#e9b45a`, hero band `#0e5a43`. Full dark mode.
 - Fonts: Bricolage Grotesque (display), IBM Plex Sans (body), IBM Plex Mono (labels), Noto Nastaliq Urdu, IBM Plex Sans Arabic.
-- Phones: bottom tab bar (Home, Guides, Calculator, Holy places, Scam check). Desktop ≥1100px: 1240px width, two-column home, sticky sidebars.
+- Phones: bottom tab bar (Home, Guides, Calculator, Holy places, Scam check). Desktop ≥1100px: 1240px width, two-column home, sticky sidebars, hero palm/sun/dunes illustration (`.hart`). ≥1400px: up to 1640px width with 40px gutters.
+- Header: 42px logo mark + name + tagline (`brand_tag`). Hero shows live counts (guides, holy places). Footer: donate band, four link columns, legal strip (same layout on generated pages in build.mjs).
 
 ## Update workflow
 1. `git pull` → edit `src/site.html` (and Urdu twin) → `npm run build` → `npm test`.

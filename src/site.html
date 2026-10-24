@@ -73,9 +73,12 @@ html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { font-family: "IBM P
 
 header.top { border-bottom: 1px solid var(--line); background: var(--surface); }
 header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 12px; }
-.brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.brand .btxt { display: grid; gap: 4px; }
 .brand b { font: 700 1.35rem/1 var(--display); letter-spacing: -0.01em; }
-.brand span { font: 500 .78rem/1 var(--mono); color: var(--accent); }
+.brand .btxt span { font: 500 .74rem/1 var(--mono); letter-spacing: .04em; color: var(--gold); }
+html[lang="ur"] .brand .btxt span, html[lang="ar"] .brand .btxt span { font: 500 .8rem/1.4 var(--body); letter-spacing: 0; }
+.dates { padding: 7px 12px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); }
 .dates { font: 500 .78rem/1.3 var(--mono); color: var(--muted); }
 .langs { display: flex; gap: 4px; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
 .langs button { font: 500 .85rem/1 var(--body); border: 0; background: transparent; color: var(--ink); padding: 7px 12px; border-radius: 999px; cursor: pointer; }
@@ -220,7 +223,7 @@ html[lang="ur"] .fcol h3, html[lang="ar"] .fcol h3 { font: 600 .9rem/1.6 var(--b
 @media (min-width: 760px) { .fgrid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr); } .fabout, .fcontact { grid-column: auto; } .flegal { grid-template-columns: minmax(0, 1fr) auto; column-gap: 32px; align-items: end; } }
 
 /* ---- Desert & oasis components ---- */
-.brand .mark { width: 30px; height: 30px; flex: none; align-self: center; }
+.brand .mark { width: 42px; height: 42px; flex: none; align-self: center; }
 .tool, .guide, .alert, form.panel, .result, .checker, .rules, .tile, .plist a { box-shadow: var(--shadow); }
 .ico { width: 22px; height: 22px; flex: none; }
 .herob { background: var(--hero-bg); color: var(--hero-ink); border-radius: 20px; padding: clamp(20px, 4vw, 36px); display: grid; gap: 14px; position: relative; overflow: hidden; }
@@ -245,6 +248,10 @@ html[dir="rtl"] .qbox { padding: 4px 14px 4px 6px; }
 .qres small { color: var(--muted); font-size: .85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .qres .none { padding: 12px 14px; color: var(--muted); }
 .quick { display: flex; flex-wrap: wrap; gap: 8px; z-index: 1; }
+.hstats { list-style: none; margin: 6px 0 0; padding: 14px 0 0; border-top: 1px solid rgba(255, 248, 234, .16); display: flex; flex-wrap: wrap; gap: 10px 28px; z-index: 1; }
+.hstats li { display: flex; align-items: baseline; gap: 6px; color: var(--hero-muted); font-size: .92rem; }
+.hstats b { font: 700 1.5rem/1 var(--display); color: #e9c27a; }
+.hart { display: none; }
 .quick button { font: 500 .85rem/1 var(--body); padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255, 248, 234, .35); background: rgba(255, 248, 234, .08); color: var(--hero-ink); cursor: pointer; }
 html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM Plex Sans Arabic", sans-serif; }
 .quick button:hover { background: rgba(255, 248, 234, .18); }
@@ -309,6 +316,21 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   #city-makkah .pcard:first-child h3 { font-size: 1.35rem; } }
 /* ---- Wide screens: use the full width ---- */
 @media (min-width: 1100px) {
+  #v-home .herob.herob { padding-inline-end: 42%; min-height: 480px; }
+  #v-home .herob::after { display: none; }
+  .hart { display: block; position: absolute; inset-inline-end: 0; bottom: -6px; width: 41%; max-width: 520px; height: auto; pointer-events: none; }
+  .hart { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 26%); mask-image: linear-gradient(to right, transparent 0, #000 26%); }
+  html[dir="rtl"] .hart { -webkit-mask-image: linear-gradient(to left, transparent 0, #000 26%); mask-image: linear-gradient(to left, transparent 0, #000 26%); }
+  #v-home .herob .qwrap, #v-home .herob .quick, #v-home .herob .hstats { position: relative; }
+}
+@media (min-width: 1400px) {
+  .wrap { max-width: min(1640px, 100%) !important; padding-left: 40px; padding-right: 40px; }
+  #v-home:not([hidden]) { grid-template-columns: minmax(0, 1fr) 400px !important; gap: 28px !important; }
+  #v-home .herob.herob { padding-block: 52px; padding-inline: 56px 42%; }
+  #v-home .herob h1 { font-size: 3.8rem; }
+  .tiles { gap: 14px; }
+}
+@media (min-width: 1100px) {
   .wrap { max-width: 1240px; }
   main .wrap { padding-block: 32px 64px; }
   #v-home:not([hidden]) { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 24px 24px; align-items: stretch; }
@@ -356,7 +378,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
 <path d="M53 41 C51.5 28 53.5 17 58 8 C57 21 56 31 55 42 Z"/>
 <path d="M53 42 C43 41 33 47 27 58 C35 51 44 47 53 45 Z"/>
 <path d="M53 42 C63 41 73 47 79 58 C71 51 62 47 53 45 Z"/>
-</g><g fill="#0b3f30"><circle cx="49.5" cy="47" r="2.3"/><circle cx="55.5" cy="47" r="2.3"/><circle cx="52.5" cy="50.5" r="2.3"/></g></g></g></svg><b>KSA Life Guide</b><span>ksalifeguide.com</span></a>
+</g><g fill="#0b3f30"><circle cx="49.5" cy="47" r="2.3"/><circle cx="55.5" cy="47" r="2.3"/><circle cx="52.5" cy="50.5" r="2.3"/></g></g></g></svg><span class="btxt"><b>KSA Life Guide</b><span data-i18n="brand_tag">Life in Saudi Arabia, made clear</span></span></a>
     <div class="dates" id="dates"></div>
     <div class="langs" role="group" aria-label="Language">
       <button type="button" data-lang="en" aria-pressed="true">English</button>
@@ -402,6 +424,28 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
           <div class="qres" id="qres" hidden></div>
         </div>
         <div class="quick" id="quick"></div>
+        <ul class="hstats" aria-label="At a glance">
+          <li><b id="st-g">26</b><span data-i18n="st_g">guides</span></li>
+          <li><b id="st-p">13</b><span data-i18n="st_p">holy places</span></li>
+          <li><b>3</b><span data-i18n="st_l">languages</span></li>
+          <li><b>0</b><span data-i18n="st_f">fees, no sign-up</span></li>
+        </ul>
+        <svg class="hart" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+          <defs><radialGradient id="hsun" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#f3cf86"/><stop offset="1" stop-color="#d99a35"/></radialGradient></defs>
+          <circle cx="200" cy="250" r="190" fill="none" stroke="#e9b45a" stroke-opacity=".22" stroke-width="2"/>
+          <circle cx="200" cy="250" r="150" fill="none" stroke="#e9b45a" stroke-opacity=".14" stroke-width="2"/>
+          <circle cx="200" cy="262" r="118" fill="url(#hsun)"/>
+          <path d="M-10 318 C70 284 140 296 210 318 C280 340 340 326 410 298 L410 410 L-10 410Z" fill="#c98f2f"/>
+          <path d="M-10 350 C70 328 150 334 230 354 C300 372 350 364 410 348 L410 410 L-10 410Z" fill="#f6e7c9" fill-opacity=".92"/>
+          <g transform="translate(-12 34) scale(4)" fill="#0b3f30">
+            <path d="M47.5 90 C49.5 72 50.5 57 51.2 43 L55 43 C54.4 57 53.6 72 53 90 Z"/>
+            <path d="M53 41 C42 30 28 29 16 38 C29 35 41 37 52.5 44 Z"/><path d="M53 41 C64 30 78 29 90 38 C77 35 65 37 53.5 44 Z"/>
+            <path d="M53 41 C46 27 36 18 24 16 C35 23 43 32 52 43 Z"/><path d="M53 41 C60 27 70 18 82 16 C71 23 63 32 54 43 Z"/>
+            <path d="M53 41 C51.5 28 53.5 17 58 8 C57 21 56 31 55 42 Z"/>
+            <path d="M53 42 C43 41 33 47 27 58 C35 51 44 47 53 45 Z"/><path d="M53 42 C63 41 73 47 79 58 C71 51 62 47 53 45 Z"/>
+            <circle cx="49.5" cy="47" r="2.3"/><circle cx="55.5" cy="47" r="2.3"/><circle cx="52.5" cy="50.5" r="2.3"/>
+          </g>
+        </svg>
       </div>
 
       <div class="sec sec-stages">
@@ -593,7 +637,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   const T = {
     en: {},
     ur: {
-      fh_guides: "رہنمائیاں اور ٹولز", fh_site: "ویب سائٹ کے بارے میں", fh_contact: "رابطہ", f_all: "تمام رہنمائیاں", f_eosb: "اختتامِ ملازمت کیلکولیٹر", f_disc: "ڈس کلیمر", f_terms: "شرائطِ استعمال", f_priv: "پرائیویسی", f_support: "ویب سائٹ کی مدد کریں", f_report: "کوئی غلطی یا پرانی فیس نظر آئی؟ ہمیں بتائیں:",
+      brand_tag: "سعودی عرب میں زندگی، آسان انداز میں", st_g: "رہنمائیاں", st_p: "مقدس مقامات", st_l: "زبانیں", st_f: "فیس، رجسٹریشن نہیں",
+            fh_guides: "رہنمائیاں اور ٹولز", fh_site: "ویب سائٹ کے بارے میں", fh_contact: "رابطہ", f_all: "تمام رہنمائیاں", f_eosb: "اختتامِ ملازمت کیلکولیٹر", f_disc: "ڈس کلیمر", f_terms: "شرائطِ استعمال", f_priv: "پرائیویسی", f_support: "ویب سائٹ کی مدد کریں", f_report: "کوئی غلطی یا پرانی فیس نظر آئی؟ ہمیں بتائیں:",
             follow_t: "تازہ معلومات کے لیے فالو کریں", nav_places: "مقدس مقامات", nav_places_s: "مقدس مقامات", nav_eosb_s: "کیلکولیٹر", p_eyebrow: "مکہ · مدینہ", p_title: "مکہ اور مدینہ کے مقدس مقامات",
       p_lead: "13 مقامات کی تاریخ، زیارت سے پہلے ضروری معلومات، اور گوگل میپس پر راستہ۔", p_home_t: "مقدس مقامات",
       p_disc: "<b>عمومی معلومات۔</b> تاریخ مستند ذرائع سے مختصراً لی گئی ہے اور زیارت کے قواعد سرکاری ہدایات سے ہیں، جو بدل سکتی ہیں۔ صرف مسجد الحرام، منیٰ، عرفات اور مزدلفہ حج و عمرہ کے مناسک کا حصہ ہیں۔ دینی رہنمائی کے لیے مستند عالم سے رجوع کریں۔",
@@ -652,7 +697,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       err_wage: "تنخواہ کی درست رقم درج کریں۔", err_dates: "دونوں تاریخیں درج کریں۔ آخری دن شروع کی تاریخ کے بعد ہونا چاہیے۔"
     },
     ar: {
-      fh_guides: "الأدلة والأدوات", fh_site: "عن الموقع", fh_contact: "تواصل معنا", f_all: "كل الأدلة", f_eosb: "حاسبة مكافأة نهاية الخدمة", f_disc: "إخلاء المسؤولية", f_terms: "شروط الاستخدام", f_priv: "الخصوصية", f_support: "ادعم الموقع", f_report: "وجدت خطأ أو رسوماً قديمة؟ أخبرنا:",
+      brand_tag: "الحياة في السعودية بوضوح", st_g: "دليلاً", st_p: "مكاناً مقدساً", st_l: "لغات", st_f: "رسوم، بدون تسجيل",
+            fh_guides: "الأدلة والأدوات", fh_site: "عن الموقع", fh_contact: "تواصل معنا", f_all: "كل الأدلة", f_eosb: "حاسبة مكافأة نهاية الخدمة", f_disc: "إخلاء المسؤولية", f_terms: "شروط الاستخدام", f_priv: "الخصوصية", f_support: "ادعم الموقع", f_report: "وجدت خطأ أو رسوماً قديمة؟ أخبرنا:",
             follow_t: "تابعنا للتحديثات", nav_places: "الأماكن المقدسة", nav_places_s: "الأماكن", nav_eosb_s: "الحاسبة", p_eyebrow: "مكة · المدينة", p_title: "الأماكن المقدسة في مكة والمدينة",
       p_lead: "تاريخ 13 موقعاً، وما تحتاج معرفته قبل الزيارة، والاتجاهات على خرائط Google.", p_home_t: "الأماكن المقدسة",
       p_disc: "<b>معلومات عامة.</b> التاريخ ملخص من مصادر معتمدة، وأنظمة الزيارة من التوجيهات الرسمية وقد تتغير. المسجد الحرام ومنى وعرفات ومزدلفة فقط من مناسك الحج والعمرة. للأحكام الشرعية راجع عالماً مؤهلاً.",
@@ -2201,6 +2247,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   let saved = "en";
   try { saved = localStorage.getItem("ksar-lang") || "en"; } catch (e) {}
   try { const q = new URLSearchParams(location.search).get("lang"); if (q) saved = q; } catch (e) {}
+  try { $("st-g").textContent = GUIDES.length; $("st-p").textContent = PLACES.length; } catch (e) {}
   show((location.hash || "#home").slice(1));
   runCheck();
   setLang(["en", "ur", "ar"].includes(saved) ? saved : "en");
