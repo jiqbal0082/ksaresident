@@ -98,7 +98,18 @@ html[lang="ur"] .share a,html[lang="ur"] .share button{font-family:"IBM Plex San
 .related a:hover{border-color:var(--accent)}
 .cat{display:grid;gap:8px}
 .cta{justify-self:start;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;padding:12px 16px;border-radius:8px}
-footer{border-top:1px solid var(--line)}footer .wrap{padding-block:20px 32px;color:var(--muted);font-size:.88rem;display:grid;gap:8px}footer a{color:var(--accent)}
+footer{border-top:1px solid var(--line);background:var(--surface)}footer .fwrap{padding-block:28px 36px;color:var(--muted);font-size:.92rem;display:grid;gap:28px}footer a{color:var(--accent)}
+footer .donate{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:var(--accent-soft);border-radius:12px;padding:16px 20px;color:var(--ink)}footer .donate p{margin:0;flex:1 1 260px}
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px 24px}.fabout,.fcontact{grid-column:1/-1}
+.fcol{display:grid;gap:10px;align-content:start}.fcol p{margin:0;max-width:46ch}
+.fcol h2{margin:0;font:500 .74rem/1.2 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+html[lang="ur"] .fcol h2{font:600 .9rem/1.8 "Noto Nastaliq Urdu",serif;letter-spacing:0}
+.fname{font:700 1.2rem/1.2 "Bricolage Grotesque",sans-serif;color:var(--ink)}
+.flinks{list-style:none;margin:0;padding:0;display:grid;gap:8px}.flinks a{color:var(--ink);text-decoration:none}.flinks a:hover{color:var(--accent);text-decoration:underline}
+.fbtn{justify-self:start;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600}.fbtn svg{width:18px;height:18px;color:#1877f2}.fbtn:hover{border-color:var(--accent)}
+.fcol h2::before,.fcol h2::after{content:none;display:none}.fcol h2{padding:0;border:0}.fcol .mail{color:var(--accent);overflow-wrap:anywhere;font-size:.84rem}
+.flegal{border-top:1px solid var(--line);padding-top:18px;display:grid;gap:8px;font-size:.82rem}.flegal p{margin:0}
+@media (min-width:760px){.fgrid{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,.9fr) minmax(0,1.4fr)}.fabout,.fcontact{grid-column:auto}.flegal{grid-template-columns:minmax(0,1fr) auto;column-gap:32px;align-items:end}}
 .mail{font-family:var(--mono);direction:ltr;unicode-bidi:isolate}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 `;
@@ -113,7 +124,11 @@ const T = {
     share: 'Share on WhatsApp', copy: 'Copy link', copied: 'Link copied',
     related: 'Related guides', tools: 'Free tools', toolsText: 'End-of-service calculator and scam message check.', openTools: 'Open KSA Life Guide',
     foot1: 'KSA Life Guide is an independent information site, not affiliated with any government body. Content is general information only, not legal or professional advice.',
-    report: 'Report an error:', other: { code: 'ur', label: 'اردو', prefix: '/ur' },
+    fhG: 'Guides and tools', fhS: 'About this site', fhC: 'Contact', places: 'Holy places', eosb: 'End-of-service calculator', scams: 'Scam check',
+    disc: 'Disclaimer', terms: 'Terms of use', priv: 'Privacy', sup: 'Support the site', fb: 'Facebook', donBtn: 'Donate',
+    don: 'KSA Life Guide is free for everyone. If it helped you, you can support it with a small donation to keep it running and up to date.',
+    legal: 'Content is general information only. It is not legal, financial, immigration or professional advice, and it is not a recommendation to take any action. Confirm everything with the official authority before you act.',
+    report: 'Found an error or an outdated fee? Tell us:', other: { code: 'ur', label: 'اردو', prefix: '/ur' },
     indexTitle: 'Guides for living in Saudi Arabia',
     indexLead: 'Plain-language guides for residents: iqama, work rights, family visas, driving, travel, Hajj and Umrah, and the rules every resident must follow.',
     catLabel: (c) => CATS.find((x) => x.id === c).label,
@@ -127,7 +142,11 @@ const T = {
     share: 'واٹس ایپ پر شیئر کریں', copy: 'لنک کاپی کریں', copied: 'لنک کاپی ہو گیا',
     related: 'متعلقہ رہنمائیاں', tools: 'مفت ٹولز', toolsText: 'اختتامِ ملازمت کیلکولیٹر اور فراڈ پیغام چیک۔', openTools: 'کے ایس اے لائف گائیڈ کھولیں',
     foot1: 'کے ایس اے لائف گائیڈ ایک آزاد معلوماتی ویب سائٹ ہے، کسی سرکاری ادارے سے وابستہ نہیں۔ مواد صرف عمومی معلومات ہے، قانونی یا پیشہ ورانہ مشورہ نہیں۔',
-    report: 'غلطی کی اطلاع:', other: { code: 'en', label: 'English', prefix: '' },
+    fhG: 'رہنمائیاں اور ٹولز', fhS: 'ویب سائٹ کے بارے میں', fhC: 'رابطہ', places: 'مقدس مقامات', eosb: 'اختتامِ ملازمت کیلکولیٹر', scams: 'فراڈ پیغام چیک',
+    disc: 'ڈس کلیمر', terms: 'شرائطِ استعمال', priv: 'پرائیویسی', sup: 'ویب سائٹ کی مدد کریں', fb: 'فیس بک', donBtn: 'عطیہ دیں',
+    don: 'کے ایس اے لائف گائیڈ سب کے لیے مفت ہے۔ اگر اس سے آپ کو مدد ملی تو ایک چھوٹے سے عطیے سے اسے چلانے اور اپ ڈیٹ رکھنے میں مدد کریں۔',
+    legal: 'یہاں موجود مواد صرف عمومی معلومات ہے۔ یہ قانونی، مالی، امیگریشن یا پیشہ ورانہ مشورہ نہیں اور کسی کام کی سفارش بھی نہیں۔ کوئی قدم اٹھانے سے پہلے متعلقہ سرکاری ادارے سے تصدیق کریں۔',
+    report: 'کوئی غلطی یا پرانی فیس نظر آئی؟ ہمیں بتائیں:', other: { code: 'en', label: 'English', prefix: '' },
     indexTitle: 'سعودی عرب میں رہنے کے لیے رہنمائیاں',
     indexLead: 'مقیم افراد کے لیے آسان زبان میں رہنمائیاں: اقامہ، ملازمت کے حقوق، فیملی ویزا، ڈرائیونگ، سفر، حج و عمرہ، اور وہ قواعد جن پر ہر مقیم کو عمل کرنا ہے۔',
     catLabel: (c) => CAT_UR[c],
@@ -190,11 +209,23 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 <main><div class="wrap">
 ${body}
 </div></main>
-<footer><div class="wrap">
-  <p>${L.foot1}</p>
-  <p>${L.report} <span class="mail">contact@ksalifeguide.com</span></p>
-  <p><a href="https://www.facebook.com/ksalifeguide" target="_blank" rel="noopener">${lang === 'ur' ? 'فیس بک پر فالو کریں' : 'Follow us on Facebook'}</a></p>
-  <p><a href="${lang === 'ur' ? '/ur' : ''}/guides/">${L.all}</a> · <a href="${lang === 'ur' ? '/ur' : ''}/places/">${lang === 'ur' ? 'مقدس مقامات' : 'Holy places'}</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/terms">Terms of use</a> · <a href="/privacy">Privacy</a> · <a href="/support">Donate</a></p>
+<footer><div class="wrap fwrap">
+  <div class="donate"><p>${L.don}</p><a class="cta" href="/support">${L.donBtn}</a></div>
+  <div class="fgrid">
+    <div class="fcol fabout"><b class="fname">KSA Life Guide</b><p>${L.foot1}</p>
+      <a class="fbtn" href="https://www.facebook.com/ksalifeguide" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg><span>${L.fb}</span></a></div>
+    <nav class="fcol" aria-label="${L.fhG}"><h2>${L.fhG}</h2><ul class="flinks">
+      <li><a href="${lang === 'ur' ? '/ur' : ''}/guides/">${L.all}</a></li>
+      <li><a href="${lang === 'ur' ? '/guides/' : '/ur/guides/'}">${lang === 'ur' ? 'English guides' : '<span lang="ur">اردو رہنمائیاں</span>'}</a></li>
+      <li><a href="${lang === 'ur' ? '/ur' : ''}/places/">${L.places}</a></li>
+      <li><a href="/${lang === 'ur' ? '?lang=ur' : ''}#eosb">${L.eosb}</a></li>
+      <li><a href="/${lang === 'ur' ? '?lang=ur' : ''}#scams">${L.scams}</a></li></ul></nav>
+    <nav class="fcol" aria-label="${L.fhS}"><h2>${L.fhS}</h2><ul class="flinks">
+      <li><a href="/disclaimer">${L.disc}</a></li><li><a href="/terms">${L.terms}</a></li>
+      <li><a href="/privacy">${L.priv}</a></li><li><a href="/support">${L.sup}</a></li></ul></nav>
+    <div class="fcol fcontact"><h2>${L.fhC}</h2><p>${L.report}</p><span class="mail">contact@ksalifeguide.com</span></div>
+  </div>
+  <div class="flegal"><p>${L.legal}</p><p>© 2026 KSA Life Guide</p></div>
 </div></footer>
 </body>
 </html>

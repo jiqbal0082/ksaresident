@@ -200,9 +200,24 @@ textarea { min-height: 120px; resize: vertical; }
 .alert .do { font-size: .93rem; border-top: 1px solid var(--line); padding-top: 10px; }
 .alert .do b { color: var(--accent); }
 
-footer { border-top: 1px solid var(--line); }
-footer .wrap { padding-block: 22px 32px; display: grid; gap: 8px; color: var(--muted); font-size: .9rem; }
+footer { border-top: 1px solid var(--line); background: var(--surface); }
+footer .fwrap { padding-block: 28px 36px; display: grid; gap: 28px; color: var(--muted); font-size: .92rem; }
 footer a { color: var(--accent); }
+footer .donate { padding: 16px 20px; }
+.fgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 26px 24px; }
+.fabout, .fcontact { grid-column: 1 / -1; }
+.fcol { display: grid; gap: 10px; align-content: start; }
+.fcol p { margin: 0; max-width: 46ch; }
+.fcol h3 { font: 500 .74rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+html[lang="ur"] .fcol h3, html[lang="ar"] .fcol h3 { font: 600 .9rem/1.6 var(--body); letter-spacing: 0; }
+.fname { font: 700 1.2rem/1.2 var(--display); color: var(--ink); }
+.flinks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.flinks a { color: var(--ink); text-decoration: none; }
+.flinks a:hover { color: var(--accent); text-decoration: underline; }
+.fcol .mail { color: var(--accent); overflow-wrap: anywhere; }
+.flegal { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 8px; font-size: .82rem; }
+.flegal p { margin: 0; max-width: none; }
+@media (min-width: 760px) { .fgrid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr); } .fabout, .fcontact { grid-column: auto; } .flegal { grid-template-columns: minmax(0, 1fr) auto; column-gap: 32px; align-items: end; } }
 
 /* ---- Desert & oasis components ---- */
 .brand .mark { width: 30px; height: 30px; flex: none; align-self: center; }
@@ -321,8 +336,6 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   #v-scams > .note, #v-scams > h2, #v-scams > .alerts { grid-column: 2; }
   #v-scams .alerts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #v-eosb .calc { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
-  footer .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 32px; }
-  footer .donate { grid-column: 1 / -1; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -528,18 +541,49 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
 </main>
 
 <footer>
-  <div class="wrap">
-    <p data-i18n="f1">KSA Life Guide is an independent information site. It is not a government website and is not affiliated with any government body, ministry or official portal.</p>
-    <p data-i18n="f3">Content is general information only. It is not legal, financial, immigration or professional advice, and it is not a recommendation to take any action. We do not guarantee that it is complete, accurate or current. You are responsible for confirming everything with the official authority before you act.</p>
+  <div class="wrap fwrap">
     <div class="donate">
       <p data-i18n="f2">KSA Life Guide is free for everyone. If it helped you, you can support it with a small donation to keep it running and up to date.</p>
       <a class="btn donate-btn" href="/support.html" data-i18n="donate">Donate</a>
     </div>
-    <div class="follow">
-      <span data-i18n="follow_t">Follow for updates</span>
-      <a class="fbtn" href="https://www.facebook.com/ksalifeguide" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg><span>Facebook</span></a>
+    <div class="fgrid">
+      <div class="fcol fabout">
+        <b class="fname">KSA Life Guide</b>
+        <p data-i18n="f1">KSA Life Guide is an independent information site. It is not a government website and is not affiliated with any government body, ministry or official portal.</p>
+        <div class="follow">
+          <span data-i18n="follow_t">Follow for updates</span>
+          <a class="fbtn" href="https://www.facebook.com/ksalifeguide" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg><span>Facebook</span></a>
+        </div>
+      </div>
+      <nav class="fcol" aria-labelledby="fh1">
+        <h3 id="fh1" data-i18n="fh_guides">Guides and tools</h3>
+        <ul class="flinks">
+          <li><a href="/guides/" data-i18n="f_all">All guides</a></li>
+          <li><a href="/ur/guides/" lang="ur">اردو رہنمائیاں</a></li>
+          <li><a href="/places/" data-i18n="nav_places">Holy places</a></li>
+          <li><a href="#eosb" data-i18n="f_eosb">End-of-service calculator</a></li>
+          <li><a href="#scams" data-i18n="nav_scams">Scam check</a></li>
+        </ul>
+      </nav>
+      <nav class="fcol" aria-labelledby="fh2">
+        <h3 id="fh2" data-i18n="fh_site">About this site</h3>
+        <ul class="flinks">
+          <li><a href="/disclaimer.html" data-i18n="f_disc">Disclaimer</a></li>
+          <li><a href="/terms.html" data-i18n="f_terms">Terms of use</a></li>
+          <li><a href="/privacy.html" data-i18n="f_priv">Privacy</a></li>
+          <li><a href="/support.html" data-i18n="f_support">Support the site</a></li>
+        </ul>
+      </nav>
+      <div class="fcol fcontact">
+        <h3 data-i18n="fh_contact">Contact</h3>
+        <p data-i18n="f_report">Found an error or an outdated fee? Tell us:</p>
+        <span class="mail">contact@ksalifeguide.com</span>
+      </div>
     </div>
-    <p><a href="/guides/">All guides</a> · <a href="/ur/guides/">اردو رہنمائیاں</a> · <a href="/places/">Holy places</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/terms.html">Terms of use</a> · <a href="/privacy.html">Privacy</a> · Report an error: <span class="mail">contact@ksalifeguide.com</span></p>
+    <div class="flegal">
+      <p data-i18n="f3">Content is general information only. It is not legal, financial, immigration or professional advice, and it is not a recommendation to take any action. We do not guarantee that it is complete, accurate or current. You are responsible for confirming everything with the official authority before you act.</p>
+      <p class="fcopy">© 2026 KSA Life Guide</p>
+    </div>
   </div>
 </footer>
 
@@ -549,7 +593,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   const T = {
     en: {},
     ur: {
-      follow_t: "تازہ معلومات کے لیے فالو کریں", nav_places: "مقدس مقامات", nav_places_s: "مقدس مقامات", nav_eosb_s: "کیلکولیٹر", p_eyebrow: "مکہ · مدینہ", p_title: "مکہ اور مدینہ کے مقدس مقامات",
+      fh_guides: "رہنمائیاں اور ٹولز", fh_site: "ویب سائٹ کے بارے میں", fh_contact: "رابطہ", f_all: "تمام رہنمائیاں", f_eosb: "اختتامِ ملازمت کیلکولیٹر", f_disc: "ڈس کلیمر", f_terms: "شرائطِ استعمال", f_priv: "پرائیویسی", f_support: "ویب سائٹ کی مدد کریں", f_report: "کوئی غلطی یا پرانی فیس نظر آئی؟ ہمیں بتائیں:",
+            follow_t: "تازہ معلومات کے لیے فالو کریں", nav_places: "مقدس مقامات", nav_places_s: "مقدس مقامات", nav_eosb_s: "کیلکولیٹر", p_eyebrow: "مکہ · مدینہ", p_title: "مکہ اور مدینہ کے مقدس مقامات",
       p_lead: "13 مقامات کی تاریخ، زیارت سے پہلے ضروری معلومات، اور گوگل میپس پر راستہ۔", p_home_t: "مقدس مقامات",
       p_disc: "<b>عمومی معلومات۔</b> تاریخ مستند ذرائع سے مختصراً لی گئی ہے اور زیارت کے قواعد سرکاری ہدایات سے ہیں، جو بدل سکتی ہیں۔ صرف مسجد الحرام، منیٰ، عرفات اور مزدلفہ حج و عمرہ کے مناسک کا حصہ ہیں۔ دینی رہنمائی کے لیے مستند عالم سے رجوع کریں۔",
       home_eyebrow: "مفت · رجسٹریشن کے بغیر · 3 زبانیں",
@@ -607,7 +652,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       err_wage: "تنخواہ کی درست رقم درج کریں۔", err_dates: "دونوں تاریخیں درج کریں۔ آخری دن شروع کی تاریخ کے بعد ہونا چاہیے۔"
     },
     ar: {
-      follow_t: "تابعنا للتحديثات", nav_places: "الأماكن المقدسة", nav_places_s: "الأماكن", nav_eosb_s: "الحاسبة", p_eyebrow: "مكة · المدينة", p_title: "الأماكن المقدسة في مكة والمدينة",
+      fh_guides: "الأدلة والأدوات", fh_site: "عن الموقع", fh_contact: "تواصل معنا", f_all: "كل الأدلة", f_eosb: "حاسبة مكافأة نهاية الخدمة", f_disc: "إخلاء المسؤولية", f_terms: "شروط الاستخدام", f_priv: "الخصوصية", f_support: "ادعم الموقع", f_report: "وجدت خطأ أو رسوماً قديمة؟ أخبرنا:",
+            follow_t: "تابعنا للتحديثات", nav_places: "الأماكن المقدسة", nav_places_s: "الأماكن", nav_eosb_s: "الحاسبة", p_eyebrow: "مكة · المدينة", p_title: "الأماكن المقدسة في مكة والمدينة",
       p_lead: "تاريخ 13 موقعاً، وما تحتاج معرفته قبل الزيارة، والاتجاهات على خرائط Google.", p_home_t: "الأماكن المقدسة",
       p_disc: "<b>معلومات عامة.</b> التاريخ ملخص من مصادر معتمدة، وأنظمة الزيارة من التوجيهات الرسمية وقد تتغير. المسجد الحرام ومنى وعرفات ومزدلفة فقط من مناسك الحج والعمرة. للأحكام الشرعية راجع عالماً مؤهلاً.",
       home_eyebrow: "مجاني · بدون تسجيل · 3 لغات",
