@@ -1,6 +1,6 @@
 <title>KSA Life Guide</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Free, open-source help for residents of Saudi Arabia: end-of-service calculator, step-by-step guides and scam alerts in English, Urdu and Arabic.">
+<meta name="description" content="Free, plain-language guides for life in Saudi Arabia: iqama, work rights, family visas, driving, travel, Hajj and Umrah, plus an end-of-service calculator and scam check. English, Urdu and Arabic.">
 <link rel="canonical" href="https://ksalifeguide.com/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="KSA Life Guide — clear help for every resident">
@@ -13,40 +13,50 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=IBM+Plex+Mono:wght@500&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap">
 <style>
 /* Layout: a single working column, a top bar with language switch, four views switched by tabs. */
+/* Layout: warm sand page, a palm-green hero band with site-wide search, icon tiles by life stage,
+   tools and popular guides; top tabs on desktop, bottom tab bar on phones. */
 :root {
-  --bg: #f3f5f2;
-  --surface: #ffffff;
-  --ink: #15201b;
-  --muted: #57635d;
-  --line: #d6ddd7;
-  --accent: #0b6b4e;
+  --bg: #f6f1e7;
+  --surface: #fffdf8;
+  --ink: #1e2a23;
+  --muted: #65675a;
+  --line: #e5dbc7;
+  --accent: #0e5a43;
   --accent-ink: #ffffff;
-  --accent-soft: #e1efe8;
-  --warn: #a35f00;
-  --warn-soft: #fbefdc;
+  --accent-soft: #e2ede4;
+  --gold: #9a6a1c;
+  --gold-soft: #f4e4c3;
+  --hero-bg: #0e5a43;
+  --hero-ink: #fff8ea;
+  --hero-muted: #cfe1d5;
+  --warn: #9a5b00;
+  --warn-soft: #f8e7c7;
   --danger: #b3261e;
-  --danger-soft: #fae3e1;
+  --danger-soft: #f9e1dc;
   --ok: #2d6a2f;
-  --ok-soft: #e3f0e1;
+  --ok-soft: #e3efdf;
+  --shadow: 0 1px 2px rgba(70, 52, 20, .06), 0 6px 18px rgba(70, 52, 20, .07);
   --display: "Bricolage Grotesque", "IBM Plex Sans Arabic", system-ui, sans-serif;
   --body: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
   --urdu: "Noto Nastaliq Urdu", "IBM Plex Sans Arabic", serif;
-  --radius: 10px;
+  --radius: 14px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #111715; --surface: #18201d; --ink: #e8eeea; --muted: #9eaba4; --line: #2c3632;
-    --accent: #43c393; --accent-ink: #08130e; --accent-soft: #17342a;
+    --bg: #13140f; --surface: #1c1d17; --ink: #f0eadc; --muted: #aba591; --line: #34342a;
+    --accent: #4fc497; --accent-ink: #0b1a13; --accent-soft: #1c3a2e; --gold: #e2b45a; --gold-soft: #3a2e17;
+    --hero-bg: #173f31; --hero-ink: #fff8ea; --hero-muted: #b9cfc3;
     --warn: #f0b45c; --warn-soft: #3a2a12; --danger: #f2877f; --danger-soft: #3d1a18;
-    --ok: #8fd18f; --ok-soft: #1b3220; color-scheme: dark;
+    --ok: #8fd18f; --ok-soft: #1b3220; --shadow: 0 1px 2px rgba(0, 0, 0, .45); color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #111715; --surface: #18201d; --ink: #e8eeea; --muted: #9eaba4; --line: #2c3632;
-  --accent: #43c393; --accent-ink: #08130e; --accent-soft: #17342a;
+  --bg: #13140f; --surface: #1c1d17; --ink: #f0eadc; --muted: #aba591; --line: #34342a;
+  --accent: #4fc497; --accent-ink: #0b1a13; --accent-soft: #1c3a2e; --gold: #e2b45a; --gold-soft: #3a2e17;
+  --hero-bg: #173f31; --hero-ink: #fff8ea; --hero-muted: #b9cfc3;
   --warn: #f0b45c; --warn-soft: #3a2a12; --danger: #f2877f; --danger-soft: #3d1a18;
-  --ok: #8fd18f; --ok-soft: #1b3220; color-scheme: dark;
+  --ok: #8fd18f; --ok-soft: #1b3220; --shadow: 0 1px 2px rgba(0, 0, 0, .45); color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); }
@@ -185,12 +195,72 @@ textarea { min-height: 120px; resize: vertical; }
 footer { border-top: 1px solid var(--line); }
 footer .wrap { padding-block: 22px 32px; display: grid; gap: 8px; color: var(--muted); font-size: .9rem; }
 footer a { color: var(--accent); }
+
+/* ---- Desert & oasis components ---- */
+.brand .mark { width: 30px; height: 30px; flex: none; align-self: center; }
+.tool, .guide, .alert, form.panel, .result, .checker, .rules, .tile, .plist a { box-shadow: var(--shadow); }
+.ico { width: 22px; height: 22px; flex: none; }
+.herob { background: var(--hero-bg); color: var(--hero-ink); border-radius: 20px; padding: clamp(20px, 4vw, 36px); display: grid; gap: 14px; position: relative; overflow: hidden; }
+.herob::after { content: ""; position: absolute; inset-inline-end: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; border: 2px solid rgba(226, 180, 90, .35); pointer-events: none; }
+.herob .eyebrow { color: #e9c27a; }
+.herob h1 { color: var(--hero-ink); max-width: 18ch; }
+.herob .lead { color: var(--hero-muted); }
+.qwrap { position: relative; display: grid; gap: 8px; z-index: 1; }
+.qbox { display: flex; align-items: center; gap: 10px; background: var(--surface); color: var(--ink); border-radius: 12px; padding: 4px 6px 4px 14px; box-shadow: 0 6px 20px rgba(0, 0, 0, .18); }
+html[dir="rtl"] .qbox { padding: 4px 14px 4px 6px; }
+.qbox .ico { color: var(--muted); }
+.qbox input { border: 0; background: transparent; padding: 12px 0; font-size: 1.02rem; min-width: 0; flex: 1; }
+.qbox input:focus-visible { outline: none; }
+.qbox:focus-within { outline: 2px solid #e9c27a; outline-offset: 2px; }
+.qres { display: grid; background: var(--surface); color: var(--ink); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, .22); }
+.qres[hidden] { display: none; }
+.qres button { all: unset; box-sizing: border-box; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 12px; align-items: center; padding: 11px 14px; border-top: 1px solid var(--line); cursor: pointer; }
+.qres button:first-child { border-top: 0; }
+.qres button:hover, .qres button:focus-visible { background: var(--accent-soft); }
+.qres .ico { grid-row: span 2; color: var(--accent); }
+.qres b { font-weight: 600; }
+.qres small { color: var(--muted); font-size: .85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qres .none { padding: 12px 14px; color: var(--muted); }
+.quick { display: flex; flex-wrap: wrap; gap: 8px; z-index: 1; }
+.quick button { font: 500 .85rem/1 var(--body); padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255, 248, 234, .35); background: rgba(255, 248, 234, .08); color: var(--hero-ink); cursor: pointer; }
+html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM Plex Sans Arabic", sans-serif; }
+.quick button:hover { background: rgba(255, 248, 234, .18); }
+.sec { display: grid; gap: 12px; }
+.sec h2 { display: flex; align-items: center; gap: 10px; }
+.sec h2::before { content: ""; width: 6px; height: 20px; border-radius: 3px; background: var(--gold); }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 640px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tile { all: unset; box-sizing: border-box; cursor: pointer; display: grid; gap: 10px; align-content: start; padding: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); transition: transform .15s, border-color .15s; }
+.tile:hover, .tile:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+.tile .ib { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+.tile:nth-child(even) .ib { background: var(--gold-soft); color: var(--gold); }
+.tile b { font-weight: 600; line-height: 1.3; }
+.tile small { color: var(--muted); font-size: .82rem; }
+.tools2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.tools2 .tool { grid-template-columns: auto minmax(0, 1fr); align-items: start; column-gap: 14px; }
+.tools2 .tool .ib { grid-row: span 3; width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; background: var(--gold-soft); color: var(--gold); }
+.plist { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.plist a { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; color: var(--ink); text-decoration: none; font-weight: 500; }
+.plist a:hover, .plist a:focus-visible { border-color: var(--accent); }
+.plist .ico { color: var(--accent); }
+.guide[data-hl="1"] { outline: 2px solid var(--gold); outline-offset: 2px; }
+.bnav { display: none; }
+@media (max-width: 760px) {
+  nav.tabs { display: none; }
+  body { padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
+  .bnav { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; inset: auto 0 0 0; z-index: 20; background: var(--surface); border-top: 1px solid var(--line); box-shadow: 0 -4px 16px rgba(70, 52, 20, .08); padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
+  .bnav a { display: grid; justify-items: center; gap: 3px; padding: 9px 4px 8px; color: var(--muted); text-decoration: none; font: 500 .72rem/1.2 var(--body); text-align: center; }
+  html[lang="ur"] .bnav a, html[lang="ar"] .bnav a { font-family: "IBM Plex Sans Arabic", sans-serif; }
+  .bnav a[aria-current="page"] { color: var(--accent); }
+  .bnav a[aria-current="page"] .ico { background: var(--accent-soft); border-radius: 999px; padding: 3px 14px; box-sizing: content-box; }
+  .dates { display: none; }
+}
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#home"><b>KSA Life Guide</b><span>ksalifeguide.com</span></a>
+    <a class="brand" href="#home"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#0e5a43"/><path d="M16 7c-1.6 2.6-1.6 5 0 7.4 1.6-2.4 1.6-4.8 0-7.4zM16 14.4c-3-.9-5.4-.2-7 2.1 2.9.7 5.2 0 7-2.1zM16 14.4c3-.9 5.4-.2 7 2.1-2.9.7-5.2 0-7-2.1zM15.2 14.6h1.6V24h-1.6z" fill="#e9c27a"/><path d="M8 24.5h16" stroke="#e9c27a" stroke-width="1.6" stroke-linecap="round"/></svg><b>KSA Life Guide</b><span>ksalifeguide.com</span></a>
     <div class="dates" id="dates"></div>
     <div class="langs" role="group" aria-label="Language">
       <button type="button" data-lang="en" aria-pressed="true">English</button>
@@ -211,37 +281,61 @@ footer a { color: var(--accent); }
   </div>
 </nav>
 
+<nav class="bnav" aria-label="Sections">
+  <a href="#home" data-view="home"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11L12 4l8.5 7v8.5a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/></svg><span data-i18n="nav_home">Home</span></a>
+  <a href="#guides" data-view="guides"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6"/></svg><span data-i18n="nav_guides">Guides</span></a>
+  <a href="#eosb" data-view="eosb"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg><span data-i18n="nav_eosb">End of service</span></a>
+  <a href="#scams" data-view="scams"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg><span data-i18n="nav_scams">Scam check</span></a>
+</nav>
+
 <main>
   <div class="wrap">
 
     <!-- HOME -->
     <section class="view" id="v-home">
-      <div class="hero">
-        <div class="eyebrow" data-i18n="home_eyebrow">Free · Open source · No sign-up</div>
-        <h1 data-i18n="home_title">Clear answers for life and work in Saudi Arabia</h1>
-        <p class="lead" data-i18n="home_lead">Calculate your end-of-service award, follow step-by-step guides for common procedures, and check suspicious messages before you click.</p>
+      <div class="herob">
+        <div class="eyebrow" data-i18n="home_eyebrow">Free · No sign-up · 3 languages</div>
+        <h1 data-i18n="home_title">Life in Saudi Arabia, made clear</h1>
+        <p class="lead" data-i18n="home_lead">Plain-language guides for iqama, work, family, driving, travel and Hajj, plus free tools. Information only, always linked to the official source.</p>
+        <div class="qwrap">
+          <label class="qbox" for="q"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span class="sr" data-i18n="q_label">Search the site</span>
+            <input id="q" type="search" autocomplete="off" placeholder="Search: exit re-entry, licence, final exit, fines…">
+          </label>
+          <div class="qres" id="qres" hidden></div>
+        </div>
+        <div class="quick" id="quick"></div>
       </div>
-      <div class="tools">
-        <a class="tool" href="#eosb">
-          <h3 data-i18n="tool_eosb_t">End-of-service calculator</h3>
-          <p data-i18n="tool_eosb_d">Based on Labor Law Articles 84 to 88, including resignation rules.</p>
-          <span class="go" data-i18n="open">Open →</span>
-        </a>
-        <a class="tool" href="#guides">
-          <h3 data-i18n="tool_guides_t">Resident life guides</h3>
-          <p data-i18n="tool_guides_d">Iqama, driving licence, family visa, work rights, travel, Hajj and Umrah, and the laws every resident must follow.</p>
-          <span class="go" data-i18n="open">Open →</span>
-        </a>
-        <a class="tool" href="#scams">
-          <h3 data-i18n="tool_scams_t">Scam message check</h3>
-          <p data-i18n="tool_scams_d">Paste an SMS or WhatsApp message and see the red flags.</p>
-          <span class="go" data-i18n="open">Open →</span>
-        </a>
+
+      <div class="sec">
+        <h2 data-i18n="stages_t">Browse by life stage</h2>
+        <div class="tiles" id="tiles"></div>
       </div>
+
+      <div class="sec">
+        <h2 data-i18n="tools_t">Free tools</h2>
+        <div class="tools2">
+          <a class="tool" href="#eosb"><span class="ib"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg></span>
+            <h3 data-i18n="tool_eosb_t">End-of-service calculator</h3>
+            <p data-i18n="tool_eosb_d">Based on Labor Law Articles 84 to 88, including resignation rules.</p>
+            <span class="go" data-i18n="open">Open →</span>
+          </a>
+          <a class="tool" href="#scams"><span class="ib"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg></span>
+            <h3 data-i18n="tool_scams_t">Scam message check</h3>
+            <p data-i18n="tool_scams_d">Paste an SMS or WhatsApp message and see the red flags.</p>
+            <span class="go" data-i18n="open">Open →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="sec">
+        <h2 data-i18n="popular_t">Most read guides</h2>
+        <ul class="plist" id="plist"></ul>
+      </div>
+
       <div class="trust">
         <div><h3 data-i18n="trust1_t">Private by design</h3><p data-i18n="trust1_d">Everything runs on your phone. Nothing you type is sent or stored.</p></div>
         <div><h3 data-i18n="trust2_t">Sources listed</h3><p data-i18n="trust2_d">Every rule links to the official law or portal, with the date it was last checked.</p></div>
-        <div><h3 data-i18n="trust3_t">Community maintained</h3><p data-i18n="trust3_d">Open source. Anyone can correct a rule or add a translation.</p></div>
+        <div><h3 data-i18n="trust3_t">Kept up to date</h3><p data-i18n="trust3_d">Found something outdated? Email contact@ksalifeguide.com and we will check it against the official source.</p></div>
       </div>
     </section>
 
@@ -350,17 +444,18 @@ footer a { color: var(--accent); }
   const T = {
     en: {},
     ur: {
+      home_eyebrow: "مفت · رجسٹریشن کے بغیر · 3 زبانیں",
+      home_title: "سعودی عرب میں زندگی، آسان الفاظ میں",
+      home_lead: "اقامہ، ملازمت، خاندان، ڈرائیونگ، سفر اور حج کی آسان رہنمائی، اور مفت ٹولز۔ صرف معلومات، ہمیشہ سرکاری ذریعے کے لنک کے ساتھ۔",
+      q_label: "ویب سائٹ میں تلاش کریں", stages_t: "زندگی کے مرحلے کے مطابق دیکھیں", tools_t: "مفت ٹولز", popular_t: "سب سے زیادہ پڑھی جانے والی رہنمائیاں",
+      trust3_t: "تازہ ترین رکھی جاتی ہے", trust3_d: "کوئی معلومات پرانی لگے؟ contact@ksalifeguide.com پر ای میل کریں، ہم سرکاری ذریعے سے چیک کریں گے۔",
       nav_home: "ہوم", nav_eosb: "اختتامِ ملازمت", nav_guides: "رہنمائی", nav_scams: "فراڈ چیک",
-      home_eyebrow: "مفت · اوپن سورس · رجسٹریشن کی ضرورت نہیں",
-      home_title: "سعودی عرب میں رہنے اور کام کرنے کے لیے واضح جوابات",
-      home_lead: "اپنا اختتامِ ملازمت معاوضہ معلوم کریں، عام سرکاری کاموں کی مرحلہ وار رہنمائی دیکھیں، اور کسی مشکوک پیغام پر کلک کرنے سے پہلے اسے چیک کریں۔",
       tool_eosb_t: "اختتامِ ملازمت کیلکولیٹر", tool_eosb_d: "لیبر لا کی دفعات 84 سے 88 کے مطابق، استعفیٰ کے قواعد سمیت۔",
       tool_guides_t: "مقیم کی زندگی کی رہنمائی", tool_guides_d: "اقامہ، ڈرائیونگ لائسنس، فیملی ویزا، ملازمت کے حقوق، سفر، حج و عمرہ، اور وہ قوانین جن پر ہر مقیم کو عمل کرنا ہے۔",
       tool_scams_t: "فراڈ پیغام چیک", tool_scams_d: "ایس ایم ایس یا واٹس ایپ پیغام پیسٹ کریں اور خطرے کی علامات دیکھیں۔",
       open: "کھولیں ←",
       trust1_t: "مکمل رازداری", trust1_d: "سب کچھ آپ کے فون پر چلتا ہے۔ آپ کا لکھا ہوا کچھ بھی بھیجا یا محفوظ نہیں ہوتا۔",
       trust2_t: "ذرائع درج ہیں", trust2_d: "ہر قاعدہ سرکاری قانون یا پورٹل سے منسلک ہے، آخری جانچ کی تاریخ کے ساتھ۔",
-      trust3_t: "کمیونٹی کی مدد سے", trust3_d: "اوپن سورس۔ کوئی بھی قاعدہ درست کر سکتا ہے یا ترجمہ شامل کر سکتا ہے۔",
       eosb_eyebrow: "لیبر لا · دفعات 84–88", eosb_title: "اختتامِ ملازمت کیلکولیٹر",
       eosb_lead: "اپنی آخری ماہانہ تنخواہ، تاریخیں اور ملازمت ختم ہونے کی وجہ درج کریں۔",
       f_wage: "آخری ماہانہ تنخواہ (ریال)", f_wage_h: "عموماً بنیادی تنخواہ کے ساتھ مستقل الاؤنس جیسے رہائش اور ٹرانسپورٹ۔",
@@ -404,17 +499,18 @@ footer a { color: var(--accent); }
       err_wage: "تنخواہ کی درست رقم درج کریں۔", err_dates: "دونوں تاریخیں درج کریں۔ آخری دن شروع کی تاریخ کے بعد ہونا چاہیے۔"
     },
     ar: {
+      home_eyebrow: "مجاني · بدون تسجيل · 3 لغات",
+      home_title: "الحياة في السعودية بوضوح",
+      home_lead: "أدلة مبسطة للإقامة والعمل والعائلة والقيادة والسفر والحج، مع أدوات مجانية. للمعلومات فقط ومرتبطة دائماً بالمصدر الرسمي.",
+      q_label: "ابحث في الموقع", stages_t: "تصفح حسب مرحلة الحياة", tools_t: "أدوات مجانية", popular_t: "الأدلة الأكثر قراءة",
+      trust3_t: "محدّث باستمرار", trust3_d: "وجدت معلومة قديمة؟ راسلنا على contact@ksalifeguide.com وسنراجعها مع المصدر الرسمي.",
       nav_home: "الرئيسية", nav_eosb: "نهاية الخدمة", nav_guides: "الأدلة", nav_scams: "فحص الاحتيال",
-      home_eyebrow: "مجاني · مفتوح المصدر · بدون تسجيل",
-      home_title: "إجابات واضحة للحياة والعمل في السعودية",
-      home_lead: "احسب مكافأة نهاية الخدمة، واتبع أدلة خطوة بخطوة للإجراءات الشائعة، وافحص الرسائل المشبوهة قبل الضغط على أي رابط.",
       tool_eosb_t: "حاسبة مكافأة نهاية الخدمة", tool_eosb_d: "وفق المواد 84 إلى 88 من نظام العمل، بما فيها أحكام الاستقالة.",
       tool_guides_t: "أدلة خطوة بخطوة", tool_guides_d: "الإقامة، رخصة القيادة، تأشيرة العائلة، حقوق العمل، السفر، الحج والعمرة، والأنظمة التي يلتزم بها كل مقيم.",
       tool_scams_t: "فحص رسائل الاحتيال", tool_scams_d: "الصق رسالة نصية أو واتساب واعرف علامات الخطر.",
       open: "افتح ←",
       trust1_t: "خصوصية تامة", trust1_d: "كل شيء يعمل على جهازك. لا يُرسل أو يُحفظ أي شيء تكتبه.",
       trust2_t: "المصادر موضحة", trust2_d: "كل قاعدة مرتبطة بالنظام أو البوابة الرسمية مع تاريخ آخر مراجعة.",
-      trust3_t: "بمشاركة المجتمع", trust3_d: "مفتوح المصدر. يمكن لأي شخص تصحيح قاعدة أو إضافة ترجمة.",
       eosb_eyebrow: "نظام العمل · المواد 84–88", eosb_title: "حاسبة مكافأة نهاية الخدمة",
       eosb_lead: "أدخل آخر أجر شهري، والتواريخ، وسبب انتهاء العلاقة التعاقدية.",
       f_wage: "آخر أجر شهري (ريال)", f_wage_h: "عادةً الأجر الأساسي مع البدلات الثابتة مثل السكن والنقل.",
@@ -493,7 +589,7 @@ footer a { color: var(--accent); }
     });
     document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
     try { localStorage.setItem("ksar-lang", l); } catch (e) {}
-    renderDates(); runCalc(); renderAlerts(); renderGuides(); if (lastCheck) runCheck();
+    renderDates(); runCalc(); renderAlerts(); renderGuides(); renderHome(); if (lastCheck) runCheck();
   }
   document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
@@ -513,7 +609,7 @@ footer a { color: var(--accent); }
   function show(v) {
     if (!views.includes(v)) v = "home";
     views.forEach(x => { document.getElementById("v-" + x).hidden = x !== v; });
-    document.querySelectorAll("nav.tabs a").forEach(a => { if (a.dataset.view === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+    document.querySelectorAll("nav.tabs a, .bnav a").forEach(a => { if (a.dataset.view === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
   }
   document.addEventListener("click", (e) => {
     const a = e.target.closest('a[href^="#"]');
@@ -1348,7 +1444,7 @@ footer a { color: var(--accent); }
       (!q || [g.t, g.d, g.need || "", ...(g.steps || []), ...((g.facts || []).flat())].join(" ").toLowerCase().includes(q)));
     $("guideCount").textContent = list.length + " " + (list.length === 1 ? L.one : L.many);
     $("guideList").innerHTML = list.length ? list.map(g => `
-      <details class="guide" dir="${g._dir}" lang="${g._dir === "rtl" ? "ur" : "en"}">
+      <details class="guide" data-slug="${g.slug}" dir="${g._dir}" lang="${g._dir === "rtl" ? "ur" : "en"}">
         <summary><span class="gcat">${catLabel(g.cat)}</span><h3>${esc(g.t)}</h3><p>${esc(g.d)}</p></summary>
         <div class="body">
           ${g.need ? `<div class="need"><b>${g._dir === "rtl" ? L.need : GT.en.need}</b> ${esc(g.need)}</div>` : ""}
@@ -1369,6 +1465,77 @@ footer a { color: var(--accent); }
   });
   $("guideSearch").addEventListener("input", (e) => { gQuery = e.target.value; renderGuides(); });
   renderGuides();
+
+
+  /* ---------- Home: tiles, popular, site-wide search ---------- */
+  const ICONS = {arrive: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16.2c.7-1.6 1.9-2.5 3.2-2.5s2.5.9 3.2 2.5M14.5 10h4M14.5 13.5h3"/>',work: '<rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/>',family: '<circle cx="8.5" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3 20c.5-3.4 2.8-5.6 5.5-5.6S13.5 16.6 14 20M14.8 20c.3-2.5 1.7-4.1 3.2-4.1s2.9 1.6 3.2 4.1"/>',drive: '<path d="M4 13.5l1.7-4.6A2 2 0 0 1 7.6 7.5h8.8a2 2 0 0 1 1.9 1.4l1.7 4.6V18a1 1 0 0 1-1 1h-1.3a1 1 0 0 1-1-1v-1H7.3v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM4 13.5h16"/><circle cx="7.8" cy="15.6" r=".9"/><circle cx="16.2" cy="15.6" r=".9"/>',travel: '<path d="M21 3.5L3.5 10.6l6.8 2.6 2.6 6.8zM10.3 13.2L21 3.5"/>',hajj: '<path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.2 6.2 0 0 0 10.1 10.1z"/><path d="M17 4.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/>',law: '<path d="M12 4v16M7.5 20h9M5 7.5h14M5 7.5l-2.6 5.6a2.9 2.9 0 0 0 5.2 0zM19 7.5l-2.6 5.6a2.9 2.9 0 0 0 5.2 0z"/>',home: '<path d="M3.5 11L12 4l8.5 7v8.5a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/>',calc: '<rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/>',shield: '<path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/>',book: '<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6"/>',search: '<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',arrow: '<path d="M9 6l6 6-6 6"/>'};
+  const ico = (n) => `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]}</svg>`;
+  const POPULAR = ["exit-re-entry-visa", "driving-licence", "final-exit", "family-visa", "change-employer-iqama-transfer", "traffic-fines"];
+  const QUICK = ["exit-re-entry-visa", "driving-licence", "final-exit", "traffic-fines", "hajj-for-residents"];
+  const HT = {
+    en: { ph: "Search: exit re-entry, licence, final exit, fines…", guides: "guides", none: "Nothing found. Try a shorter word, or browse the life stages below.", tool: "Tool", fine: "In guide" },
+    ur: { ph: "تلاش: خروج و عودہ، لائسنس، فائنل ایگزٹ، جرمانے…", guides: "رہنمائیاں", none: "کچھ نہیں ملا۔ مختصر لفظ آزمائیں یا نیچے زندگی کے مرحلے دیکھیں۔", tool: "ٹول", fine: "رہنمائی میں" },
+    ar: { ph: "ابحث: خروج وعودة، رخصة، خروج نهائي، مخالفات…", guides: "دليل", none: "لا نتائج. جرّب كلمة أقصر أو تصفح المراحل أدناه.", tool: "أداة", fine: "في الدليل" }
+  };
+  const slugIndex = (slug) => GUIDES.findIndex(g => g.slug === slug);
+  function renderHome() {
+    const H = HT[lang] || HT.en;
+    $("q").placeholder = H.ph;
+    $("tiles").innerHTML = CATS.filter(c => c.id !== "all").map(c => {
+      const n = GUIDES.filter(g => g.cat === c.id).length;
+      return `<button type="button" class="tile" data-cat="${c.id}"><span class="ib">${ico(c.id)}</span><b>${esc(catLabel(c.id))}</b><small>${n} ${H.guides}</small></button>`;
+    }).join("") + `<button type="button" class="tile" data-cat="all"><span class="ib">${ico("book")}</span><b>${esc(catLabel("all") === "All" ? "All guides" : catLabel("all"))}</b><small>${GUIDES.length} ${H.guides}</small></button>`;
+    $("plist").innerHTML = POPULAR.map(sl => { const g = guideIn(slugIndex(sl)); return `<li><a href="#guides" data-open="${sl}">${ico(g.cat)}<span>${esc(g.t)}</span></a></li>`; }).join("");
+    $("quick").innerHTML = QUICK.map(sl => `<button type="button" data-open="${sl}">${esc(guideIn(slugIndex(sl)).t)}</button>`).join("");
+    if ($("q").value) runSearch();
+  }
+  function openGuide(slug) {
+    gCat = "all"; gQuery = ""; $("guideSearch").value = "";
+    document.querySelectorAll("#guideCats .chip").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.cat === "all")));
+    show("guides"); renderGuides();
+    const d = document.querySelector(`#guideList details[data-slug="${slug}"]`);
+    if (d) { d.open = true; d.dataset.hl = "1"; setTimeout(() => d.removeAttribute("data-hl"), 2200); d.scrollIntoView({ block: "start", behavior: "smooth" }); }
+    try { history.replaceState(null, "", "#guides"); } catch (e) {}
+  }
+  function openCat(cat) {
+    gCat = cat; gQuery = ""; $("guideSearch").value = "";
+    document.querySelectorAll("#guideCats .chip").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.cat === cat)));
+    show("guides"); renderGuides(); window.scrollTo({ top: 0 });
+    try { history.replaceState(null, "", "#guides"); } catch (e) {}
+  }
+  const TOOLS = [
+    { view: "eosb", icon: "calc", key: "tool_eosb_t", words: "end of service eosb gratuity award resign resignation termination article 84 85 calculator مكافأة نهاية الخدمة اختتام ملازمت معاوضہ استعفیٰ" },
+    { view: "scams", icon: "shield", key: "tool_scams_t", words: "scam fraud phishing sms whatsapp fake link otp احتيال رسالة فراڈ دھوکہ" }
+  ];
+  function runSearch() {
+    const H = HT[lang] || HT.en;
+    const q = $("q").value.trim().toLowerCase();
+    const box = $("qres");
+    if (q.length < 2) { box.hidden = true; box.innerHTML = ""; return; }
+    const res = [];
+    TOOLS.forEach(t => { const label = tr(t.key) !== t.key ? tr(t.key) : (T.en[t.key] || t.key); if ((label + " " + t.words).toLowerCase().includes(q)) res.push({ score: 3, html: `<button type="button" data-view="${t.view}">${ico(t.icon)}<b>${esc(label)}</b><small>${H.tool}</small></button>` }); });
+    GUIDES.forEach((_, i) => {
+      const g = guideIn(i);
+      const t = g.t.toLowerCase(), d = g.d.toLowerCase();
+      let score = t.includes(q) ? 5 : d.includes(q) ? 3 : 0;
+      const body = [g.need || "", ...(g.steps || [])].join(" ").toLowerCase();
+      if (!score && body.includes(q)) score = 1;
+      if (score) res.push({ score, html: `<button type="button" data-open="${g.slug}">${ico(g.cat)}<b>${esc(g.t)}</b><small>${esc(catLabel(g.cat))} · ${esc(g.d)}</small></button>` });
+      (g.facts || []).forEach(([k, v]) => { if ((k + " " + v).toLowerCase().includes(q)) res.push({ score: 2, html: `<button type="button" data-open="${g.slug}">${ico(g.cat)}<b>${esc(k)}: ${esc(v)}</b><small>${H.fine}: ${esc(g.t)}</small></button>` }); });
+    });
+    res.sort((a, b) => b.score - a.score);
+    box.innerHTML = res.length ? res.slice(0, 8).map(r => r.html).join("") : `<div class="none">${H.none}</div>`;
+    box.hidden = false;
+  }
+  $("q").addEventListener("input", runSearch);
+  $("q").addEventListener("keydown", (e) => { if (e.key === "Escape") { $("q").value = ""; runSearch(); } if (e.key === "Enter") { const f = $("qres").querySelector("button"); if (f) { e.preventDefault(); f.click(); } } });
+  document.addEventListener("click", (e) => {
+    const o = e.target.closest("[data-open]"); if (o) { e.preventDefault(); $("q").value = ""; runSearch(); openGuide(o.dataset.open); return; }
+    const v = e.target.closest("#qres [data-view]"); if (v) { $("q").value = ""; runSearch(); show(v.dataset.view); window.scrollTo({ top: 0 }); return; }
+    const c = e.target.closest(".tile[data-cat]"); if (c) { openCat(c.dataset.cat); return; }
+    if (!e.target.closest(".qwrap")) $("qres").hidden = true;
+  });
+  renderHome();
 
   /* ---------- Scam alerts ---------- */
   const ALERTS = {
