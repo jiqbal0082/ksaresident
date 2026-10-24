@@ -147,6 +147,9 @@ html[dir="rtl"] .amount { text-align: right; }
 .warnbox { background: var(--danger-soft); border-radius: 8px; padding: 10px 12px; font-size: .93rem; max-width: none; }
 .warnbox b { color: var(--danger); }
 .empty { color: var(--muted); }
+.infobar { background: var(--warn-soft); border-bottom: 1px solid var(--line); font-size: .85rem; }
+.infobar .wrap { padding-block: 8px; }
+.infobar a { color: var(--ink); font-weight: 600; }
 html[lang="ur"] .eyebrow, html[lang="ur"] .gcat, html[lang="ur"] .meta, html[lang="ur"] .tag { font-family: var(--urdu); letter-spacing: 0; text-transform: none; font-size: .82rem; line-height: 1.9; }
 html[lang="ar"] .eyebrow, html[lang="ar"] .gcat, html[lang="ar"] .meta, html[lang="ar"] .tag { font-family: "IBM Plex Sans Arabic", sans-serif; letter-spacing: 0; text-transform: none; }
 html[lang="ur"] .guide[lang="en"], html[lang="ar"] .guide[lang="en"] { font-family: var(--body); line-height: 1.55; }
@@ -190,6 +193,8 @@ footer a { color: var(--accent); }
     </div>
   </div>
 </header>
+
+<div class="infobar" role="note"><div class="wrap"><span data-i18n-html="bar"><b>Information only.</b> Not legal advice and not a government website. Rules and fees change; always confirm on the official portal. <a href="/disclaimer.html">Read the disclaimer</a></span></div></div>
 
 <nav class="tabs" aria-label="Sections">
   <div class="wrap">
@@ -276,6 +281,7 @@ footer a { color: var(--accent); }
         <div><b>Art. 81 · 87</b><p data-i18n="rule87">Full award even when you leave yourself: employer breach, force majeure, or a female worker within 6 months of marriage or 3 months of childbirth.</p></div>
         <div><b>Art. 80 · 54</b><p data-i18n="rule80">No award after dismissal for listed misconduct, or when the contract ends during probation.</p></div>
       </div>
+      <p class="note" data-i18n-html="eosb_disc"><b>Estimate only.</b> The result is a general calculation from Labor Law Articles 84–88. Your actual entitlement depends on your contract, wage components and the facts of your case, and is decided by your employer, the Ministry (HRSD) or the labor courts. Use the official HRSD calculator and seek qualified advice before relying on it.</p>
       <p class="meta"><span data-i18n="verified">Rules last checked</span>: 2026-10-23 · <span data-i18n="amend">The February 2025 amendments did not change Articles 84–88.</span> · <a href="https://www.hrsd.gov.sa" target="_blank" rel="noopener">hrsd.gov.sa</a></p>
     </section>
 
@@ -287,6 +293,7 @@ footer a { color: var(--accent); }
         <p class="lead" data-i18n="g_lead">From your first iqama to final exit: procedures, your rights at work, driving, Hajj and Umrah, and the rules every resident must follow. Fees change often, so every guide links to the official source.</p>
       </div>
       <p class="note" data-i18n-html="g_lang_note"><b>Guides are available in English and Urdu.</b> Switch to اردو at the top. Arabic translation is open for contributors.</p>
+      <p class="note" data-i18n-html="g_disc"><b>General information, not advice.</b> These guides summarise publicly available rules in plain language. They are not legal advice or a recommendation to take any action. Procedures, fees and fines change without notice and can differ by case. The official portal linked in each guide is the only authoritative source.</p>
       <div class="gtools">
         <label class="f" for="guideSearch"><span class="sr" data-i18n="g_search">Search guides</span>
           <input id="guideSearch" type="search" placeholder="Search: licence, Hajj, final exit, overtime…" autocomplete="off">
@@ -311,6 +318,7 @@ footer a { color: var(--accent); }
         <button class="btn" type="button" id="checkBtn" data-i18n="s_check">Check message</button>
         <div id="verdict" aria-live="polite"></div>
       </div>
+      <p class="note" data-i18n-html="s_disc"><b>Automated check only.</b> It looks for common warning signs and can miss scams or flag genuine messages. It does not confirm that any message is safe or fake. When in doubt, contact the organisation through its official app or number.</p>
       <h2 data-i18n="s_common">Common scams right now</h2>
       <div class="alerts" id="alertList"></div>
     </section>
@@ -320,9 +328,10 @@ footer a { color: var(--accent); }
 
 <footer>
   <div class="wrap">
-    <p data-i18n="f1">KSA Resident is not an official government website. Always confirm on the official portal before you act.</p>
+    <p data-i18n="f1">KSA Resident is an independent information site. It is not a government website and is not affiliated with any government body, ministry or official portal.</p>
+    <p data-i18n="f3">Content is general information only. It is not legal, financial, immigration or professional advice, and it is not a recommendation to take any action. We do not guarantee that it is complete, accurate or current. You are responsible for confirming everything with the official authority before you act.</p>
     <p data-i18n="f2">Free and open source under the MIT license. Corrections and translations welcome.</p>
-    <p><a href="/privacy.html">Privacy</a> · <a href="https://github.com/jiqbal0082/ksaresident" target="_blank" rel="noopener">Source code</a></p>
+    <p><a href="/disclaimer.html">Disclaimer</a> · <a href="/terms.html">Terms of use</a> · <a href="/privacy.html">Privacy</a> · <a href="https://github.com/jiqbal0082/ksaresident/issues" target="_blank" rel="noopener">Report an error</a> · <a href="https://github.com/jiqbal0082/ksaresident" target="_blank" rel="noopener">Source code</a></p>
   </div>
 </footer>
 
@@ -375,7 +384,12 @@ footer a { color: var(--accent); }
       flag_secret: "کوڈ، پاس ورڈ یا کارڈ کی تفصیلات مانگی گئی ہیں", flag_urgent: "فوری دھمکی یا جلد بازی",
       flag_money: "ادائیگی، فیس یا جرمانہ مانگا گیا ہے", flag_prize: "انعام یا جیتنے کا دعویٰ",
       red_flags: "خطرے کی علامات", what_do: "کیا کریں:",
-      f1: "کے ایس اے ریزیڈنٹ سرکاری ویب سائٹ نہیں ہے۔ کوئی بھی قدم اٹھانے سے پہلے سرکاری پورٹل پر تصدیق کریں۔",
+      bar: "<b>صرف معلومات کے لیے۔</b> یہ قانونی مشورہ یا سرکاری ویب سائٹ نہیں ہے۔ قواعد اور فیس بدلتے رہتے ہیں؛ ہمیشہ سرکاری پورٹل پر تصدیق کریں۔ <a href=\"/disclaimer.html\">اعلانِ دستبرداری پڑھیں</a>",
+      f3: "یہاں موجود مواد صرف عمومی معلومات ہے۔ یہ قانونی، مالی، امیگریشن یا پیشہ ورانہ مشورہ نہیں، اور کسی کام کی سفارش نہیں ہے۔ ہم اس کے مکمل، درست یا تازہ ہونے کی ضمانت نہیں دیتے۔ کوئی بھی قدم اٹھانے سے پہلے متعلقہ سرکاری ادارے سے تصدیق آپ کی ذمہ داری ہے۔",
+      eosb_disc: "<b>صرف اندازہ۔</b> یہ نتیجہ لیبر لا کی دفعات 84–88 پر مبنی عمومی حساب ہے۔ آپ کا اصل حق آپ کے معاہدے، تنخواہ کے اجزاء اور حالات پر منحصر ہے، اور اس کا فیصلہ کمپنی، وزارت (HRSD) یا لیبر عدالت کرتی ہے۔ اس پر انحصار سے پہلے سرکاری HRSD کیلکولیٹر استعمال کریں اور ماہر سے مشورہ لیں۔",
+      s_disc: "<b>صرف خودکار جانچ۔</b> یہ عام خطرے کی علامات دیکھتی ہے، کچھ فراڈ چھوٹ سکتے ہیں اور اصل پیغام بھی مشکوک دکھ سکتا ہے۔ یہ کسی پیغام کے محفوظ یا جعلی ہونے کی تصدیق نہیں کرتی۔ شک ہو تو متعلقہ ادارے سے اس کی سرکاری ایپ یا نمبر پر رابطہ کریں۔",
+      g_disc: "<b>عمومی معلومات، مشورہ نہیں۔</b> یہ رہنمائیاں عوامی طور پر دستیاب قواعد کا آسان خلاصہ ہیں۔ یہ قانونی مشورہ یا کسی کام کی سفارش نہیں۔ طریقۂ کار، فیس اور جرمانے بغیر اطلاع بدل سکتے ہیں اور ہر کیس میں مختلف ہو سکتے ہیں۔ ہر رہنمائی میں دیا گیا سرکاری پورٹل ہی واحد مستند ذریعہ ہے۔",
+      f1: "کے ایس اے ریزیڈنٹ ایک آزاد معلوماتی ویب سائٹ ہے۔ یہ سرکاری ویب سائٹ نہیں اور کسی سرکاری ادارے، وزارت یا پورٹل سے وابستہ نہیں۔",
       f2: "ایم آئی ٹی لائسنس کے تحت مفت اور اوپن سورس۔ اصلاح اور ترجمے کا خیرمقدم ہے۔",
       err_wage: "تنخواہ کی درست رقم درج کریں۔", err_dates: "دونوں تاریخیں درج کریں۔ آخری دن شروع کی تاریخ کے بعد ہونا چاہیے۔"
     },
@@ -423,7 +437,12 @@ footer a { color: var(--accent); }
       flag_secret: "يطلب رمز تحقق أو كلمة مرور أو بيانات بطاقة", flag_urgent: "تهديد أو استعجال",
       flag_money: "يطلب دفع مبلغ أو رسوم أو مخالفة", flag_prize: "ادعاء بالفوز أو جائزة",
       red_flags: "علامات الخطر", what_do: "ماذا تفعل:",
-      f1: "KSA Resident ليس موقعاً حكومياً رسمياً. تحقق دائماً من البوابة الرسمية قبل أي إجراء.",
+      bar: "<b>للمعلومات فقط.</b> ليس استشارة قانونية وليس موقعاً حكومياً. الأنظمة والرسوم تتغير؛ تحقق دائماً من البوابة الرسمية. <a href=\"/disclaimer.html\">اقرأ إخلاء المسؤولية</a>",
+      f3: "المحتوى معلومات عامة فقط، وليس استشارة قانونية أو مالية أو استشارة في شؤون الإقامة أو أي استشارة مهنية، ولا يُعد توصية باتخاذ أي إجراء. لا نضمن اكتماله أو دقته أو حداثته. أنت مسؤول عن التحقق من الجهة الرسمية قبل أي إجراء.",
+      eosb_disc: "<b>تقدير فقط.</b> النتيجة حساب عام وفق المواد 84–88 من نظام العمل. استحقاقك الفعلي يعتمد على عقدك ومكونات أجرك وظروف حالتك، وتحدده المنشأة أو الوزارة أو المحاكم العمالية. استخدم حاسبة الوزارة الرسمية واستشر مختصاً قبل الاعتماد عليه.",
+      s_disc: "<b>فحص آلي فقط.</b> يبحث عن علامات تحذير شائعة وقد يفوته احتيال أو يشتبه برسالة صحيحة. لا يؤكد أن أي رسالة آمنة أو مزيفة. عند الشك تواصل مع الجهة عبر تطبيقها أو رقمها الرسمي.",
+      g_disc: "<b>معلومات عامة وليست استشارة.</b> تلخص هذه الأدلة أنظمة منشورة بلغة مبسطة، ولا تُعد استشارة قانونية أو توصية باتخاذ أي إجراء. قد تتغير الإجراءات والرسوم والمخالفات دون إشعار وتختلف من حالة لأخرى. البوابة الرسمية المذكورة في كل دليل هي المرجع المعتمد الوحيد.",
+      f1: "KSA Resident موقع معلومات مستقل، وليس موقعاً حكومياً ولا يتبع أي جهة أو وزارة أو بوابة رسمية.",
       f2: "مجاني ومفتوح المصدر بترخيص MIT. نرحب بالتصحيحات والترجمات.",
       err_wage: "أدخل أجراً صحيحاً.", err_dates: "أدخل التاريخين، ويجب أن يكون آخر يوم بعد تاريخ المباشرة."
     }
@@ -731,7 +750,7 @@ footer a { color: var(--accent); }
       need: "Valid iqama, age 18+, no unpaid traffic fines.",
       steps: [
         "Do the medical and eye test at an approved centre. Results link to Absher automatically.",
-        "Choose a driving school in Absher (for example Dallah or a school in your city) and open a file there.",
+        "Choose a licensed driving school in your city through Absher and open a file there.",
         "Take the assessment drive. The school decides how many training hours you need.",
         "Complete the training, then pass the computer theory test and the practical road test.",
         "Pay the licence fee through SADAD and collect the licence. Private licences can be issued for up to 10 years."
@@ -758,7 +777,7 @@ footer a { color: var(--accent); }
       src: "https://www.absher.sa", srcLabel: "absher.sa"
     },
     {
-      cat: "drive", t: "Traffic fines you should know",
+      cat: "drive", t: "Common traffic fines",
       d: "Common violations and their fine ranges. Cameras enforce most of them.",
       facts: [
         ["Phone in hand while driving", "SAR 500–900"],
@@ -1105,7 +1124,7 @@ footer a { color: var(--accent); }
       need: "درست اقامہ، عمر 18 سال یا زیادہ، کوئی ٹریفک جرمانہ باقی نہ ہو۔",
       steps: [
         "منظور شدہ مرکز پر میڈیکل اور آنکھوں کا ٹیسٹ کروائیں۔ نتیجہ خود بخود ابشر سے منسلک ہو جاتا ہے۔",
-        "ابشر میں ڈرائیونگ اسکول چنیں (مثلاً دلہ یا اپنے شہر کا اسکول) اور وہاں فائل کھولیں۔",
+        "ابشر کے ذریعے اپنے شہر کا لائسنس یافتہ ڈرائیونگ اسکول چنیں اور وہاں فائل کھولیں۔",
         "اسیسمنٹ ڈرائیو دیں۔ اسکول طے کرتا ہے کہ آپ کو کتنے گھنٹے ٹریننگ چاہیے۔",
         "ٹریننگ مکمل کریں، پھر کمپیوٹر تھیوری ٹیسٹ اور روڈ ٹیسٹ پاس کریں۔",
         "سداد سے لائسنس فیس ادا کریں اور لائسنس لیں۔ پرائیویٹ لائسنس 10 سال تک کا بن سکتا ہے۔"
