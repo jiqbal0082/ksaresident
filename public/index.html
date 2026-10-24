@@ -138,6 +138,22 @@ html[dir="rtl"] .amount { text-align: right; }
 .guide ol { margin: 0; padding-inline-start: 1.3rem; display: grid; gap: 8px; }
 .guide .need { background: var(--accent-soft); border-radius: 8px; padding: 10px 12px; font-size: .93rem; }
 .meta { font: 500 .78rem/1.5 var(--mono); color: var(--muted); }
+.gtools { display: grid; gap: 12px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 500 .88rem/1 var(--body); padding: 9px 13px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.glist { display: grid; gap: 10px; }
+.gcat { font: 500 .7rem/1 var(--mono); letter-spacing: .07em; text-transform: uppercase; color: var(--accent); }
+.facts { margin: 0; display: grid; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.facts div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; padding: 9px 12px; border-top: 1px solid var(--line); }
+.facts div:first-child { border-top: 0; }
+.facts dt { color: var(--muted); font-size: .93rem; }
+.facts dd { margin: 0; font-weight: 600; font-size: .93rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 480px) { .facts div { grid-template-columns: 1fr; gap: 2px; } }
+.warnbox { background: var(--danger-soft); border-radius: 8px; padding: 10px 12px; font-size: .93rem; max-width: none; }
+.warnbox b { color: var(--danger); }
+.empty { color: var(--muted); }
 .meta a { color: var(--accent); }
 .note { background: var(--warn-soft); color: var(--ink); border-radius: 8px; padding: 12px 14px; font-size: .93rem; }
 .note b { color: var(--warn); }
@@ -204,8 +220,8 @@ footer a { color: var(--accent); }
           <span class="go" data-i18n="open">Open →</span>
         </a>
         <a class="tool" href="#guides">
-          <h3 data-i18n="tool_guides_t">Step-by-step guides</h3>
-          <p data-i18n="tool_guides_d">Exit re-entry, family visit visa, Qiwa contracts, traffic fines, resigning.</p>
+          <h3 data-i18n="tool_guides_t">Resident life guides</h3>
+          <p data-i18n="tool_guides_d">Iqama, driving licence, family visa, work rights, travel, Hajj and Umrah, and the laws every resident must follow.</p>
           <span class="go" data-i18n="open">Open →</span>
         </a>
         <a class="tool" href="#scams">
@@ -270,11 +286,18 @@ footer a { color: var(--accent); }
     <section class="view" id="v-guides" hidden>
       <div class="hero">
         <div class="eyebrow" data-i18n="g_eyebrow">Procedures · Plain language</div>
-        <h1 data-i18n="g_title">Step-by-step guides</h1>
-        <p class="lead" data-i18n="g_lead">Short checklists for the procedures people ask about most. Fees change often, so each guide links to the official page for current amounts.</p>
+        <h1 data-i18n="g_title">Life in the Kingdom, step by step</h1>
+        <p class="lead" data-i18n="g_lead">From your first iqama to final exit: procedures, your rights at work, driving, Hajj and Umrah, and the rules every resident must follow. Fees change often, so every guide links to the official source.</p>
       </div>
       <p class="note" data-i18n-html="g_lang_note"><b>Guides are in English for now.</b> Urdu and Arabic translations are open for contributors.</p>
-      <div id="guideList" style="display:grid;gap:12px"></div>
+      <div class="gtools">
+        <label class="f" for="guideSearch"><span class="sr" data-i18n="g_search">Search guides</span>
+          <input id="guideSearch" type="search" placeholder="Search: licence, Hajj, final exit, overtime…" autocomplete="off">
+        </label>
+        <div class="chips" id="guideCats" role="group" aria-label="Life stage"></div>
+        <div class="meta" id="guideCount"></div>
+      </div>
+      <div id="guideList" class="glist"></div>
     </section>
 
     <!-- SCAMS -->
@@ -317,7 +340,7 @@ footer a { color: var(--accent); }
       home_title: "سعودی عرب میں رہنے اور کام کرنے کے لیے واضح جوابات",
       home_lead: "اپنا اختتامِ ملازمت معاوضہ معلوم کریں، عام سرکاری کاموں کی مرحلہ وار رہنمائی دیکھیں، اور کسی مشکوک پیغام پر کلک کرنے سے پہلے اسے چیک کریں۔",
       tool_eosb_t: "اختتامِ ملازمت کیلکولیٹر", tool_eosb_d: "لیبر لا کی دفعات 84 سے 88 کے مطابق، استعفیٰ کے قواعد سمیت۔",
-      tool_guides_t: "مرحلہ وار رہنمائی", tool_guides_d: "خروج و عودہ، فیملی وزٹ ویزا، قوی معاہدے، ٹریفک جرمانے، استعفیٰ۔",
+      tool_guides_t: "مرحلہ وار رہنمائی", tool_guides_d: "اقامہ، ڈرائیونگ لائسنس، فیملی ویزا، ملازمت کے حقوق، سفر، حج و عمرہ، اور وہ قوانین جن پر ہر مقیم کو عمل کرنا ہے۔",
       tool_scams_t: "فراڈ پیغام چیک", tool_scams_d: "ایس ایم ایس یا واٹس ایپ پیغام پیسٹ کریں اور خطرے کی علامات دیکھیں۔",
       open: "کھولیں ←",
       trust1_t: "مکمل رازداری", trust1_d: "سب کچھ آپ کے فون پر چلتا ہے۔ آپ کا لکھا ہوا کچھ بھی بھیجا یا محفوظ نہیں ہوتا۔",
@@ -365,7 +388,7 @@ footer a { color: var(--accent); }
       home_title: "إجابات واضحة للحياة والعمل في السعودية",
       home_lead: "احسب مكافأة نهاية الخدمة، واتبع أدلة خطوة بخطوة للإجراءات الشائعة، وافحص الرسائل المشبوهة قبل الضغط على أي رابط.",
       tool_eosb_t: "حاسبة مكافأة نهاية الخدمة", tool_eosb_d: "وفق المواد 84 إلى 88 من نظام العمل، بما فيها أحكام الاستقالة.",
-      tool_guides_t: "أدلة خطوة بخطوة", tool_guides_d: "الخروج والعودة، تأشيرة الزيارة العائلية، عقود قوى، المخالفات المرورية، الاستقالة.",
+      tool_guides_t: "أدلة خطوة بخطوة", tool_guides_d: "الإقامة، رخصة القيادة، تأشيرة العائلة، حقوق العمل، السفر، الحج والعمرة، والأنظمة التي يلتزم بها كل مقيم.",
       tool_scams_t: "فحص رسائل الاحتيال", tool_scams_d: "الصق رسالة نصية أو واتساب واعرف علامات الخطر.",
       open: "افتح ←",
       trust1_t: "خصوصية تامة", trust1_d: "كل شيء يعمل على جهازك. لا يُرسل أو يُحفظ أي شيء تكتبه.",
@@ -515,62 +538,152 @@ footer a { color: var(--accent); }
   $("reason").addEventListener("change", runCalc);
 
   /* ---------- Guides ---------- */
+  const CATS = [
+    { id: "all", label: "All" },
+    { id: "arrive", label: "Arriving & settling" },
+    { id: "work", label: "Work & rights" },
+    { id: "family", label: "Family" },
+    { id: "drive", label: "Driving" },
+    { id: "travel", label: "Travel & leaving" },
+    { id: "hajj", label: "Hajj & Umrah" },
+    { id: "law", label: "Laws & conduct" }
+  ];
   const GUIDES = [
+    /* ===== Arriving & settling ===== */
     {
-      t: "Check and accept your work contract on Qiwa",
+      cat: "arrive", t: "Your first 90 days: getting your iqama",
+      d: "What has to happen after you land on a work visa.",
+      need: "Passport with work visa, signed contract, a phone number for SMS codes.",
+      steps: [
+        "Complete the medical test at an approved centre. Your employer usually books it.",
+        "Your employer must buy health insurance for you before the iqama is issued. Iqama renewal also needs active insurance.",
+        "Give fingerprints at the passport office (Jawazat) if your employer asks. Everyone aged 15 and over needs them on file.",
+        "Your employer issues the iqama through Muqeem. You can then register on Absher and on Nafath with your iqama number.",
+        "Download Tawakkalna and Absher. Your digital iqama in Absher is accepted in most places."
+      ],
+      warn: "Do not hand over your passport permanently. Keeping a worker's passport is not allowed.",
+      src: "https://www.absher.sa", srcLabel: "absher.sa"
+    },
+    {
+      cat: "arrive", t: "SIM card, bank account and Absher",
+      d: "The three things everything else depends on.",
+      need: "Valid iqama (or border number at the start).",
+      steps: [
+        "Buy a SIM from STC, Mobily, Zain, Lebara, Salam or Virgin. It is registered to your iqama with fingerprints at the shop.",
+        "Check which numbers are registered in your name in Absher. Cancel any number you do not recognise, because you are responsible for it.",
+        "Open a bank account with your iqama. Your salary must be paid into a bank account under the Wage Protection System.",
+        "Register on Absher Individuals. Every government service, fine and visa runs through it, and OTP codes go to your registered mobile."
+      ],
+      warn: "Never let anyone register a SIM or open an account using your iqama. Crimes committed with that number can be traced to you.",
+      src: "https://www.absher.sa", srcLabel: "absher.sa"
+    },
+    {
+      cat: "arrive", t: "Renting a home (Ejar)",
+      d: "Register your lease so it is legally recognised.",
+      need: "Iqama, the landlord's details, and a licensed real-estate office or the landlord's Ejar account.",
+      steps: [
+        "Agree the rent, payment schedule and who pays utilities before you sign.",
+        "Ask for the lease to be registered on the Ejar platform. You receive an SMS to approve it in your name.",
+        "Read the Ejar contract on screen before you approve. What is registered is what counts in a dispute.",
+        "Keep proof of every rent payment.",
+        "When you leave the property, make sure the contract is ended in Ejar. An open lease in your name can block your final exit."
+      ],
+      src: "https://www.ejar.sa", srcLabel: "ejar.sa"
+    },
+    {
+      cat: "arrive", t: "Health insurance",
+      d: "Mandatory for private-sector expats and their families.",
+      need: "Your iqama number.",
+      steps: [
+        "Your employer must provide approved health insurance for you. Family members also need valid insurance.",
+        "Check your active policy and its class on the Council of Health Insurance website using your iqama number.",
+        "Carry your insurance details on your phone. Hospitals check them before non-emergency treatment.",
+        "Iqama renewal fails if insurance has expired, so check it a month before renewal."
+      ],
+      src: "https://chi.gov.sa", srcLabel: "chi.gov.sa"
+    },
+
+    /* ===== Work & rights ===== */
+    {
+      cat: "work", t: "Check and accept your work contract on Qiwa",
       d: "See the contract your employer registered before you accept it.",
       need: "Your Absher or Nafath login.",
       steps: [
         "Go to qiwa.sa and sign in as an individual using Nafath.",
         "Open Employment Contracts.",
         "Read the salary, allowances, job title and contract length. They must match what you were offered.",
-        "Accept if correct. If not, reject it and ask your employer to correct it before signing again.",
+        "Accept if correct. If not, reject it and ask your employer to correct it before you accept.",
         "Keep a copy. The registered contract is what counts in a dispute."
       ],
-      src: "https://qiwa.sa"
+      src: "https://qiwa.sa", srcLabel: "qiwa.sa"
     },
     {
-      t: "Exit and re-entry visa",
-      d: "Travel out of the Kingdom and come back on the same iqama.",
-      need: "A valid iqama and passport, and no unpaid traffic fines on your record.",
-      steps: [
-        "Workers: your employer issues the visa through their business account (Absher Business or Muqeem). Ask HR.",
-        "Family members: the head of the family issues it in Absher Individuals under passport services.",
-        "Choose single or multiple trips and the duration.",
-        "Pay the fee through SADAD in your bank app. The amount shows on the official page.",
-        "Print or save the visa. Return before it expires, or you may face a re-entry ban."
+      cat: "work", t: "Working hours, overtime and Ramadan hours",
+      d: "Limits set by the Labor Law for private-sector workers.",
+      facts: [
+        ["Normal hours", "Up to 8 hours a day and 48 a week"],
+        ["Ramadan (Muslim workers)", "Up to 6 hours a day and 36 a week"],
+        ["Breaks", "No more than 5 hours in a row without a break of at least 30 minutes"],
+        ["Rest day", "At least one full paid day off a week, usually Friday"],
+        ["Overtime pay", "Your hourly wage plus 50% of your basic wage"],
+        ["Time-off instead of pay", "Allowed if agreed, at least 1.5 hours off per overtime hour"]
       ],
-      src: "https://www.absher.sa"
-    },
-    {
-      t: "Family visit visa",
-      d: "Invite parents, spouse or children to visit you.",
-      need: "Your iqama, your profession must be eligible, and attested family documents (marriage or birth certificates).",
       steps: [
-        "Apply on the Ministry of Foreign Affairs visa platform (visa.mofa.gov.sa) using your Absher login.",
-        "Enter each visitor's details and relationship to you. Upload the attested documents.",
-        "Choose single or multiple entry and pay the fee.",
-        "Send the application number to your family. They complete biometrics and stamping through the visa centre in their country.",
-        "Visitors need valid health insurance for the visit. Extend the visa in Absher before it expires."
+        "Keep your own record of extra hours (dates and times).",
+        "If overtime is not paid, raise it with HR in writing first.",
+        "If it is still unresolved, file a labor complaint with the Ministry of Human Resources (HRSD)."
       ],
-      src: "https://visa.mofa.gov.sa"
+      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
     },
     {
-      t: "Check and pay traffic fines",
-      d: "Unpaid fines can block renewals and exit re-entry visas.",
-      need: "Your Absher login.",
+      cat: "work", t: "Leave you are entitled to",
+      d: "Annual, sick, Hajj, marriage and family leave.",
+      facts: [
+        ["Annual leave", "21 days a year; 30 days after 5 years with the same employer"],
+        ["Sick leave", "Paid in stages: full pay first, then reduced pay. Check your contract and the law for exact tiers"],
+        ["Hajj leave", "Paid, once during your service, after 2 years with the employer"],
+        ["Marriage leave", "5 days paid"],
+        ["Death of a spouse, parent or child", "5 days paid"],
+        ["Death of a brother or sister", "3 days paid (added in 2025)"],
+        ["New baby (father)", "Paid paternity leave, taken within 7 days of the birth"],
+        ["Maternity leave", "12 weeks"]
+      ],
       steps: [
-        "Sign in to Absher and open traffic services, then violations.",
-        "Review each violation, including the date and the location.",
-        "To dispute one, submit an objection in Absher within the allowed period.",
-        "Pay through SADAD in your bank app. Payments reflect in Absher after a short delay."
+        "Request leave in writing or through your company HR system so there is a record.",
+        "Unused annual leave is paid out when your contract ends."
       ],
-      src: "https://www.absher.sa"
+      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
     },
     {
-      t: "Resign the right way (2025 rules)",
+      cat: "work", t: "Changing employer (iqama transfer)",
+      d: "How job transfer works on Qiwa since the Labor Reform Initiative.",
+      need: "A job offer from a new employer who is registered on Qiwa.",
+      steps: [
+        "The new employer creates a job offer on Qiwa using your iqama number.",
+        "You accept it on Qiwa within the allowed time. Accepting makes the new contract binding.",
+        "Your current employer is notified. If you have finished your first year, you can move after the notice period even without their approval.",
+        "You may also move without approval if your contract has ended, your salary was unpaid for 3 months in a row, or your employer let your iqama or work permit expire.",
+        "The new employer pays the transfer fee and updates your iqama."
+      ],
+      warn: "Do not leave your job before the transfer is completed on Qiwa. Leaving early can lead to an 'absent from work' report.",
+      src: "https://qiwa.sa", srcLabel: "qiwa.sa"
+    },
+    {
+      cat: "work", t: "If you are reported 'absent from work' (huroob)",
+      d: "What it means and what you can still do.",
+      steps: [
+        "Check your status in Absher or Qiwa. A report changes your status and blocks most services.",
+        "Act quickly. There is a limited window after the report in which you can transfer to a new employer through Qiwa or arrange a final exit.",
+        "If the report is false (for example you were working, or your salary was unpaid), file a labor complaint with HRSD and keep evidence: payslips, messages, attendance records.",
+        "Get help from your embassy's community welfare section if you need legal support."
+      ],
+      warn: "Ignoring a report can lead to detention and deportation. Get advice early.",
+      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
+    },
+    {
+      cat: "work", t: "Resign the right way (2025 rules)",
       d: "Since 19 February 2025 the Labor Law defines resignation and sets a 30-day response window.",
-      need: "Your contract details, notice period and last working day.",
+      need: "Your contract details, notice period and planned last working day.",
       steps: [
         "Submit your resignation in writing. Where your employer uses Qiwa, submit it there so it is recorded.",
         "Your employer can accept it, delay it, or reject it.",
@@ -578,18 +691,287 @@ footer a { color: var(--accent); }
         "Serve your notice period as your contract and the law require.",
         "Use the End of service calculator to check your award before your final settlement."
       ],
-      src: "https://www.hrsd.gov.sa"
+      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
+    },
+
+    /* ===== Family ===== */
+    {
+      cat: "family", t: "Bringing your family to live with you",
+      d: "Permanent family visa for your wife and children.",
+      need: "Iqama with at least 3 months left, an eligible profession, salary registered with GOSI (commonly SAR 3,500 or more), attested marriage and birth certificates.",
+      steps: [
+        "Check eligibility in Absher. Profession on the iqama decides whether the request is accepted.",
+        "Apply for the family visa in Absher, print the form and have your employer attest it through the Chamber of Commerce.",
+        "Pay the visa fee (reported as SAR 2,000 per family) and send the visa number to your family.",
+        "Your family gets the visa stamped through the visa centre in their country and travels.",
+        "Within 90 days of arrival: medical tests, health insurance and their iqama through Absher."
+      ],
+      facts: [
+        ["Who you can sponsor", "Wife, sons under 18, unmarried daughters"],
+        ["Dependent fee", "SAR 400 per dependent per month, paid at iqama renewal"]
+      ],
+      src: "https://www.absher.sa", srcLabel: "absher.sa"
+    },
+    {
+      cat: "family", t: "Family visit visa",
+      d: "Invite parents, spouse or children to visit you.",
+      need: "Your iqama, an eligible profession, and attested relationship documents.",
+      steps: [
+        "Apply on the Ministry of Foreign Affairs visa platform (visa.mofa.gov.sa) using your Absher login.",
+        "Enter each visitor's details and relationship to you. Upload the attested documents.",
+        "Choose single or multiple entry and pay the fee.",
+        "Send the application number to your family. They complete biometrics and stamping through the visa centre in their country.",
+        "Visitors need valid health insurance. Extend the visa in Absher before it expires."
+      ],
+      warn: "Visit visa holders cannot perform Hajj and cannot enter Makkah during the Hajj season restrictions.",
+      src: "https://visa.mofa.gov.sa", srcLabel: "visa.mofa.gov.sa"
+    },
+
+    /* ===== Driving ===== */
+    {
+      cat: "drive", t: "Getting a Saudi driving licence",
+      d: "For first-time drivers or licences from countries that cannot be exchanged.",
+      need: "Valid iqama, age 18+, no unpaid traffic fines.",
+      steps: [
+        "Do the medical and eye test at an approved centre. Results link to Absher automatically.",
+        "Choose a driving school in Absher (for example Dallah or a school in your city) and open a file there.",
+        "Take the assessment drive. The school decides how many training hours you need.",
+        "Complete the training, then pass the computer theory test and the practical road test.",
+        "Pay the licence fee through SADAD and collect the licence. Private licences can be issued for up to 10 years."
+      ],
+      facts: [
+        ["Full course (beginner)", "About SAR 2,500–3,000 (varies by school)"],
+        ["Short course (experienced)", "About SAR 1,000–1,500"],
+        ["Licence fee", "About SAR 40 per year of validity"]
+      ],
+      warn: "Residents must hold a Saudi licence. Driving without one is fined SAR 1,000–2,000.",
+      src: "https://www.absher.sa", srcLabel: "absher.sa"
+    },
+    {
+      cat: "drive", t: "Exchanging a foreign licence",
+      d: "Holders from about 48 approved countries can exchange without a road test.",
+      need: "Iqama, passport, original foreign licence (with Arabic translation if required), medical report.",
+      steps: [
+        "Check whether your country is on the exchange list at the traffic department (Muroor) or in Absher.",
+        "Do the medical and eye test at an approved centre.",
+        "Book a Muroor appointment in Absher and pay the fee through SADAD.",
+        "Take your documents to the Muroor office. Most exchanges do not need a driving test.",
+        "If your country is not on the list, follow the driving school route instead."
+      ],
+      src: "https://www.absher.sa", srcLabel: "absher.sa"
+    },
+    {
+      cat: "drive", t: "Traffic fines you should know",
+      d: "Common violations and their fine ranges. Cameras enforce most of them.",
+      facts: [
+        ["Phone in hand while driving", "SAR 500–900"],
+        ["No seatbelt (driver or passenger)", "SAR 150–300"],
+        ["Child not in a car seat", "SAR 300–500"],
+        ["Speeding 10–20 km/h over (roads up to 120)", "SAR 150–300"],
+        ["Speeding 50+ km/h over", "SAR 1,500–2,000"],
+        ["Running a red light", "SAR 3,000–6,000"],
+        ["Driving against traffic", "SAR 3,000–6,000"],
+        ["Parking in a disabled bay", "SAR 500–900"],
+        ["Drifting (first offence)", "SAR 20,000 and car impounded"]
+      ],
+      steps: [
+        "Check your fines regularly in Absher under Traffic Violations.",
+        "Unpaid fines block iqama renewal, exit re-entry visas and final exit.",
+        "You can object to a fine in Absher within the allowed period."
+      ],
+      src: "https://www.absher.sa", srcLabel: "absher.sa"
+    },
+    {
+      cat: "drive", t: "If you have an accident",
+      d: "Minor accidents are handled by Najm, not the police.",
+      steps: [
+        "Stop, switch on hazard lights and check for injuries. Call 997 for an ambulance if anyone is hurt.",
+        "Do not move the cars if someone is injured or the damage is serious. Call 911 (or 993 where 911 is not active).",
+        "For minor accidents with no injuries, report through the Najm app or call Najm, and move the cars to the side.",
+        "Take photos of both cars, plates and the scene.",
+        "Wait for the Najm report. Your insurer uses it to decide who pays."
+      ],
+      warn: "Never drive away from an accident, even a small one.",
+      src: "https://www.najm.sa", srcLabel: "najm.sa"
+    },
+
+    /* ===== Travel & leaving ===== */
+    {
+      cat: "travel", t: "Exit and re-entry visa",
+      d: "Travel out of the Kingdom and come back on the same iqama.",
+      need: "Valid iqama, passport valid at least 90 days, fingerprints on file, no unpaid traffic fines.",
+      steps: [
+        "Workers: your employer issues the visa through Muqeem or Absher Business. Family members: the head of the family issues it in Absher.",
+        "Choose single or multiple and the duration. It cannot go beyond your iqama expiry.",
+        "Pay through SADAD. Fees are not refunded once issued.",
+        "Return before the visa expires. If it expires while you are abroad, your employer has to issue a new work visa for you to come back."
+      ],
+      facts: [
+        ["Single (up to 2 months)", "SAR 200, then SAR 100 per extra month"],
+        ["Multiple (up to 3 months)", "SAR 500, then SAR 200 per extra month"],
+        ["Extending from outside KSA", "SAR 200 per month (single), SAR 400 (multiple)"],
+        ["Unused visa expires while you are inside KSA", "SAR 1,000 to cancel"]
+      ],
+      src: "https://www.absher.sa", srcLabel: "absher.sa"
+    },
+    {
+      cat: "travel", t: "Leaving for good (final exit)",
+      d: "Clear everything first, or the visa cannot be issued.",
+      need: "Iqama valid at least 30 days, passport valid at least 60 days.",
+      steps: [
+        "Pay all traffic fines and transfer or sell any car registered in your name.",
+        "Close the Ejar lease, settle utility bills, credit cards and loans.",
+        "Agree your final settlement and end-of-service award with your employer before the visa is issued.",
+        "Move your money out first. Banks may freeze accounts soon after a final exit visa is issued.",
+        "Your employer issues the final exit visa. Leave within 60 days."
+      ],
+      warn: "Keep your SIM active for a short time after leaving so you still receive OTP codes.",
+      src: "https://www.absher.sa", srcLabel: "absher.sa"
+    },
+
+    /* ===== Hajj & Umrah ===== */
+    {
+      cat: "hajj", t: "Hajj as a resident",
+      d: "Only with an official Hajj permit booked through Nusuk.",
+      need: "Valid iqama. Eligibility rules (for example, how recently you last performed Hajj) are shown in Nusuk when registration opens.",
+      steps: [
+        "Register in the Nusuk app or website when domestic Hajj registration opens (usually months before Hajj).",
+        "Choose a licensed domestic Hajj company and package, and pay through the platform.",
+        "Complete the required vaccinations listed by the Ministry of Health.",
+        "Collect your Hajj permit and Nusuk card. You must carry the card at all checkpoints and holy sites.",
+        "Request Hajj leave from your employer early (paid once, after 2 years of service)."
+      ],
+      facts: [
+        ["Hajj without a permit", "SAR 20,000 fine; expats are deported and banned for 10 years"],
+        ["Transporting or sheltering pilgrims without permits", "Up to SAR 100,000 per person"]
+      ],
+      warn: "There is no Hajj on a visit visa, tourist visa or Umrah visa.",
+      src: "https://www.nusuk.sa", srcLabel: "nusuk.sa"
+    },
+    {
+      cat: "hajj", t: "Entering Makkah during the Hajj season",
+      d: "Residents whose iqama was issued outside Makkah need an entry permit in the weeks before Hajj.",
+      steps: [
+        "Check the dates. In 2026 the restriction ran from 13 April to 31 May; the dates change each year with the Hijri calendar.",
+        "If you work in Makkah during this period, your employer requests the permit for you through Muqeem.",
+        "If you live in Makkah with family or have another reason, apply in Absher under the Makkah entry permit service.",
+        "Travel only once the permit shows as approved. Pending permits are turned back at checkpoints."
+      ],
+      facts: [
+        ["Exempt", "Makkah-issued iqama, valid Hajj permit, or a work permit for the holy sites"]
+      ],
+      src: "https://www.absher.sa", srcLabel: "absher.sa"
+    },
+    {
+      cat: "hajj", t: "Umrah and visiting the Rawdah",
+      d: "Residents book Umrah through the Nusuk app. No separate visa is needed.",
+      steps: [
+        "Download Nusuk and sign in with your iqama details exactly as they appear on your iqama.",
+        "Go to Permits, then Umrah. Choose the person, date and time slot.",
+        "Save the QR code. It is scanned at the gates of Masjid al-Haram.",
+        "For the Rawdah in Madinah, book a separate Rawdah permit in Nusuk.",
+        "Umrah permits are not issued during the Hajj season. Check the app for the reopening date."
+      ],
+      src: "https://www.nusuk.sa", srcLabel: "nusuk.sa"
+    },
+
+    /* ===== Laws & conduct ===== */
+    {
+      cat: "law", t: "Public decency rules and fines",
+      d: "Fines apply to residents and visitors in public places. Repeat offences pay double.",
+      facts: [
+        ["Improper or offensive clothing in public", "SAR 100"],
+        ["Clothing with obscene, racist or drug images", "SAR 500"],
+        ["Photographing or filming people without permission", "SAR 1,000, and the content must be deleted"],
+        ["Music during prayer times", "SAR 1,000"],
+        ["Loud music in residential areas", "SAR 500"],
+        ["Littering or spitting", "SAR 500"],
+        ["Jumping queues", "SAR 50"],
+        ["Using seats for elderly or disabled people", "SAR 200"],
+        ["Indecent behaviour of a sexual nature", "SAR 3,000"]
+      ],
+      src: "https://www.moi.gov.sa", srcLabel: "moi.gov.sa"
+    },
+    {
+      cat: "law", t: "Phones, social media and privacy",
+      d: "Online behaviour is covered by the Anti-Cyber Crime Law.",
+      steps: [
+        "Do not post photos or videos of people, accidents or crime scenes without permission.",
+        "Do not insult or defame anyone online, including in WhatsApp groups. Screenshots are used as evidence.",
+        "Do not share fake news or rumours about public matters.",
+        "Do not forward content that mocks religion, the state or public morals."
+      ],
+      warn: "Cyber crime cases can lead to prison, large fines and deportation for expats.",
+      src: "https://www.moi.gov.sa", srcLabel: "moi.gov.sa"
+    },
+    {
+      cat: "law", t: "Strictly prohibited",
+      d: "Serious offences with severe penalties, including prison and deportation.",
+      steps: [
+        "Alcohol is illegal to bring in, make, sell or drink.",
+        "Drugs: possession, use or carrying anything for someone else is treated very seriously. Never carry a bag or parcel you did not pack.",
+        "Some medicines legal elsewhere are controlled here. Carry a prescription and check before travelling with them.",
+        "Working for anyone other than your sponsor or registered employer without approval is a violation.",
+        "Sheltering, employing or transporting residency violators is punished."
+      ],
+      src: "https://www.moi.gov.sa", srcLabel: "moi.gov.sa"
+    },
+    {
+      cat: "law", t: "Ramadan etiquette",
+      d: "What changes during the month of fasting.",
+      steps: [
+        "Do not eat, drink or smoke in public during fasting hours, even if you are not fasting.",
+        "Muslim private-sector workers work up to 6 hours a day.",
+        "Many shops and offices change their hours. Government offices work shorter hours.",
+        "Traffic is heavy just before sunset. Drive carefully at iftar time."
+      ],
+      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
+    },
+    {
+      cat: "law", t: "Emergency numbers",
+      d: "Save these in your phone.",
+      facts: [
+        ["Unified emergency (where active)", "911"],
+        ["Police", "999"],
+        ["Ambulance (Red Crescent)", "997"],
+        ["Civil Defence (fire)", "998"],
+        ["Traffic accidents", "993"]
+      ],
+      src: "https://www.moi.gov.sa", srcLabel: "moi.gov.sa"
     }
   ];
-  $("guideList").innerHTML = GUIDES.map((g, i) => `
-    <details class="guide" ${i === 0 ? "open" : ""}>
-      <summary><h3>${g.t}</h3><p>${g.d}</p></summary>
-      <div class="body">
-        <div class="need"><b>You need:</b> ${g.need}</div>
-        <ol>${g.steps.map(s => `<li>${s}</li>`).join("")}</ol>
-        <div class="meta">Last checked: 2026-10-23 · Official source: <a href="${g.src}" target="_blank" rel="noopener">${g.src.replace("https://", "")}</a></div>
-      </div>
-    </details>`).join("");
+
+  let gCat = "all", gQuery = "";
+  const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  function renderGuides() {
+    const q = gQuery.trim().toLowerCase();
+    const list = GUIDES.filter(g => (gCat === "all" || g.cat === gCat) &&
+      (!q || [g.t, g.d, g.need || "", ...(g.steps || []), ...((g.facts || []).flat())].join(" ").toLowerCase().includes(q)));
+    $("guideCount").textContent = list.length + (list.length === 1 ? " guide" : " guides");
+    $("guideList").innerHTML = list.length ? list.map(g => {
+      const cat = CATS.find(c => c.id === g.cat).label;
+      return `
+      <details class="guide">
+        <summary><span class="gcat">${cat}</span><h3>${esc(g.t)}</h3><p>${esc(g.d)}</p></summary>
+        <div class="body">
+          ${g.need ? `<div class="need"><b>You need:</b> ${esc(g.need)}</div>` : ""}
+          ${g.facts ? `<dl class="facts">${g.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : ""}
+          ${g.steps ? `<ol>${g.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>` : ""}
+          ${g.warn ? `<p class="warnbox"><b>Important:</b> ${esc(g.warn)}</p>` : ""}
+          <div class="meta">Last checked: 24 Oct 2026 · Fees and rules change. Confirm on <a href="${g.src}" target="_blank" rel="noopener">${g.srcLabel}</a></div>
+        </div>
+      </details>`;
+    }).join("") : `<p class="empty">No guide matches "${esc(gQuery)}". Try a shorter word such as "visa" or "license".</p>`;
+  }
+  $("guideCats").innerHTML = CATS.map(c => `<button type="button" class="chip" data-cat="${c.id}" aria-pressed="${c.id === "all"}">${c.label}</button>`).join("");
+  $("guideCats").addEventListener("click", (e) => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    gCat = b.dataset.cat;
+    document.querySelectorAll("#guideCats .chip").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    renderGuides();
+  });
+  $("guideSearch").addEventListener("input", (e) => { gQuery = e.target.value; renderGuides(); });
+  renderGuides();
 
   /* ---------- Scam alerts ---------- */
   const ALERTS = {
