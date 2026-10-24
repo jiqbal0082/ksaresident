@@ -17,6 +17,7 @@ Read this first. It is the single source of truth for working on this project.
 6. **Privacy:** calculators and the scam check run in the browser; nothing is sent or stored. Analytics is Cloudflare Web Analytics (cookie-free). Never ask visitors for iqama numbers or documents.
 7. **No source-code link** on the public site (owner removed it). No "open source" wording on the site.
 8. English and Urdu content must stay in sync (same steps, facts and warnings). Arabic falls back to English for guides/places until translated.
+9. **Never invite users to ask or report to us.** No "tell us", "email us", "report an error" or "ask us" wording anywhere. If a guide is unclear or not enough, users are pointed to the official portal or authority. The contact email appears only as "website matters only" (footer) and for privacy questions (privacy page).
 
 ## Accounts (no secrets stored here)
 | Service | Purpose | Account |
