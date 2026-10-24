@@ -193,6 +193,7 @@ ${body}
 <footer><div class="wrap">
   <p>${L.foot1}</p>
   <p>${L.report} <span class="mail">contact@ksalifeguide.com</span></p>
+  <p><a href="https://www.facebook.com/ksalifeguide" target="_blank" rel="noopener">${lang === 'ur' ? 'فیس بک پر فالو کریں' : 'Follow us on Facebook'}</a></p>
   <p><a href="${lang === 'ur' ? '/ur' : ''}/guides/">${L.all}</a> · <a href="${lang === 'ur' ? '/ur' : ''}/places/">${lang === 'ur' ? 'مقدس مقامات' : 'Holy places'}</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/terms">Terms of use</a> · <a href="/privacy">Privacy</a> · <a href="/support">Donate</a></p>
 </div></footer>
 </body>
@@ -241,7 +242,7 @@ ${related ? `<section class="cat"><h2>${L.related}</h2><ul class="related">${rel
       '@context': 'https://schema.org',
       '@graph': [
         { '@type': 'Article', headline: g.t, description: g.d, inLanguage: lang, dateModified: CHECKED, mainEntityOfPage: SITE + path,
-          publisher: { '@type': 'Organization', name: 'KSA Life Guide', url: SITE } },
+          publisher: { '@type': 'Organization', name: 'KSA Life Guide', url: SITE, sameAs: ['https://www.facebook.com/ksalifeguide'] } },
         { '@type': 'BreadcrumbList', itemListElement: [
           { '@type': 'ListItem', position: 1, name: L.home, item: SITE + '/' },
           { '@type': 'ListItem', position: 2, name: L.guides, item: SITE + (lang === 'ur' ? '/ur' : '') + '/guides/' },
