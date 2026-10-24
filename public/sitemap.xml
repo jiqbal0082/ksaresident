@@ -561,6 +561,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/places/seven-mosques-khandaq"/>
   </url>
   <url>
+    <loc>https://ksalifeguide.com/places/masjid-al-ghamamah</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/places/masjid-al-ghamamah"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/places/masjid-al-ghamamah"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/places/masjid-al-ghamamah</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/places/masjid-al-ghamamah"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/places/masjid-al-ghamamah"/>
+  </url>
+  <url>
     <loc>https://ksalifeguide.com/places/</loc>
     <lastmod>2026-10-24</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/places/"/>

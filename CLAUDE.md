@@ -37,7 +37,7 @@ Business/income setup (ads, donations, sponsors) is **not done yet**. Plan: regi
 ## How the code works
 ```
 src/site.html        The app (single page): HTML + CSS + JS. Holds ALL content data:
-                     CATS, GUIDES (31, each with slug; optional `more: [[label, url]]` extra sources), GUIDES_UR, PLACES (13), PLACES_UR,
+                     CATS, GUIDES (31, each with slug; optional `more: [[label, url]]` extra sources), GUIDES_UR, PLACES (14), PLACES_UR,
                      translations T.ur / T.ar, home search, tabs, calculator, scam check.
 src/lib/eosb.js      End-of-service calculation (Labor Law Art. 84–88) + tests in tests/.
 scripts/build.mjs    Builds public/: index.html (wraps src/site.html), one page per guide
@@ -66,7 +66,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 5. Update the "Last checked" date (`CHECKED` in build.mjs and the guide meta line) when facts are re-verified.
 
 ## Current state (Oct 2026)
-- Live: home with search, 8 life-stage tiles, tools, holy places, most-read; desktop Guides ▾ dropdown (life stages); "Numbers & portals" view (#help: NUMS, PORTALS, HSRC in src/site.html — 8 numbers, 12 portals, last checked 24 Oct 2026); 31 guides EN/UR (incl. 5 flight guides: airports-terminals-parking, flight-delay-cancellation-rights, missed-flight, customs-cash-medicines, before-you-fly-checklist; category "travel" now labelled "Travel & flights"); 13 holy places EN/UR with Google Maps; EOSB calculator; scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
+- Live: home with search, 8 life-stage tiles, tools, holy places, most-read; desktop Guides ▾ dropdown (life stages); "Numbers & portals" view (#help: NUMS, PORTALS, HSRC in src/site.html — 8 numbers, 12 portals, last checked 24 Oct 2026); 31 guides EN/UR (incl. 5 flight guides: airports-terminals-parking, flight-delay-cancellation-rights, missed-flight, customs-cash-medicines, before-you-fly-checklist; category "travel" now labelled "Travel & flights"); 14 holy places EN/UR with Google Maps (Madinah incl. Masjid al-Ghamamah); EOSB calculator; scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
 - Week-1 launch posts written (Claude artifact "KSA Life Guide Launch Posts").
 
 ## Fast-changing facts to re-check monthly
