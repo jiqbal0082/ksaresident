@@ -154,6 +154,8 @@ html[dir="rtl"] .amount { text-align: right; }
 .warnbox { background: var(--danger-soft); border-radius: 8px; padding: 10px 12px; font-size: .93rem; max-width: none; }
 .warnbox b { color: var(--danger); }
 .empty { color: var(--muted); }
+.fullpage { justify-self: start; font-weight: 600; color: var(--accent); text-decoration: none; }
+.fullpage:hover { text-decoration: underline; }
 .mail { font-family: var(--mono); font-size: .88rem; user-select: all; direction: ltr; unicode-bidi: isolate; }
 .donate { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; background: var(--accent-soft); border-radius: var(--radius); padding: 14px 16px; color: var(--ink); }
 .donate p { margin: 0; flex: 1 1 260px; }
@@ -345,7 +347,7 @@ footer a { color: var(--accent); }
       <p data-i18n="f2">KSA Life Guide is free for everyone. If it helped you, you can support it with a small donation to keep it running and up to date.</p>
       <a class="btn donate-btn" href="/support.html" data-i18n="donate">Donate</a>
     </div>
-    <p><a href="/disclaimer.html">Disclaimer</a> · <a href="/terms.html">Terms of use</a> · <a href="/privacy.html">Privacy</a> · Report an error: <span class="mail">contact@ksalifeguide.com</span> · <a href="https://github.com/jiqbal0082/ksaresident" target="_blank" rel="noopener">Source code</a></p>
+    <p><a href="/guides/">All guides</a> · <a href="/ur/guides/">اردو رہنمائیاں</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/terms.html">Terms of use</a> · <a href="/privacy.html">Privacy</a> · Report an error: <span class="mail">contact@ksalifeguide.com</span> · <a href="https://github.com/jiqbal0082/ksaresident" target="_blank" rel="noopener">Source code</a></p>
   </div>
 </footer>
 
@@ -583,7 +585,7 @@ footer a { color: var(--accent); }
   const GUIDES = [
     /* ===== Arriving & settling ===== */
     {
-      cat: "arrive", t: "Your first 90 days: getting your iqama",
+      slug: "first-90-days-iqama", cat: "arrive", t: "Your first 90 days: getting your iqama",
       d: "What has to happen after you land on a work visa.",
       need: "Passport with work visa, signed contract, a phone number for SMS codes.",
       steps: [
@@ -597,7 +599,7 @@ footer a { color: var(--accent); }
       src: "https://www.absher.sa", srcLabel: "absher.sa"
     },
     {
-      cat: "arrive", t: "SIM card, bank account and Absher",
+      slug: "sim-bank-absher", cat: "arrive", t: "SIM card, bank account and Absher",
       d: "The three things everything else depends on.",
       need: "Valid iqama (or border number at the start).",
       steps: [
@@ -610,7 +612,7 @@ footer a { color: var(--accent); }
       src: "https://www.absher.sa", srcLabel: "absher.sa"
     },
     {
-      cat: "arrive", t: "Renting a home (Ejar)",
+      slug: "renting-home-ejar", cat: "arrive", t: "Renting a home (Ejar)",
       d: "Register your lease so it is legally recognised.",
       need: "Iqama, the landlord's details, and a licensed real-estate office or the landlord's Ejar account.",
       steps: [
@@ -623,7 +625,7 @@ footer a { color: var(--accent); }
       src: "https://www.ejar.sa", srcLabel: "ejar.sa"
     },
     {
-      cat: "arrive", t: "Health insurance",
+      slug: "health-insurance", cat: "arrive", t: "Health insurance",
       d: "Mandatory for private-sector expats and their families.",
       need: "Your iqama number.",
       steps: [
@@ -637,7 +639,7 @@ footer a { color: var(--accent); }
 
     /* ===== Work & rights ===== */
     {
-      cat: "work", t: "Check and accept your work contract on Qiwa",
+      slug: "qiwa-work-contract", cat: "work", t: "Check and accept your work contract on Qiwa",
       d: "See the contract your employer registered before you accept it.",
       need: "Your Absher or Nafath login.",
       steps: [
@@ -650,7 +652,7 @@ footer a { color: var(--accent); }
       src: "https://qiwa.sa", srcLabel: "qiwa.sa"
     },
     {
-      cat: "work", t: "Working hours, overtime and Ramadan hours",
+      slug: "working-hours-overtime", cat: "work", t: "Working hours, overtime and Ramadan hours",
       d: "Limits set by the Labor Law for private-sector workers.",
       facts: [
         ["Normal hours", "Up to 8 hours a day and 48 a week"],
@@ -668,7 +670,7 @@ footer a { color: var(--accent); }
       src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
     },
     {
-      cat: "work", t: "Leave you are entitled to",
+      slug: "leave-entitlements", cat: "work", t: "Leave you are entitled to",
       d: "Annual, sick, Hajj, marriage and family leave.",
       facts: [
         ["Annual leave", "21 days a year; 30 days after 5 years with the same employer"],
@@ -687,7 +689,7 @@ footer a { color: var(--accent); }
       src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
     },
     {
-      cat: "work", t: "Changing employer (iqama transfer)",
+      slug: "change-employer-iqama-transfer", cat: "work", t: "Changing employer (iqama transfer)",
       d: "How job transfer works on Qiwa since the Labor Reform Initiative.",
       need: "A job offer from a new employer who is registered on Qiwa.",
       steps: [
@@ -701,7 +703,7 @@ footer a { color: var(--accent); }
       src: "https://qiwa.sa", srcLabel: "qiwa.sa"
     },
     {
-      cat: "work", t: "If you are reported 'absent from work' (huroob)",
+      slug: "absent-from-work-huroob", cat: "work", t: "If you are reported 'absent from work' (huroob)",
       d: "What it means and what you can still do.",
       steps: [
         "Check your status in Absher or Qiwa. A report changes your status and blocks most services.",
@@ -713,7 +715,7 @@ footer a { color: var(--accent); }
       src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
     },
     {
-      cat: "work", t: "Resign the right way (2025 rules)",
+      slug: "resignation-2025-rules", cat: "work", t: "Resign the right way (2025 rules)",
       d: "Since 19 February 2025 the Labor Law defines resignation and sets a 30-day response window.",
       need: "Your contract details, notice period and planned last working day.",
       steps: [
@@ -728,7 +730,7 @@ footer a { color: var(--accent); }
 
     /* ===== Family ===== */
     {
-      cat: "family", t: "Bringing your family to live with you",
+      slug: "family-visa", cat: "family", t: "Bringing your family to live with you",
       d: "Permanent family visa for your wife and children.",
       need: "Iqama with at least 3 months left, an eligible profession, salary registered with GOSI (commonly SAR 3,500 or more), attested marriage and birth certificates.",
       steps: [
@@ -745,7 +747,7 @@ footer a { color: var(--accent); }
       src: "https://www.absher.sa", srcLabel: "absher.sa"
     },
     {
-      cat: "family", t: "Family visit visa",
+      slug: "family-visit-visa", cat: "family", t: "Family visit visa",
       d: "Invite parents, spouse or children to visit you.",
       need: "Your iqama, an eligible profession, and attested relationship documents.",
       steps: [
@@ -761,7 +763,7 @@ footer a { color: var(--accent); }
 
     /* ===== Driving ===== */
     {
-      cat: "drive", t: "Getting a Saudi driving licence",
+      slug: "driving-licence", cat: "drive", t: "Getting a Saudi driving licence",
       d: "For first-time drivers or licences from countries that cannot be exchanged.",
       need: "Valid iqama, age 18+, no unpaid traffic fines.",
       steps: [
@@ -780,7 +782,7 @@ footer a { color: var(--accent); }
       src: "https://www.absher.sa", srcLabel: "absher.sa"
     },
     {
-      cat: "drive", t: "Exchanging a foreign licence",
+      slug: "foreign-licence-exchange", cat: "drive", t: "Exchanging a foreign licence",
       d: "Holders from about 48 approved countries can exchange without a road test.",
       need: "Iqama, passport, original foreign licence (with Arabic translation if required), medical report.",
       steps: [
@@ -793,7 +795,7 @@ footer a { color: var(--accent); }
       src: "https://www.absher.sa", srcLabel: "absher.sa"
     },
     {
-      cat: "drive", t: "Common traffic fines",
+      slug: "traffic-fines", cat: "drive", t: "Common traffic fines",
       d: "Common violations and their fine ranges. Cameras enforce most of them.",
       facts: [
         ["Phone in hand while driving", "SAR 500–900"],
@@ -814,7 +816,7 @@ footer a { color: var(--accent); }
       src: "https://www.absher.sa", srcLabel: "absher.sa"
     },
     {
-      cat: "drive", t: "If you have an accident",
+      slug: "car-accident-najm", cat: "drive", t: "If you have an accident",
       d: "Minor accidents are handled by Najm, not the police.",
       steps: [
         "Stop, switch on hazard lights and check for injuries. Call 997 for an ambulance if anyone is hurt.",
@@ -829,7 +831,7 @@ footer a { color: var(--accent); }
 
     /* ===== Travel & leaving ===== */
     {
-      cat: "travel", t: "Exit and re-entry visa",
+      slug: "exit-re-entry-visa", cat: "travel", t: "Exit and re-entry visa",
       d: "Travel out of the Kingdom and come back on the same iqama.",
       need: "Valid iqama, passport valid at least 90 days, fingerprints on file, no unpaid traffic fines.",
       steps: [
@@ -847,7 +849,7 @@ footer a { color: var(--accent); }
       src: "https://www.absher.sa", srcLabel: "absher.sa"
     },
     {
-      cat: "travel", t: "Leaving for good (final exit)",
+      slug: "final-exit", cat: "travel", t: "Leaving for good (final exit)",
       d: "Clear everything first, or the visa cannot be issued.",
       need: "Iqama valid at least 30 days, passport valid at least 60 days.",
       steps: [
@@ -863,7 +865,7 @@ footer a { color: var(--accent); }
 
     /* ===== Hajj & Umrah ===== */
     {
-      cat: "hajj", t: "Hajj as a resident",
+      slug: "hajj-for-residents", cat: "hajj", t: "Hajj as a resident",
       d: "Only with an official Hajj permit booked through Nusuk.",
       need: "Valid iqama. Eligibility rules (for example, how recently you last performed Hajj) are shown in Nusuk when registration opens.",
       steps: [
@@ -881,7 +883,7 @@ footer a { color: var(--accent); }
       src: "https://www.nusuk.sa", srcLabel: "nusuk.sa"
     },
     {
-      cat: "hajj", t: "Entering Makkah during the Hajj season",
+      slug: "makkah-entry-permit", cat: "hajj", t: "Entering Makkah during the Hajj season",
       d: "Residents whose iqama was issued outside Makkah need an entry permit in the weeks before Hajj.",
       steps: [
         "Check the dates. In 2026 the restriction ran from 13 April to 31 May; the dates change each year with the Hijri calendar.",
@@ -895,7 +897,7 @@ footer a { color: var(--accent); }
       src: "https://www.absher.sa", srcLabel: "absher.sa"
     },
     {
-      cat: "hajj", t: "Umrah and visiting the Rawdah",
+      slug: "umrah-rawdah-nusuk", cat: "hajj", t: "Umrah and visiting the Rawdah",
       d: "Residents book Umrah through the Nusuk app. No separate visa is needed.",
       steps: [
         "Download Nusuk and sign in with your iqama details exactly as they appear on your iqama.",
@@ -909,7 +911,7 @@ footer a { color: var(--accent); }
 
     /* ===== Laws & conduct ===== */
     {
-      cat: "law", t: "Public decency rules and fines",
+      slug: "public-decency-fines", cat: "law", t: "Public decency rules and fines",
       d: "Fines apply to residents and visitors in public places. Repeat offences pay double.",
       facts: [
         ["Improper or offensive clothing in public", "SAR 100"],
@@ -925,7 +927,7 @@ footer a { color: var(--accent); }
       src: "https://www.moi.gov.sa", srcLabel: "moi.gov.sa"
     },
     {
-      cat: "law", t: "Phones, social media and privacy",
+      slug: "social-media-privacy-law", cat: "law", t: "Phones, social media and privacy",
       d: "Online behaviour is covered by the Anti-Cyber Crime Law.",
       steps: [
         "Do not post photos or videos of people, accidents or crime scenes without permission.",
@@ -937,7 +939,7 @@ footer a { color: var(--accent); }
       src: "https://www.moi.gov.sa", srcLabel: "moi.gov.sa"
     },
     {
-      cat: "law", t: "Strictly prohibited",
+      slug: "prohibited-offences", cat: "law", t: "Strictly prohibited",
       d: "Serious offences with severe penalties, including prison and deportation.",
       steps: [
         "Alcohol is illegal to bring in, make, sell or drink.",
@@ -949,7 +951,7 @@ footer a { color: var(--accent); }
       src: "https://www.moi.gov.sa", srcLabel: "moi.gov.sa"
     },
     {
-      cat: "law", t: "Ramadan etiquette",
+      slug: "ramadan-rules", cat: "law", t: "Ramadan etiquette",
       d: "What changes during the month of fasting.",
       steps: [
         "Do not eat, drink or smoke in public during fasting hours, even if you are not fasting.",
@@ -960,7 +962,7 @@ footer a { color: var(--accent); }
       src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
     },
     {
-      cat: "law", t: "Emergency numbers",
+      slug: "emergency-numbers", cat: "law", t: "Emergency numbers",
       d: "Save these in your phone.",
       facts: [
         ["Unified emergency (where active)", "911"],
@@ -1361,6 +1363,7 @@ footer a { color: var(--accent); }
           ${g.steps ? `<ol>${g.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>` : ""}
           ${g.warn ? `<p class="warnbox"><b>${g._dir === "rtl" ? L.imp : GT.en.imp}</b> ${esc(g.warn)}</p>` : ""}
           <div class="meta">${g._dir === "rtl" ? L.checked : GT.en.checked} <a href="${g.src}" target="_blank" rel="noopener">${g.srcLabel}</a></div>
+          <a class="fullpage" href="${g._dir === "rtl" ? "/ur" : ""}/guides/${g.slug}">${g._dir === "rtl" ? "مکمل صفحہ کھولیں اور شیئر کریں ←" : "Open full page to share →"}</a>
         </div>
       </details>`).join("") : `<p class="empty">${L.empty(esc(gQuery))}</p>`;
   }
@@ -1445,6 +1448,7 @@ footer a { color: var(--accent); }
   /* ---------- Boot ---------- */
   let saved = "en";
   try { saved = localStorage.getItem("ksar-lang") || "en"; } catch (e) {}
+  try { const q = new URLSearchParams(location.search).get("lang"); if (q) saved = q; } catch (e) {}
   show((location.hash || "#home").slice(1));
   runCheck();
   setLang(["en", "ur", "ar"].includes(saved) ? saved : "en");

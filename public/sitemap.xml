@@ -1,8 +1,347 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ksalifeguide.com/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://ksalifeguide.com/privacy.html</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://ksalifeguide.com/disclaimer.html</loc><lastmod>2026-10-24</lastmod></url>
-  <url><loc>https://ksalifeguide.com/terms.html</loc><lastmod>2026-10-24</lastmod></url>
-  <url><loc>https://ksalifeguide.com/support.html</loc><lastmod>2026-10-24</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://ksalifeguide.com/</loc>
+    <lastmod>2026-10-24</lastmod>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/disclaimer</loc>
+    <lastmod>2026-10-24</lastmod>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/terms</loc>
+    <lastmod>2026-10-24</lastmod>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/privacy</loc>
+    <lastmod>2026-10-24</lastmod>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/support</loc>
+    <lastmod>2026-10-24</lastmod>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/first-90-days-iqama</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/first-90-days-iqama"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/first-90-days-iqama"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/first-90-days-iqama</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/first-90-days-iqama"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/first-90-days-iqama"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/sim-bank-absher</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/sim-bank-absher"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/sim-bank-absher"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/sim-bank-absher</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/sim-bank-absher"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/sim-bank-absher"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/renting-home-ejar</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/renting-home-ejar"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/renting-home-ejar"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/renting-home-ejar</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/renting-home-ejar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/renting-home-ejar"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/health-insurance</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/health-insurance"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/health-insurance"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/health-insurance</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/health-insurance"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/health-insurance"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/qiwa-work-contract</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/qiwa-work-contract"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/qiwa-work-contract"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/qiwa-work-contract</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/qiwa-work-contract"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/qiwa-work-contract"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/working-hours-overtime</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/working-hours-overtime"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/working-hours-overtime"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/working-hours-overtime</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/working-hours-overtime"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/working-hours-overtime"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/leave-entitlements</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/leave-entitlements"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/leave-entitlements"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/leave-entitlements</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/leave-entitlements"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/leave-entitlements"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/change-employer-iqama-transfer</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/change-employer-iqama-transfer"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/change-employer-iqama-transfer"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/change-employer-iqama-transfer</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/change-employer-iqama-transfer"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/change-employer-iqama-transfer"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/absent-from-work-huroob</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/absent-from-work-huroob"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/absent-from-work-huroob"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/absent-from-work-huroob</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/absent-from-work-huroob"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/absent-from-work-huroob"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/resignation-2025-rules</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/resignation-2025-rules"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/resignation-2025-rules"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/resignation-2025-rules</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/resignation-2025-rules"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/resignation-2025-rules"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/family-visa</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/family-visa"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/family-visa"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/family-visa</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/family-visa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/family-visa"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/family-visit-visa</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/family-visit-visa"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/family-visit-visa"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/family-visit-visa</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/family-visit-visa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/family-visit-visa"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/driving-licence</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/driving-licence"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/driving-licence"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/driving-licence</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/driving-licence"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/driving-licence"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/foreign-licence-exchange</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/foreign-licence-exchange"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/foreign-licence-exchange"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/foreign-licence-exchange</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/foreign-licence-exchange"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/foreign-licence-exchange"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/traffic-fines</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/traffic-fines"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/traffic-fines"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/traffic-fines</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/traffic-fines"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/traffic-fines"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/car-accident-najm</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/car-accident-najm"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/car-accident-najm"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/car-accident-najm</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/car-accident-najm"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/car-accident-najm"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/exit-re-entry-visa</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/exit-re-entry-visa"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/exit-re-entry-visa"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/exit-re-entry-visa</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/exit-re-entry-visa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/exit-re-entry-visa"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/final-exit</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/final-exit"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/final-exit"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/final-exit</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/final-exit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/final-exit"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/hajj-for-residents</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/hajj-for-residents"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/hajj-for-residents"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/hajj-for-residents</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/hajj-for-residents"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/hajj-for-residents"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/makkah-entry-permit</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/makkah-entry-permit"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/makkah-entry-permit"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/makkah-entry-permit</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/makkah-entry-permit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/makkah-entry-permit"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/umrah-rawdah-nusuk</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/umrah-rawdah-nusuk"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/umrah-rawdah-nusuk"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/umrah-rawdah-nusuk</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/umrah-rawdah-nusuk"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/umrah-rawdah-nusuk"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/public-decency-fines</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/public-decency-fines"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/public-decency-fines"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/public-decency-fines</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/public-decency-fines"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/public-decency-fines"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/social-media-privacy-law</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/social-media-privacy-law"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/social-media-privacy-law"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/social-media-privacy-law</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/social-media-privacy-law"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/social-media-privacy-law"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/prohibited-offences</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/prohibited-offences"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/prohibited-offences"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/prohibited-offences</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/prohibited-offences"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/prohibited-offences"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/ramadan-rules</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/ramadan-rules"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/ramadan-rules"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/ramadan-rules</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/ramadan-rules"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/ramadan-rules"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/emergency-numbers</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/emergency-numbers"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/emergency-numbers"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/emergency-numbers</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/emergency-numbers"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/emergency-numbers"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/"/>
+  </url>
 </urlset>
