@@ -2,19 +2,19 @@
 
 Live at **ksalifeguide.com**.
 
-Free, open-source, multilingual help for people living and working in Saudi Arabia: calculators, plain-language procedure guides, and scam alerts.
+Free, multilingual help for people living and working in Saudi Arabia: calculators, plain-language procedure guides, and scam alerts.
 
 > **Not an official government website.** Always confirm on the official portal (Absher, Qiwa, Muqeem, HRSD). Content is community-maintained and may be out of date.
 
 ## Features
 
-| Feature | Status |
-|---|---|
-| End-of-service benefit calculator (Labor Law Art. 84–88) | ✅ v0.1 |
-| Dependent / levy fee calculator | 🔜 |
-| Step-by-step procedure guides | 🔜 |
-| Scam alert board | 🔜 |
-| Languages: English, Arabic, Urdu, Hindi, Bengali, Tagalog | English first |
+- 26 step-by-step guides for residents (English and Urdu), each with its own page
+- Holy places of Makkah and Madinah (13 places, English and Urdu) with Google Maps
+- End-of-service calculator (Labor Law Art. 84–88)
+- Scam message check
+- Site-wide search, light and dark themes, phone tab bar
+
+See **CLAUDE.md** for the full project handbook (accounts, rules, build and deploy).
 
 ## Privacy by design
 
@@ -24,8 +24,8 @@ Free, open-source, multilingual help for people living and working in Saudi Arab
 ## Quick start
 
 ```bash
-git clone https://github.com/<your-username>/ksa-resident-toolkit.git
-cd ksa-resident-toolkit
+git clone https://github.com/jiqbal0082/ksaresident.git
+cd ksaresident
 npm test          # run calculator tests
 npm run dev       # builds and opens http://localhost:3000
 ```
