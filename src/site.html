@@ -351,10 +351,10 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
 .pcard .acts a.pri { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .pcard[data-hl="1"] { outline: 2px solid var(--gold); outline-offset: 2px; }
 @media (min-width: 1100px) { #v-home .sec-places { grid-column: 1 / -1; } .pgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  #city-makkah .pcard:first-child { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 24px; padding: 22px; }
-  #city-makkah .pcard:first-child > :not(.acts) { grid-column: 1; }
-  #city-makkah .pcard:first-child .acts { grid-column: 2; grid-row: 1 / span 3; }
-  #city-makkah .pcard:first-child h3 { font-size: 1.35rem; } }
+  #city-makkah .pcard:first-child, #city-madinah .pcard:first-child { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 24px; padding: 22px; }
+  #city-makkah .pcard:first-child > :not(.acts), #city-madinah .pcard:first-child > :not(.acts) { grid-column: 1; }
+  #city-makkah .pcard:first-child .acts, #city-madinah .pcard:first-child .acts { grid-column: 2; grid-row: 1 / span 3; }
+  #city-makkah .pcard:first-child h3, #city-madinah .pcard:first-child h3 { font-size: 1.35rem; } }
 /* ---- Wide screens: use the full width ---- */
 @media (min-width: 1100px) {
   #v-home .herob.herob { padding-inline-end: 42%; min-height: 480px; }
