@@ -147,6 +147,9 @@ html[dir="rtl"] .amount { text-align: right; }
 .warnbox { background: var(--danger-soft); border-radius: 8px; padding: 10px 12px; font-size: .93rem; max-width: none; }
 .warnbox b { color: var(--danger); }
 .empty { color: var(--muted); }
+.donate { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; background: var(--accent-soft); border-radius: var(--radius); padding: 14px 16px; color: var(--ink); }
+.donate p { margin: 0; flex: 1 1 260px; }
+.donate-btn { text-decoration: none; display: inline-block; }
 .infobar { background: var(--warn-soft); border-bottom: 1px solid var(--line); font-size: .85rem; }
 .infobar .wrap { padding-block: 8px; }
 .infobar a { color: var(--ink); font-weight: 600; }
@@ -330,7 +333,10 @@ footer a { color: var(--accent); }
   <div class="wrap">
     <p data-i18n="f1">KSA Resident is an independent information site. It is not a government website and is not affiliated with any government body, ministry or official portal.</p>
     <p data-i18n="f3">Content is general information only. It is not legal, financial, immigration or professional advice, and it is not a recommendation to take any action. We do not guarantee that it is complete, accurate or current. You are responsible for confirming everything with the official authority before you act.</p>
-    <p data-i18n="f2">Free and open source under the MIT license. Corrections and translations welcome.</p>
+    <div class="donate">
+      <p data-i18n="f2">KSA Resident is free for everyone. If it helped you, you can support it with a small donation to keep it running and up to date.</p>
+      <a class="btn donate-btn" href="/support.html" data-i18n="donate">Donate</a>
+    </div>
     <p><a href="/disclaimer.html">Disclaimer</a> · <a href="/terms.html">Terms of use</a> · <a href="/privacy.html">Privacy</a> · <a href="https://github.com/jiqbal0082/ksaresident/issues" target="_blank" rel="noopener">Report an error</a> · <a href="https://github.com/jiqbal0082/ksaresident" target="_blank" rel="noopener">Source code</a></p>
   </div>
 </footer>
@@ -390,7 +396,8 @@ footer a { color: var(--accent); }
       s_disc: "<b>صرف خودکار جانچ۔</b> یہ عام خطرے کی علامات دیکھتی ہے، کچھ فراڈ چھوٹ سکتے ہیں اور اصل پیغام بھی مشکوک دکھ سکتا ہے۔ یہ کسی پیغام کے محفوظ یا جعلی ہونے کی تصدیق نہیں کرتی۔ شک ہو تو متعلقہ ادارے سے اس کی سرکاری ایپ یا نمبر پر رابطہ کریں۔",
       g_disc: "<b>عمومی معلومات، مشورہ نہیں۔</b> یہ رہنمائیاں عوامی طور پر دستیاب قواعد کا آسان خلاصہ ہیں۔ یہ قانونی مشورہ یا کسی کام کی سفارش نہیں۔ طریقۂ کار، فیس اور جرمانے بغیر اطلاع بدل سکتے ہیں اور ہر کیس میں مختلف ہو سکتے ہیں۔ ہر رہنمائی میں دیا گیا سرکاری پورٹل ہی واحد مستند ذریعہ ہے۔",
       f1: "کے ایس اے ریزیڈنٹ ایک آزاد معلوماتی ویب سائٹ ہے۔ یہ سرکاری ویب سائٹ نہیں اور کسی سرکاری ادارے، وزارت یا پورٹل سے وابستہ نہیں۔",
-      f2: "ایم آئی ٹی لائسنس کے تحت مفت اور اوپن سورس۔ اصلاح اور ترجمے کا خیرمقدم ہے۔",
+      f2: "کے ایس اے ریزیڈنٹ سب کے لیے مفت ہے۔ اگر اس سے آپ کو مدد ملی تو ویب سائٹ کو چلانے اور اپ ڈیٹ رکھنے کے لیے چھوٹا سا عطیہ دے سکتے ہیں۔",
+      donate: "عطیہ دیں",
       err_wage: "تنخواہ کی درست رقم درج کریں۔", err_dates: "دونوں تاریخیں درج کریں۔ آخری دن شروع کی تاریخ کے بعد ہونا چاہیے۔"
     },
     ar: {
@@ -443,7 +450,8 @@ footer a { color: var(--accent); }
       s_disc: "<b>فحص آلي فقط.</b> يبحث عن علامات تحذير شائعة وقد يفوته احتيال أو يشتبه برسالة صحيحة. لا يؤكد أن أي رسالة آمنة أو مزيفة. عند الشك تواصل مع الجهة عبر تطبيقها أو رقمها الرسمي.",
       g_disc: "<b>معلومات عامة وليست استشارة.</b> تلخص هذه الأدلة أنظمة منشورة بلغة مبسطة، ولا تُعد استشارة قانونية أو توصية باتخاذ أي إجراء. قد تتغير الإجراءات والرسوم والمخالفات دون إشعار وتختلف من حالة لأخرى. البوابة الرسمية المذكورة في كل دليل هي المرجع المعتمد الوحيد.",
       f1: "KSA Resident موقع معلومات مستقل، وليس موقعاً حكومياً ولا يتبع أي جهة أو وزارة أو بوابة رسمية.",
-      f2: "مجاني ومفتوح المصدر بترخيص MIT. نرحب بالتصحيحات والترجمات.",
+      f2: "KSA Resident مجاني للجميع. إن أفادك يمكنك دعمه بتبرع بسيط ليستمر ويبقى محدّثاً.",
+      donate: "تبرّع",
       err_wage: "أدخل أجراً صحيحاً.", err_dates: "أدخل التاريخين، ويجب أن يكون آخر يوم بعد تاريخ المباشرة."
     }
   };

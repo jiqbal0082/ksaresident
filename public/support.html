@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · KSA Resident</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap">
+<style>
+  :root { --bg:#f3f5f2; --surface:#fff; --ink:#15201b; --muted:#57635d; --line:#d6ddd7; --accent:#0b6b4e; --accent-ink:#fff; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111715; --surface:#18201d; --ink:#e8eeea; --muted:#9eaba4; --line:#2c3632; --accent:#43c393; --accent-ink:#08130e; color-scheme: dark; } }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 system-ui, sans-serif; }
+  main { max-width:680px; margin:0 auto; padding:32px max(16px, env(safe-area-inset-right, 0px)) 56px max(16px, env(safe-area-inset-left, 0px)); display:grid; gap:18px; }
+  h1 { font-size:1.8rem; margin:0; } h2 { font-size:1.1rem; margin:0 0 4px; }
+  p { margin:0; } .muted { color:var(--muted); } a { color:var(--accent); }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px; display:grid; gap:10px; }
+  .btn { justify-self:start; font-weight:600; padding:12px 18px; border-radius:8px; background:var(--accent); color:var(--accent-ink); text-decoration:none; }
+  .btn[aria-disabled="true"] { opacity:.55; pointer-events:none; }
+  [lang="ur"] { font-family:"Noto Nastaliq Urdu", serif; line-height:2.2; }
+  [lang="ar"] { font-family:"IBM Plex Sans Arabic", sans-serif; }
+</style>
+</head>
+<body>
+<main>
+  <p><a href="/">← KSA Resident</a></p>
+  <h1>Support KSA Resident</h1>
+  <p>KSA Resident is free and will stay free. Donations pay for the domain, keeping guides checked against official sources, and adding new languages.</p>
+
+  <div class="card">
+    <h2>Donate</h2>
+    <p class="muted" id="donateStatus">Online donations are being set up and will open soon.</p>
+    <a class="btn" id="donateLink" href="#" aria-disabled="true">Donate</a>
+  </div>
+
+  <div class="card">
+    <h2>Other ways to help</h2>
+    <p>Share the site in your WhatsApp and Facebook groups, and report anything outdated through the "Report an error" link at the bottom of every page.</p>
+  </div>
+
+  <div class="card" lang="ur" dir="rtl">
+    <h2>عطیہ</h2>
+    <p>کے ایس اے ریزیڈنٹ مفت ہے اور مفت رہے گی۔ عطیات سے ڈومین کا خرچ، رہنمائیوں کو سرکاری ذرائع سے چیک کرنا اور نئی زبانیں شامل کرنا ممکن ہوتا ہے۔ آن لائن عطیہ جلد شروع ہوگا۔</p>
+  </div>
+  <div class="card" lang="ar" dir="rtl">
+    <h2>التبرع</h2>
+    <p>KSA Resident مجاني وسيبقى مجانياً. تساعد التبرعات على تغطية تكلفة النطاق، ومراجعة الأدلة مع المصادر الرسمية، وإضافة لغات جديدة. سيتاح التبرع الإلكتروني قريباً.</p>
+  </div>
+
+  <p class="muted">Donations are voluntary gifts to support the website. They do not buy any service, advice or priority, and are not refundable. See the <a href="/disclaimer.html">Disclaimer</a> and <a href="/terms.html">Terms of use</a>.</p>
+</main>
+<script>
+  // Set the live donation link here once the account is ready.
+  const DONATE_URL = "";
+  if (DONATE_URL) {
+    const a = document.getElementById("donateLink");
+    a.href = DONATE_URL; a.target = "_blank"; a.rel = "noopener"; a.removeAttribute("aria-disabled");
+    document.getElementById("donateStatus").textContent = "Donations are processed securely by our payment partner.";
+  }
+</script>
+</body>
+</html>
