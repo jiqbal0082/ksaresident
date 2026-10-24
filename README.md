@@ -1,6 +1,6 @@
-# KSA Resident
+# KSA Life Guide
 
-Live at **ksaresident.com**.
+Live at **ksalifeguide.com**.
 
 Free, open-source, multilingual help for people living and working in Saudi Arabia: calculators, plain-language procedure guides, and scam alerts.
 
