@@ -52,6 +52,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 - Edit content in **src/site.html** only, then run `npm run build` and commit `public/` too (Cloudflare has no build step).
 - `npm test` must pass (EOSB tests). `node --check` the inline script after big edits.
 - URLs are extensionless on Cloudflare (`/guides/driving-licence`). `/?lang=ur` opens the app in Urdu.
+- **App routing uses real URLs (History API), not `#hash`**, so Cloudflare Web Analytics counts every view, guide and place (it tracks `pushState`, not hash changes). In src/site.html: `VPATH` (home `/`, calculator `/calculator`, guides `/guides/`, places `/places/`, scam check `/scam-check`, numbers `/numbers`), `gPath()`/`pPath()` (Urdu adds `/ur`), `go()` pushes, `route()` handles boot and the back button. Opening or expanding a guide in-app pushes `/guides/<slug>`; a refresh there loads the static guide page. `public/_redirects` rewrites `/calculator`, `/scam-check`, `/numbers` to the app. Old `/#eosb`-style links still work. Never add relative URLs to src/site.html (pages now render at nested paths).
 
 ## Design system ("Desert & oasis")
 - Tokens in `:root` of src/site.html (and mirrored in build.mjs CSS): sand `--bg #f6f1e7`, surface `#fffdf8`, palm green `--accent #0e5a43`, date gold `--gold #9a6a1c` / `#e9b45a`, hero band `#0e5a43`. Full dark mode.

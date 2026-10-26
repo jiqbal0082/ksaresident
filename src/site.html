@@ -932,8 +932,13 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     const a = e.target.closest('a[href^="#"]');
     if (!a) return;
     const v = a.getAttribute("href").slice(1);
-    if (views.includes(v)) { e.preventDefault(); show(v); window.scrollTo({ top: 0 }); try { history.replaceState(null, "", "#" + v); } catch (err) {} }
+    if (views.includes(v)) { e.preventDefault(); show(v); window.scrollTo({ top: 0 }); go(VPATH[v]); }
   });
+  /* Real URLs (History API) so Cloudflare Web Analytics counts each view, guide and place */
+  const VPATH = { home: "/", eosb: "/calculator", guides: "/guides/", places: "/places/", scams: "/scam-check", help: "/numbers" };
+  const gPath = (slug) => (lang === "ur" ? "/ur" : "") + "/guides/" + slug;
+  const pPath = (slug) => (lang === "ur" ? "/ur" : "") + "/places/" + slug;
+  function go(path) { try { if (location.pathname !== path || location.hash) history.pushState(null, "", path); } catch (e) {} }
 
   /* ---------- EOSB logic (mirrors src/lib/eosb.js) ---------- */
   const FULL = ["employer_termination", "contract_end", "employer_breach_art81", "force_majeure_art87", "female_marriage_art87", "female_childbirth_art87"];
@@ -2003,6 +2008,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     renderGuides();
   });
   $("guideSearch").addEventListener("input", (e) => { gQuery = e.target.value; renderGuides(); });
+  $("guideList").addEventListener("toggle", (e) => { const d = e.target; if (d.matches && d.matches("details.guide") && d.open) go(gPath(d.dataset.slug)); }, true);
   renderGuides();
 
 
@@ -2470,11 +2476,11 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       return `<button type="button" class="city" data-city="${city}"><span class="ib">${ico("hajj")}</span><b>${P[city]}</b><small>${list.slice(0, 4).map(p => esc(p.name.split(" (")[0])).join(" · ")}…</small><span class="go">${list.length} ${P.places} · ${P.open}</span></button>`;
     }).join("");
   }
-  function openPlaces(target) {
+  function openPlaces(target, nopush) {
     show("places"); renderPlaces();
     const el = target && (document.getElementById("city-" + target) || document.querySelector(`.pcard[data-slug="${target}"]`));
     if (el) { el.scrollIntoView({ block: "start", behavior: "smooth" }); if (el.classList.contains("pcard")) { el.dataset.hl = "1"; setTimeout(() => el.removeAttribute("data-hl"), 2200); } } else window.scrollTo({ top: 0 });
-    try { history.replaceState(null, "", "#places"); } catch (e) {}
+    if (!nopush) go(el && el.classList.contains("pcard") ? pPath(target) : VPATH.places);
   }
   document.addEventListener("click", (e) => {
     const c = e.target.closest(".city[data-city]"); if (c) { openPlaces(c.dataset.city); return; }
@@ -2489,25 +2495,25 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       const n = GUIDES.filter(g => g.cat === c.id).length;
       return `<button type="button" class="tile" data-cat="${c.id}"><span class="ib">${ico(c.id)}</span><b>${esc(catLabel(c.id))}</b><small>${n} ${H.guides}</small></button>`;
     }).join("") + `<button type="button" class="tile" data-cat="all"><span class="ib">${ico("book")}</span><b>${esc(catLabel("all") === "All" ? "All guides" : catLabel("all"))}</b><small>${GUIDES.length} ${H.guides}</small></button>`;
-    $("plist").innerHTML = POPULAR.map(sl => { const g = guideIn(slugIndex(sl)); return `<li><a href="#guides" data-open="${sl}">${ico(g.cat)}<span>${esc(g.t)}</span></a></li>`; }).join("");
+    $("plist").innerHTML = POPULAR.map(sl => { const g = guideIn(slugIndex(sl)); return `<li><a href="${gPath(sl)}" data-open="${sl}">${ico(g.cat)}<span>${esc(g.t)}</span></a></li>`; }).join("");
     $("quick").innerHTML = QUICK.map(sl => `<button type="button" data-open="${sl}">${esc(guideIn(slugIndex(sl)).t)}</button>`).join("");
     renderPlaces();
     if ($("q").value) runSearch();
     if ($("gq").value) runSearch($("gq"), $("gqres"));
   }
-  function openGuide(slug) {
+  function openGuide(slug, nopush) {
     gCat = "all"; gQuery = ""; $("guideSearch").value = "";
     document.querySelectorAll("#guideCats .chip").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.cat === "all")));
     show("guides"); renderGuides();
     const d = document.querySelector(`#guideList details[data-slug="${slug}"]`);
     if (d) { d.open = true; d.dataset.hl = "1"; setTimeout(() => d.removeAttribute("data-hl"), 2200); d.scrollIntoView({ block: "start", behavior: "smooth" }); }
-    try { history.replaceState(null, "", "#guides"); } catch (e) {}
+    if (!nopush) go(d ? gPath(slug) : VPATH.guides);
   }
   function openCat(cat) {
     gCat = cat; gQuery = ""; $("guideSearch").value = "";
     document.querySelectorAll("#guideCats .chip").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.cat === cat)));
     show("guides"); renderGuides(); window.scrollTo({ top: 0 });
-    try { history.replaceState(null, "", "#guides"); } catch (e) {}
+    go(VPATH.guides);
   }
   const TOOLS = [
     { view: "eosb", icon: "calc", key: "tool_eosb_t", words: "end of service eosb gratuity award resign resignation termination article 84 85 calculator مكافأة نهاية الخدمة اختتام ملازمت معاوضہ استعفیٰ" },
@@ -2549,7 +2555,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   $("q").addEventListener("keydown", (e) => { if (e.key === "Escape") { $("q").value = ""; runSearch(); } if (e.key === "Enter") { const f = $("qres").querySelector("button"); if (f) { e.preventDefault(); f.click(); } } });
   document.addEventListener("click", (e) => {
     const o = e.target.closest("[data-open]"); if (o) { e.preventDefault(); $("q").value = ""; runSearch(); gsOpen(false); openGuide(o.dataset.open); return; }
-    const v = e.target.closest(".qres [data-view]"); if (v) { $("q").value = ""; runSearch(); gsOpen(false); show(v.dataset.view); window.scrollTo({ top: 0 }); return; }
+    const v = e.target.closest(".qres [data-view]"); if (v) { $("q").value = ""; runSearch(); gsOpen(false); show(v.dataset.view); window.scrollTo({ top: 0 }); go(VPATH[v.dataset.view]); return; }
     const c = e.target.closest(".tile[data-cat]"); if (c) { openCat(c.dataset.cat); return; }
     if (!e.target.closest(".qwrap")) $("qres").hidden = true;
     if (!e.target.closest("#gsWrap") && !e.target.closest("#gsBtn")) { if (gsWrap.classList.contains("open") && !matchMedia("(min-width: 1100px)").matches) gsOpen(false); else gqres.hidden = true; }
@@ -2698,7 +2704,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     const loc = lang === "ur" ? "ur-PK" : lang === "ar" ? "ar-SA" : "en-GB";
     const fmt = d => { if (lang !== "en") return d.slice(8, 10) + "/" + d.slice(5, 7) + "/" + d.slice(0, 4); try { return new Intl.DateTimeFormat(loc + "-u-ca-gregory-nu-latn", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(d + "T00:00:00Z")); } catch (e) { return d; } };
     const go = lang === "ur" ? "رہنمائی ←" : lang === "ar" ? "الدليل ←" : "Read guide →";
-    $("updates").innerHTML = UPDATES.map(u => { const t = (lang === "ur" ? u.ur : u.en); return `<li><a href="#guides" data-open="${u.open}"><time datetime="${u.date}">${fmt(u.date)}</time><span><b>${esc(t[0])}</b><small>${esc(t[1])}</small></span><span class="go">${go}</span></a></li>`; }).join("");
+    $("updates").innerHTML = UPDATES.map(u => { const t = (lang === "ur" ? u.ur : u.en); return `<li><a href="${gPath(u.open)}" data-open="${u.open}"><time datetime="${u.date}">${fmt(u.date)}</time><span><b>${esc(t[0])}</b><small>${esc(t[1])}</small></span><span class="go">${go}</span></a></li>`; }).join("");
   }
 
   /* ---------- Boot ---------- */
@@ -2706,7 +2712,19 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   try { saved = localStorage.getItem("ksar-lang") || "en"; } catch (e) {}
   try { const q = new URLSearchParams(location.search).get("lang"); if (q) saved = q; } catch (e) {}
   try { $("st-g").textContent = GUIDES.length; $("st-p").textContent = PLACES.length; } catch (e) {}
-  show((location.hash || "#home").slice(1));
+  function route() {
+    const h = (location.hash || "").slice(1);
+    if (h && views.includes(h)) { show(h); return; }
+    const p = location.pathname.replace(/\/+$/, "") || "/";
+    let m;
+    if ((m = p.match(/^(?:\/ur)?\/guides\/([\w-]+)$/))) { openGuide(m[1], true); return; }
+    if ((m = p.match(/^(?:\/ur)?\/places\/([\w-]+)$/))) { openPlaces(m[1], true); return; }
+    if (/^(?:\/ur)?\/guides$/.test(p)) { show("guides"); return; }
+    if (/^(?:\/ur)?\/places$/.test(p)) { show("places"); return; }
+    show(Object.keys(VPATH).find(k => VPATH[k] === p) || "home");
+  }
+  window.addEventListener("popstate", () => { route(); });
+  route();
   runCheck();
   setLang(["en", "ur", "ar"].includes(saved) ? saved : "en");
 })();

@@ -218,9 +218,9 @@ ${body}
       <li><a href="${lang === 'ur' ? '/ur' : ''}/guides/">${L.all}</a></li>
       <li><a href="${lang === 'ur' ? '/guides/' : '/ur/guides/'}">${lang === 'ur' ? 'English guides' : '<span lang="ur">اردو رہنمائیاں</span>'}</a></li>
       <li><a href="${lang === 'ur' ? '/ur' : ''}/places/">${L.places}</a></li>
-      <li><a href="/${lang === 'ur' ? '?lang=ur' : ''}#eosb">${L.eosb}</a></li>
-      <li><a href="/${lang === 'ur' ? '?lang=ur' : ''}#scams">${L.scams}</a></li>
-      <li><a href="/${lang === 'ur' ? '?lang=ur' : ''}#help">${L.help}</a></li></ul></nav>
+      <li><a href="/calculator${lang === 'ur' ? '?lang=ur' : ''}">${L.eosb}</a></li>
+      <li><a href="/scam-check${lang === 'ur' ? '?lang=ur' : ''}">${L.scams}</a></li>
+      <li><a href="/numbers${lang === 'ur' ? '?lang=ur' : ''}">${L.help}</a></li></ul></nav>
     <nav class="fcol" aria-label="${L.fhS}"><h2>${L.fhS}</h2><ul class="flinks">
       <li><a href="/disclaimer">${L.disc}</a></li><li><a href="/terms">${L.terms}</a></li>
       <li><a href="/privacy">${L.priv}</a></li><li><a href="/support">${L.sup}</a></li></ul></nav>
