@@ -69,6 +69,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 
 ## Current state (Oct 2026)
 - Live: home with search, 8 life-stage tiles, tools, holy places, most-read; desktop Guides ▾ dropdown (life stages); "Numbers & portals" view (#help: NUMS, PORTALS, HSRC in src/site.html — 8 numbers, 12 portals, last checked 24 Oct 2026); 31 guides EN/UR (incl. 5 flight guides: airports-terminals-parking, flight-delay-cancellation-rights, missed-flight, customs-cash-medicines, before-you-fly-checklist; category "travel" now labelled "Travel & flights"); 14 holy places EN/UR with Google Maps (Madinah incl. Masjid al-Ghamamah); EOSB calculator; scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
+- In-app guides end with a "Related guides" block (`relatedHtml()` in src/site.html: next 3 guides in the same category, EN/UR/AR heading, `data-open` links). Static guide pages already list all same-category guides (build.mjs).
 - Home "Latest updates" feed: `UPDATES` array in src/site.html (date, guide slug, EN/UR title + line), newest first. Add an item whenever a rule changes or new guides go live; every item must be sourced inside its linked guide. Footer follows: Facebook only. YouTube link removed until the first videos are uploaded; re-add the `.fbtn.yt` button (styles still in place) in src/site.html footer and build.mjs footer then.
 - Week-1 launch posts written (Claude artifact "KSA Life Guide Launch Posts").
 

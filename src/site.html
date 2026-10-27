@@ -189,6 +189,17 @@ html[dir="rtl"] .amount { text-align: right; }
 .empty { color: var(--muted); }
 .fullpage { justify-self: start; font-weight: 600; color: var(--accent); text-decoration: none; }
 .fullpage:hover { text-decoration: underline; }
+.relg { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 8px; }
+.relg h4 { margin: 0; font: 500 .74rem/1.2 "IBM Plex Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+html[lang="ur"] .relg h4, .guide[lang="ur"] .relg h4 { font: 600 .9rem/1.8 "Noto Nastaliq Urdu", serif; letter-spacing: 0; text-transform: none; }
+.relg ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.relg a { color: var(--ink); text-decoration: none; font-weight: 600; }
+.relg li { display: flex; gap: 8px; align-items: baseline; }
+.relg li::before { content: "→"; color: var(--accent); font-weight: 700; flex: none; }
+.guide[dir="rtl"] .relg { direction: rtl; text-align: right; }
+.guide[dir="rtl"] .relg li::before { content: "←"; }
+.guide[lang="ur"] .relg a { font-weight: 600; font-size: .95rem; line-height: 2; }
+.relg a:hover { color: var(--accent); text-decoration: underline; }
 .mail { font-family: var(--mono); font-size: .88rem; user-select: all; direction: ltr; unicode-bidi: isolate; }
 .donate { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; background: var(--accent-soft); border-radius: var(--radius); padding: 14px 16px; color: var(--ink); }
 .donate p { margin: 0; flex: 1 1 260px; }
@@ -1991,6 +2002,15 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     if (lang === "ur" && GUIDES_UR[i]) return { ...g, ...GUIDES_UR[i], _dir: "rtl" };
     return { ...g, _dir: "ltr" };
   }
+  const REL_T = { en: "Related guides", ur: "متعلقہ رہنمائیاں", ar: "أدلة ذات صلة" };
+  function relatedHtml(g) {
+    const same = GUIDES.map((x, i) => i).filter(i => GUIDES[i].cat === g.cat);
+    const pos = same.findIndex(i => GUIDES[i].slug === g.slug);
+    const pick = [1, 2, 3].map(k => same[(pos + k) % same.length]).filter((v, j, a) => GUIDES[v].slug !== g.slug && a.indexOf(v) === j);
+    if (!pick.length) return "";
+    const h = g._dir === "rtl" ? REL_T.ur : (REL_T[lang] || REL_T.en);
+    return `<nav class="relg" aria-label="${h}"><h4>${h}</h4><ul>${pick.map(i => { const r = guideIn(i); return `<li><a href="${gPath(r.slug)}" data-open="${r.slug}">${esc(r.t)}</a></li>`; }).join("")}</ul></nav>`;
+  }
   function renderGuides() {
     const L = GT[lang] || GT.en;
     $("guideSearch").placeholder = L.ph;
@@ -2009,6 +2029,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
           ${g.warn ? `<p class="warnbox"><b>${g._dir === "rtl" ? L.imp : GT.en.imp}</b> ${esc(g.warn)}</p>` : ""}
           <div class="meta">${g._dir === "rtl" ? L.checked : GT.en.checked} <a href="${g.src}" target="_blank" rel="noopener">${g.srcLabel}</a>${g.more ? " · " + g.more.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener" dir="ltr">${esc(l)}</a>`).join(" · ") : ""}</div>
           <a class="fullpage" href="${g._dir === "rtl" ? "/ur" : ""}/guides/${g.slug}">${g._dir === "rtl" ? "مکمل صفحہ کھولیں اور شیئر کریں ←" : "Open full page to share →"}</a>
+          ${relatedHtml(g)}
         </div>
       </details>`).join("") : `<p class="empty">${L.empty(esc(gQuery))}</p>`;
   }
