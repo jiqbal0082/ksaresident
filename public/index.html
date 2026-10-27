@@ -1285,6 +1285,12 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       d: "Find the right terminal, get there, and avoid drop-off and parking fees.",
       need: "Your boarding pass or airline app (it shows your terminal).",
       facts: [
+        ["Airport status (reported, 27 Oct 2026)", "Changes daily. Confirm your flight with your airline before you leave for the airport."],
+        ["Riyadh (RUH)", "Partly operating: domestic flights and some international flights by Saudi airlines. Some Riyadh flights operate from Qassim airport (ELQ)."],
+        ["Jeddah (JED)", "Operating, with some delays and cancellations"],
+        ["Dammam (DMM)", "Operating, with some delays and cancellations"],
+        ["Other airports", "Status may differ. Check your airline or the airport's website."],
+        ["Foreign airlines", "Some have paused or reduced flights to Saudi Arabia. Check your airline's travel notices."],
         ["Riyadh Terminal 1", "flynas and flyadeal international flights"],
         ["Riyadh Terminal 2", "Saudia and Riyadh Air international flights"],
         ["Riyadh Terminal 3", "flynas and flyadeal domestic flights"],
@@ -1306,7 +1312,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       ],
       warn: "Flight schedules can change at short notice. Check your flight status in the airline app before you leave for the airport.",
       src: "https://www.kkia.sa/en/Parking-And-Transport", srcLabel: "kkia.sa (Riyadh airport)",
-      more: [["flynas, Riyadh terminal update", "https://www.flynas.com/en/riyadh-terminal-update"], ["Time Out Riyadh, terminal changes (Mar 2026)", "https://www.timeoutriyadh.com/news/king-khalid-international-airport"], ["kaia.sa (Jeddah airport)", "https://www.kaia.sa/About-KAIA"], ["Khaleej Times, Jeddah terminal moves (Oct 2026)", "https://www.khaleejtimes.com/aviation/jeddah-airport-move-north-terminal-flights-to-t4-hajj-umrah-terminals-oct-17"], ["Gulf News, Jeddah baggage advice (2023)", "https://gulfnews.com/world/gulf/saudi/saudi-arabia-airport-issues-advice-on-prohibited-baggage-1.95323464"]]
+      more: [["U.S. Mission Saudi Arabia, airport status (27 Oct 2026)", "https://sa.usembassy.gov/security-alert-u-s-mission-to-saudi-arabia-october-27-2026/"], ["Wego, Saudi flight status (Oct 2026)", "https://blog.wego.com/saudi-arabia-flight-resumption-2026/"], ["flynas, Riyadh terminal update", "https://www.flynas.com/en/riyadh-terminal-update"], ["Time Out Riyadh, terminal changes (Mar 2026)", "https://www.timeoutriyadh.com/news/king-khalid-international-airport"], ["kaia.sa (Jeddah airport)", "https://www.kaia.sa/About-KAIA"], ["Khaleej Times, Jeddah terminal moves (Oct 2026)", "https://www.khaleejtimes.com/aviation/jeddah-airport-move-north-terminal-flights-to-t4-hajj-umrah-terminals-oct-17"], ["Gulf News, Jeddah baggage advice (2023)", "https://gulfnews.com/world/gulf/saudi/saudi-arabia-airport-issues-advice-on-prohibited-baggage-1.95323464"]]
     },
     {
       slug: "flight-delay-cancellation-rights", cat: "travel", t: "Flight delayed, cancelled or overbooked: your rights",
@@ -1767,6 +1773,12 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       d: "صحیح ٹرمینل تلاش کریں، وہاں پہنچیں، اور ڈراپ آف اور پارکنگ فیس سے بچیں۔",
       need: "بورڈنگ پاس یا ایئرلائن ایپ (اس پر آپ کا ٹرمینل لکھا ہوتا ہے)۔",
       facts: [
+        ["ایئرپورٹس کی صورتحال (رپورٹ شدہ، 27 اکتوبر 2026)", "روزانہ بدل رہی ہے۔ ایئرپورٹ جانے سے پہلے اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"],
+        ["ریاض (RUH)", "جزوی طور پر فعال: اندرونِ ملک پروازیں اور سعودی ایئرلائنز کی کچھ بین الاقوامی پروازیں۔ ریاض کی کچھ پروازیں قصیم ایئرپورٹ (ELQ) سے چل رہی ہیں۔"],
+        ["جدہ (JED)", "فعال، کچھ تاخیر اور منسوخیوں کے ساتھ"],
+        ["دمام (DMM)", "فعال، کچھ تاخیر اور منسوخیوں کے ساتھ"],
+        ["دیگر ایئرپورٹس", "صورتحال مختلف ہو سکتی ہے۔ اپنی ایئرلائن یا ایئرپورٹ کی ویب سائٹ چیک کریں۔"],
+        ["غیر ملکی ایئرلائنز", "کچھ نے سعودی عرب کی پروازیں روک دی ہیں یا کم کر دی ہیں۔ اپنی ایئرلائن کے سفری نوٹس چیک کریں۔"],
         ["ریاض ٹرمینل 1", "فلائی ناس اور فلائی ادیل کی بین الاقوامی پروازیں"],
         ["ریاض ٹرمینل 2", "سعودیہ اور ریاض ایئر کی بین الاقوامی پروازیں"],
         ["ریاض ٹرمینل 3", "فلائی ناس اور فلائی ادیل کی اندرونِ ملک پروازیں"],
@@ -2701,6 +2713,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
 
   /* ---------- Latest updates (dated rule changes, newest first; every item sourced in its guide) ---------- */
   const UPDATES = [
+    { date: "2026-10-27", open: "airports-terminals-parking", en: ["Airport status update", "Reported: Jeddah and Dammam operating with some delays; Riyadh partly operating. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ کے مطابق: جدہ اور دمام کچھ تاخیر کے ساتھ فعال؛ ریاض جزوی طور پر فعال۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
     { date: "2026-10-24", open: "airports-terminals-parking", en: ["New: five guides for flights and airports", "Terminals, parking, delays and your GACA rights, missed flights, customs and a before-you-fly checklist."], ur: ["نئی: پروازوں اور ایئرپورٹس کے لیے پانچ رہنمائیاں", "ٹرمینل، پارکنگ، تاخیر اور GACA حقوق، چھوٹی پرواز، کسٹمز اور سفر سے پہلے کی چیک لسٹ۔"] },
     { date: "2026-10-17", open: "airports-terminals-parking", en: ["Jeddah airport: North Terminal flights moved", "Reported: flights moved to Terminal 4 and the Hajj and Umrah terminals. Check your boarding pass."], ur: ["جدہ ایئرپورٹ: نارتھ ٹرمینل کی پروازیں منتقل", "رپورٹ کے مطابق پروازیں ٹرمینل 4 اور حج و عمرہ ٹرمینل منتقل ہوئیں۔ بورڈنگ پاس چیک کریں۔"] },
     { date: "2026-05-22", open: "customs-cash-medicines", en: ["Power banks: cabin bag only, no charging on board", "Reported GACA rules: no more than two power banks per passenger."], ur: ["پاور بینک: صرف کیبن بیگ میں، جہاز میں چارجنگ منع", "رپورٹ شدہ GACA قواعد: فی مسافر زیادہ سے زیادہ دو پاور بینک۔"] },
