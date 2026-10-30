@@ -72,6 +72,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 - In-app guides end with a "Related guides" block (`relatedHtml()` in src/site.html: next 3 guides in the same category, EN/UR/AR heading, `data-open` links). Static guide pages already list all same-category guides (build.mjs).
 - Home "Latest updates" feed: `UPDATES` array in src/site.html (date, guide slug, EN/UR title + line), newest first. Add an item whenever a rule changes or new guides go live; every item must be sourced inside its linked guide. Footer follows: Facebook only. YouTube link removed until the first videos are uploaded; re-add the `.fbtn.yt` button (styles still in place) in src/site.html footer and build.mjs footer then.
 - Week-1 launch posts written (Claude artifact "KSA Life Guide Launch Posts").
+- Last full review: 31 Oct 2026 (tests pass, EN/UR in sync, all guides dated 2026-10-24; removed "open source" wording from terms.html).
 
 ## Fast-changing facts to re-check monthly
 - Riyadh/Jeddah airline terminals (changed Feb and Oct 2026), KKIA parking rates and the SAR 575 drop-off fee.
