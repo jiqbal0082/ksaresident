@@ -1,4 +1,5 @@
 # App views served by the single-page app (rewrite, URL stays the same)
 /calculator  /  200
+/dependent-fee  /  200
 /scam-check  /  200
 /numbers     /  200

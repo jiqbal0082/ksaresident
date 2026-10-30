@@ -39,8 +39,8 @@ Business/income setup (ads, donations, sponsors) is **not done yet**. Plan: regi
 ## How the code works
 ```
 src/site.html        The app (single page): HTML + CSS + JS. Holds ALL content data:
-                     CATS, GUIDES (31, each with slug; optional `more: [[label, url]]` extra sources), GUIDES_UR, PLACES (14), PLACES_UR,
-                     translations T.ur / T.ar, home search, tabs, calculator, scam check.
+                     CATS, GUIDES (34, each with slug; optional `more: [[label, url]]` extra sources; optional `checked: "YYYY-MM-DD"` overrides the global Last checked date), GUIDES_UR, PLACES (14), PLACES_UR,
+                     translations T.ur / T.ar, home search, tabs, EOSB calculator, dependent fee calculator (#v-dep, `runDep()`, SAR 400/month), scam check.
 src/lib/eosb.js      End-of-service calculation (Labor Law Art. 84–88) + tests in tests/.
 scripts/build.mjs    Builds public/: index.html (wraps src/site.html), one page per guide
                      (public/guides/<slug>.html, public/ur/guides/<slug>.html), one page per
@@ -53,7 +53,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 - Edit content in **src/site.html** only, then run `npm run build` and commit `public/` too (Cloudflare has no build step).
 - `npm test` must pass (EOSB tests). `node --check` the inline script after big edits.
 - URLs are extensionless on Cloudflare (`/guides/driving-licence`). `/?lang=ur` opens the app in Urdu.
-- **App routing uses real URLs (History API), not `#hash`**, so Cloudflare Web Analytics counts every view, guide and place (it tracks `pushState`, not hash changes). In src/site.html: `VPATH` (home `/`, calculator `/calculator`, guides `/guides/`, places `/places/`, scam check `/scam-check`, numbers `/numbers`), `gPath()`/`pPath()` (Urdu adds `/ur`), `go()` pushes, `route()` handles boot and the back button. Opening or expanding a guide in-app pushes `/guides/<slug>`; a refresh there loads the static guide page. `public/_redirects` rewrites `/calculator`, `/scam-check`, `/numbers` to the app. Old `/#eosb`-style links still work. Never add relative URLs to src/site.html (pages now render at nested paths).
+- **App routing uses real URLs (History API), not `#hash`**, so Cloudflare Web Analytics counts every view, guide and place (it tracks `pushState`, not hash changes). In src/site.html: `VPATH` (home `/`, calculator `/calculator`, dependent fee `/dependent-fee`, guides `/guides/`, places `/places/`, scam check `/scam-check`, numbers `/numbers`), `gPath()`/`pPath()` (Urdu adds `/ur`), `go()` pushes, `route()` handles boot and the back button. Opening or expanding a guide in-app pushes `/guides/<slug>`; a refresh there loads the static guide page. `public/_redirects` rewrites `/calculator`, `/dependent-fee`, `/scam-check`, `/numbers` to the app. Old `/#eosb`-style links still work. Never add relative URLs to src/site.html (pages now render at nested paths).
 
 ## Design system ("Desert & oasis")
 - Tokens in `:root` of src/site.html (and mirrored in build.mjs CSS): sand `--bg #f6f1e7`, surface `#fffdf8`, palm green `--accent #0e5a43`, date gold `--gold #9a6a1c` / `#e9b45a`, hero band `#0e5a43`. Full dark mode.
@@ -66,10 +66,10 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 2. Check at phone width and desktop (Playwright with `/opt/pw-browsers/chromium` if available).
 3. Commit with a clear message and push to `main`; Cloudflare deploys in ~1 minute.
 4. If guides/places were added, resubmit `https://ksalifeguide.com/sitemap.xml` in Search Console.
-5. Update the "Last checked" date (`CHECKED` in build.mjs and the guide meta line) when facts are re-verified.
+5. Update the "Last checked" date when facts are re-verified: global `CHECKED` in build.mjs plus `GT.*.checked` in src/site.html, or a per-guide `checked` field.
 
 ## Current state (Oct 2026)
-- Live: home with search, 8 life-stage tiles, tools, holy places, most-read; desktop Guides ▾ dropdown (life stages); "Numbers & portals" view (#help: NUMS, PORTALS, HSRC in src/site.html — 8 numbers, 12 portals, last checked 24 Oct 2026); 31 guides EN/UR (incl. 5 flight guides: airports-terminals-parking, flight-delay-cancellation-rights, missed-flight, customs-cash-medicines, before-you-fly-checklist; category "travel" now labelled "Travel & flights"); 14 holy places EN/UR with Google Maps (Madinah incl. Masjid al-Ghamamah); EOSB calculator; scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
+- Live: home with search, 8 life-stage tiles, tools, holy places, most-read; desktop Guides ▾ dropdown (life stages); "Numbers & portals" view (#help: NUMS, PORTALS, HSRC in src/site.html — 8 numbers, 12 portals, last checked 24 Oct 2026); 34 guides EN/UR (incl. iqama-renewal, unpaid-salary-labour-complaint, national-address added 31 Oct 2026; 5 flight guides: airports-terminals-parking, flight-delay-cancellation-rights, missed-flight, customs-cash-medicines, before-you-fly-checklist; category "travel" now labelled "Travel & flights"); 14 holy places EN/UR with Google Maps (Madinah incl. Masjid al-Ghamamah); EOSB calculator; dependent fee calculator (/dependent-fee); scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
 - In-app guides end with a "Related guides" block (`relatedHtml()` in src/site.html: next 3 guides in the same category, EN/UR/AR heading, `data-open` links). Static guide pages already list all same-category guides (build.mjs).
 - Home "Latest updates" feed: `UPDATES` array in src/site.html (date, guide slug, EN/UR title + line), newest first. Add an item whenever a rule changes or new guides go live; every item must be sourced inside its linked guide. Footer follows: Facebook only. YouTube link removed until the first videos are uploaded; re-add the `.fbtn.yt` button (styles still in place) in src/site.html footer and build.mjs footer then.
 - Week-1 launch posts written (Claude artifact "KSA Life Guide Launch Posts").
@@ -85,7 +85,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 1. WhatsApp Channel link → add "Follow on WhatsApp" button.
 2. Week-2 posts based on Web Analytics "Paths".
 3. Arabic translation of guides and holy places (with their own pages).
-4. New calculators: dependent fee, exit re-entry cost, overtime pay.
-5. New guides: Premium Residency, GOSI, car ownership transfer, disputing fines, domestic worker visas; long-tail practical topics (degree attestation for Pakistan/India/Philippines, number plate types, Riyadh Metro fares and hours, checking iqama/visa status, Huroob removal rules, SIM numbers in your name). Idea from comparing lifeinsaudiarabia.net: volume + freshness; never copy its text.
+4. New calculators: exit re-entry cost, overtime pay, iqama renewal cost (dependent fee done 31 Oct 2026).
+5. New guides (next, from the 31 Oct gap review): car basics (Istimara, Fahas, insurance, ownership transfer), death of a family member and repatriation, baby born in KSA, GOSI, embassy passport renewal (PK/IN/PH links only), bank account frozen, domestic worker visa (Musaned); also Premium Residency, car ownership transfer, disputing fines, domestic worker visas; long-tail practical topics (degree attestation for Pakistan/India/Philippines, number plate types, Riyadh Metro fares and hours, checking iqama/visa status, Huroob removal rules, SIM numbers in your name). Idea from comparing lifeinsaudiarabia.net: volume + freshness; never copy its text.
 6. Dedicated project Gmail as owner of all accounts; second Facebook admin; 2FA everywhere.
 7. Legal review of disclaimer by a Saudi lawyer before ads/sponsors; Pakistan business setup before any income.

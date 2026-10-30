@@ -124,7 +124,7 @@ const T = {
     share: 'Share on WhatsApp', copy: 'Copy link', copied: 'Link copied',
     related: 'Related guides', tools: 'Free tools', toolsText: 'End-of-service calculator and scam message check.', openTools: 'Open KSA Life Guide',
     foot1: 'KSA Life Guide is an independent information site, not affiliated with any government body. Content is general information only, not legal or professional advice.',
-    fhG: 'Guides and tools', fhS: 'About this site', fhC: 'Contact', places: 'Holy places', eosb: 'End-of-service calculator', scams: 'Scam check', help: 'Numbers & portals',
+    fhG: 'Guides and tools', fhS: 'About this site', fhC: 'Contact', places: 'Holy places', eosb: 'End-of-service calculator', dep: 'Dependent fee calculator', scams: 'Scam check', help: 'Numbers & portals',
     disc: 'Disclaimer', terms: 'Terms of use', priv: 'Privacy', sup: 'Support the site', fb: 'Facebook', donBtn: 'Donate',
     don: 'KSA Life Guide is free for everyone. If it helped you, you can support it with a small donation to keep it running and up to date.',
     legal: 'Content is general information only. It is not legal, financial, immigration or professional advice, and it is not a recommendation to take any action. Confirm everything with the official authority before you act.',
@@ -142,7 +142,7 @@ const T = {
     share: 'واٹس ایپ پر شیئر کریں', copy: 'لنک کاپی کریں', copied: 'لنک کاپی ہو گیا',
     related: 'متعلقہ رہنمائیاں', tools: 'مفت ٹولز', toolsText: 'اختتامِ ملازمت کیلکولیٹر اور فراڈ پیغام چیک۔', openTools: 'کے ایس اے لائف گائیڈ کھولیں',
     foot1: 'کے ایس اے لائف گائیڈ ایک آزاد معلوماتی ویب سائٹ ہے، کسی سرکاری ادارے سے وابستہ نہیں۔ مواد صرف عمومی معلومات ہے، قانونی یا پیشہ ورانہ مشورہ نہیں۔',
-    fhG: 'رہنمائیاں اور ٹولز', fhS: 'ویب سائٹ کے بارے میں', fhC: 'رابطہ', places: 'مقدس مقامات', eosb: 'اختتامِ ملازمت کیلکولیٹر', scams: 'فراڈ پیغام چیک', help: 'نمبرز اور پورٹلز',
+    fhG: 'رہنمائیاں اور ٹولز', fhS: 'ویب سائٹ کے بارے میں', fhC: 'رابطہ', places: 'مقدس مقامات', eosb: 'اختتامِ ملازمت کیلکولیٹر', dep: 'مرافقین فیس کیلکولیٹر', scams: 'فراڈ پیغام چیک', help: 'نمبرز اور پورٹلز',
     disc: 'ڈس کلیمر', terms: 'شرائطِ استعمال', priv: 'پرائیویسی', sup: 'ویب سائٹ کی مدد کریں', fb: 'فیس بک', donBtn: 'عطیہ دیں',
     don: 'کے ایس اے لائف گائیڈ سب کے لیے مفت ہے۔ اگر اس سے آپ کو مدد ملی تو ایک چھوٹے سے عطیے سے اسے چلانے اور اپ ڈیٹ رکھنے میں مدد کریں۔',
     legal: 'یہاں موجود مواد صرف عمومی معلومات ہے۔ یہ قانونی، مالی، امیگریشن یا پیشہ ورانہ مشورہ نہیں اور کسی کام کی سفارش بھی نہیں۔ کوئی قدم اٹھانے سے پہلے متعلقہ سرکاری ادارے سے تصدیق کریں۔',
@@ -219,6 +219,7 @@ ${body}
       <li><a href="${lang === 'ur' ? '/guides/' : '/ur/guides/'}">${lang === 'ur' ? 'English guides' : '<span lang="ur">اردو رہنمائیاں</span>'}</a></li>
       <li><a href="${lang === 'ur' ? '/ur' : ''}/places/">${L.places}</a></li>
       <li><a href="/calculator${lang === 'ur' ? '?lang=ur' : ''}">${L.eosb}</a></li>
+      <li><a href="/dependent-fee${lang === 'ur' ? '?lang=ur' : ''}">${L.dep}</a></li>
       <li><a href="/scam-check${lang === 'ur' ? '?lang=ur' : ''}">${L.scams}</a></li>
       <li><a href="/numbers${lang === 'ur' ? '?lang=ur' : ''}">${L.help}</a></li></ul></nav>
     <nav class="fcol" aria-label="${L.fhS}"><h2>${L.fhS}</h2><ul class="flinks">
@@ -261,7 +262,7 @@ EN.forEach((base, i) => {
   ${g.facts ? `<h2>${L.facts}</h2><dl class="facts">${g.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}
   ${g.steps ? `<h2>${L.steps}</h2><ol>${g.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>` : ''}
   ${g.warn ? `<p class="warn"><b>${L.imp}</b> ${esc(g.warn)}</p>` : ''}
-  <p class="meta">${L.checked(CHECKED, base.src, base.srcLabel)}${base.more ? ' · ' + base.more.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener" dir="ltr">${esc(l)}</a>`).join(' · ') : ''}</p>
+  <p class="meta">${L.checked(base.checked || CHECKED, base.src, base.srcLabel)}${base.more ? ' · ' + base.more.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener" dir="ltr">${esc(l)}</a>`).join(' · ') : ''}</p>
 </article>
 <div class="share">
   <a class="wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">${L.share}</a>
@@ -273,7 +274,7 @@ ${related ? `<section class="cat"><h2>${L.related}</h2><ul class="related">${rel
     const jsonld = {
       '@context': 'https://schema.org',
       '@graph': [
-        { '@type': 'Article', headline: g.t, description: g.d, inLanguage: lang, dateModified: CHECKED, mainEntityOfPage: SITE + path,
+        { '@type': 'Article', headline: g.t, description: g.d, inLanguage: lang, dateModified: base.checked || CHECKED, mainEntityOfPage: SITE + path,
           publisher: { '@type': 'Organization', name: 'KSA Life Guide', url: SITE, sameAs: ['https://www.facebook.com/ksalifeguide'] } },
         { '@type': 'BreadcrumbList', itemListElement: [
           { '@type': 'ListItem', position: 1, name: L.home, item: SITE + '/' },

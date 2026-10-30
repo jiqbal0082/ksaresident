@@ -555,6 +555,11 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
             <p data-i18n="tool_eosb_d">Based on Labor Law Articles 84 to 88, including resignation rules.</p>
             <span class="go" data-i18n="open">Open →</span>
           </a>
+          <a class="tool" href="#dep"><span class="ib"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.6-3 2.9-5 5.5-5s4.9 2 5.5 5"/><circle cx="17" cy="9" r="2.3"/><path d="M15.5 14.2c2.4-.3 4.5 1.4 5 4.3"/></svg></span>
+            <h3 data-i18n="tool_dep_t">Dependent fee calculator</h3>
+            <p data-i18n="tool_dep_d">SAR 400 per family member per month: see the total for your renewal.</p>
+            <span class="go" data-i18n="open">Open →</span>
+          </a>
           <a class="tool" href="#scams"><span class="ib"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg></span>
             <h3 data-i18n="tool_scams_t">Scam message check</h3>
             <p data-i18n="tool_scams_d">Paste an SMS or WhatsApp message and see the red flags.</p>
@@ -629,6 +634,39 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       </div>
       <p class="note" data-i18n-html="eosb_disc"><b>Estimate only.</b> The result is a general calculation from Labor Law Articles 84–88. Your actual entitlement depends on your contract, wage components and the facts of your case, and is decided by your employer, the Ministry (HRSD) or the labor courts. Use the official HRSD calculator and seek qualified advice before relying on it.</p>
       <p class="meta"><span data-i18n="verified">Rules last checked</span>: 2026-10-23 · <span data-i18n="amend">The February 2025 amendments did not change Articles 84–88.</span> · <a href="https://www.hrsd.gov.sa" target="_blank" rel="noopener">hrsd.gov.sa</a></p>
+    </section>
+
+    <!-- DEPENDENT FEE -->
+    <section class="view" id="v-dep" hidden>
+      <div class="hero">
+        <div class="eyebrow" data-i18n="dep_eyebrow">Family · Dependent fee</div>
+        <h1 data-i18n="dep_title">Dependent fee calculator</h1>
+        <p class="lead" data-i18n="dep_lead">Estimate the monthly fee for family members on your sponsorship, for the renewal period and any months still owed.</p>
+      </div>
+      <div class="calc">
+        <form class="panel" id="depForm" novalidate>
+          <label class="f" for="depN"><span data-i18n="f_dep_n">Number of dependents</span>
+            <small data-i18n="f_dep_n_h">Family members on your sponsorship (for example spouse, children, parents).</small>
+            <input id="depN" type="number" inputmode="numeric" min="1" max="20" step="1" value="3">
+          </label>
+          <label class="f" for="depM"><span data-i18n="f_dep_m">Renewal period</span>
+            <select id="depM">
+              <option value="3" data-i18n="m3">3 months</option>
+              <option value="6" data-i18n="m6">6 months</option>
+              <option value="9" data-i18n="m9">9 months</option>
+              <option value="12" selected data-i18n="m12">12 months</option>
+            </select>
+          </label>
+          <label class="f" for="depOwed"><span data-i18n="f_dep_owed">Months already owed (if any)</span>
+            <small data-i18n="f_dep_owed_h">Unpaid months from before, for example before an exit re-entry or final exit visa. Absher shows the exact amount due.</small>
+            <input id="depOwed" type="number" inputmode="numeric" min="0" max="36" step="1" value="0">
+          </label>
+          <button class="btn" type="submit" data-i18n="calc">Calculate</button>
+        </form>
+        <div class="result" id="depResult" aria-live="polite"></div>
+      </div>
+      <p class="note" data-i18n-html="dep_disc"><b>Estimate only.</b> SAR 400 per dependent per month is the published rate. The amount you actually pay is shown in Absher and can differ (for example exemptions, partial months or rule changes). This is general information, not advice on your case.</p>
+      <p class="meta"><span data-i18n="verified">Rules last checked</span>: 2026-10-31 · <a href="https://www.absher.sa" target="_blank" rel="noopener">absher.sa</a> · <a href="https://www.middleeastbriefing.com/news/saudi-arabia-iqama-and-visa-rules-what-changed-in-q1-2026/" target="_blank" rel="noopener">Middle East Briefing (reported, 2026)</a> · <a href="/guides/iqama-renewal" data-open="iqama-renewal" data-i18n="dep_guide">Iqama renewal guide</a></p>
     </section>
 
     <!-- GUIDES -->
@@ -724,6 +762,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
           <li><a href="/ur/guides/" lang="ur">اردو رہنمائیاں</a></li>
           <li><a href="/places/" data-i18n="nav_places">Holy places</a></li>
           <li><a href="#eosb" data-i18n="f_eosb">End-of-service calculator</a></li>
+          <li><a href="#dep" data-i18n="tool_dep_t">Dependent fee calculator</a></li>
           <li><a href="#scams" data-i18n="nav_scams">Scam check</a></li>
           <li><a href="#help" data-i18n="nav_help">Numbers &amp; portals</a></li>
         </ul>
@@ -770,6 +809,14 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       q_label: "ویب سائٹ میں تلاش کریں", stages_t: "زندگی کے مرحلے کے مطابق دیکھیں", tools_t: "مفت ٹولز", popular_t: "سب سے زیادہ پڑھی جانے والی رہنمائیاں",
       trust3_t: "ہر ماہ جانچ", trust3_d: "فیس اور قواعد ہر ماہ سرکاری ذرائع سے دوبارہ چیک کیے جاتے ہیں۔ کوئی قدم اٹھانے سے پہلے ہمیشہ سرکاری پورٹل پر تصدیق کریں۔",
       nav_home: "ہوم", nav_eosb: "اختتامِ ملازمت", nav_guides: "رہنمائی", nav_scams: "فراڈ چیک",
+      tool_dep_t: "مرافقین فیس کیلکولیٹر", tool_dep_d: "فی فردِ خانہ ماہانہ 400 ریال: اپنی تجدید کا کل خرچ دیکھیں۔",
+      dep_eyebrow: "خاندان · مرافقین فیس", dep_title: "مرافقین فیس کیلکولیٹر", dep_lead: "اپنی کفالت پر موجود اہلِ خانہ کی ماہانہ فیس کا اندازہ لگائیں، تجدید کی مدت اور پہلے کے واجب الادا مہینوں سمیت۔",
+      f_dep_n: "مرافقین کی تعداد", f_dep_n_h: "آپ کی کفالت پر اہلِ خانہ (مثلاً بیوی، بچے، والدین)۔", f_dep_m: "تجدید کی مدت",
+      m3: "3 ماہ", m6: "6 ماہ", m9: "9 ماہ", m12: "12 ماہ",
+      f_dep_owed: "پہلے سے واجب الادا مہینے (اگر ہوں)", f_dep_owed_h: "پچھلے غیر ادا شدہ مہینے، مثلاً ایگزٹ ری انٹری یا فائنل ایگزٹ ویزا سے پہلے۔ صحیح رقم ابشر میں نظر آتی ہے۔",
+      dep_disc: "<b>صرف اندازہ۔</b> فی مرافق ماہانہ 400 ریال شائع شدہ شرح ہے۔ اصل واجب رقم ابشر میں دکھائی جاتی ہے اور مختلف ہو سکتی ہے (مثلاً استثنا، جزوی مہینے یا قواعد میں تبدیلی)۔ یہ عمومی معلومات ہے، آپ کے کیس کے بارے میں مشورہ نہیں۔",
+      dep_guide: "اقامہ تجدید رہنمائی", dep_est: "اندازاً کل واجب رقم", err_dep: "1 سے 20 مرافقین اور 0 سے 36 واجب الادا مہینے درج کریں۔",
+      dep_l_month: "فی ماہ", dep_l_renew: "تجدید کی مدت", dep_l_owed: "واجب الادا مہینے", dep_l_year: "پورے سال کے لیے",
       tool_eosb_t: "اختتامِ ملازمت کیلکولیٹر", tool_eosb_d: "لیبر لا کی دفعات 84 سے 88 کے مطابق، استعفیٰ کے قواعد سمیت۔",
       tool_guides_t: "مقیم کی زندگی کی رہنمائی", tool_guides_d: "اقامہ، ڈرائیونگ لائسنس، فیملی ویزا، ملازمت کے حقوق، سفر، حج و عمرہ، اور وہ قوانین جن پر ہر مقیم کو عمل کرنا ہے۔",
       tool_scams_t: "فراڈ پیغام چیک", tool_scams_d: "ایس ایم ایس یا واٹس ایپ پیغام پیسٹ کریں اور خطرے کی علامات دیکھیں۔",
@@ -833,6 +880,14 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       q_label: "ابحث في الموقع", stages_t: "تصفح حسب مرحلة الحياة", tools_t: "أدوات مجانية", popular_t: "الأدلة الأكثر قراءة",
       trust3_t: "مراجعة شهرية", trust3_d: "تُراجع الرسوم والأنظمة شهرياً مع المصادر الرسمية. تأكد دائماً من البوابة الرسمية قبل أي إجراء.",
       nav_home: "الرئيسية", nav_eosb: "نهاية الخدمة", nav_guides: "الأدلة", nav_scams: "فحص الاحتيال",
+      tool_dep_t: "حاسبة رسوم المرافقين", tool_dep_d: "400 ريال لكل مرافق شهرياً: اعرف الإجمالي لفترة التجديد.",
+      dep_eyebrow: "الأسرة · رسوم المرافقين", dep_title: "حاسبة رسوم المرافقين", dep_lead: "قدّر الرسوم الشهرية لأفراد أسرتك على كفالتك لفترة التجديد وأي أشهر مستحقة سابقاً.",
+      f_dep_n: "عدد المرافقين", f_dep_n_h: "أفراد الأسرة على كفالتك (مثل الزوجة والأبناء والوالدين).", f_dep_m: "فترة التجديد",
+      m3: "3 أشهر", m6: "6 أشهر", m9: "9 أشهر", m12: "12 شهراً",
+      f_dep_owed: "أشهر مستحقة سابقاً (إن وجدت)", f_dep_owed_h: "أشهر غير مسددة من قبل، مثلاً قبل تأشيرة الخروج والعودة أو الخروج النهائي. يظهر المبلغ الدقيق في أبشر.",
+      dep_disc: "<b>تقدير فقط.</b> 400 ريال لكل مرافق شهرياً هو المعدل المعلن. يظهر المبلغ الفعلي في أبشر وقد يختلف (مثل الإعفاءات أو الأشهر الجزئية أو تغيّر الأنظمة). هذه معلومات عامة وليست استشارة لحالتك.",
+      dep_guide: "دليل تجديد الإقامة", dep_est: "الإجمالي التقديري", err_dep: "أدخل من 1 إلى 20 مرافقاً ومن 0 إلى 36 شهراً مستحقاً.",
+      dep_l_month: "شهرياً", dep_l_renew: "فترة التجديد", dep_l_owed: "الأشهر المستحقة", dep_l_year: "لسنة كاملة",
       tool_eosb_t: "حاسبة مكافأة نهاية الخدمة", tool_eosb_d: "وفق المواد 84 إلى 88 من نظام العمل، بما فيها أحكام الاستقالة.",
       tool_guides_t: "أدلة خطوة بخطوة", tool_guides_d: "الإقامة، رخصة القيادة، تأشيرة العائلة، حقوق العمل، السفر، الحج والعمرة، والأنظمة التي يلتزم بها كل مقيم.",
       tool_scams_t: "فحص رسائل الاحتيال", tool_scams_d: "الصق رسالة نصية أو واتساب واعرف علامات الخطر.",
@@ -894,7 +949,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     flag_secret: "Asks for a code, password or card details", flag_urgent: "Threat or pressure to act fast",
     flag_money: "Asks you to pay a fee, fine or charge", flag_prize: "Claims you won a prize",
     red_flags: "Red flags", what_do: "What to do:",
-    err_wage: "Enter a valid wage.", err_dates: "Enter both dates. The last day must be after the start date."
+    err_wage: "Enter a valid wage.", dep_est: "Estimated total to pay", err_dep: "Enter 1 to 20 dependents and 0 to 36 owed months.", dep_l_month: "Per month", dep_l_renew: "Renewal period", dep_l_owed: "Months owed", dep_l_year: "For a full year", err_dates: "Enter both dates. The last day must be after the start date."
   };
   let lang = "en";
   const tr = (k) => (T[lang] && T[lang][k]) || EN[k] || k;
@@ -917,7 +972,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     });
     document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
     try { localStorage.setItem("ksar-lang", l); } catch (e) {}
-    renderDates(); runCalc(); renderAlerts(); renderGuides(); renderHome(); renderHelp(); renderDD(); renderUpdates(); if (lastCheck) runCheck();
+    renderDates(); runCalc(); runDep(); renderAlerts(); renderGuides(); renderHome(); renderHelp(); renderDD(); renderUpdates(); if (lastCheck) runCheck();
   }
   document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
@@ -933,7 +988,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   }
 
   /* ---------- Views ---------- */
-  const views = ["home", "eosb", "guides", "places", "scams", "help"];
+  const views = ["home", "eosb", "dep", "guides", "places", "scams", "help"];
   function show(v) {
     if (!views.includes(v)) v = "home";
     views.forEach(x => { document.getElementById("v-" + x).hidden = x !== v; });
@@ -946,7 +1001,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     if (views.includes(v)) { e.preventDefault(); show(v); window.scrollTo({ top: 0 }); go(VPATH[v]); }
   });
   /* Real URLs (History API) so Cloudflare Web Analytics counts each view, guide and place */
-  const VPATH = { home: "/", eosb: "/calculator", guides: "/guides/", places: "/places/", scams: "/scam-check", help: "/numbers" };
+  const VPATH = { home: "/", eosb: "/calculator", dep: "/dependent-fee", guides: "/guides/", places: "/places/", scams: "/scam-check", help: "/numbers" };
   const gPath = (slug) => (lang === "ur" ? "/ur" : "") + "/guides/" + slug;
   const pPath = (slug) => (lang === "ur" ? "/ur" : "") + "/places/" + slug;
   function go(path) { try { if (location.pathname !== path || location.hash) history.pushState(null, "", path); } catch (e) {} }
@@ -992,6 +1047,25 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   }
   $("eosbForm").addEventListener("submit", (e) => { e.preventDefault(); edited = true; runCalc(); });
   $("reason").addEventListener("change", runCalc);
+
+  /* ---------- Dependent fee (SAR 400 per dependent per month) ---------- */
+  const DEP_RATE = 400;
+  function runDep() {
+    const out = $("depResult");
+    const n = Math.floor(Number($("depN").value)), m = Number($("depM").value), o = Math.floor(Number($("depOwed").value) || 0);
+    if (!(n >= 1 && n <= 20) || o < 0 || o > 36) { out.innerHTML = `<p class="err">${tr("err_dep")}</p>`; return; }
+    const per = n * DEP_RATE, renew = per * m, owed = per * o, total = renew + owed;
+    out.innerHTML = `
+      <div><div class="eyebrow">${tr("dep_est")}</div><div class="amount">${sar(total)}</div></div>
+      <dl class="lines">
+        <div><dt>${tr("dep_l_month")}</dt><dd>${n} × ${DEP_RATE} = ${sar(per)}</dd></div>
+        <div><dt>${tr("dep_l_renew")}</dt><dd>${sar(per)} × ${m} = ${sar(renew)}</dd></div>
+        ${o ? `<div><dt>${tr("dep_l_owed")}</dt><dd>${sar(per)} × ${o} = ${sar(owed)}</dd></div>` : ""}
+        <div><dt>${tr("dep_l_year")}</dt><dd>${sar(per * 12)}</dd></div>
+      </dl>`;
+  }
+  $("depForm").addEventListener("submit", (e) => { e.preventDefault(); runDep(); });
+  ["depN", "depM", "depOwed"].forEach(id => $(id).addEventListener("input", runDep));
 
   /* ---------- Guides ---------- */
   const CATS = [
@@ -1516,6 +1590,82 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         ["Traffic accidents", "993"]
       ],
       src: "https://www.moi.gov.sa", srcLabel: "moi.gov.sa"
+    },
+    /* ===== Added 31 Oct 2026 ===== */
+    {
+      slug: "iqama-renewal", cat: "arrive", t: "Renewing your iqama and late-renewal fines",
+      d: "What renewal costs, who pays, and what happens if it is late.",
+      checked: "2026-10-31",
+      need: "Health insurance that covers the whole new iqama period, a valid passport, and no unpaid traffic fines.",
+      facts: [
+        ["Iqama fee", "SAR 650 a year (renewal can be for 3, 6, 9 or 12 months)"],
+        ["Work permit fee", "SAR 100 a year"],
+        ["Expat levy", "SAR 800 a month per worker (SAR 700 if the company has no more expat staff than Saudi staff)"],
+        ["Dependent fee", "SAR 400 per dependent per month"],
+        ["Late renewal fine", "SAR 500 the first time, SAR 1,000 the second time; a third time can lead to deportation"],
+        ["Who pays", "For workers, the employer pays iqama and work permit fees and late fines (Labor Law Art. 40). Dependent fees are usually paid by the worker"]
+      ],
+      steps: [
+        "Check your iqama expiry date in Absher.",
+        "Check that your health insurance covers the new period on chi.gov.sa. Renewal fails without it.",
+        "Check and pay any traffic fines in Absher. Unpaid fines block renewal.",
+        "Workers: the employer renews the work permit in Qiwa, pays the iqama fee by SADAD and renews the iqama in Muqeem or Absher Business.",
+        "Family members: the sponsor pays the dependent fee and iqama fee by SADAD in the bank app, then in Absher opens Family Members, chooses the person and selects Renew Iqama.",
+        "Check the new expiry date in Absher. The digital iqama in Absher updates; no new card is needed."
+      ],
+      warn: "An expired iqama can block exit re-entry visas, bank and SIM services. If your employer lets your iqama expire, the Qiwa rules allow a transfer to a new employer without approval (see Changing employer).",
+      src: "https://www.absher.sa", srcLabel: "absher.sa",
+      more: [["Qiwa, work permits", "https://qiwa.sa/en/labor-education/work-permits-non-saudis"], ["HRSD, fees the employer pays", "https://www.hrsd.gov.sa/en/knowledge-centre/articles/64434"], ["Passports (Jawazat) fees", "https://www.gdp.gov.sa/Ar/ServicesAndProcedures/Pages/Fees.aspx"], ["SPA, iqama late fines", "https://www.spa.gov.sa/w1267874?lang=ar&newsid=2035610"], ["muqeem.sa", "https://muqeem.sa/"], ["chi.gov.sa", "https://www.chi.gov.sa"]]
+    },
+    {
+      slug: "unpaid-salary-labour-complaint", cat: "work", t: "Unpaid salary or a work dispute: filing a labour complaint",
+      d: "The free settlement process at HRSD and when a case goes to the labour court.",
+      checked: "2026-10-31",
+      need: "Absher or Nafath login, your contract (from Qiwa), and evidence such as payslips, bank statements and messages.",
+      facts: [
+        ["First step", "Amicable (friendly) settlement at the Ministry of Human Resources (HRSD)"],
+        ["Cost", "Free"],
+        ["Settlement period", "21 working days from filing"],
+        ["If not settled", "The case is referred to the labour court (Ministry of Justice, followed on Najiz)"],
+        ["Time limit", "A claim is generally not heard after 12 months from the end of employment"],
+        ["HRSD helpline", "19911"],
+        ["Domestic workers", "Separate process through Musaned"]
+      ],
+      steps: [
+        "Raise the problem with your employer in writing first and keep a copy.",
+        "Collect evidence: contract from Qiwa, payslips, bank statements showing missing salary, attendance records and messages.",
+        "File the claim on the HRSD website or app under labour dispute (amicable settlement). Choose the office in the city where you last worked.",
+        "Attend the settlement sessions. Dates arrive by SMS and email, and sessions can be held remotely.",
+        "If both sides agree, a settlement record is issued. It can be submitted for enforcement on Najiz.",
+        "If there is no agreement, the case moves to the labour court. Follow the case and hearing dates on Najiz."
+      ],
+      warn: "If your salary has not been paid for 3 months in a row, the Qiwa rules allow a transfer to a new employer without approval (see Changing employer). Leaving work without following the rules can lead to an absence (huroob) report.",
+      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa",
+      more: [["HRSD, amicable settlement service", "https://www.hrsd.gov.sa/en/ministry-services/services/269970"], ["najiz.sa", "https://najiz.sa"], ["musaned.com.sa", "https://musaned.com.sa"], ["Saudi Press, 21-day settlement", "https://saudipress.com/mhrsd-s-electronic-friendly-settlement-system-resolving-labor-disputes-amicably-or-in-court-within-21-days"], ["Saudi Gazette, one-year limit", "https://saudigazette.com.sa/article/548222/SAUDI-ARABIA/Labor-courts-not-to-consider-disputes-older-than-one-year"]]
+    },
+    {
+      slug: "national-address", cat: "arrive", t: "National Address (Saudi Post)",
+      d: "Register your home address for free. Banks and government services use it.",
+      checked: "2026-10-31",
+      need: "Iqama number, date of birth, a Saudi mobile number and an email address.",
+      facts: [
+        ["Cost", "Free to register"],
+        ["Who", "Every resident with an iqama, and Saudi citizens"],
+        ["Short address", "8 characters: 4 letters and 4 numbers"],
+        ["Used for", "Banks, government services, Ejar and deliveries"]
+      ],
+      steps: [
+        "Download the SPL app or open splonline.com.sa and create an account with your iqama number, date of birth, mobile and email. Confirm with the SMS code.",
+        "Open My Addresses and tap Register Now.",
+        "Find your building on the map, or search by its short address.",
+        "Choose the home type (apartment or villa) and floor, whether it is owned or rented, and whether the stay is permanent or temporary.",
+        "Accept the terms and complete the registration with the SMS code.",
+        "Download your address proof as a PDF (Show Address Proof, then Download).",
+        "When you move, open My Addresses, choose the address and select Update National Address."
+      ],
+      warn: "Saudi Post does not ask for card details through SMS links to register or update your address. Fake parcel and address messages are a common scam; use the Scam check if unsure.",
+      src: "https://splonline.com.sa/en/", srcLabel: "splonline.com.sa",
+      more: [["SPL, National Address", "https://portal.splonline.com.sa/en/national-address/"]]
     }
   ];
 
@@ -1982,6 +2132,72 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         ["سول ڈیفنس (آگ)", "998"],
         ["ٹریفک حادثات", "993"]
       ]
+    },
+    /* 32 */ {
+      t: "اقامہ کی تجدید اور تاخیر کے جرمانے",
+      d: "تجدید پر کتنا خرچ آتا ہے، کون ادا کرتا ہے، اور تاخیر ہو تو کیا ہوتا ہے۔",
+      need: "ہیلتھ انشورنس جو اقامہ کی پوری نئی مدت کا احاطہ کرے، درست پاسپورٹ، اور کوئی غیر ادا شدہ ٹریفک جرمانہ نہ ہو۔",
+      facts: [
+        ["اقامہ فیس", "سالانہ 650 ریال (تجدید 3، 6، 9 یا 12 ماہ کے لیے ہو سکتی ہے)"],
+        ["ورک پرمٹ فیس", "سالانہ 100 ریال"],
+        ["غیر ملکی ملازم لیوی", "فی ملازم ماہانہ 800 ریال (اگر کمپنی میں غیر ملکی ملازمین سعودی ملازمین سے زیادہ نہ ہوں تو 700 ریال)"],
+        ["مرافقین فیس", "فی مرافق ماہانہ 400 ریال"],
+        ["تاخیر سے تجدید کا جرمانہ", "پہلی بار 500 ریال، دوسری بار 1,000 ریال؛ تیسری بار ملک بدری ہو سکتی ہے"],
+        ["کون ادا کرتا ہے", "ملازمین کے لیے اقامہ اور ورک پرمٹ فیس اور تاخیر کے جرمانے کمپنی ادا کرتی ہے (لیبر لا دفعہ 40)۔ مرافقین فیس عموماً ملازم خود ادا کرتا ہے"]
+      ],
+      steps: [
+        "ابشر میں اپنے اقامہ کی میعاد ختم ہونے کی تاریخ چیک کریں۔",
+        "chi.gov.sa پر چیک کریں کہ آپ کی ہیلتھ انشورنس نئی مدت کا احاطہ کرتی ہے۔ اس کے بغیر تجدید نہیں ہوتی۔",
+        "ابشر میں ٹریفک جرمانے چیک کر کے ادا کریں۔ غیر ادا شدہ جرمانے تجدید روک دیتے ہیں۔",
+        "ملازمین: کمپنی قوی میں ورک پرمٹ کی تجدید کرتی ہے، سداد کے ذریعے اقامہ فیس ادا کرتی ہے اور مقیم یا ابشر بزنس میں اقامہ کی تجدید کرتی ہے۔",
+        "اہلِ خانہ: کفیل بینک ایپ میں سداد کے ذریعے مرافقین فیس اور اقامہ فیس ادا کرتا ہے، پھر ابشر میں Family Members کھول کر متعلقہ فرد منتخب کرتا ہے اور Renew Iqama چنتا ہے۔",
+        "ابشر میں نئی میعاد کی تاریخ چیک کریں۔ ابشر میں ڈیجیٹل اقامہ اپڈیٹ ہو جاتا ہے؛ نیا کارڈ ضروری نہیں۔"
+      ],
+      warn: "ختم شدہ اقامہ ایگزٹ ری انٹری ویزا، بینک اور سم کی سروسز روک سکتا ہے۔ اگر کمپنی آپ کا اقامہ ختم ہونے دے تو قوی کے قواعد کے تحت منظوری کے بغیر نئی کمپنی میں منتقلی کی اجازت ہے (دیکھیں: کمپنی تبدیل کرنا)۔"
+    },
+    /* 33 */ {
+      t: "تنخواہ نہ ملنا یا ملازمت کا تنازع: لیبر شکایت درج کرنا",
+      d: "وزارتِ افرادی قوت (HRSD) میں مفت مصالحتی عمل، اور کیس کب لیبر کورٹ جاتا ہے۔",
+      need: "ابشر یا نفاذ لاگ ان، آپ کا معاہدہ (قوی سے)، اور ثبوت جیسے پے سلپس، بینک اسٹیٹمنٹ اور پیغامات۔",
+      facts: [
+        ["پہلا قدم", "وزارتِ افرادی قوت (HRSD) میں دوستانہ (مصالحتی) تصفیہ"],
+        ["خرچ", "مفت"],
+        ["تصفیے کی مدت", "درخواست جمع کرانے سے 21 کام کے دن"],
+        ["تصفیہ نہ ہو تو", "کیس لیبر کورٹ (وزارتِ انصاف) بھیجا جاتا ہے، جس کی پیروی ناجز پر ہوتی ہے"],
+        ["وقت کی حد", "عموماً ملازمت ختم ہونے کے 12 ماہ بعد دعویٰ نہیں سنا جاتا"],
+        ["HRSD ہیلپ لائن", "19911"],
+        ["گھریلو ملازمین", "الگ طریقہ کار، مساند کے ذریعے"]
+      ],
+      steps: [
+        "پہلے کمپنی کے سامنے مسئلہ تحریری طور پر رکھیں اور اس کی کاپی محفوظ رکھیں۔",
+        "ثبوت جمع کریں: قوی سے معاہدہ، پے سلپس، تنخواہ نہ آنے والے بینک اسٹیٹمنٹ، حاضری کا ریکارڈ اور پیغامات۔",
+        "HRSD کی ویب سائٹ یا ایپ پر لیبر تنازع (دوستانہ تصفیہ) کے تحت دعویٰ درج کریں۔ اس شہر کا دفتر منتخب کریں جہاں آپ نے آخری بار کام کیا۔",
+        "تصفیے کے سیشنز میں شرکت کریں۔ تاریخیں ایس ایم ایس اور ای میل پر آتی ہیں، اور سیشن آن لائن بھی ہو سکتے ہیں۔",
+        "اگر دونوں فریق متفق ہوں تو تصفیے کا ریکارڈ جاری ہوتا ہے۔ اسے عملدرآمد کے لیے ناجز پر جمع کرایا جا سکتا ہے۔",
+        "اگر اتفاق نہ ہو تو کیس لیبر کورٹ چلا جاتا ہے۔ کیس اور سماعت کی تاریخیں ناجز پر دیکھیں۔"
+      ],
+      warn: "اگر آپ کی تنخواہ مسلسل 3 ماہ ادا نہ ہوئی ہو تو قوی کے قواعد کے تحت منظوری کے بغیر نئی کمپنی میں منتقلی کی اجازت ہے (دیکھیں: کمپنی تبدیل کرنا)۔ قواعد پر عمل کیے بغیر کام چھوڑنے سے غیر حاضری (ہروب) کی رپورٹ ہو سکتی ہے۔"
+    },
+    /* 34 */ {
+      t: "نیشنل ایڈریس (سعودی پوسٹ)",
+      d: "اپنے گھر کا پتہ مفت رجسٹر کریں۔ بینک اور سرکاری سروسز اسے استعمال کرتی ہیں۔",
+      need: "اقامہ نمبر، تاریخِ پیدائش، سعودی موبائل نمبر اور ای میل ایڈریس۔",
+      facts: [
+        ["خرچ", "رجسٹریشن مفت ہے"],
+        ["کس کے لیے", "اقامہ رکھنے والا ہر رہائشی، اور سعودی شہری"],
+        ["مختصر پتہ (شارٹ ایڈریس)", "8 حروف: 4 انگریزی حروف اور 4 ہندسے"],
+        ["کہاں استعمال ہوتا ہے", "بینک، سرکاری سروسز، ایجار اور ڈیلیوری"]
+      ],
+      steps: [
+        "SPL ایپ ڈاؤن لوڈ کریں یا splonline.com.sa کھولیں اور اقامہ نمبر، تاریخِ پیدائش، موبائل اور ای میل سے اکاؤنٹ بنائیں۔ ایس ایم ایس کوڈ سے تصدیق کریں۔",
+        "My Addresses کھولیں اور Register Now دبائیں۔",
+        "نقشے پر اپنی عمارت تلاش کریں، یا اس کے شارٹ ایڈریس سے سرچ کریں۔",
+        "گھر کی قسم (فلیٹ یا ولا) اور منزل، ملکیتی یا کرائے کا، اور مستقل یا عارضی رہائش منتخب کریں۔",
+        "شرائط قبول کریں اور ایس ایم ایس کوڈ سے رجسٹریشن مکمل کریں۔",
+        "اپنے پتے کا ثبوت PDF میں ڈاؤن لوڈ کریں (Show Address Proof، پھر Download)۔",
+        "گھر بدلنے پر My Addresses کھولیں، پتہ منتخب کریں اور Update National Address چنیں۔"
+      ],
+      warn: "سعودی پوسٹ پتہ رجسٹر یا اپڈیٹ کرنے کے لیے ایس ایم ایس لنک کے ذریعے کارڈ کی تفصیلات نہیں مانگتی۔ جعلی پارسل اور ایڈریس والے پیغامات عام فراڈ ہیں؛ شک ہو تو فراڈ چیک استعمال کریں۔"
     }
   ];
 
@@ -1991,6 +2207,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     ur: { all: "سب", arrive: "آمد اور رہائش", work: "ملازمت اور حقوق", family: "خاندان", drive: "ڈرائیونگ", travel: "سفر اور پروازیں", hajj: "حج و عمرہ", law: "قوانین اور آداب" },
     ar: { all: "الكل", arrive: "الوصول والاستقرار", work: "العمل والحقوق", family: "العائلة", drive: "القيادة", travel: "السفر والطيران", hajj: "الحج والعمرة", law: "الأنظمة والآداب" }
   };
+  const CHK_M = { en: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"], ur: ["جنوری","فروری","مارچ","اپریل","مئی","جون","جولائی","اگست","ستمبر","اکتوبر","نومبر","دسمبر"] };
+  function chkText(txt, d, l) { if (!d) return txt; const m = CHK_M[l] || CHK_M.en; const nd = +d.slice(8, 10) + " " + m[+d.slice(5, 7) - 1] + " " + d.slice(0, 4); return txt.replace(/\d{1,2} \S+ \d{4}/, nd); }
   const GT = {
     en: { need: "You need:", imp: "Important:", checked: "Last checked: 24 Oct 2026 · Fees and rules change. Confirm on", one: "guide", many: "guides", empty: (q) => `No guide matches "${q}". Try a shorter word such as "visa" or "license".`, ph: "Search: licence, Hajj, final exit, overtime…" },
     ur: { need: "ضرورت:", imp: "اہم:", checked: "آخری جانچ: 24 اکتوبر 2026 · فیس اور قواعد بدلتے رہتے ہیں۔ تصدیق کریں:", one: "رہنمائی", many: "رہنمائیاں", empty: (q) => `"${q}" سے کوئی رہنمائی نہیں ملی۔ مختصر لفظ آزمائیں جیسے "ویزا" یا "لائسنس"۔`, ph: "تلاش: لائسنس، حج، فائنل ایگزٹ، اوور ٹائم…" },
@@ -2027,7 +2245,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
           ${g.facts ? `<dl class="facts">${g.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : ""}
           ${g.steps ? `<ol>${g.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>` : ""}
           ${g.warn ? `<p class="warnbox"><b>${g._dir === "rtl" ? L.imp : GT.en.imp}</b> ${esc(g.warn)}</p>` : ""}
-          <div class="meta">${g._dir === "rtl" ? L.checked : GT.en.checked} <a href="${g.src}" target="_blank" rel="noopener">${g.srcLabel}</a>${g.more ? " · " + g.more.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener" dir="ltr">${esc(l)}</a>`).join(" · ") : ""}</div>
+          <div class="meta">${chkText(g._dir === "rtl" ? L.checked : GT.en.checked, g.checked, g._dir === "rtl" ? "ur" : "en")} <a href="${g.src}" target="_blank" rel="noopener">${g.srcLabel}</a>${g.more ? " · " + g.more.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener" dir="ltr">${esc(l)}</a>`).join(" · ") : ""}</div>
           <a class="fullpage" href="${g._dir === "rtl" ? "/ur" : ""}/guides/${g.slug}">${g._dir === "rtl" ? "مکمل صفحہ کھولیں اور شیئر کریں ←" : "Open full page to share →"}</a>
           ${relatedHtml(g)}
         </div>
@@ -2550,6 +2768,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   }
   const TOOLS = [
     { view: "eosb", icon: "calc", key: "tool_eosb_t", words: "end of service eosb gratuity award resign resignation termination article 84 85 calculator مكافأة نهاية الخدمة اختتام ملازمت معاوضہ استعفیٰ" },
+    { view: "dep", icon: "calc", key: "tool_dep_t", words: "dependent fee levy family dependents 400 iqama renewal calculator رسوم المرافقين مرافقین فیس" },
     { view: "scams", icon: "shield", key: "tool_scams_t", words: "scam fraud phishing sms whatsapp fake link otp احتيال رسالة فراڈ دھوکہ" },
     { view: "help", icon: "phone", key: "tool_help_t", words: "emergency police ambulance fire 911 999 997 998 937 number phone call portal absher qiwa gosi nusuk najiz musaned ejar balady طوارئ شرطة إسعاف ایمرجنسی پولیس ایمبولینس نمبر پورٹل" }
   ];
@@ -2727,6 +2946,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
 
   /* ---------- Latest updates (dated rule changes, newest first; every item sourced in its guide) ---------- */
   const UPDATES = [
+    { date: "2026-10-31", open: "iqama-renewal", en: ["New: iqama renewal, labour complaints and National Address", "Three new guides with fees, steps and official links, plus a dependent fee calculator."], ur: ["نئی: اقامہ تجدید، لیبر شکایت اور نیشنل ایڈریس", "فیس، طریقہ کار اور سرکاری لنکس کے ساتھ تین نئی رہنمائیاں، اور مرافقین فیس کیلکولیٹر۔"] },
     { date: "2026-10-30", open: "airports-terminals-parking", en: ["Airport status update", "Reported: Riyadh operating on a limited basis from Terminals 1 and 2; Jeddah and Dammam operating with some delays. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ کے مطابق: ریاض ٹرمینل 1 اور 2 سے محدود طور پر فعال؛ جدہ اور دمام کچھ تاخیر کے ساتھ فعال۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
     { date: "2026-10-27", open: "airports-terminals-parking", en: ["Airport status update", "Reported: Jeddah and Dammam operating with some delays; Riyadh partly operating. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ کے مطابق: جدہ اور دمام کچھ تاخیر کے ساتھ فعال؛ ریاض جزوی طور پر فعال۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
     { date: "2026-10-24", open: "airports-terminals-parking", en: ["New: five guides for flights and airports", "Terminals, parking, delays and your GACA rights, missed flights, customs and a before-you-fly checklist."], ur: ["نئی: پروازوں اور ایئرپورٹس کے لیے پانچ رہنمائیاں", "ٹرمینل، پارکنگ، تاخیر اور GACA حقوق، چھوٹی پرواز، کسٹمز اور سفر سے پہلے کی چیک لسٹ۔"] },
