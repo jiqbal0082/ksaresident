@@ -32,6 +32,7 @@ Read this first. It is the single source of truth for working on this project.
 | YouTube | Channel "KSA Life Guide", @ksalifeguide.official (Brand Account under owner's personal Google account); faceless Urdu Shorts, owner's own voice | owner |
 | WhatsApp | Channel "KSA Life Guide" (planned/being set up) | owner |
 | Claude scheduled task | "KSA Life Guide monthly rules check", 1st of each month 08:47 Riyadh; reports only, never edits | owner's Claude account |
+| Claude scheduled task | "KSA Life Guide daily review and update", every day 07:50 Riyadh; health check, airport status and new-rule check, updates guides + Latest updates only with a dated source, pushes to main, reports | owner's Claude account |
 
 Business/income setup (ads, donations, sponsors) is **not done yet**. Plan: register and receive payments via Pakistan (NTN/PSEB, Pakistani bank or Payoneer), not in KSA. The Donate button (`public/support.html`, `DONATE_URL`) stays disabled until a payout account exists.
 
