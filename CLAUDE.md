@@ -78,7 +78,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 - Riyadh/Jeddah airline terminals (changed Feb and Oct 2026), KKIA parking rates and the SAR 575 drop-off fee.
 - GACA passenger-rights amounts (SDR), GACA power-bank rules.
 - ZATCA declaration limit (SAR 40,000 on zatca.gov.sa; many news sites still say 60,000), SFDA controlled-medicine clearance (CDS).
-- Airport status rows at the top of the "airports-terminals-parking" guide (EN + UR facts) and the 27 Oct 2026 "Airport status update" item in UPDATES: re-check and re-date whenever status changes; remove the rows once all airports are back to normal. Owner rule: describe only whether airports and flights are operating. Never mention the cause, conflict or security events on the site.
+- Airport status rows at the top of the "airports-terminals-parking" guide (EN + UR facts) and the latest (30 Oct 2026) "Airport status update" item in UPDATES: re-check and re-date whenever status changes; remove the rows once all airports are back to normal. Owner rule: describe only whether airports and flights are operating. Never mention the cause, conflict or security events on the site.
 
 ## Backlog (in priority order)
 1. WhatsApp Channel link → add "Follow on WhatsApp" button.
