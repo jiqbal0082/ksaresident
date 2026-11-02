@@ -429,6 +429,30 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/national-address"/>
   </url>
   <url>
+    <loc>https://ksalifeguide.com/guides/public-bank-holidays</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/public-bank-holidays"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/public-bank-holidays"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/public-bank-holidays</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/public-bank-holidays"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/public-bank-holidays"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/guides/lost-passport-iqama</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/lost-passport-iqama"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/lost-passport-iqama"/>
+  </url>
+  <url>
+    <loc>https://ksalifeguide.com/ur/guides/lost-passport-iqama</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://ksalifeguide.com/ur/guides/lost-passport-iqama"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/lost-passport-iqama"/>
+  </url>
+  <url>
     <loc>https://ksalifeguide.com/guides/</loc>
     <lastmod>2026-10-24</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://ksalifeguide.com/guides/"/>

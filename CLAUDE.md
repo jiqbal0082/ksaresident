@@ -39,7 +39,7 @@ Business/income setup (ads, donations, sponsors) is **not done yet**. Plan: regi
 ## How the code works
 ```
 src/site.html        The app (single page): HTML + CSS + JS. Holds ALL content data:
-                     CATS, GUIDES (34, each with slug; optional `more: [[label, url]]` extra sources; optional `checked: "YYYY-MM-DD"` overrides the global Last checked date), GUIDES_UR, PLACES (14), PLACES_UR,
+                     CATS, GUIDES (36, each with slug; optional `more: [[label, url]]` extra sources; optional `checked: "YYYY-MM-DD"` overrides the global Last checked date), GUIDES_UR, PLACES (14), PLACES_UR,
                      translations T.ur / T.ar, home search, tabs, EOSB calculator, dependent fee calculator (#v-dep, `runDep()`, SAR 400/month), scam check.
 src/lib/eosb.js      End-of-service calculation (Labor Law Art. 84–88) + tests in tests/.
 scripts/build.mjs    Builds public/: index.html (wraps src/site.html), one page per guide
@@ -69,7 +69,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 5. Update the "Last checked" date when facts are re-verified: global `CHECKED` in build.mjs plus `GT.*.checked` in src/site.html, or a per-guide `checked` field.
 
 ## Current state (Oct 2026)
-- Live: home with search, 8 life-stage tiles, tools, holy places, most-read; desktop Guides ▾ dropdown (life stages); "Numbers & portals" view (#help: NUMS, PORTALS, HSRC in src/site.html — 8 numbers, 12 portals, last checked 24 Oct 2026); 34 guides EN/UR (incl. iqama-renewal, unpaid-salary-labour-complaint, national-address added 31 Oct 2026; 5 flight guides: airports-terminals-parking, flight-delay-cancellation-rights, missed-flight, customs-cash-medicines, before-you-fly-checklist; category "travel" now labelled "Travel & flights"); 14 holy places EN/UR with Google Maps (Madinah incl. Masjid al-Ghamamah); EOSB calculator; dependent fee calculator (/dependent-fee); scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
+- Live: home with search, 8 life-stage tiles, tools, holy places, most-read; desktop Guides ▾ dropdown (life stages); "Numbers & portals" view (#help: NUMS, PORTALS, HSRC in src/site.html — 8 numbers, 12 portals, last checked 24 Oct 2026); 36 guides EN/UR (incl. iqama-renewal, unpaid-salary-labour-complaint, national-address added 31 Oct 2026; public-bank-holidays and lost-passport-iqama added 2 Nov 2026; 5 flight guides: airports-terminals-parking, flight-delay-cancellation-rights, missed-flight, customs-cash-medicines, before-you-fly-checklist; category "travel" now labelled "Travel & flights"); 14 holy places EN/UR with Google Maps (Madinah incl. Masjid al-Ghamamah); EOSB calculator; dependent fee calculator (/dependent-fee); scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
 - In-app guides end with a "Related guides" block (`relatedHtml()` in src/site.html: next 3 guides in the same category, EN/UR/AR heading, `data-open` links). Static guide pages already list all same-category guides (build.mjs).
 - Home "Latest updates" feed: `UPDATES` array in src/site.html (date, guide slug, EN/UR title + line), newest first. Add an item whenever a rule changes or new guides go live; every item must be sourced inside its linked guide. Footer follows: Facebook only. YouTube link removed until the first videos are uploaded; re-add the `.fbtn.yt` button (styles still in place) in src/site.html footer and build.mjs footer then.
 - Week-1 launch posts written (Claude artifact "KSA Life Guide Launch Posts").
@@ -78,6 +78,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 ## Fast-changing facts to re-check monthly
 - Riyadh/Jeddah airline terminals (changed Feb and Oct 2026), KKIA parking rates and the SAR 575 drop-off fee.
 - GACA passenger-rights amounts (SDR), GACA power-bank rules.
+- Public and bank holidays guide: add next-year SAMA dates and HRSD Eid announcements as they come; lost documents guide: lost-iqama cost (news sources differ).
 - ZATCA declaration limit (SAR 40,000 on zatca.gov.sa; many news sites still say 60,000), SFDA controlled-medicine clearance (CDS).
 - Airport status rows at the top of the "airports-terminals-parking" guide (EN + UR facts) and the latest (1 Nov 2026) "Airport status update" item in UPDATES: re-check and re-date whenever status changes; remove the rows once all airports are back to normal. Owner rule: describe only whether airports and flights are operating. Never mention the cause, conflict or security events on the site. This includes source links: use sources whose URLs and labels are neutral. The Riyadh Terminal 1–5 rows are labelled "normal" while operation is limited; remove the labels and note row once normal operation returns.
 
