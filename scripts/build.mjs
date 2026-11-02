@@ -27,6 +27,27 @@ ${appBody}
 </html>
 `);
 
+/* ---------- 1b. Tool pages: the same app, with their own title and canonical URL ---------- */
+const TOOL_PAGES = [
+  ['/calculator', 'End-of-service calculator', 'Estimate your Saudi end-of-service award under Labor Law Articles 84 to 88, including resignation rules. Runs in your browser; nothing is sent or stored.'],
+  ['/dependent-fee', 'Dependent fee calculator', 'Estimate the Saudi dependent fee of SAR 400 per family member per month for your renewal period. Runs in your browser; nothing is sent or stored.'],
+  ['/exit-reentry-cost', 'Exit re-entry cost calculator', 'Estimate the fee for a Saudi exit re-entry visa by type and months, or an extension from outside the Kingdom. Runs in your browser; nothing is sent or stored.'],
+  ['/scam-check', 'Scam message check', 'Paste an SMS, WhatsApp or email and see common scam red flags. The check runs in your browser; nothing is sent or stored.'],
+  ['/numbers', 'Emergency numbers and official portals', 'Emergency numbers for Saudi Arabia and links to the official portals residents use.']
+];
+const indexHtml = readFileSync('public/index.html', 'utf8');
+for (const [path, name, desc] of TOOL_PAGES) {
+  const page = indexHtml
+    .replace('<title>KSA Life Guide</title>', `<title>${name} | KSA Life Guide</title>`)
+    .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${desc}">`)
+    .replace('<link rel="canonical" href="https://ksalifeguide.com/">', `<link rel="canonical" href="${SITE}${path}">`)
+    .replace('<meta property="og:url" content="https://ksalifeguide.com/">', `<meta property="og:url" content="${SITE}${path}">`)
+    .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${name} | KSA Life Guide">`)
+    .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${desc}">`);
+  if (!page.includes(`<link rel="canonical" href="${SITE}${path}">`) || !page.includes(`<title>${name} |`)) throw new Error('tool page head not replaced: ' + path);
+  writeFileSync(`public${path}.html`, page);
+}
+
 /* ---------- 2. Read guide data from the app source ---------- */
 function literal(name, endMarker) {
   const start = src.indexOf(`const ${name} = `);
@@ -124,7 +145,7 @@ const T = {
     share: 'Share on WhatsApp', copy: 'Copy link', copied: 'Link copied',
     related: 'Related guides', tools: 'Free tools', toolsText: 'End-of-service calculator and scam message check.', openTools: 'Open KSA Life Guide',
     foot1: 'KSA Life Guide is an independent information site, not affiliated with any government body. Content is general information only, not legal or professional advice.',
-    fhG: 'Guides and tools', fhS: 'About this site', fhC: 'Contact', places: 'Holy places', eosb: 'End-of-service calculator', dep: 'Dependent fee calculator', re: 'Exit re-entry cost calculator', scams: 'Scam check', help: 'Numbers & portals',
+    fhG: 'Guides and tools', fhS: 'About this site', fhC: 'Contact', places: 'Holy places', eosb: 'End-of-service calculator', dep: 'Dependent fee calculator', re: 'Exit re-entry cost calculator', how: 'How we check information', scams: 'Scam check', help: 'Numbers & portals',
     disc: 'Disclaimer', terms: 'Terms of use', priv: 'Privacy', sup: 'Support the site', fb: 'Facebook', donBtn: 'Donate',
     don: 'KSA Life Guide is free for everyone. If it helped you, you can support it with a small donation to keep it running and up to date.',
     legal: 'Content is general information only. It is not legal, financial, immigration or professional advice, and it is not a recommendation to take any action. Confirm everything with the official authority before you act.',
@@ -142,7 +163,7 @@ const T = {
     share: 'واٹس ایپ پر شیئر کریں', copy: 'لنک کاپی کریں', copied: 'لنک کاپی ہو گیا',
     related: 'متعلقہ رہنمائیاں', tools: 'مفت ٹولز', toolsText: 'اختتامِ ملازمت کیلکولیٹر اور فراڈ پیغام چیک۔', openTools: 'کے ایس اے لائف گائیڈ کھولیں',
     foot1: 'کے ایس اے لائف گائیڈ ایک آزاد معلوماتی ویب سائٹ ہے، کسی سرکاری ادارے سے وابستہ نہیں۔ مواد صرف عمومی معلومات ہے، قانونی یا پیشہ ورانہ مشورہ نہیں۔',
-    fhG: 'رہنمائیاں اور ٹولز', fhS: 'ویب سائٹ کے بارے میں', fhC: 'رابطہ', places: 'مقدس مقامات', eosb: 'اختتامِ ملازمت کیلکولیٹر', dep: 'مرافقین فیس کیلکولیٹر', re: 'خروج و عودہ خرچ کیلکولیٹر', scams: 'فراڈ پیغام چیک', help: 'نمبرز اور پورٹلز',
+    fhG: 'رہنمائیاں اور ٹولز', fhS: 'ویب سائٹ کے بارے میں', fhC: 'رابطہ', places: 'مقدس مقامات', eosb: 'اختتامِ ملازمت کیلکولیٹر', dep: 'مرافقین فیس کیلکولیٹر', re: 'خروج و عودہ خرچ کیلکولیٹر', how: 'معلومات کی جانچ کا طریقہ', scams: 'فراڈ پیغام چیک', help: 'نمبرز اور پورٹلز',
     disc: 'ڈس کلیمر', terms: 'شرائطِ استعمال', priv: 'پرائیویسی', sup: 'ویب سائٹ کی مدد کریں', fb: 'فیس بک', donBtn: 'عطیہ دیں',
     don: 'کے ایس اے لائف گائیڈ سب کے لیے مفت ہے۔ اگر اس سے آپ کو مدد ملی تو ایک چھوٹے سے عطیے سے اسے چلانے اور اپ ڈیٹ رکھنے میں مدد کریں۔',
     legal: 'یہاں موجود مواد صرف عمومی معلومات ہے۔ یہ قانونی، مالی، امیگریشن یا پیشہ ورانہ مشورہ نہیں اور کسی کام کی سفارش بھی نہیں۔ کوئی قدم اٹھانے سے پہلے متعلقہ سرکاری ادارے سے تصدیق کریں۔',
@@ -224,7 +245,7 @@ ${body}
       <li><a href="/scam-check${lang === 'ur' ? '?lang=ur' : ''}">${L.scams}</a></li>
       <li><a href="/numbers${lang === 'ur' ? '?lang=ur' : ''}">${L.help}</a></li></ul></nav>
     <nav class="fcol" aria-label="${L.fhS}"><h2>${L.fhS}</h2><ul class="flinks">
-      <li><a href="/disclaimer">${L.disc}</a></li><li><a href="/terms">${L.terms}</a></li>
+      <li><a href="/how-we-check">${L.how}</a></li><li><a href="/disclaimer">${L.disc}</a></li><li><a href="/terms">${L.terms}</a></li>
       <li><a href="/privacy">${L.priv}</a></li><li><a href="/support">${L.sup}</a></li></ul></nav>
     <div class="fcol fcontact"><h2>${L.fhC}</h2><p>${L.report}</p><span class="mail">contact@ksalifeguide.com</span></div>
   </div>
@@ -386,10 +407,12 @@ ${sections}`;
 }
 
 /* ---------- 6. Sitemap ---------- */
-const single = ['/', '/disclaimer', '/terms', '/privacy', '/support'];
+const single = ['/', ...TOOL_PAGES.map((t) => t[0]), '/how-we-check', '/disclaimer', '/terms', '/privacy', '/support'];
+const GUIDE_DATE = Object.fromEntries(EN.map((g) => [g.slug, g.checked || CHECKED]));
+const lastmod = (loc) => { const m = loc.match(/\/guides\/([\w-]+)$/); return (m && GUIDE_DATE[m[1]]) || CHECKED; };
 const entry = (loc, alt) => `  <url>
     <loc>${SITE}${loc}</loc>
-    <lastmod>${CHECKED}</lastmod>${alt ? `
+    <lastmod>${lastmod(loc)}</lastmod>${alt ? `
     <xhtml:link rel="alternate" hreflang="${loc.startsWith('/ur') ? 'ur' : 'en'}" href="${SITE}${loc}"/>
     <xhtml:link rel="alternate" hreflang="${loc.startsWith('/ur') ? 'en' : 'ur'}" href="${SITE}${alt}"/>` : ''}
   </url>`;

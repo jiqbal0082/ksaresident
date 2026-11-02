@@ -32,7 +32,7 @@ Read this first. It is the single source of truth for working on this project.
 | YouTube | Channel "KSA Life Guide", @ksalifeguide.official (Brand Account under owner's personal Google account); faceless Urdu Shorts, owner's own voice | owner |
 | WhatsApp | Channel "KSA Life Guide" (planned/being set up) | owner |
 | Claude scheduled task | "KSA Life Guide monthly rules check", 1st of each month 08:47 Riyadh; reports only, never edits | owner's Claude account |
-| Claude scheduled task | "KSA Life Guide daily review and update", every day 07:50 Riyadh; health check, airport status and new-rule check, auto-publishes sourced changes that pass its legal safety check (guides + Latest updates, pushes to main), keeps the project handbook in sync with this file, reports; never adds or rewrites guides or changes legal pages without the owner | owner's Claude account |
+| Claude scheduled task | "KSA Life Guide daily review and update", every day 07:50 Riyadh; health check, airport status and new-rule check, auto-publishes sourced changes that pass its legal safety check (guides + Latest updates, pushes to main), keeps the project handbook in sync with this file, reports; deep-checks 2 guides a day, may add one new guide a week from official sources; never changes legal pages or adds holy places without the owner | owner's Claude account |
 
 Business/income setup (ads, donations, sponsors) is **not done yet**. Plan: register and receive payments via Pakistan (NTN/PSEB, Pakistani bank or Payoneer), not in KSA. The Donate button (`public/support.html`, `DONATE_URL`) stays disabled until a payout account exists.
 
@@ -46,14 +46,14 @@ scripts/build.mjs    Builds public/: index.html (wraps src/site.html), one page 
                      (public/guides/<slug>.html, public/ur/guides/<slug>.html), one page per
                      holy place (public/places/…, public/ur/places/…), index pages, sitemap.xml.
                      Reads the data arrays straight out of src/site.html.
-public/              Deployed folder (committed). Also: disclaimer.html, terms.html,
+public/              Deployed folder (committed). Also: how-we-check.html (editorial standards, hand-written EN/UR/AR; keep it true), generated tool pages (calculator.html, dependent-fee.html, exit-reentry-cost.html, scam-check.html, numbers.html: copies of the app with their own title and canonical, see TOOL_PAGES in build.mjs), disclaimer.html, terms.html,
                      privacy.html, support.html, robots.txt, _headers, favicon.svg,
                      apple-touch-icon.png, og.png (share card), brand/ (social images).
 ```
 - Edit content in **src/site.html** only, then run `npm run build` and commit `public/` too (Cloudflare has no build step).
 - `npm test` must pass (EOSB tests). `node --check` the inline script after big edits.
 - URLs are extensionless on Cloudflare (`/guides/driving-licence`). `/?lang=ur` opens the app in Urdu.
-- **App routing uses real URLs (History API), not `#hash`**, so Cloudflare Web Analytics counts every view, guide and place (it tracks `pushState`, not hash changes). In src/site.html: `VPATH` (home `/`, calculator `/calculator`, dependent fee `/dependent-fee`, exit re-entry cost `/exit-reentry-cost`, guides `/guides/`, places `/places/`, scam check `/scam-check`, numbers `/numbers`), `gPath()`/`pPath()` (Urdu adds `/ur`), `go()` pushes, `route()` handles boot and the back button. Opening or expanding a guide in-app pushes `/guides/<slug>`; a refresh there loads the static guide page. `public/_redirects` rewrites `/calculator`, `/dependent-fee`, `/exit-reentry-cost`, `/scam-check`, `/numbers` to the app. Old `/#eosb`-style links still work. Never add relative URLs to src/site.html (pages now render at nested paths).
+- **App routing uses real URLs (History API), not `#hash`**, so Cloudflare Web Analytics counts every view, guide and place (it tracks `pushState`, not hash changes). In src/site.html: `VPATH` (home `/`, calculator `/calculator`, dependent fee `/dependent-fee`, exit re-entry cost `/exit-reentry-cost`, guides `/guides/`, places `/places/`, scam check `/scam-check`, numbers `/numbers`), `gPath()`/`pPath()` (Urdu adds `/ur`), `go()` pushes, `route()` handles boot and the back button. Opening or expanding a guide in-app pushes `/guides/<slug>`; a refresh there loads the static guide page. Tool views are served by generated files, so `public/_redirects` is empty. Old `/#eosb`-style links still work. Never add relative URLs to src/site.html (pages now render at nested paths).
 
 ## Design system ("Desert & oasis")
 - Tokens in `:root` of src/site.html (and mirrored in build.mjs CSS): sand `--bg #f6f1e7`, surface `#fffdf8`, palm green `--accent #0e5a43`, date gold `--gold #9a6a1c` / `#e9b45a`, hero band `#0e5a43`. Full dark mode.
@@ -73,6 +73,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 - In-app guides end with a "Related guides" block (`relatedHtml()` in src/site.html: next 3 guides in the same category, EN/UR/AR heading, `data-open` links). Static guide pages already list all same-category guides (build.mjs).
 - Home "Latest updates" feed: `UPDATES` array in src/site.html (date, guide slug, EN/UR title + line), newest first. Add an item whenever a rule changes or new guides go live; every item must be sourced inside its linked guide. Footer follows: Facebook only. YouTube link removed until the first videos are uploaded; re-add the `.fbtn.yt` button (styles still in place) in src/site.html footer and build.mjs footer then.
 - Analytics, 2 Nov 2026 (owner screenshots, small sample): speed good (LCP 100% good, CLS 98%, INP P75 about 154 ms); about 74% of samples from Saudi Arabia, 13% Pakistan, India and Philippines about 1 each, so English outreach to those groups is the gap; about 1.2 pages per visit. Claude has no direct access to Web Analytics or Search Console; the owner sends screenshots.
+- Quality programme (owner goal: a real, professional source of information). Audit 2 Nov 2026: 25 of 36 guides link only to a portal's main page, with no direct sources. The daily task deep-checks 2 guides a day and adds direct source links; it sets `checked` only after re-verifying the guide. It may also publish one new guide a week from the backlog or ideas doc, official sources only. Remove the "Work in progress" section from how-we-check.html (EN/UR/AR) when every guide has direct sources.
 - Week-1 launch posts written (Claude artifact "KSA Life Guide Launch Posts").
 - Last full review: 31 Oct 2026 (tests pass, EN/UR in sync, all guides dated 2026-10-24; removed "open source" wording from terms.html).
 
