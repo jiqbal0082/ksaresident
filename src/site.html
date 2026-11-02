@@ -1220,12 +1220,13 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     {
       slug: "working-hours-overtime", cat: "work", t: "Working hours, overtime and Ramadan hours",
       d: "Limits set by the Labor Law for private-sector workers.",
+      checked: "2026-11-02",
       facts: [
-        ["Normal hours", "Up to 8 hours a day and 48 a week"],
+        ["Normal hours", "Up to 8 hours a day or 48 a week (Article 98). Some categories have different limits under Article 99"],
         ["Ramadan (Muslim workers)", "Up to 6 hours a day and 36 a week"],
         ["Breaks", "No more than 5 hours in a row without a break of at least 30 minutes"],
         ["Rest day", "At least one full paid day off a week, usually Friday"],
-        ["Overtime pay", "Your hourly wage plus 50% of your basic wage"],
+        ["Overtime pay", "Your hourly wage plus 50% of your basic wage (Article 107). Work on public holidays counts as overtime"],
         ["Time-off instead of pay", "Allowed if agreed, at least 1.5 hours off per overtime hour"]
       ],
       steps: [
@@ -1233,26 +1234,29 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         "If overtime is not paid, raise it with HR in writing first.",
         "If it is still unresolved, file a labor complaint with the Ministry of Human Resources (HRSD)."
       ],
-      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
+      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa",
+      more: [["HRSD, working hours and overtime (Sep 2025)", "https://www.hrsd.gov.sa/en/knowledge-centre/articles/312"], ["HRSD, rights and duties guide (2025)", "https://prod.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"]]
     },
     {
       slug: "leave-entitlements", cat: "work", t: "Leave you are entitled to",
       d: "Annual, sick, Hajj, marriage and family leave.",
+      checked: "2026-11-02",
       facts: [
         ["Annual leave", "21 days a year; 30 days after 5 years with the same employer"],
-        ["Sick leave", "Paid in stages: full pay first, then reduced pay. Check your contract and the law for exact tiers"],
+        ["Sick leave", "First 30 days full pay, next 60 days three-quarters pay, next 30 days no pay"],
         ["Hajj leave", "Paid, once during your service, after 2 years with the employer"],
         ["Marriage leave", "5 days paid"],
         ["Death of a spouse, parent or child", "5 days paid"],
         ["Death of a brother or sister", "3 days paid (added in 2025)"],
-        ["New baby (father)", "Paid paternity leave, taken within 7 days of the birth"],
-        ["Maternity leave", "12 weeks"]
+        ["New baby (father)", "3 days paid, taken within 7 days of the birth"],
+        ["Maternity leave", "12 weeks on full pay, including 6 weeks after the birth"]
       ],
       steps: [
         "Request leave in writing or through your company HR system so there is a record.",
         "Unused annual leave is paid out when your contract ends."
       ],
-      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
+      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa",
+      more: [["HRSD, leave articles (Sep 2025)", "https://www.hrsd.gov.sa/en/knowledge-centre/articles/312"], ["HRSD, rights and duties guide (2025)", "https://prod.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"]]
     },
     {
       slug: "change-employer-iqama-transfer", cat: "work", t: "Changing employer (iqama transfer)",
@@ -1362,24 +1366,28 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     },
     {
       slug: "traffic-fines", cat: "drive", t: "Common traffic fines",
-      d: "Common violations and their fine ranges. Cameras enforce most of them.",
+      d: "Common violations and their reported fine ranges. Cameras enforce most of them.",
+      checked: "2026-11-02",
       facts: [
+        ["Amounts on this page", "Reported by secondary sources. Your actual fine is shown in Absher"],
         ["Phone in hand while driving", "SAR 500–900"],
         ["No seatbelt (driver or passenger)", "SAR 150–300"],
         ["Child not in a car seat", "SAR 300–500"],
         ["Speeding 10–20 km/h over (roads up to 120)", "SAR 150–300"],
         ["Speeding 50+ km/h over", "SAR 1,500–2,000"],
         ["Running a red light", "SAR 3,000–6,000"],
-        ["Driving against traffic", "SAR 3,000–6,000"],
+        ["Driving against traffic", "Reported as SAR 3,000–6,000; other reports differ"],
         ["Parking in a disabled bay", "SAR 500–900"],
-        ["Drifting (first offence)", "SAR 20,000 and car impounded"]
+        ["Drifting (first offence)", "SAR 20,000 and car impounded for 15 days"]
       ],
       steps: [
         "Check your fines regularly in Absher under Traffic Violations.",
         "Unpaid fines block iqama renewal, exit re-entry visas and final exit.",
-        "You can object to a fine in Absher within the allowed period."
+        "You can object to a fine in Absher. The period is reported as 30 days from notification."
       ],
-      src: "https://www.absher.sa", srcLabel: "absher.sa"
+      warn: "Fine amounts can change, and these figures come from secondary sources. Check the amount in Absher.",
+      src: "https://www.absher.sa", srcLabel: "absher.sa",
+      more: [["KSA Expats, traffic fines (Jun 2026)", "https://ksaexpats.com/saudi-arabia-traffic-fine-list/"], ["Saudi Life Guide, traffic violations (Nov 2026)", "https://saudilifeguide.com/saudi-arabia-traffic-violations/"]]
     },
     {
       slug: "car-accident-najm", cat: "drive", t: "If you have an accident",
@@ -1411,7 +1419,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         ["Single (up to 2 months)", "SAR 200, then SAR 100 per extra month"],
         ["Multiple (up to 3 months)", "SAR 500, then SAR 200 per extra month"],
         ["Extending from outside KSA", "SAR 200 per month (single), SAR 400 (multiple)"],
-        ["Unused visa expires while you are inside KSA", "SAR 1,000 to cancel"],
+        ["Unused visa expires while you are inside KSA", "Check the cancellation steps and any charge in Absher or Muqeem"],
         ["Fee estimate", "See the exit re-entry cost calculator at ksalifeguide.com/exit-reentry-cost"]
       ],
       src: "https://www.absher.sa", srcLabel: "absher.sa",
@@ -1420,16 +1428,23 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     {
       slug: "final-exit", cat: "travel", t: "Leaving for good (final exit)",
       d: "Clear everything first, or the visa cannot be issued.",
-      need: "Iqama valid at least 30 days, passport valid at least 60 days.",
+      checked: "2026-11-02",
+      need: "Iqama valid at least 30 days, passport valid at least 60 days (both as reported).",
+      facts: [
+        ["Time to leave", "Within 60 days of issue. With 30 to 60 days left on the iqama, the visa is reported to last only as long as the iqama"],
+        ["Iqama", "Jawazat requires at least 30 days' validity to issue the visa"],
+        ["Not leaving in time", "SAR 1,000 fine to cancel the expired visa. The iqama must still be valid to cancel it"]
+      ],
       steps: [
         "Pay all traffic fines and transfer or sell any car registered in your name.",
         "Close the Ejar lease, settle utility bills, credit cards and loans.",
         "Agree your final settlement and end-of-service award with your employer before the visa is issued.",
-        "Move your money out first. Banks may freeze accounts soon after a final exit visa is issued.",
+        "Check your bank's rules before the visa is issued. Banks are reported to freeze accounts soon after issue, before you leave.",
         "Your employer issues the final exit visa. Leave within 60 days."
       ],
-      warn: "Keep your SIM active for a short time after leaving so you still receive OTP codes.",
-      src: "https://www.absher.sa", srcLabel: "absher.sa"
+      warn: "A SIM kept active for a short time after leaving can still receive OTP codes.",
+      src: "https://www.absher.sa", srcLabel: "absher.sa",
+      more: [["KPMG, Jawazat on expired final exit visas (Jun 2026)", "https://kpmg.com/xx/en/our-insights/gms-flash-alert/2026/flash-alert-2026-164.html"], ["Gulf News, 30-day iqama requirement (Jan 2025)", "https://gulfnews.com/world/gulf/saudi/saudi-arabia-sets-30-day-minimum-validity-on-residency-permit-for-issuing-final-exit-visas-1.500013681"], ["Wego, final exit requirements (Oct 2025)", "https://blog.wego.com/saudi-final-exit-visa/"], ["KSA Expats, before final exit (Jan 2026)", "https://ksaexpats.com/things-to-do-before-leaving-ksa-on-final-exit/"]]
     },
     {
       slug: "airports-terminals-parking", cat: "travel", t: "Airports, terminals and parking",
@@ -1604,8 +1619,11 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     /* ===== Laws & conduct ===== */
     {
       slug: "public-decency-fines", cat: "law", t: "Public decency rules and fines",
-      d: "Fines apply to residents and visitors in public places. Repeat offences pay double.",
+      d: "Fines apply to residents and visitors in public places. A repeat offence within a year pays double.",
+      checked: "2026-11-02",
       facts: [
+        ["Legal basis", "Council of Ministers Resolution No. 444 (April 2019), with a Ministry of Interior penalty table (September 2019). Amounts below are as reported"],
+        ["Repeat offence", "The fine doubles if repeated within one year"],
         ["Improper or offensive clothing in public", "SAR 100"],
         ["Clothing with obscene, racist or drug images", "SAR 500"],
         ["Photographing or filming people without permission", "SAR 1,000, and the content must be deleted"],
@@ -1616,7 +1634,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         ["Using seats for elderly or disabled people", "SAR 200"],
         ["Indecent behaviour of a sexual nature", "SAR 3,000"]
       ],
-      src: "https://www.moi.gov.sa", srcLabel: "moi.gov.sa"
+      src: "https://www.moi.gov.sa", srcLabel: "moi.gov.sa",
+      more: [["Library of Congress, public decency regulation (Nov 2019)", "https://www.loc.gov/item/global-legal-monitor/2019-11-04/saudi-arabia-legislation-enacted-on-regulating-public-decency/"], ["KSA Expats, public decency penalties (Aug 2025)", "https://ksaexpats.com/saudi-arabia-public-decency-laws-penalties/"], ["Saudipedia, public decency", "https://saudipedia.com/en/article/4873/government-and-politics/systems/public-decency-in-saudi-arabia"]]
     },
     {
       slug: "social-media-privacy-law", cat: "law", t: "Phones, social media and privacy",
@@ -1864,11 +1883,11 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       t: "کام کے اوقات، اوور ٹائم اور رمضان کے اوقات",
       d: "پرائیویٹ سیکٹر کے لیے لیبر لا کی حدود۔",
       facts: [
-        ["عام اوقات", "روزانہ 8 گھنٹے اور ہفتے میں 48 گھنٹے تک"],
+        ["عام اوقات", "روزانہ 8 گھنٹے یا ہفتے میں 48 گھنٹے تک (دفعہ 98)۔ دفعہ 99 کے تحت بعض شعبوں کی حد مختلف ہے"],
         ["رمضان (مسلمان ملازمین)", "روزانہ 6 گھنٹے اور ہفتے میں 36 گھنٹے تک"],
         ["وقفہ", "مسلسل 5 گھنٹے سے زیادہ کام نہیں، کم از کم 30 منٹ کا وقفہ"],
         ["ہفتہ وار چھٹی", "ہفتے میں کم از کم ایک پوری تنخواہ والی چھٹی، عموماً جمعہ"],
-        ["اوور ٹائم کی ادائیگی", "گھنٹے کی اجرت کے ساتھ بنیادی تنخواہ کا 50% اضافی"],
+        ["اوور ٹائم کی ادائیگی", "گھنٹے کی اجرت کے ساتھ بنیادی تنخواہ کا 50% اضافی (دفعہ 107)۔ سرکاری تعطیل پر کام اوور ٹائم شمار ہوتا ہے"],
         ["پیسوں کے بجائے چھٹی", "باہمی رضامندی سے، ہر اوور ٹائم گھنٹے پر کم از کم 1.5 گھنٹے چھٹی"]
       ],
       steps: [
@@ -1882,13 +1901,13 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       d: "سالانہ، بیماری، حج، شادی اور خاندانی چھٹیاں۔",
       facts: [
         ["سالانہ چھٹی", "سال میں 21 دن؛ ایک ہی کمپنی میں 5 سال کے بعد 30 دن"],
-        ["بیماری کی چھٹی", "مرحلہ وار تنخواہ: پہلے پوری، پھر کم۔ صحیح تفصیل معاہدے اور قانون میں دیکھیں"],
+        ["بیماری کی چھٹی", "پہلے 30 دن پوری تنخواہ، اگلے 60 دن تین چوتھائی تنخواہ، اگلے 30 دن بغیر تنخواہ"],
         ["حج کی چھٹی", "تنخواہ کے ساتھ، ملازمت میں ایک بار، کمپنی میں 2 سال بعد"],
         ["شادی کی چھٹی", "5 دن تنخواہ کے ساتھ"],
         ["بیوی، والدین یا اولاد کی وفات", "5 دن تنخواہ کے ساتھ"],
         ["بھائی یا بہن کی وفات", "3 دن تنخواہ کے ساتھ (2025 میں شامل)"],
-        ["بچے کی پیدائش (والد)", "تنخواہ کے ساتھ چھٹی، پیدائش کے 7 دن کے اندر"],
-        ["زچگی کی چھٹی", "12 ہفتے"]
+        ["بچے کی پیدائش (والد)", "3 دن تنخواہ کے ساتھ، پیدائش کے 7 دن کے اندر"],
+        ["زچگی کی چھٹی", "12 ہفتے پوری تنخواہ کے ساتھ، جن میں پیدائش کے بعد 6 ہفتے شامل ہیں"]
       ],
       steps: [
         "چھٹی تحریری طور پر یا کمپنی کے ایچ آر سسٹم سے مانگیں تاکہ ریکارڈ رہے۔",
@@ -1992,23 +2011,25 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     },
     /* 15 */ {
       t: "ٹریفک جرمانے جو آپ کو معلوم ہونے چاہییں",
-      d: "عام خلاف ورزیاں اور ان کے جرمانے۔ زیادہ تر کیمرے سے لگتے ہیں۔",
+      d: "عام خلاف ورزیاں اور ان کے رپورٹ شدہ جرمانے۔ زیادہ تر کیمرے سے لگتے ہیں۔",
       facts: [
+        ["اس صفحے کی رقوم", "ثانوی ذرائع کی رپورٹ کے مطابق۔ آپ کا اصل جرمانہ ابشر میں نظر آتا ہے"],
         ["ڈرائیونگ کے دوران ہاتھ میں فون", "500–900 ریال"],
         ["سیٹ بیلٹ نہ لگانا (ڈرائیور یا مسافر)", "150–300 ریال"],
         ["بچہ چائلڈ سیٹ میں نہ ہو", "300–500 ریال"],
         ["رفتار 10–20 کلومیٹر زیادہ (120 تک کی سڑکیں)", "150–300 ریال"],
         ["رفتار 50 کلومیٹر سے زیادہ", "1,500–2,000 ریال"],
         ["لال بتی توڑنا", "3,000–6,000 ریال"],
-        ["الٹی سمت گاڑی چلانا", "3,000–6,000 ریال"],
+        ["الٹی سمت گاڑی چلانا", "رپورٹ کے مطابق 3,000–6,000 ریال؛ دیگر رپورٹس مختلف ہیں"],
         ["معذور افراد کی جگہ پارکنگ", "500–900 ریال"],
-        ["ڈرفٹنگ (پہلی بار)", "20,000 ریال اور گاڑی ضبط"]
+        ["ڈرفٹنگ (پہلی بار)", "20,000 ریال اور گاڑی 15 دن کے لیے ضبط"]
       ],
       steps: [
         "ابشر میں ٹریفک خلاف ورزیاں باقاعدگی سے چیک کریں۔",
         "باقی جرمانے اقامہ تجدید، خروج و عودہ اور فائنل ایگزٹ روک دیتے ہیں۔",
-        "مقررہ مدت کے اندر ابشر میں جرمانے پر اعتراض کر سکتے ہیں۔"
-      ]
+        "ابشر میں جرمانے پر اعتراض کر سکتے ہیں۔ رپورٹ کے مطابق اس کی مدت اطلاع سے 30 دن ہے۔"
+      ],
+      warn: "جرمانے کی رقوم بدل سکتی ہیں، اور یہ اعداد ثانوی ذرائع سے ہیں۔ رقم ابشر میں دیکھیں۔"
     },
     /* 16 */ {
       t: "اگر حادثہ ہو جائے",
@@ -2036,22 +2057,27 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         ["سنگل (2 ماہ تک)", "200 ریال، پھر ہر اضافی ماہ 100 ریال"],
         ["ملٹی پل (3 ماہ تک)", "500 ریال، پھر ہر اضافی ماہ 200 ریال"],
         ["سعودیہ سے باہر رہ کر توسیع", "ماہانہ 200 ریال (سنگل)، 400 ریال (ملٹی پل)"],
-        ["غیر استعمال شدہ ویزا اندر رہتے ختم ہو جائے", "منسوخی کے 1,000 ریال"],
+        ["غیر استعمال شدہ ویزا اندر رہتے ختم ہو جائے", "منسوخی کا طریقہ اور کوئی فیس ابشر یا مقیم میں دیکھیں"],
         ["فیس کا اندازہ", "خروج و عودہ خرچ کیلکولیٹر دیکھیں: ksalifeguide.com/exit-reentry-cost"]
       ]
     },
     /* 18 */ {
       t: "مستقل واپسی (فائنل ایگزٹ)",
       d: "پہلے سب کچھ کلیئر کریں، ورنہ ویزا جاری نہیں ہوگا۔",
-      need: "کم از کم 30 دن والا اقامہ، کم از کم 60 دن والا پاسپورٹ۔",
+      need: "کم از کم 30 دن والا اقامہ، کم از کم 60 دن والا پاسپورٹ (دونوں رپورٹ کے مطابق)۔",
+      facts: [
+        ["روانگی کی مدت", "جاری ہونے کے 60 دن کے اندر۔ اقامہ میں 30 سے 60 دن باقی ہوں تو رپورٹ کے مطابق ویزا صرف اقامہ کی مدت تک رہتا ہے"],
+        ["اقامہ", "جوازات کے مطابق ویزا جاری ہونے کے لیے کم از کم 30 دن کی میعاد ضروری ہے"],
+        ["وقت پر روانہ نہ ہونا", "ختم شدہ ویزا منسوخ کرنے کے لیے 1,000 ریال جرمانہ۔ منسوخی کے لیے اقامہ درست ہونا ضروری ہے"]
+      ],
       steps: [
         "تمام ٹریفک جرمانے ادا کریں اور اپنے نام کی گاڑی بیچ دیں یا منتقل کر دیں۔",
         "ایجار کا معاہدہ ختم کریں، بجلی پانی کے بل، کریڈٹ کارڈ اور قرض ادا کریں۔",
         "ویزا جاری ہونے سے پہلے کمپنی سے حتمی حساب اور اختتامِ ملازمت معاوضہ طے کریں۔",
-        "پہلے اپنی رقم منتقل کریں۔ فائنل ایگزٹ ویزا کے بعد جلد ہی بینک اکاؤنٹ منجمد ہو سکتا ہے۔",
+        "ویزا جاری ہونے سے پہلے اپنے بینک کے قواعد دیکھیں۔ رپورٹ کے مطابق بینک جاری ہونے کے جلد بعد، روانگی سے پہلے ہی اکاؤنٹ منجمد کر دیتے ہیں۔",
         "کمپنی فائنل ایگزٹ ویزا جاری کرتی ہے۔ 60 دن کے اندر روانہ ہوں۔"
       ],
-      warn: "جانے کے بعد کچھ عرصہ سم فعال رکھیں تاکہ او ٹی پی کوڈ آتے رہیں۔"
+      warn: "جانے کے بعد کچھ عرصہ فعال رکھی گئی سم پر او ٹی پی کوڈ آ سکتے ہیں۔"
     },
     /* 18a */ {
       t: "ایئرپورٹ، ٹرمینل اور پارکنگ",
@@ -2209,8 +2235,10 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     },
     /* 22 */ {
       t: "عوامی آداب کے قواعد اور جرمانے",
-      d: "عوامی جگہوں پر مقیم اور مہمان دونوں پر لاگو۔ دوبارہ خلاف ورزی پر جرمانہ دگنا۔",
+      d: "عوامی جگہوں پر مقیم اور مہمان دونوں پر لاگو۔ ایک سال کے اندر دوبارہ خلاف ورزی پر جرمانہ دگنا۔",
       facts: [
+        ["قانونی بنیاد", "وزرا کونسل کی قرارداد نمبر 444 (اپریل 2019)، اور وزارت داخلہ کا جرمانوں کا جدول (ستمبر 2019)۔ نیچے کی رقوم رپورٹ کے مطابق ہیں"],
+        ["دوبارہ خلاف ورزی", "ایک سال کے اندر دوبارہ ہونے پر جرمانہ دگنا"],
         ["عوامی جگہ پر نامناسب لباس", "100 ریال"],
         ["فحش، نسل پرستانہ یا منشیات والی تصاویر کا لباس", "500 ریال"],
         ["اجازت کے بغیر لوگوں کی تصویر یا ویڈیو", "1,000 ریال، اور مواد حذف کرنا ہوگا"],
@@ -3133,10 +3161,10 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     { date: "2026-11-02", open: "public-bank-holidays", en: ["New: public and bank holidays, and lost documents", "Two new guides: holiday days and 2027 bank closure dates, and what happens when a passport or iqama is lost."], ur: ["نئی: سرکاری اور بینک تعطیلات، اور گمشدہ دستاویزات", "دو نئی رہنمائیاں: تعطیلات اور 2027 میں بینک بند ہونے کی تاریخیں، اور پاسپورٹ یا اقامہ گم ہونے پر کیا ہوتا ہے۔"] },
     { date: "2026-11-01", open: "airports-terminals-parking", en: ["Airport status update", "Reported: Riyadh Terminal 1 domestic, Terminal 2 some international; some foreign airlines have resumed, many remain paused. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ کے مطابق: ریاض ٹرمینل 1 اندرونِ ملک، ٹرمینل 2 کچھ بین الاقوامی؛ کچھ غیر ملکی ایئرلائنز بحال، بہت سی اب بھی بند۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
     { date: "2026-10-31", open: "iqama-renewal", en: ["New: iqama renewal, labour complaints and National Address", "Three new guides with fees, steps and official links, plus a dependent fee calculator."], ur: ["نئی: اقامہ تجدید، لیبر شکایت اور نیشنل ایڈریس", "فیس، طریقہ کار اور سرکاری لنکس کے ساتھ تین نئی رہنمائیاں، اور مرافقین فیس کیلکولیٹر۔"] },
-    { date: "2026-10-30", open: "airports-terminals-parking", en: ["Airport status update", "Reported: Riyadh operating on a limited basis from Terminals 1 and 2; Jeddah and Dammam operating with some delays. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ کے مطابق: ریاض ٹرمینل 1 اور 2 سے محدود طور پر فعال؛ جدہ اور دمام کچھ تاخیر کے ساتھ فعال۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
     { date: "2026-10-24", open: "airports-terminals-parking", en: ["New: five guides for flights and airports", "Terminals, parking, delays and your GACA rights, missed flights, customs and a before-you-fly checklist."], ur: ["نئی: پروازوں اور ایئرپورٹس کے لیے پانچ رہنمائیاں", "ٹرمینل، پارکنگ، تاخیر اور GACA حقوق، چھوٹی پرواز، کسٹمز اور سفر سے پہلے کی چیک لسٹ۔"] },
     { date: "2026-10-17", open: "airports-terminals-parking", en: ["Jeddah airport: North Terminal flights moved", "Reported: flights moved to Terminal 4 and the Hajj and Umrah terminals. Check your boarding pass."], ur: ["جدہ ایئرپورٹ: نارتھ ٹرمینل کی پروازیں منتقل", "رپورٹ کے مطابق پروازیں ٹرمینل 4 اور حج و عمرہ ٹرمینل منتقل ہوئیں۔ بورڈنگ پاس چیک کریں۔"] },
     { date: "2026-07-08", open: "iqama-renewal", en: ["Work permit grace period to 31 December 2026", "HRSD announced a grace period for work permits expired over 12 months and workers with no permit issued over 6 months after joining."], ur: ["ورک پرمٹ کی رعایتی مدت 31 دسمبر 2026 تک", "HRSD نے 12 ماہ سے زیادہ ایکسپائر ورک پرمٹ اور شمولیت کے 6 ماہ بعد بھی پرمٹ جاری نہ ہونے والے ورکرز کے لیے رعایتی مدت کا اعلان کیا۔"] },
+    { date: "2026-06-20", open: "final-exit", en: ["Final exit: leaving after the visa expires", "Jawazat, as reported: SAR 1,000 fine to cancel an expired final exit visa, and the iqama must still be valid."], ur: ["فائنل ایگزٹ: ویزا ختم ہونے کے بعد روانگی", "جوازات، رپورٹ کے مطابق: ختم شدہ فائنل ایگزٹ ویزا منسوخ کرنے پر 1,000 ریال جرمانہ، اور اقامہ درست ہونا ضروری ہے۔"] },
   ];
   function renderUpdates() {
     const loc = lang === "ur" ? "ur-PK" : lang === "ar" ? "ar-SA" : "en-GB";
