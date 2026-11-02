@@ -40,7 +40,7 @@ Business/income setup (ads, donations, sponsors) is **not done yet**. Plan: regi
 ```
 src/site.html        The app (single page): HTML + CSS + JS. Holds ALL content data:
                      CATS, GUIDES (36, each with slug; optional `more: [[label, url]]` extra sources; optional `checked: "YYYY-MM-DD"` overrides the global Last checked date), GUIDES_UR, PLACES (14), PLACES_UR,
-                     translations T.ur / T.ar, home search, tabs, EOSB calculator, dependent fee calculator (#v-dep, `runDep()`, SAR 400/month), scam check.
+                     translations T.ur / T.ar, home search, tabs, EOSB calculator, dependent fee calculator (#v-dep, `runDep()`, SAR 400/month), exit re-entry cost calculator (#v-reentry, `runRe()`, `RE_RATE`), scam check.
 src/lib/eosb.js      End-of-service calculation (Labor Law Art. 84–88) + tests in tests/.
 scripts/build.mjs    Builds public/: index.html (wraps src/site.html), one page per guide
                      (public/guides/<slug>.html, public/ur/guides/<slug>.html), one page per
@@ -53,7 +53,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 - Edit content in **src/site.html** only, then run `npm run build` and commit `public/` too (Cloudflare has no build step).
 - `npm test` must pass (EOSB tests). `node --check` the inline script after big edits.
 - URLs are extensionless on Cloudflare (`/guides/driving-licence`). `/?lang=ur` opens the app in Urdu.
-- **App routing uses real URLs (History API), not `#hash`**, so Cloudflare Web Analytics counts every view, guide and place (it tracks `pushState`, not hash changes). In src/site.html: `VPATH` (home `/`, calculator `/calculator`, dependent fee `/dependent-fee`, guides `/guides/`, places `/places/`, scam check `/scam-check`, numbers `/numbers`), `gPath()`/`pPath()` (Urdu adds `/ur`), `go()` pushes, `route()` handles boot and the back button. Opening or expanding a guide in-app pushes `/guides/<slug>`; a refresh there loads the static guide page. `public/_redirects` rewrites `/calculator`, `/dependent-fee`, `/scam-check`, `/numbers` to the app. Old `/#eosb`-style links still work. Never add relative URLs to src/site.html (pages now render at nested paths).
+- **App routing uses real URLs (History API), not `#hash`**, so Cloudflare Web Analytics counts every view, guide and place (it tracks `pushState`, not hash changes). In src/site.html: `VPATH` (home `/`, calculator `/calculator`, dependent fee `/dependent-fee`, exit re-entry cost `/exit-reentry-cost`, guides `/guides/`, places `/places/`, scam check `/scam-check`, numbers `/numbers`), `gPath()`/`pPath()` (Urdu adds `/ur`), `go()` pushes, `route()` handles boot and the back button. Opening or expanding a guide in-app pushes `/guides/<slug>`; a refresh there loads the static guide page. `public/_redirects` rewrites `/calculator`, `/dependent-fee`, `/exit-reentry-cost`, `/scam-check`, `/numbers` to the app. Old `/#eosb`-style links still work. Never add relative URLs to src/site.html (pages now render at nested paths).
 
 ## Design system ("Desert & oasis")
 - Tokens in `:root` of src/site.html (and mirrored in build.mjs CSS): sand `--bg #f6f1e7`, surface `#fffdf8`, palm green `--accent #0e5a43`, date gold `--gold #9a6a1c` / `#e9b45a`, hero band `#0e5a43`. Full dark mode.
@@ -69,9 +69,10 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 5. Update the "Last checked" date when facts are re-verified: global `CHECKED` in build.mjs plus `GT.*.checked` in src/site.html, or a per-guide `checked` field.
 
 ## Current state (Oct 2026)
-- Live: home with search, 8 life-stage tiles, tools, holy places, most-read; desktop Guides ▾ dropdown (life stages); "Numbers & portals" view (#help: NUMS, PORTALS, HSRC in src/site.html — 8 numbers, 12 portals, last checked 24 Oct 2026); 36 guides EN/UR (incl. iqama-renewal, unpaid-salary-labour-complaint, national-address added 31 Oct 2026; public-bank-holidays and lost-passport-iqama added 2 Nov 2026; 5 flight guides: airports-terminals-parking, flight-delay-cancellation-rights, missed-flight, customs-cash-medicines, before-you-fly-checklist; category "travel" now labelled "Travel & flights"); 14 holy places EN/UR with Google Maps (Madinah incl. Masjid al-Ghamamah); EOSB calculator; dependent fee calculator (/dependent-fee); scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
+- Live: home with search, 8 life-stage tiles, tools, holy places, most-read; desktop Guides ▾ dropdown (life stages); "Numbers & portals" view (#help: NUMS, PORTALS, HSRC in src/site.html — 8 numbers, 12 portals, last checked 24 Oct 2026); 36 guides EN/UR (incl. iqama-renewal, unpaid-salary-labour-complaint, national-address added 31 Oct 2026; public-bank-holidays and lost-passport-iqama added 2 Nov 2026; 5 flight guides: airports-terminals-parking, flight-delay-cancellation-rights, missed-flight, customs-cash-medicines, before-you-fly-checklist; category "travel" now labelled "Travel & flights"); 14 holy places EN/UR with Google Maps (Madinah incl. Masjid al-Ghamamah); EOSB calculator; dependent fee calculator (/dependent-fee); exit re-entry cost calculator (/exit-reentry-cost, added 2 Nov 2026); scam check; disclaimer/terms/privacy/support; Facebook follow link; share card.
 - In-app guides end with a "Related guides" block (`relatedHtml()` in src/site.html: next 3 guides in the same category, EN/UR/AR heading, `data-open` links). Static guide pages already list all same-category guides (build.mjs).
 - Home "Latest updates" feed: `UPDATES` array in src/site.html (date, guide slug, EN/UR title + line), newest first. Add an item whenever a rule changes or new guides go live; every item must be sourced inside its linked guide. Footer follows: Facebook only. YouTube link removed until the first videos are uploaded; re-add the `.fbtn.yt` button (styles still in place) in src/site.html footer and build.mjs footer then.
+- Analytics, 2 Nov 2026 (owner screenshots, small sample): speed good (LCP 100% good, CLS 98%, INP P75 about 154 ms); about 74% of samples from Saudi Arabia, 13% Pakistan, India and Philippines about 1 each, so English outreach to those groups is the gap; about 1.2 pages per visit. Claude has no direct access to Web Analytics or Search Console; the owner sends screenshots.
 - Week-1 launch posts written (Claude artifact "KSA Life Guide Launch Posts").
 - Last full review: 31 Oct 2026 (tests pass, EN/UR in sync, all guides dated 2026-10-24; removed "open source" wording from terms.html).
 
@@ -79,6 +80,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 - Riyadh/Jeddah airline terminals (changed Feb and Oct 2026), KKIA parking rates and the SAR 575 drop-off fee.
 - GACA passenger-rights amounts (SDR), GACA power-bank rules.
 - Public and bank holidays guide: add next-year SAMA dates and HRSD Eid announcements as they come; lost documents guide: lost-iqama cost (news sources differ).
+- Exit re-entry fees: the `RE_RATE` values in src/site.html must match the guide facts (EN + UR).
 - ZATCA declaration limit (SAR 40,000 on zatca.gov.sa; many news sites still say 60,000), SFDA controlled-medicine clearance (CDS).
 - Airport status rows at the top of the "airports-terminals-parking" guide (EN + UR facts) and the latest (1 Nov 2026) "Airport status update" item in UPDATES: re-check and re-date whenever status changes; remove the rows once all airports are back to normal. Owner rule: describe only whether airports and flights are operating. Never mention the cause, conflict or security events on the site. This includes source links: use sources whose URLs and labels are neutral. The Riyadh Terminal 1–5 rows are labelled "normal" while operation is limited; remove the labels and note row once normal operation returns.
 
@@ -86,7 +88,7 @@ public/              Deployed folder (committed). Also: disclaimer.html, terms.h
 1. WhatsApp Channel link → add "Follow on WhatsApp" button.
 2. Week-2 posts based on Web Analytics "Paths".
 3. Arabic translation of guides and holy places (with their own pages).
-4. New calculators: exit re-entry cost, overtime pay, iqama renewal cost (dependent fee done 31 Oct 2026).
+4. New calculators: overtime pay, iqama renewal cost (dependent fee done 31 Oct 2026, exit re-entry cost done 2 Nov 2026).
 5. New guides (next, from the 31 Oct gap review): car basics (Istimara, Fahas, insurance, ownership transfer), death of a family member and repatriation, baby born in KSA, GOSI, embassy passport renewal (PK/IN/PH links only), bank account frozen, domestic worker visa (Musaned); also Premium Residency, disputing fines; long-tail practical topics (degree attestation for Pakistan/India/Philippines, number plate types, Riyadh Metro fares and hours, checking iqama/visa status, Huroob removal rules, SIM numbers in your name). Idea from comparing lifeinsaudiarabia.net: volume + freshness; never copy its text.
 6. Dedicated project Gmail as owner of all accounts; second Facebook admin; 2FA everywhere.
 7. Legal review of disclaimer by a Saudi lawyer before ads/sponsors; Pakistan business setup before any income.

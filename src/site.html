@@ -560,6 +560,11 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
             <p data-i18n="tool_dep_d">SAR 400 per family member per month: see the total for your renewal.</p>
             <span class="go" data-i18n="open">Open →</span>
           </a>
+          <a class="tool" href="#reentry"><span class="ib"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg></span>
+            <h3 data-i18n="tool_re_t">Exit re-entry cost calculator</h3>
+            <p data-i18n="tool_re_d">Estimate the visa fee by type and months, or an extension from outside KSA.</p>
+            <span class="go" data-i18n="open">Open →</span>
+          </a>
           <a class="tool" href="#scams"><span class="ib"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg></span>
             <h3 data-i18n="tool_scams_t">Scam message check</h3>
             <p data-i18n="tool_scams_d">Paste an SMS or WhatsApp message and see the red flags.</p>
@@ -637,6 +642,37 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     </section>
 
     <!-- DEPENDENT FEE -->
+    <section class="view" id="v-reentry" hidden>
+      <div class="hero">
+        <div class="eyebrow" data-i18n="re_eyebrow">Travel · Exit re-entry visa</div>
+        <h1 data-i18n="re_title">Exit re-entry cost calculator</h1>
+        <p class="lead" data-i18n="re_lead">Estimate the fee for one exit re-entry visa, or for extending one from outside the Kingdom.</p>
+      </div>
+      <div class="calc">
+        <form class="panel" id="reForm" novalidate>
+          <label class="f" for="reMode"><span data-i18n="f_re_mode">What do you want to estimate?</span>
+            <select id="reMode">
+              <option value="new" selected data-i18n="re_new">New visa, issued inside KSA</option>
+              <option value="ext" data-i18n="re_ext">Extension from outside KSA</option>
+            </select>
+          </label>
+          <label class="f" for="reType"><span data-i18n="f_re_type">Visa type</span>
+            <select id="reType">
+              <option value="single" selected data-i18n="re_single">Single</option>
+              <option value="multiple" data-i18n="re_multiple">Multiple</option>
+            </select>
+          </label>
+          <label class="f" for="reM"><span data-i18n="f_re_m">Number of months</span>
+            <small data-i18n="f_re_m_h">The visa cannot go beyond your iqama expiry date.</small>
+            <input id="reM" type="number" inputmode="numeric" min="1" max="24" step="1" value="3">
+          </label>
+          <button class="btn" type="submit" data-i18n="calc">Calculate</button>
+        </form>
+        <div class="result" id="reResult" aria-live="polite"></div>
+      </div>
+      <p class="note" data-i18n-html="re_disc"><b>Estimate only, for one visa.</b> Based on the rates in our exit re-entry guide, last checked 2 Nov 2026. The amount you actually pay is shown in Absher or Muqeem and can differ. Fees are reported as non-refundable. This is general information, not advice on your case.</p>
+    </section>
+
     <section class="view" id="v-dep" hidden>
       <div class="hero">
         <div class="eyebrow" data-i18n="dep_eyebrow">Family · Dependent fee</div>
@@ -763,6 +799,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
           <li><a href="/places/" data-i18n="nav_places">Holy places</a></li>
           <li><a href="#eosb" data-i18n="f_eosb">End-of-service calculator</a></li>
           <li><a href="#dep" data-i18n="tool_dep_t">Dependent fee calculator</a></li>
+          <li><a href="#reentry" data-i18n="tool_re_t">Exit re-entry cost calculator</a></li>
           <li><a href="#scams" data-i18n="nav_scams">Scam check</a></li>
           <li><a href="#help" data-i18n="nav_help">Numbers &amp; portals</a></li>
         </ul>
@@ -809,6 +846,11 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       q_label: "ویب سائٹ میں تلاش کریں", stages_t: "زندگی کے مرحلے کے مطابق دیکھیں", tools_t: "مفت ٹولز", popular_t: "سب سے زیادہ پڑھی جانے والی رہنمائیاں",
       trust3_t: "ہر ماہ جانچ", trust3_d: "فیس اور قواعد ہر ماہ سرکاری ذرائع سے دوبارہ چیک کیے جاتے ہیں۔ کوئی قدم اٹھانے سے پہلے ہمیشہ سرکاری پورٹل پر تصدیق کریں۔",
       nav_home: "ہوم", nav_eosb: "اختتامِ ملازمت", nav_guides: "رہنمائی", nav_scams: "فراڈ چیک",
+      tool_re_t: "خروج و عودہ خرچ کیلکولیٹر", tool_re_d: "قسم اور مہینوں کے حساب سے ویزا فیس کا اندازہ، یا سعودی عرب سے باہر توسیع کا خرچ۔",
+      re_eyebrow: "سفر · خروج و عودہ ویزا", re_title: "خروج و عودہ خرچ کیلکولیٹر", re_lead: "ایک خروج و عودہ ویزا کی فیس، یا مملکت سے باہر رہتے ہوئے اس میں توسیع کے خرچ کا اندازہ لگائیں۔",
+      f_re_mode: "آپ کس چیز کا اندازہ لگانا چاہتے ہیں؟", re_new: "نیا ویزا، سعودی عرب کے اندر سے جاری", re_ext: "سعودی عرب سے باہر توسیع", f_re_type: "ویزا کی قسم", re_single: "سنگل", re_multiple: "ملٹیپل", f_re_m: "مہینوں کی تعداد", f_re_m_h: "ویزا آپ کے اقامہ کی میعاد ختم ہونے کی تاریخ سے آگے نہیں جا سکتا۔",
+      re_disc: "<b>صرف اندازہ، ایک ویزا کے لیے۔</b> ہماری خروج و عودہ رہنمائی میں درج شرحوں پر مبنی، آخری جانچ 2 نومبر 2026۔ اصل رقم ابشر یا مقیم میں دکھائی جاتی ہے اور مختلف ہو سکتی ہے۔ رپورٹ کے مطابق فیس واپس نہیں ہوتی۔ یہ عمومی معلومات ہے، آپ کے کیس کے بارے میں مشورہ نہیں۔",
+      re_est: "اندازاً فیس", re_l_base: "بنیادی فیس (%m ماہ تک)", re_l_extra: "اضافی مہینے", re_l_ext: "توسیع", err_re: "1 سے 24 مہینے درج کریں۔",
       tool_dep_t: "مرافقین فیس کیلکولیٹر", tool_dep_d: "فی فردِ خانہ ماہانہ 400 ریال: اپنی تجدید کا کل خرچ دیکھیں۔",
       dep_eyebrow: "خاندان · مرافقین فیس", dep_title: "مرافقین فیس کیلکولیٹر", dep_lead: "اپنی کفالت پر موجود اہلِ خانہ کی ماہانہ فیس کا اندازہ لگائیں، تجدید کی مدت اور پہلے کے واجب الادا مہینوں سمیت۔",
       f_dep_n: "مرافقین کی تعداد", f_dep_n_h: "آپ کی کفالت پر اہلِ خانہ (مثلاً بیوی، بچے، والدین)۔", f_dep_m: "تجدید کی مدت",
@@ -880,6 +922,11 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       q_label: "ابحث في الموقع", stages_t: "تصفح حسب مرحلة الحياة", tools_t: "أدوات مجانية", popular_t: "الأدلة الأكثر قراءة",
       trust3_t: "مراجعة شهرية", trust3_d: "تُراجع الرسوم والأنظمة شهرياً مع المصادر الرسمية. تأكد دائماً من البوابة الرسمية قبل أي إجراء.",
       nav_home: "الرئيسية", nav_eosb: "نهاية الخدمة", nav_guides: "الأدلة", nav_scams: "فحص الاحتيال",
+      tool_re_t: "حاسبة تكلفة تأشيرة الخروج والعودة", tool_re_d: "قدّر رسوم التأشيرة حسب النوع وعدد الأشهر، أو تكلفة التمديد من خارج المملكة.",
+      re_eyebrow: "السفر · تأشيرة الخروج والعودة", re_title: "حاسبة تكلفة تأشيرة الخروج والعودة", re_lead: "قدّر رسوم تأشيرة خروج وعودة واحدة، أو تكلفة تمديدها من خارج المملكة.",
+      f_re_mode: "ماذا تريد أن تقدّر؟", re_new: "تأشيرة جديدة تصدر داخل المملكة", re_ext: "تمديد من خارج المملكة", f_re_type: "نوع التأشيرة", re_single: "مفردة", re_multiple: "متعددة", f_re_m: "عدد الأشهر", f_re_m_h: "لا يمكن أن تتجاوز التأشيرة تاريخ انتهاء الإقامة.",
+      re_disc: "<b>تقدير فقط لتأشيرة واحدة.</b> يعتمد على الأسعار الواردة في دليل الخروج والعودة، آخر مراجعة 2 نوفمبر 2026. يظهر المبلغ الفعلي في أبشر أو مقيم وقد يختلف. تشير التقارير إلى أن الرسوم غير مستردة. هذه معلومات عامة وليست استشارة لحالتك.",
+      re_est: "الرسوم التقديرية", re_l_base: "الرسوم الأساسية (حتى %m أشهر)", re_l_extra: "أشهر إضافية", re_l_ext: "التمديد", err_re: "أدخل من 1 إلى 24 شهراً.",
       tool_dep_t: "حاسبة رسوم المرافقين", tool_dep_d: "400 ريال لكل مرافق شهرياً: اعرف الإجمالي لفترة التجديد.",
       dep_eyebrow: "الأسرة · رسوم المرافقين", dep_title: "حاسبة رسوم المرافقين", dep_lead: "قدّر الرسوم الشهرية لأفراد أسرتك على كفالتك لفترة التجديد وأي أشهر مستحقة سابقاً.",
       f_dep_n: "عدد المرافقين", f_dep_n_h: "أفراد الأسرة على كفالتك (مثل الزوجة والأبناء والوالدين).", f_dep_m: "فترة التجديد",
@@ -949,7 +996,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     flag_secret: "Asks for a code, password or card details", flag_urgent: "Threat or pressure to act fast",
     flag_money: "Asks you to pay a fee, fine or charge", flag_prize: "Claims you won a prize",
     red_flags: "Red flags", what_do: "What to do:",
-    err_wage: "Enter a valid wage.", dep_est: "Estimated total to pay", err_dep: "Enter 1 to 20 dependents and 0 to 36 owed months.", dep_l_month: "Per month", dep_l_renew: "Renewal period", dep_l_owed: "Months owed", dep_l_year: "For a full year", err_dates: "Enter both dates. The last day must be after the start date."
+    re_est: "Estimated fee", re_l_base: "Base fee (up to %m months)", re_l_extra: "Extra months", re_l_ext: "Extension", err_re: "Enter 1 to 24 months.", err_wage: "Enter a valid wage.", dep_est: "Estimated total to pay", err_dep: "Enter 1 to 20 dependents and 0 to 36 owed months.", dep_l_month: "Per month", dep_l_renew: "Renewal period", dep_l_owed: "Months owed", dep_l_year: "For a full year", err_dates: "Enter both dates. The last day must be after the start date."
   };
   let lang = "en";
   const tr = (k) => (T[lang] && T[lang][k]) || EN[k] || k;
@@ -972,7 +1019,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     });
     document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
     try { localStorage.setItem("ksar-lang", l); } catch (e) {}
-    renderDates(); runCalc(); runDep(); renderAlerts(); renderGuides(); renderHome(); renderHelp(); renderDD(); renderUpdates(); if (lastCheck) runCheck();
+    renderDates(); runCalc(); runDep(); runRe(); renderAlerts(); renderGuides(); renderHome(); renderHelp(); renderDD(); renderUpdates(); if (lastCheck) runCheck();
   }
   document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
@@ -988,7 +1035,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   }
 
   /* ---------- Views ---------- */
-  const views = ["home", "eosb", "dep", "guides", "places", "scams", "help"];
+  const views = ["home", "eosb", "dep", "reentry", "guides", "places", "scams", "help"];
   function show(v) {
     if (!views.includes(v)) v = "home";
     views.forEach(x => { document.getElementById("v-" + x).hidden = x !== v; });
@@ -1001,7 +1048,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     if (views.includes(v)) { e.preventDefault(); show(v); window.scrollTo({ top: 0 }); go(VPATH[v]); }
   });
   /* Real URLs (History API) so Cloudflare Web Analytics counts each view, guide and place */
-  const VPATH = { home: "/", eosb: "/calculator", dep: "/dependent-fee", guides: "/guides/", places: "/places/", scams: "/scam-check", help: "/numbers" };
+  const VPATH = { home: "/", eosb: "/calculator", dep: "/dependent-fee", reentry: "/exit-reentry-cost", guides: "/guides/", places: "/places/", scams: "/scam-check", help: "/numbers" };
   const gPath = (slug) => (lang === "ur" ? "/ur" : "") + "/guides/" + slug;
   const pPath = (slug) => (lang === "ur" ? "/ur" : "") + "/places/" + slug;
   function go(path) { try { if (location.pathname !== path || location.hash) history.pushState(null, "", path); } catch (e) {} }
@@ -1047,6 +1094,26 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   }
   $("eosbForm").addEventListener("submit", (e) => { e.preventDefault(); edited = true; runCalc(); });
   $("reason").addEventListener("change", runCalc);
+
+  /* ---------- Exit re-entry cost (rates in the exit-re-entry-visa guide) ---------- */
+  const RE_RATE = { single: { base: 200, incl: 2, extra: 100, abroad: 200 }, multiple: { base: 500, incl: 3, extra: 200, abroad: 400 } };
+  function runRe() {
+    const out = $("reResult");
+    const mode = $("reMode").value, r = RE_RATE[$("reType").value], raw = Number($("reM").value), m = Math.floor(raw);
+    if (!(m >= 1 && m <= 24)) { out.innerHTML = `<p class="err">${tr("err_re")}</p>`; return; }
+    let total, lines;
+    if (mode === "ext") {
+      total = m * r.abroad;
+      lines = `<div><dt>${tr("re_l_ext")}</dt><dd>${sar(r.abroad)} × ${m} = ${sar(total)}</dd></div>`;
+    } else {
+      const x = Math.max(0, m - r.incl);
+      total = r.base + x * r.extra;
+      lines = `<div><dt>${tr("re_l_base").replace("%m", r.incl)}</dt><dd>${sar(r.base)}</dd></div>` + (x ? `<div><dt>${tr("re_l_extra")}</dt><dd>${sar(r.extra)} × ${x} = ${sar(x * r.extra)}</dd></div>` : "");
+    }
+    out.innerHTML = `<div><div class="eyebrow">${tr("re_est")}</div><div class="amount">${sar(total)}</div></div><dl class="lines">${lines}</dl>`;
+  }
+  $("reForm").addEventListener("submit", (e) => { e.preventDefault(); runRe(); });
+  ["reMode", "reType", "reM"].forEach(id => { $(id).addEventListener("input", runRe); $(id).addEventListener("change", runRe); });
 
   /* ---------- Dependent fee (SAR 400 per dependent per month) ---------- */
   const DEP_RATE = 400;
@@ -1329,6 +1396,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     {
       slug: "exit-re-entry-visa", cat: "travel", t: "Exit and re-entry visa",
       d: "Travel out of the Kingdom and come back on the same iqama.",
+      checked: "2026-11-02",
       need: "Valid iqama, passport valid at least 90 days, fingerprints on file, no unpaid traffic fines.",
       steps: [
         "Workers: your employer issues the visa through Muqeem or Absher Business. Family members: the head of the family issues it in Absher.",
@@ -1340,9 +1408,11 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         ["Single (up to 2 months)", "SAR 200, then SAR 100 per extra month"],
         ["Multiple (up to 3 months)", "SAR 500, then SAR 200 per extra month"],
         ["Extending from outside KSA", "SAR 200 per month (single), SAR 400 (multiple)"],
-        ["Unused visa expires while you are inside KSA", "SAR 1,000 to cancel"]
+        ["Unused visa expires while you are inside KSA", "SAR 1,000 to cancel"],
+        ["Fee estimate", "See the exit re-entry cost calculator at ksalifeguide.com/exit-reentry-cost"]
       ],
-      src: "https://www.absher.sa", srcLabel: "absher.sa"
+      src: "https://www.absher.sa", srcLabel: "absher.sa",
+      more: [["Wego, exit re-entry fees (Jun 2026)", "https://blog.wego.com/saudi-exit-re-entry-visa/"], ["Gulf News, Jawazat on fees and refunds (Jun 2025)", "https://gulfnews.com/world/gulf/saudi/saudi-arabia-no-refunds-for-canceled-exit-and-re-entry-visas-1.500163506"]]
     },
     {
       slug: "final-exit", cat: "travel", t: "Leaving for good (final exit)",
@@ -1963,7 +2033,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         ["سنگل (2 ماہ تک)", "200 ریال، پھر ہر اضافی ماہ 100 ریال"],
         ["ملٹی پل (3 ماہ تک)", "500 ریال، پھر ہر اضافی ماہ 200 ریال"],
         ["سعودیہ سے باہر رہ کر توسیع", "ماہانہ 200 ریال (سنگل)، 400 ریال (ملٹی پل)"],
-        ["غیر استعمال شدہ ویزا اندر رہتے ختم ہو جائے", "منسوخی کے 1,000 ریال"]
+        ["غیر استعمال شدہ ویزا اندر رہتے ختم ہو جائے", "منسوخی کے 1,000 ریال"],
+        ["فیس کا اندازہ", "خروج و عودہ خرچ کیلکولیٹر دیکھیں: ksalifeguide.com/exit-reentry-cost"]
       ]
     },
     /* 18 */ {
@@ -2877,6 +2948,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   const TOOLS = [
     { view: "eosb", icon: "calc", key: "tool_eosb_t", words: "end of service eosb gratuity award resign resignation termination article 84 85 calculator مكافأة نهاية الخدمة اختتام ملازمت معاوضہ استعفیٰ" },
     { view: "dep", icon: "calc", key: "tool_dep_t", words: "dependent fee levy family dependents 400 iqama renewal calculator رسوم المرافقين مرافقین فیس" },
+    { view: "reentry", icon: "calc", key: "tool_re_t", words: "exit re-entry reentry visa fee cost single multiple extension calculator خروج وعودة تأشيرة خروج و عودہ ویزا فیس" },
     { view: "scams", icon: "shield", key: "tool_scams_t", words: "scam fraud phishing sms whatsapp fake link otp احتيال رسالة فراڈ دھوکہ" },
     { view: "help", icon: "phone", key: "tool_help_t", words: "emergency police ambulance fire 911 999 997 998 937 number phone call portal absher qiwa gosi nusuk najiz musaned ejar balady طوارئ شرطة إسعاف ایمرجنسی پولیس ایمبولینس نمبر پورٹل" }
   ];
@@ -3054,11 +3126,11 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
 
   /* ---------- Latest updates (dated rule changes, newest first; every item sourced in its guide) ---------- */
   const UPDATES = [
+    { date: "2026-11-02", open: "exit-re-entry-visa", en: ["New: exit re-entry cost calculator", "Estimate the fee by visa type and months, or an extension from outside KSA."], ur: ["نیا: خروج و عودہ خرچ کیلکولیٹر", "ویزا کی قسم اور مہینوں کے حساب سے فیس، یا سعودی عرب سے باہر توسیع کے خرچ کا اندازہ لگائیں۔"] },
     { date: "2026-11-02", open: "public-bank-holidays", en: ["New: public and bank holidays, and lost documents", "Two new guides: holiday days and 2027 bank closure dates, and what happens when a passport or iqama is lost."], ur: ["نئی: سرکاری اور بینک تعطیلات، اور گمشدہ دستاویزات", "دو نئی رہنمائیاں: تعطیلات اور 2027 میں بینک بند ہونے کی تاریخیں، اور پاسپورٹ یا اقامہ گم ہونے پر کیا ہوتا ہے۔"] },
     { date: "2026-11-01", open: "airports-terminals-parking", en: ["Airport status update", "Reported: Riyadh Terminal 1 domestic, Terminal 2 some international; some foreign airlines have resumed, many remain paused. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ کے مطابق: ریاض ٹرمینل 1 اندرونِ ملک، ٹرمینل 2 کچھ بین الاقوامی؛ کچھ غیر ملکی ایئرلائنز بحال، بہت سی اب بھی بند۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
     { date: "2026-10-31", open: "iqama-renewal", en: ["New: iqama renewal, labour complaints and National Address", "Three new guides with fees, steps and official links, plus a dependent fee calculator."], ur: ["نئی: اقامہ تجدید، لیبر شکایت اور نیشنل ایڈریس", "فیس، طریقہ کار اور سرکاری لنکس کے ساتھ تین نئی رہنمائیاں، اور مرافقین فیس کیلکولیٹر۔"] },
     { date: "2026-10-30", open: "airports-terminals-parking", en: ["Airport status update", "Reported: Riyadh operating on a limited basis from Terminals 1 and 2; Jeddah and Dammam operating with some delays. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ کے مطابق: ریاض ٹرمینل 1 اور 2 سے محدود طور پر فعال؛ جدہ اور دمام کچھ تاخیر کے ساتھ فعال۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
-    { date: "2026-10-27", open: "airports-terminals-parking", en: ["Airport status update", "Reported: Jeddah and Dammam operating with some delays; Riyadh partly operating. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ کے مطابق: جدہ اور دمام کچھ تاخیر کے ساتھ فعال؛ ریاض جزوی طور پر فعال۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
     { date: "2026-10-24", open: "airports-terminals-parking", en: ["New: five guides for flights and airports", "Terminals, parking, delays and your GACA rights, missed flights, customs and a before-you-fly checklist."], ur: ["نئی: پروازوں اور ایئرپورٹس کے لیے پانچ رہنمائیاں", "ٹرمینل، پارکنگ، تاخیر اور GACA حقوق، چھوٹی پرواز، کسٹمز اور سفر سے پہلے کی چیک لسٹ۔"] },
     { date: "2026-10-17", open: "airports-terminals-parking", en: ["Jeddah airport: North Terminal flights moved", "Reported: flights moved to Terminal 4 and the Hajj and Umrah terminals. Check your boarding pass."], ur: ["جدہ ایئرپورٹ: نارتھ ٹرمینل کی پروازیں منتقل", "رپورٹ کے مطابق پروازیں ٹرمینل 4 اور حج و عمرہ ٹرمینل منتقل ہوئیں۔ بورڈنگ پاس چیک کریں۔"] },
     { date: "2026-07-08", open: "iqama-renewal", en: ["Work permit grace period to 31 December 2026", "HRSD announced a grace period for work permits expired over 12 months and workers with no permit issued over 6 months after joining."], ur: ["ورک پرمٹ کی رعایتی مدت 31 دسمبر 2026 تک", "HRSD نے 12 ماہ سے زیادہ ایکسپائر ورک پرمٹ اور شمولیت کے 6 ماہ بعد بھی پرمٹ جاری نہ ہونے والے ورکرز کے لیے رعایتی مدت کا اعلان کیا۔"] },
