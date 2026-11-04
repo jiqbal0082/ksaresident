@@ -158,6 +158,7 @@ html[dir="rtl"] .amount { text-align: right; }
 .rules > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 12px; padding: 12px 16px; border-top: 1px solid var(--line); }
 .rules > div:first-child { border-top: 0; }
 .rules b { font: 500 .85rem/1.5 var(--mono); color: var(--accent); }
+.rules p { max-width: none; }
 @media (max-width: 480px) { .rules > div { grid-template-columns: 1fr; gap: 2px; } }
 
 /* Guides */
@@ -262,7 +263,7 @@ html[lang="ur"] .fcol h3, html[lang="ar"] .fcol h3 { font: 600 .9rem/1.6 var(--b
 .tool, .guide, .alert, form.panel, .result, .checker, .rules, .tile, .plist a { box-shadow: var(--shadow); }
 .ico { width: 22px; height: 22px; flex: none; }
 .herob { background: var(--hero-bg); color: var(--hero-ink); border-radius: 20px; padding: clamp(20px, 4vw, 36px); display: grid; gap: 14px; position: relative; overflow: hidden; }
-.herob::after { content: ""; position: absolute; inset-inline-end: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; border: 2px solid rgba(226, 180, 90, .35); pointer-events: none; }
+.herob::after { content: ""; position: absolute; inset-inline-end: -70px; top: -70px; width: 130px; height: 130px; border-radius: 50%; border: 2px solid rgba(226, 180, 90, .35); pointer-events: none; }
 .herob .eyebrow { color: #e9c27a; }
 .herob h1 { color: var(--hero-ink); max-width: 18ch; }
 .herob .lead { color: var(--hero-muted); }
@@ -354,6 +355,8 @@ html[lang="ur"] .quick button, html[lang="ar"] .quick button { font-family: "IBM
 .bnav { display: none; }
 @media (max-width: 760px) {
   nav.tabs { display: none; }
+  .langs button { padding: 10px 13px; }
+  .quick button, .quick a { min-height: 38px; }
   body { padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
   .bnav { display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; inset: auto 0 0 0; z-index: 20; background: var(--surface); border-top: 1px solid var(--line); box-shadow: 0 -4px 16px rgba(70, 52, 20, .08); padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
   .bnav a { display: grid; justify-items: center; gap: 3px; padding: 9px 4px 8px; color: var(--muted); text-decoration: none; font: 500 .72rem/1.2 var(--body); text-align: center; }
@@ -391,6 +394,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   #city-makkah .pcard:first-child > :not(.acts), #city-madinah .pcard:first-child > :not(.acts) { grid-column: 1; }
   #city-makkah .pcard:first-child .acts, #city-madinah .pcard:first-child .acts { grid-column: 2; grid-row: 1 / span 3; }
   #city-makkah .pcard:first-child h3, #city-madinah .pcard:first-child h3 { font-size: 1.35rem; } }
+@media (min-width: 1100px) and (max-width: 1399px) { #v-home .hstats { display: grid; grid-template-columns: repeat(2, max-content); } }
 /* ---- Wide screens: use the full width ---- */
 @media (min-width: 1100px) {
   #v-home .herob.herob { padding-inline-end: 42%; min-height: 480px; }
@@ -514,7 +518,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         <p class="lead" data-i18n="home_lead">Clear, practical information for residents and visitors: work and residency, family, travel, Hajj and Umrah, and the holy places of Makkah and Madinah. Free, with official sources linked.</p>
         <div class="qwrap">
           <label class="qbox" for="q"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span class="sr" data-i18n="q_label">Search the site</span>
-            <input id="q" type="search" autocomplete="off" placeholder="Search: exit re-entry, licence, final exit, fines…">
+            <input id="q" type="search" autocomplete="off" placeholder="Search: re-entry, final exit, fines…">
           </label>
           <div class="qres" id="qres" hidden></div>
         </div>
@@ -2974,8 +2978,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   const POPULAR = ["exit-re-entry-visa", "driving-licence", "final-exit", "family-visa", "change-employer-iqama-transfer", "traffic-fines"];
   const QUICK = ["exit-re-entry-visa", "driving-licence", "final-exit", "traffic-fines", "hajj-for-residents"];
   const HT = {
-    en: { ph: "Search: exit re-entry, licence, final exit, fines…", guides: "guides", none: "Nothing found. Try a shorter word, or browse the life stages below.", tool: "Tool", fine: "In guide" },
-    ur: { ph: "تلاش: خروج و عودہ، لائسنس، فائنل ایگزٹ، جرمانے…", guides: "رہنمائیاں", none: "کچھ نہیں ملا۔ مختصر لفظ آزمائیں یا نیچے زندگی کے مرحلے دیکھیں۔", tool: "ٹول", fine: "رہنمائی میں" },
+    en: { ph: "Search: re-entry, final exit, fines…", guides: "guides", none: "Nothing found. Try a shorter word, or browse the life stages below.", tool: "Tool", fine: "In guide" },
+    ur: { ph: "تلاش: خروج و عودہ، فائنل ایگزٹ، جرمانے…", guides: "رہنمائیاں", none: "کچھ نہیں ملا۔ مختصر لفظ آزمائیں یا نیچے زندگی کے مرحلے دیکھیں۔", tool: "ٹول", fine: "رہنمائی میں" },
     ar: { ph: "ابحث: خروج وعودة، رخصة، خروج نهائي، مخالفات…", guides: "دليل", none: "لا نتائج. جرّب كلمة أقصر أو تصفح المراحل أدناه.", tool: "أداة", fine: "في الدليل" }
   };
   const slugIndex = (slug) => GUIDES.findIndex(g => g.slug === slug);

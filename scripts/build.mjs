@@ -133,6 +133,25 @@ html[lang="ur"] .fcol h2{font:600 .9rem/1.8 "Noto Nastaliq Urdu",serif;letter-sp
 @media (min-width:760px){.fgrid{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,.9fr) minmax(0,1.4fr)}.fabout,.fcontact{grid-column:auto}.flegal{grid-template-columns:minmax(0,1fr) auto;column-gap:32px;align-items:end}}
 .mail{font-family:var(--mono);direction:ltr;unicode-bidi:isolate}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lang a{display:inline-block;padding:8px 14px}
+.snav{background:var(--bg);border-bottom:1px solid var(--line)}
+.snav .wrap{display:flex;gap:4px}
+.snav a{display:flex;align-items:center;gap:0;padding:11px 12px;color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem;border-bottom:2px solid transparent;white-space:nowrap}
+.snav a:hover{color:var(--ink)}.snav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+.snav svg{display:none}
+.tlinks{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.tlinks a{display:block;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);text-decoration:none;font-size:.92rem}.tlinks a:hover{border-color:var(--accent)}
+@media (max-width:760px){
+  .brand span{display:none}
+  body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+  .snav{position:fixed;inset:auto 0 0 0;z-index:20;background:var(--surface);border-top:1px solid var(--line);border-bottom:0;box-shadow:0 -4px 16px rgba(70,52,20,.08);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .snav .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0;padding:0;max-width:none}
+  .snav a{display:grid;justify-items:center;gap:3px;padding:9px 4px 8px;font-size:.72rem;line-height:1.2;text-align:center;border-bottom:0;white-space:normal}
+  .snav a.dt{display:none}
+  .snav svg{display:block;width:22px;height:22px}
+  .snav a[aria-current="page"]{color:var(--accent)}
+}
+html[lang="ur"] .snav a{font-family:"IBM Plex Sans Arabic",sans-serif}
 `;
 
 const T = {
@@ -143,7 +162,7 @@ const T = {
     note: '<b>General information, not advice.</b> This page summarises publicly available rules in plain language. It is not legal advice or a recommendation to take any action. Procedures, fees and fines change without notice and can differ by case. The official portal below is the only authoritative source.',
     checked: (d, src, lbl) => `Last checked: ${d}. Confirm current rules on the official source: <a href="${src}" target="_blank" rel="noopener">${lbl}</a>`,
     share: 'Share on WhatsApp', copy: 'Copy link', copied: 'Link copied',
-    related: 'Related guides', tools: 'Free tools', toolsText: 'End-of-service calculator and scam message check.', openTools: 'Open KSA Life Guide',
+    navLabel: 'Sections', related: 'Related guides', tools: 'Free tools', navCalc: 'Calculator', navHelp: 'Numbers', navScam: 'Scam check',
     foot1: 'KSA Life Guide is an independent information site, not affiliated with any government body. Content is general information only, not legal or professional advice.',
     fhG: 'Guides and tools', fhS: 'About this site', fhC: 'Contact', places: 'Holy places', eosb: 'End-of-service calculator', dep: 'Dependent fee calculator', re: 'Exit re-entry cost calculator', how: 'How we check information', scams: 'Scam check', help: 'Numbers & portals',
     disc: 'Disclaimer', terms: 'Terms of use', priv: 'Privacy', sup: 'Support the site', fb: 'Facebook', donBtn: 'Donate',
@@ -161,7 +180,7 @@ const T = {
     note: '<b>عمومی معلومات، مشورہ نہیں۔</b> یہ صفحہ عوامی طور پر دستیاب قواعد کا آسان خلاصہ ہے۔ یہ قانونی مشورہ یا کسی کام کی سفارش نہیں۔ طریقۂ کار، فیس اور جرمانے بغیر اطلاع بدل سکتے ہیں۔ نیچے دیا گیا سرکاری پورٹل ہی واحد مستند ذریعہ ہے۔',
     checked: (d, src, lbl) => `آخری جانچ: ${d}۔ موجودہ قواعد کی تصدیق سرکاری ذریعے سے کریں: <a href="${src}" target="_blank" rel="noopener" dir="ltr">${lbl}</a>`,
     share: 'واٹس ایپ پر شیئر کریں', copy: 'لنک کاپی کریں', copied: 'لنک کاپی ہو گیا',
-    related: 'متعلقہ رہنمائیاں', tools: 'مفت ٹولز', toolsText: 'اختتامِ ملازمت کیلکولیٹر اور فراڈ پیغام چیک۔', openTools: 'کے ایس اے لائف گائیڈ کھولیں',
+    navLabel: 'حصے', related: 'متعلقہ رہنمائیاں', tools: 'مفت ٹولز', navCalc: 'کیلکولیٹر', navHelp: 'نمبرز', navScam: 'فراڈ چیک',
     foot1: 'کے ایس اے لائف گائیڈ ایک آزاد معلوماتی ویب سائٹ ہے، کسی سرکاری ادارے سے وابستہ نہیں۔ مواد صرف عمومی معلومات ہے، قانونی یا پیشہ ورانہ مشورہ نہیں۔',
     fhG: 'رہنمائیاں اور ٹولز', fhS: 'ویب سائٹ کے بارے میں', fhC: 'رابطہ', places: 'مقدس مقامات', eosb: 'اختتامِ ملازمت کیلکولیٹر', dep: 'مرافقین فیس کیلکولیٹر', re: 'خروج و عودہ خرچ کیلکولیٹر', how: 'معلومات کی جانچ کا طریقہ', scams: 'فراڈ پیغام چیک', help: 'نمبرز اور پورٹلز',
     disc: 'ڈس کلیمر', terms: 'شرائطِ استعمال', priv: 'پرائیویسی', sup: 'ویب سائٹ کی مدد کریں', fb: 'فیس بک', donBtn: 'عطیہ دیں',
@@ -173,6 +192,22 @@ const T = {
     catLabel: (c) => CAT_UR[c],
   },
 };
+
+function siteNav(lang, path) {
+  const L = T[lang];
+  const pre = lang === 'ur' ? '/ur' : '';
+  const q = lang === 'ur' ? '?lang=ur' : '';
+  const cur = path.includes('/places') ? 'places' : 'guides';
+  const items = [
+    ['home', lang === 'ur' ? '/?lang=ur' : '/', L.home, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11L12 4l8.5 7v8.5a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/></svg>'],
+    ['guides', `${pre}/guides/`, L.guides, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6"/></svg>'],
+    ['calc', `/calculator${q}`, L.navCalc, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg>'],
+    ['places', `${pre}/places/`, L.places, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.2 6.2 0 0 0 10.1 10.1z"/><path d="M17 4.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg>'],
+    ['scam', `/scam-check${q}`, L.navScam, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg>'],
+    ['help', `/numbers${q}`, L.navHelp, ''],
+  ];
+  return `<nav class="snav" aria-label="${L.navLabel}"><div class="wrap">${items.map(([id, href, label, icon]) => `<a href="${href}"${id === cur ? ' aria-current="page"' : ''}${id === 'help' ? ' class="dt"' : ''}>${icon}<span>${label}</span></a>`).join('')}</div></nav>`;
+}
 
 function shell({ lang, title, desc, path, altPath, body, jsonld }) {
   const L = T[lang];
@@ -226,6 +261,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 </g><g fill="#0b3f30"><circle cx="49.5" cy="47" r="2.3"/><circle cx="55.5" cy="47" r="2.3"/><circle cx="52.5" cy="50.5" r="2.3"/></g></g></g></svg><b>KSA Life Guide</b><span>ksalifeguide.com</span></a>
   <nav class="lang" aria-label="Language"><a href="${altPath}" lang="${L.other.code}" hreflang="${L.other.code}">${L.other.label}</a></nav>
 </div></header>
+${siteNav(lang, path)}
 <div class="bar" role="note"><div class="wrap">${L.bar}</div></div>
 <main><div class="wrap">
 ${body}
@@ -291,7 +327,7 @@ EN.forEach((base, i) => {
   <button type="button" onclick="(function(b){var u=location.href;function done(){b.textContent='${L.copied}'}if(navigator.clipboard){navigator.clipboard.writeText(u).then(done,function(){prompt('',u)})}else{prompt('',u)}})(this)">${L.copy}</button>
 </div>
 ${related ? `<section class="cat"><h2>${L.related}</h2><ul class="related">${related}</ul></section>` : ''}
-<section class="box"><h2>${L.tools}</h2><p class="meta" style="margin:0">${L.toolsText}</p><a class="cta" href="${lang === 'ur' ? '/?lang=ur' : '/'}">${L.openTools}</a></section>
+<section class="box"><h2>${L.tools}</h2><ul class="tlinks"><li><a href="/calculator${lang === 'ur' ? '?lang=ur' : ''}">${L.eosb}</a></li><li><a href="/dependent-fee${lang === 'ur' ? '?lang=ur' : ''}">${L.dep}</a></li><li><a href="/exit-reentry-cost${lang === 'ur' ? '?lang=ur' : ''}">${L.re}</a></li><li><a href="/scam-check${lang === 'ur' ? '?lang=ur' : ''}">${L.scams}</a></li><li><a href="/numbers${lang === 'ur' ? '?lang=ur' : ''}">${L.help}</a></li></ul></section>
 `;
     const jsonld = {
       '@context': 'https://schema.org',

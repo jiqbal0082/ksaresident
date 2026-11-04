@@ -87,6 +87,25 @@ html[lang="ur"] .fcol h2{font:600 .9rem/1.8 "Noto Nastaliq Urdu",serif;letter-sp
 @media (min-width:760px){.fgrid{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,.9fr) minmax(0,1.4fr)}.fabout,.fcontact{grid-column:auto}.flegal{grid-template-columns:minmax(0,1fr) auto;column-gap:32px;align-items:end}}
 .mail{font-family:var(--mono);direction:ltr;unicode-bidi:isolate}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lang a{display:inline-block;padding:8px 14px}
+.snav{background:var(--bg);border-bottom:1px solid var(--line)}
+.snav .wrap{display:flex;gap:4px}
+.snav a{display:flex;align-items:center;gap:0;padding:11px 12px;color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem;border-bottom:2px solid transparent;white-space:nowrap}
+.snav a:hover{color:var(--ink)}.snav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+.snav svg{display:none}
+.tlinks{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.tlinks a{display:block;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);text-decoration:none;font-size:.92rem}.tlinks a:hover{border-color:var(--accent)}
+@media (max-width:760px){
+  .brand span{display:none}
+  body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+  .snav{position:fixed;inset:auto 0 0 0;z-index:20;background:var(--surface);border-top:1px solid var(--line);border-bottom:0;box-shadow:0 -4px 16px rgba(70,52,20,.08);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .snav .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0;padding:0;max-width:none}
+  .snav a{display:grid;justify-items:center;gap:3px;padding:9px 4px 8px;font-size:.72rem;line-height:1.2;text-align:center;border-bottom:0;white-space:normal}
+  .snav a.dt{display:none}
+  .snav svg{display:block;width:22px;height:22px}
+  .snav a[aria-current="page"]{color:var(--accent)}
+}
+html[lang="ur"] .snav a{font-family:"IBM Plex Sans Arabic",sans-serif}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"خروج و عودہ ویزا","description":"ملک سے باہر جائیں اور اسی اقامہ پر واپس آئیں۔","inLanguage":"ur","dateModified":"2026-11-02","mainEntityOfPage":"https://ksalifeguide.com/ur/guides/exit-re-entry-visa","publisher":{"@type":"Organization","name":"KSA Life Guide","url":"https://ksalifeguide.com","sameAs":["https://www.facebook.com/ksalifeguide"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ہوم","item":"https://ksalifeguide.com/"},{"@type":"ListItem","position":2,"name":"رہنمائی","item":"https://ksalifeguide.com/ur/guides/"},{"@type":"ListItem","position":3,"name":"خروج و عودہ ویزا","item":"https://ksalifeguide.com/ur/guides/exit-re-entry-visa"}]}]}</script>
 </head>
@@ -109,6 +128,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 </g><g fill="#0b3f30"><circle cx="49.5" cy="47" r="2.3"/><circle cx="55.5" cy="47" r="2.3"/><circle cx="52.5" cy="50.5" r="2.3"/></g></g></g></svg><b>KSA Life Guide</b><span>ksalifeguide.com</span></a>
   <nav class="lang" aria-label="Language"><a href="/guides/exit-re-entry-visa" lang="en" hreflang="en">English</a></nav>
 </div></header>
+<nav class="snav" aria-label="حصے"><div class="wrap"><a href="/?lang=ur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11L12 4l8.5 7v8.5a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/></svg><span>ہوم</span></a><a href="/ur/guides/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6"/></svg><span>رہنمائی</span></a><a href="/calculator?lang=ur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg><span>کیلکولیٹر</span></a><a href="/ur/places/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.2 6.2 0 0 0 10.1 10.1z"/><path d="M17 4.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg><span>مقدس مقامات</span></a><a href="/scam-check?lang=ur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6z"/><path d="M9 12l2.1 2.1L15.2 10"/></svg><span>فراڈ چیک</span></a><a href="/numbers?lang=ur" class="dt"><span>نمبرز</span></a></div></nav>
 <div class="bar" role="note"><div class="wrap"><b>صرف معلومات کے لیے۔</b> یہ قانونی مشورہ یا سرکاری ویب سائٹ نہیں ہے۔ قواعد اور فیس بدلتے رہتے ہیں؛ ہمیشہ سرکاری پورٹل پر تصدیق کریں۔ <a href="/disclaimer#ur">اعلانِ دستبرداری</a></div></div>
 <main><div class="wrap">
 
@@ -129,7 +149,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   <button type="button" onclick="(function(b){var u=location.href;function done(){b.textContent='لنک کاپی ہو گیا'}if(navigator.clipboard){navigator.clipboard.writeText(u).then(done,function(){prompt('',u)})}else{prompt('',u)}})(this)">لنک کاپی کریں</button>
 </div>
 <section class="cat"><h2>متعلقہ رہنمائیاں</h2><ul class="related"><li><a href="/ur/guides/final-exit">مستقل واپسی (فائنل ایگزٹ)</a></li><li><a href="/ur/guides/airports-terminals-parking">ایئرپورٹ، ٹرمینل اور پارکنگ</a></li><li><a href="/ur/guides/flight-delay-cancellation-rights">پرواز میں تاخیر، منسوخی یا اوور بکنگ: آپ کے حقوق</a></li><li><a href="/ur/guides/missed-flight">پرواز چھوٹ گئی: اب کیا کریں</a></li><li><a href="/ur/guides/customs-cash-medicines">کسٹمز: نقدی، دوائیں اور ممنوعہ اشیاء</a></li><li><a href="/ur/guides/before-you-fly-checklist">سفر سے پہلے: مقیم افراد کے لیے چیک لسٹ</a></li></ul></section>
-<section class="box"><h2>مفت ٹولز</h2><p class="meta" style="margin:0">اختتامِ ملازمت کیلکولیٹر اور فراڈ پیغام چیک۔</p><a class="cta" href="/?lang=ur">کے ایس اے لائف گائیڈ کھولیں</a></section>
+<section class="box"><h2>مفت ٹولز</h2><ul class="tlinks"><li><a href="/calculator?lang=ur">اختتامِ ملازمت کیلکولیٹر</a></li><li><a href="/dependent-fee?lang=ur">مرافقین فیس کیلکولیٹر</a></li><li><a href="/exit-reentry-cost?lang=ur">خروج و عودہ خرچ کیلکولیٹر</a></li><li><a href="/scam-check?lang=ur">فراڈ پیغام چیک</a></li><li><a href="/numbers?lang=ur">نمبرز اور پورٹلز</a></li></ul></section>
 
 </div></main>
 <footer><div class="wrap fwrap">
