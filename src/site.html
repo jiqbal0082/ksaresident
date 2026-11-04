@@ -1261,28 +1261,44 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     {
       slug: "change-employer-iqama-transfer", cat: "work", t: "Changing employer (iqama transfer)",
       d: "How job transfer works on Qiwa since the Labor Reform Initiative.",
+      checked: "2026-11-04",
       need: "A job offer from a new employer who is registered on Qiwa.",
-      steps: [
-        "The new employer creates a job offer on Qiwa using your iqama number.",
-        "You accept it on Qiwa within the allowed time. Accepting makes the new contract binding.",
-        "Your current employer is notified. If you have finished your first year, you can move after the notice period even without their approval.",
-        "You may also move without approval if your contract has ended, your salary was unpaid for 3 months in a row, or your employer let your iqama or work permit expire.",
-        "The new employer pays the transfer fee and updates your iqama."
+      facts: [
+        ["Contract ended", "HRSD: a worker can transfer without the employer's consent when the contract expires."],
+        ["During the contract (reported)", "Without consent after one year with the current employer since first arrival, with a documented contract and a notice period. The new employer must be eligible for visas and follow the wage protection rules."],
+        ["Other cases without consent (reported, Nov 2020)", "No documented contract 3 months after arrival; wages unpaid 3 months in a row; employer absent (travel, prison, death or other reason); iqama or work permit expired; a complaint about commercial concealment (tasattur) in which the worker is not involved; proof of human trafficking by the employer; a labour dispute where the employer missed two sessions after notice."],
+        ["Transfer fee (reported)", "SAR 2,000 for the first transfer, SAR 4,000 for the second, SAR 6,000 for the third. HRSD's employer guide says the employer bears the fees for a worker transferring to it."],
+        ["Time limits (reported, Aug 2026)", "10 days to accept the offer on Qiwa. The current employer then has 14 days to respond."]
       ],
-      warn: "Do not leave your job before the transfer is completed on Qiwa. Leaving early can lead to an 'absent from work' report.",
-      src: "https://qiwa.sa", srcLabel: "qiwa.sa"
+      steps: [
+        "The new employer sends the job offer on Qiwa using your iqama number.",
+        "You review it and accept it in your Qiwa individual account. Accepting is reported to make the new contract binding.",
+        "Your current employer is notified through Qiwa, with a notice period.",
+        "After you accept, the new employer completes the transfer in Absher."
+      ],
+      warn: "A transfer is finished only when Qiwa and Absher show it as completed. Leaving work before then can lead to an 'absent from work' report (see that guide).",
+      src: "https://qiwa.sa", srcLabel: "qiwa.sa",
+      more: [["HRSD, Labor Reform Initiative (Nov 2020)", "https://www.hrsd.gov.sa/en/media-center/news/770957"], ["HRSD, worker transfer service", "https://www.hrsd.gov.sa/en/ministry-services/services/employee-transfer"], ["HRSD, Employer Compliance Guide", "https://www.hrsd.gov.sa/sites/default/files/2023-02/E14102020.pdf"], ["Saudi Gazette, transfer conditions (Nov 2020)", "https://saudigazette.com.sa/article/599970"], ["Wego, transfer steps and fees (Aug 2026)", "https://blog.wego.com/iqama-transfer/"], ["Philippine Consulate Jeddah, transfer fees", "https://jeddahpcg.dfa.gov.ph/procedures-for-transfer-of-sponsorship"], ["KSA Expats, accepting a transfer on Qiwa (2023)", "https://ksaexpats.com/how-to-accept-an-employee-transfer-request-in-qiwa"]]
     },
     {
       slug: "absent-from-work-huroob", cat: "work", t: "If you are reported 'absent from work' (huroob)",
       d: "What it means and what you can still do.",
-      steps: [
-        "Check your status in Absher or Qiwa. A report changes your status and blocks most services.",
-        "Act quickly. There is a limited window after the report in which you can transfer to a new employer through Qiwa or arrange a final exit.",
-        "If the report is false (for example you were working, or your salary was unpaid), file a labor complaint with HRSD and keep evidence: payslips, messages, attendance records.",
-        "Get help from your embassy's community welfare section if you need legal support."
+      checked: "2026-11-04",
+      facts: [
+        ["After a contract ends", "Qiwa guidance (reported Aug 2026): 60 days from the contract status changing to 'expired' to transfer, leave the country for good or sign again with the same employer. With no action, the worker is reported absent."],
+        ["Report by an employer (no documented contract)", "HRSD guide: the employer may report through Qiwa after more than 15 days in a row, or more than 30 separate days in a year, of absence without a valid reason. The work permit must have at least 60 days left. The worker receives an SMS."],
+        ["60 days from the report", "HRSD guide: in this time the worker can transfer to a new employer or request a final exit, if the worker entered the Kingdom more than 12 months earlier."],
+        ["After the 60 days", "HRSD guide: the system no longer accepts a final exit or transfer request, the status stays 'absent from work', and the worker bears the consequences of violating the law."]
       ],
-      warn: "Ignoring a report can lead to detention and deportation. Get advice early.",
-      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
+      steps: [
+        "Check your status in Absher or Qiwa. A report shows as 'Absent from Work' in the ministry's systems.",
+        "Note the date. A transfer goes through Qiwa (new employer's request, your approval, ministry approval). A final exit request goes through Absher.",
+        "HRSD's rules refer to a false-claim complaint against a report, filed with the labour office (reported, 2022). Records such as payslips, messages and attendance logs can support a complaint. HRSD's number is 19911.",
+        "Many embassies and consulates have a labour or community welfare section. Its contact details are on the embassy's website."
+      ],
+      warn: "These periods come from HRSD and Qiwa guidance, and cases differ. For your own case, contact HRSD (19911) or your embassy.",
+      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa",
+      more: [["HRSD, 60-day period for absent workers (Dec 2024)", "https://www.hrsd.gov.sa/fil/node/5572423"], ["HRSD, guide for workers with no documented contract", "https://www.hrsd.gov.sa/sites/default/files/2022-10/E23102022.pdf"], ["Ajel, Qiwa guidance on the 60 days (Aug 2026)", "https://english.ajel.sa/news/xonmts3q9"], ["Gulf News, 60 days before absent status (Jul 2025)", "https://gulfnews.com/world/gulf/saudi/saudi-arabia-grants-expat-workers-60-days-to-avoid-being-classified-as-absconders-1.500217793"], ["DLA Piper, 60-day rule (Aug 2025)", "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2025/saudi-arabia-grants-expat-workers-60-days-to-avoid-being-classified-as-absent"], ["Gulf News, cancelling a report (Oct 2022)", "https://gulfnews.com/amp/world/gulf/saudi/saudi-arabia-sets-expat-absenteeism-rules-1.91454265"]]
     },
     {
       slug: "resignation-2025-rules", cat: "work", t: "Resign the right way (2025 rules)",
@@ -1942,25 +1958,37 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       t: "کمپنی تبدیل کرنا (اقامہ ٹرانسفر)",
       d: "لیبر ریفارم کے بعد قوی پر ٹرانسفر کیسے ہوتا ہے۔",
       need: "قوی پر رجسٹرڈ نئی کمپنی کی جاب آفر۔",
-      steps: [
-        "نئی کمپنی آپ کے اقامہ نمبر سے قوی پر جاب آفر بناتی ہے۔",
-        "مقررہ وقت میں قوی پر آفر قبول کریں۔ قبول کرتے ہی نیا معاہدہ لازم ہو جاتا ہے۔",
-        "موجودہ کمپنی کو اطلاع جاتی ہے۔ پہلا سال پورا ہو چکا ہو تو نوٹس پیریڈ کے بعد ان کی منظوری کے بغیر بھی جا سکتے ہیں۔",
-        "منظوری کے بغیر ٹرانسفر اس صورت میں بھی ممکن ہے: معاہدہ ختم ہو گیا ہو، مسلسل 3 ماہ تنخواہ نہ ملی ہو، یا کمپنی نے اقامہ یا ورک پرمٹ ختم ہونے دیا ہو۔",
-        "ٹرانسفر فیس نئی کمپنی ادا کرتی ہے اور آپ کا اقامہ اپ ڈیٹ کرتی ہے۔"
+      facts: [
+        ["معاہدہ ختم ہونے پر", "HRSD: معاہدے کی مدت ختم ہونے پر ورکر کمپنی کی رضامندی کے بغیر ٹرانسفر کر سکتا ہے۔"],
+        ["معاہدے کے دوران (رپورٹ شدہ)", "پہلی آمد کے بعد موجودہ کمپنی کے ساتھ ایک سال مکمل ہونے پر، دستاویزی معاہدے اور نوٹس پیریڈ کے ساتھ رضامندی کے بغیر۔ نئی کمپنی کا ویزے کے لیے اہل ہونا اور اجرت کے تحفظ کے قواعد پر عمل کرنا ضروری ہے۔"],
+        ["رضامندی کے بغیر دیگر صورتیں (رپورٹ شدہ، نومبر 2020)", "آمد کے 3 ماہ بعد بھی دستاویزی معاہدہ نہ ہونا؛ مسلسل 3 ماہ تنخواہ نہ ملنا؛ کمپنی مالک کی غیر موجودگی (سفر، قید، وفات یا کوئی اور وجہ)؛ اقامہ یا ورک پرمٹ ختم ہونا؛ کاروباری پردہ پوشی (تستر) کی شکایت جس میں ورکر خود شامل نہ ہو؛ کمپنی مالک کے انسانی اسمگلنگ میں ملوث ہونے کا ثبوت؛ لیبر تنازع جس میں اطلاع کے باوجود کمپنی دو سماعتوں میں نہ آئی ہو۔"],
+        ["ٹرانسفر فیس (رپورٹ شدہ)", "پہلی بار 2,000 ریال، دوسری بار 4,000 ریال، تیسری بار 6,000 ریال۔ HRSD کی ایمپلائر گائیڈ کے مطابق اپنے پاس ٹرانسفر ہونے والے ورکر کی فیس کمپنی برداشت کرتی ہے۔"],
+        ["وقت کی حد (رپورٹ شدہ، اگست 2026)", "قوی پر آفر قبول کرنے کے لیے 10 دن۔ اس کے بعد موجودہ کمپنی کے پاس جواب کے لیے 14 دن۔"]
       ],
-      warn: "قوی پر ٹرانسفر مکمل ہونے سے پہلے نوکری نہ چھوڑیں۔ پہلے چھوڑنے پر 'غیر حاضر' (ہروب) رپورٹ ہو سکتی ہے۔"
+      steps: [
+        "نئی کمپنی آپ کے اقامہ نمبر سے قوی پر جاب آفر بھیجتی ہے۔",
+        "اپنے قوی انفرادی اکاؤنٹ میں آفر دیکھیں اور قبول کریں۔ رپورٹ کے مطابق قبول کرتے ہی نیا معاہدہ لازم ہو جاتا ہے۔",
+        "موجودہ کمپنی کو قوی کے ذریعے نوٹس پیریڈ کے ساتھ اطلاع جاتی ہے۔",
+        "آپ کے قبول کرنے کے بعد نئی کمپنی ابشر میں ٹرانسفر مکمل کرتی ہے۔"
+      ],
+      warn: "ٹرانسفر تب ہی مکمل ہوتا ہے جب قوی اور ابشر میں مکمل دکھائی دے۔ اس سے پہلے کام چھوڑنے پر 'غیر حاضر' (ہروب) رپورٹ ہو سکتی ہے (وہ رہنمائی دیکھیں)۔"
     },
     /* 9 */ {
       t: "اگر آپ پر 'غیر حاضر' (ہروب) رپورٹ ہو جائے",
       d: "اس کا مطلب کیا ہے اور آپ کیا کر سکتے ہیں۔",
-      steps: [
-        "ابشر یا قوی میں اپنا اسٹیٹس چیک کریں۔ رپورٹ سے اسٹیٹس بدل جاتا ہے اور زیادہ تر سروسز بند ہو جاتی ہیں۔",
-        "جلدی کریں۔ رپورٹ کے بعد محدود وقت ہوتا ہے جس میں قوی سے نئی کمپنی میں ٹرانسفر یا فائنل ایگزٹ ہو سکتا ہے۔",
-        "اگر رپورٹ غلط ہے (مثلاً آپ کام کر رہے تھے یا تنخواہ نہیں ملی) تو HRSD میں شکایت درج کریں اور ثبوت رکھیں: سیلری سلپ، پیغامات، حاضری ریکارڈ۔",
-        "قانونی مدد چاہیے تو اپنے سفارت خانے کے کمیونٹی ویلفیئر سیکشن سے رابطہ کریں۔"
+      facts: [
+        ["معاہدہ ختم ہونے کے بعد", "قوی کی رہنمائی (رپورٹ شدہ، اگست 2026): معاہدے کا اسٹیٹس 'ختم شدہ' ہونے کے بعد 60 دن میں ٹرانسفر، مستقل طور پر ملک چھوڑنا یا اسی کمپنی سے نیا معاہدہ۔ کچھ نہ کرنے پر ورکر غیر حاضر رپورٹ ہو جاتا ہے۔"],
+        ["کمپنی کی رپورٹ (بغیر دستاویزی معاہدے کے)", "HRSD گائیڈ: مسلسل 15 دن سے زیادہ، یا سال میں الگ الگ 30 دن سے زیادہ بلا جواز غیر حاضری پر کمپنی قوی سے رپورٹ کر سکتی ہے۔ ورک پرمٹ میں کم از کم 60 دن باقی ہونا ضروری ہے۔ ورکر کو SMS ملتا ہے۔"],
+        ["رپورٹ سے 60 دن", "HRSD گائیڈ: اس مدت میں ورکر نئی کمپنی میں ٹرانسفر یا فائنل ایگزٹ کی درخواست کر سکتا ہے، اگر وہ 12 ماہ سے زیادہ پہلے مملکت میں داخل ہوا ہو۔"],
+        ["60 دن کے بعد", "HRSD گائیڈ: سسٹم فائنل ایگزٹ یا ٹرانسفر کی درخواست قبول نہیں کرتا، اسٹیٹس 'غیر حاضر' رہتا ہے، اور قانون کی خلاف ورزی کے نتائج ورکر پر ہوتے ہیں۔"]
       ],
-      warn: "رپورٹ کو نظر انداز کرنے سے گرفتاری اور ملک بدری ہو سکتی ہے۔ جلد مشورہ لیں۔"
+      steps: [
+        "ابشر یا قوی میں اپنا اسٹیٹس چیک کریں۔ رپورٹ وزارت کے سسٹم میں 'غیر حاضر' کے طور پر دکھائی دیتی ہے۔",
+        "تاریخ نوٹ کریں۔ ٹرانسفر قوی سے ہوتا ہے (نئی کمپنی کی درخواست، آپ کی منظوری، وزارت کی منظوری)۔ فائنل ایگزٹ کی درخواست ابشر سے ہوتی ہے۔",
+        "HRSD کے قواعد میں رپورٹ کے خلاف لیبر آفس میں غلط دعوے کی شکایت کا ذکر ہے (رپورٹ شدہ، 2022)۔ سیلری سلپ، پیغامات اور حاضری ریکارڈ شکایت میں مددگار ہو سکتے ہیں۔ HRSD کا نمبر 19911 ہے۔",
+        "بہت سے سفارت خانوں اور قونصل خانوں میں لیبر یا کمیونٹی ویلفیئر سیکشن ہوتا ہے۔ اس کی تفصیل سفارت خانے کی ویب سائٹ پر ہوتی ہے۔"
+      ],
+      warn: "یہ مدتیں HRSD اور قوی کی رہنمائی سے ہیں، اور ہر کیس مختلف ہوتا ہے۔ اپنے کیس کے لیے HRSD (19911) یا اپنے سفارت خانے سے رابطہ کریں۔"
     },
     /* 10 */ {
       t: "استعفیٰ صحیح طریقے سے دیں (2025 کے قواعد)",
@@ -3187,13 +3215,13 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
 
   /* ---------- Latest updates (dated rule changes, newest first; every item sourced in its guide) ---------- */
   const UPDATES = [
+    { date: "2026-11-04", open: "absent-from-work-huroob", en: ["Absent from work guide: 60-day periods added", "From HRSD and Qiwa guidance: 60 days after a contract ends or a report is filed to transfer or leave, and what HRSD says happens after that."], ur: ["غیر حاضر (ہروب) رہنمائی: 60 دن کی مدتیں شامل", "HRSD اور قوی کی رہنمائی سے: معاہدہ ختم ہونے یا رپورٹ کے بعد ٹرانسفر یا روانگی کے لیے 60 دن، اور اس کے بعد HRSD کے مطابق کیا ہوتا ہے۔"] },
     { date: "2026-11-03", open: "family-visit-visa", en: ["Family visit visa guide corrected", "From MOFA: a work iqama is needed, first-degree relatives only, log in with Nafath, and the Chamber of Commerce or employer authenticates the form."], ur: ["فیملی وزٹ ویزا رہنمائی درست کی گئی", "MOFA کے مطابق: ورک اقامہ ضروری ہے، صرف فرسٹ ڈگری رشتہ دار، نفاذ سے لاگ اِن، اور فارم کی تصدیق چیمبر آف کامرس یا کمپنی سے۔"] },
     { date: "2026-11-03", open: "family-visa", en: ["Reported: family visas for highly skilled workers", "Announced 6 Oct 2026: family entry visas alongside the work visa for qualifying workers. Occupations and steps were still to be confirmed."], ur: ["رپورٹ شدہ: اعلیٰ ہنر مند ورکرز کے لیے فیملی ویزے", "6 اکتوبر 2026 کا اعلان: اہل ورکرز کے لیے ورک ویزا کے ساتھ خاندان کے انٹری ویزے۔ پیشوں اور طریقہ کار کی تصدیق ابھی باقی تھی۔"] },
     { date: "2026-11-02", open: "exit-re-entry-visa", en: ["New: exit re-entry cost calculator", "Estimate the fee by visa type and months, or an extension from outside KSA."], ur: ["نیا: خروج و عودہ خرچ کیلکولیٹر", "ویزا کی قسم اور مہینوں کے حساب سے فیس، یا سعودی عرب سے باہر توسیع کے خرچ کا اندازہ لگائیں۔"] },
     { date: "2026-11-02", open: "public-bank-holidays", en: ["New: public and bank holidays, and lost documents", "Two new guides: holiday days and 2027 bank closure dates, and what happens when a passport or iqama is lost."], ur: ["نئی: سرکاری اور بینک تعطیلات، اور گمشدہ دستاویزات", "دو نئی رہنمائیاں: تعطیلات اور 2027 میں بینک بند ہونے کی تاریخیں، اور پاسپورٹ یا اقامہ گم ہونے پر کیا ہوتا ہے۔"] },
     { date: "2026-11-01", open: "airports-terminals-parking", en: ["Airport status update", "Reported: Riyadh Terminal 1 domestic, Terminal 2 some international; some foreign airlines have resumed, many remain paused. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ کے مطابق: ریاض ٹرمینل 1 اندرونِ ملک، ٹرمینل 2 کچھ بین الاقوامی؛ کچھ غیر ملکی ایئرلائنز بحال، بہت سی اب بھی بند۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
     { date: "2026-10-31", open: "iqama-renewal", en: ["New: iqama renewal, labour complaints and National Address", "Three new guides with fees, steps and official links, plus a dependent fee calculator."], ur: ["نئی: اقامہ تجدید، لیبر شکایت اور نیشنل ایڈریس", "فیس، طریقہ کار اور سرکاری لنکس کے ساتھ تین نئی رہنمائیاں، اور مرافقین فیس کیلکولیٹر۔"] },
-    { date: "2026-10-24", open: "airports-terminals-parking", en: ["New: five guides for flights and airports", "Terminals, parking, delays and your GACA rights, missed flights, customs and a before-you-fly checklist."], ur: ["نئی: پروازوں اور ایئرپورٹس کے لیے پانچ رہنمائیاں", "ٹرمینل، پارکنگ، تاخیر اور GACA حقوق، چھوٹی پرواز، کسٹمز اور سفر سے پہلے کی چیک لسٹ۔"] },
     { date: "2026-07-08", open: "iqama-renewal", en: ["Work permit grace period to 31 December 2026", "HRSD announced a grace period for work permits expired over 12 months and workers with no permit issued over 6 months after joining."], ur: ["ورک پرمٹ کی رعایتی مدت 31 دسمبر 2026 تک", "HRSD نے 12 ماہ سے زیادہ ایکسپائر ورک پرمٹ اور شمولیت کے 6 ماہ بعد بھی پرمٹ جاری نہ ہونے والے ورکرز کے لیے رعایتی مدت کا اعلان کیا۔"] },
   ];
   function renderUpdates() {
