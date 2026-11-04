@@ -417,6 +417,13 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   #v-home .sec-tools { grid-template-rows: auto 1fr; }
   #v-home .sec-tools .tools2 { grid-template-columns: 1fr; grid-auto-rows: 1fr; }
   #v-home .sec-tools .tool { align-content: center; }
+  /* Compact rail so five tool cards do not stretch the hero band */
+  #v-home .sec-tools .tools2 { gap: 10px; }
+  #v-home .sec-tools .tool { padding: 12px 14px; row-gap: 2px; }
+  #v-home .sec-tools .tool .ib { width: 40px; height: 40px; grid-row: span 2; align-self: center; }
+  #v-home .sec-tools .tool h3 { font-size: .98rem; }
+  #v-home .sec-tools .tool p { font-size: .86rem; line-height: 1.4; }
+  #v-home .sec-tools .tool .go { display: none; }
   p.note { max-width: none; }
   #v-home .sec-stages, #v-home .sec-pop, #v-home .sec-upd, #v-home .trust { grid-column: 1 / -1; }
   .tiles { grid-template-columns: repeat(8, minmax(0, 1fr)); }
