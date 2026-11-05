@@ -1199,6 +1199,9 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       slug: "renting-home-ejar", cat: "arrive", t: "Renting a home (Ejar)",
       d: "Register your lease so it is legally recognised.",
       need: "Iqama, the landlord's details, and a licensed real-estate office or the landlord's Ejar account.",
+      facts: [
+        ["Riyadh rents and renewal (last checked 5 Nov 2026)", "REGA rules published September 2025, for five years from their start, in Riyadh only unless extended. A landlord may not raise the total rent in existing or new leases, and a vacant, previously leased property is capped at its latest rent, with some exceptions. Leases renew automatically unless either side gives notice at least 60 days before the end date, with some exceptions."]
+      ],
       steps: [
         "Agree the rent, payment schedule and who pays utilities before you sign.",
         "Ask for the lease to be registered on the Ejar platform. You receive an SMS to approve it in your name.",
@@ -1206,7 +1209,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         "Keep proof of every rent payment.",
         "When you leave the property, make sure the contract is ended in Ejar. An open lease in your name can block your final exit."
       ],
-      src: "https://www.ejar.sa", srcLabel: "ejar.sa"
+      src: "https://www.ejar.sa", srcLabel: "ejar.sa",
+      more: [["REGA, rules for landlords and tenants (modified 13 May 2026)", "https://rega.gov.sa/en/laws-and-decisions/regulations-and-by-laws/rules/statutory-provisions-regulating-the-relationship-between-the-lessor-and-the-lessee/"]]
     },
     {
       slug: "health-insurance", cat: "arrive", t: "Health insurance",
@@ -1223,17 +1227,28 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
 
     /* ===== Work & rights ===== */
     {
-      slug: "qiwa-work-contract", cat: "work", t: "Check and accept your work contract on Qiwa",
+      slug: "qiwa-work-contract", cat: "work", t: "Check and accept your work contract on Qiwa", checked: "2026-11-05",
       d: "See the contract your employer registered before you accept it.",
-      need: "Your Absher or Nafath login.",
-      steps: [
-        "Go to qiwa.sa and sign in as an individual using Nafath.",
-        "Open Employment Contracts.",
-        "Read the salary, allowances, job title and contract length. They must match what you were offered.",
-        "Accept if correct. If not, reject it and ask your employer to correct it before you accept.",
-        "Keep a copy. The registered contract is what counts in a dispute."
+      need: "Your Qiwa Individuals login.",
+      facts: [
+        ["Who starts it", "The employer creates the contract on Qiwa and sends it to the employee. Alerts come by SMS and on Qiwa."],
+        ["What the employee can do", "Approve it, reject it, or request an amendment on Qiwa Individuals. If both sides agree, HRSD treats it as certified."],
+        ["Non-Saudi workers (Article 37)", "The contract must be written and fixed-term. If no term is stated, it is one year from the actual start date and renews for a similar period if work continues."],
+        ["Copies (Article 51)", "Written in two copies, and each side keeps one. HRSD's guide says it is documented through the ministry's approved platform."]
       ],
-      src: "https://qiwa.sa", srcLabel: "qiwa.sa"
+      steps: [
+        "Go to qiwa.sa and log in to your Individuals account.",
+        "Open Services, then Employment Contracts.",
+        "Read the details your employer entered: job title, contract length, working hours, pay and any added items.",
+        "Choose to approve, reject or request an amendment.",
+        "Keep a copy of the contract."
+      ],
+      src: "https://www.hrsd.gov.sa/en/ministry-services/services/%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%B9%D9%82%D9%88%D8%AF", srcLabel: "hrsd.gov.sa, Contract Management",
+      more: [
+        ["Umm al-Qura, Labor Law amendments (23 Aug 2024)", "https://www.uqn.gov.sa/details?p=25379"],
+        ["HRSD, rights and duties guide (2025), p. 2", "https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"],
+        ["HRSD, ending a contract on Qiwa (13 Sep 2026)", "https://www.hrsd.gov.sa/en/ministry-services/services/%D8%A7%D9%86%D9%87%D8%A7%D8%A1-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D9%82%D8%AF%D9%8A%D8%A9"]
+      ]
     },
     {
       slug: "working-hours-overtime", cat: "work", t: "Working hours, overtime and Ramadan hours",
@@ -1319,17 +1334,33 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       more: [["HRSD, 60-day period for absent workers (Dec 2024)", "https://www.hrsd.gov.sa/fil/node/5572423"], ["HRSD, guide for workers with no documented contract", "https://www.hrsd.gov.sa/sites/default/files/2022-10/E23102022.pdf"], ["Ajel, Qiwa guidance on the 60 days (Aug 2026)", "https://english.ajel.sa/news/xonmts3q9"], ["Gulf News, 60 days before absent status (Jul 2025)", "https://gulfnews.com/world/gulf/saudi/saudi-arabia-grants-expat-workers-60-days-to-avoid-being-classified-as-absconders-1.500217793"], ["DLA Piper, 60-day rule (Aug 2025)", "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2025/saudi-arabia-grants-expat-workers-60-days-to-avoid-being-classified-as-absent"], ["Gulf News, cancelling a report (Oct 2022)", "https://gulfnews.com/amp/world/gulf/saudi/saudi-arabia-sets-expat-absenteeism-rules-1.91454265"]]
     },
     {
-      slug: "resignation-2025-rules", cat: "work", t: "Resign the right way (2025 rules)",
+      slug: "resignation-2025-rules", cat: "work", t: "Resign the right way (2025 rules)", checked: "2026-11-05",
       d: "Since 19 February 2025 the Labor Law defines resignation and sets a 30-day response window.",
-      need: "Your contract details, notice period and planned last working day.",
-      steps: [
-        "Submit your resignation in writing. Where your employer uses Qiwa, submit it there so it is recorded.",
-        "Your employer can accept it, delay it, or reject it.",
-        "If the employer does not respond within 30 days, the resignation is treated as accepted.",
-        "Serve your notice period as your contract and the law require.",
-        "Use the End of service calculator to check your award before your final settlement."
+      need: "Your contract type (fixed-term or indefinite) and your Qiwa Individuals login.",
+      facts: [
+        ["Resignation in the law", "A worker's written statement, made without pressure or conditions, to end a fixed-term contract. It depends on the employer's acceptance (Article 2)."],
+        ["No reply from the employer", "Treated as accepted 30 days after it was submitted (Article 79 bis)"],
+        ["Employer postpones", "Up to 60 days if work needs it, with written reasons given to the worker before the 30 days end"],
+        ["Withdrawing it", "Within 7 days of submitting it, unless the employer has already accepted"],
+        ["When the contract ends", "On acceptance, when 30 days pass with no reply, or when the postponement ends. The request cannot set a later end date."],
+        ["While waiting", "The contract stays in force and both sides keep their duties. A worker whose contract ends by resignation keeps the rights the law gives."],
+        ["Indefinite contract, monthly pay (Article 75)", "Ending it for a legitimate reason: the worker gives at least 30 days' written notice, the employer at least 60 days. HRSD's guide says the side that does not give notice compensates the other under Article 76."]
       ],
-      src: "https://www.hrsd.gov.sa", srcLabel: "hrsd.gov.sa"
+      steps: [
+        "Log in to your Qiwa Individuals account, open Services, then Employment Contracts.",
+        "Select the contract, choose Terminate Contract, pick the reason, and enter the last working date the form asks for.",
+        "Review the details and submit. HRSD lists this service as free and says no visit to the employer is needed.",
+        "The employer can accept the resignation or postpone acceptance, within the periods shown above.",
+        "The End of service calculator gives an estimate of the award."
+      ],
+      src: "https://www.hrsd.gov.sa/en/%D8%B9%D9%84%D8%A7%D9%82%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D9%85%D9%84", srcLabel: "hrsd.gov.sa, Labor Law text",
+      more: [
+        ["Umm al-Qura, Labor Law amendments (23 Aug 2024)", "https://www.uqn.gov.sa/details?p=25379"],
+        ["HRSD, ending a contract on Qiwa (13 Sep 2026)", "https://www.hrsd.gov.sa/en/ministry-services/services/%D8%A7%D9%86%D9%87%D8%A7%D8%A1-%D8%A7%D9%84%D8%B9%D9%84%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D9%82%D8%AF%D9%8A%D8%A9"],
+        ["HRSD, rights and duties guide (2025), pp. 17-18", "https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"],
+        ["HRSD, amendments start 180 days after publication (Aug 2024)", "https://www.hrsd.gov.sa/en/media-center/news/060720242"],
+        ["Chambers, in force 19 Feb 2025 (10 Mar 2025)", "https://chambers.com/articles/recent-amendments-to-the-kingdom-of-saudi-arabia-labour-law-a-comprehensive-overview"]
+      ]
     },
 
     /* ===== Family ===== */
@@ -1906,6 +1937,9 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       t: "گھر کرائے پر لینا (ایجار)",
       d: "کرایہ نامہ رجسٹر کروائیں تاکہ وہ قانونی طور پر تسلیم ہو۔",
       need: "اقامہ، مالک مکان کی تفصیلات، اور لائسنس یافتہ رئیل اسٹیٹ آفس یا مالک کا ایجار اکاؤنٹ۔",
+      facts: [
+        ["ریاض میں کرایہ اور تجدید (آخری جانچ 5 نومبر 2026)", "REGA کے قواعد، جو ستمبر 2025 میں شائع ہوئے، آغاز سے پانچ سال کے لیے، اور جب تک توسیع نہ ہو صرف ریاض میں۔ مالک موجودہ یا نئے معاہدوں میں کل کرایہ نہیں بڑھا سکتا، اور خالی، پہلے سے کرائے پر دیے گئے مکان کا کرایہ آخری کرائے تک محدود ہے، کچھ استثنا کے ساتھ۔ معاہدے خود بخود تجدید ہو جاتے ہیں، جب تک کوئی فریق اختتام سے کم از کم 60 دن پہلے نوٹس نہ دے، کچھ استثنا کے ساتھ۔"]
+      ],
       steps: [
         "دستخط سے پہلے کرایہ، ادائیگی کا شیڈول اور بجلی پانی کا بل کون دے گا، یہ طے کریں۔",
         "کرایہ نامہ ایجار پلیٹ فارم پر رجسٹر کرنے کا کہیں۔ آپ کے نام پر منظوری کے لیے ایس ایم ایس آئے گا۔",
@@ -1928,13 +1962,19 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     /* 5 */ {
       t: "قوی پر ملازمت کا معاہدہ چیک اور قبول کریں",
       d: "قبول کرنے سے پہلے دیکھیں کہ کمپنی نے کون سا معاہدہ رجسٹر کیا ہے۔",
-      need: "ابشر یا نفاذ لاگ اِن۔",
+      need: "قوی افراد اکاؤنٹ کا لاگ اِن۔",
+      facts: [
+        ["کون شروع کرتا ہے", "کمپنی قوی پر معاہدہ بنا کر ملازم کو بھیجتی ہے۔ اطلاع ایس ایم ایس اور قوی پر آتی ہے۔"],
+        ["ملازم کیا کر سکتا ہے", "قوی افراد پر منظور، مسترد یا ترمیم کی درخواست۔ دونوں فریق متفق ہوں تو HRSD اسے مصدقہ مانتی ہے۔"],
+        ["غیر سعودی کارکن (دفعہ 37)", "معاہدہ تحریری اور مقررہ مدت کا ہونا ضروری ہے۔ مدت درج نہ ہو تو کام شروع ہونے کی اصل تاریخ سے ایک سال ہے، اور کام جاری رہے تو اتنی ہی مدت کے لیے تجدید ہو جاتی ہے۔"],
+        ["کاپیاں (دفعہ 51)", "دو کاپیوں میں لکھا جاتا ہے اور ہر فریق ایک رکھتا ہے۔ HRSD کی گائیڈ کے مطابق یہ وزارت کے منظور شدہ پلیٹ فارم سے دستاویزی ہوتا ہے۔"]
+      ],
       steps: [
-        "qiwa.sa پر جائیں اور نفاذ کے ذریعے بطور فرد لاگ اِن کریں۔",
-        "ملازمت کے معاہدے (Employment Contracts) کھولیں۔",
-        "تنخواہ، الاؤنسز، عہدہ اور مدت پڑھیں۔ یہ وہی ہونے چاہییں جو آپ کو پیشکش میں بتائے گئے تھے۔",
-        "درست ہو تو قبول کریں۔ اگر نہیں تو مسترد کریں اور کمپنی سے درستگی کا کہیں۔",
-        "ایک کاپی محفوظ رکھیں۔ تنازع میں رجسٹرڈ معاہدہ ہی مانا جاتا ہے۔"
+        "qiwa.sa پر جائیں اور اپنے افراد اکاؤنٹ میں لاگ اِن کریں۔",
+        "Services اور پھر Employment Contracts کھولیں۔",
+        "کمپنی کی درج کردہ تفصیل پڑھیں: عہدہ، معاہدے کی مدت، کام کے اوقات، تنخواہ اور کوئی اضافی شق۔",
+        "منظور، مسترد یا ترمیم کی درخواست میں سے انتخاب کریں۔",
+        "معاہدے کی ایک کاپی محفوظ رکھیں۔"
       ]
     },
     /* 6 */ {
@@ -2011,13 +2051,22 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     /* 10 */ {
       t: "استعفیٰ صحیح طریقے سے دیں (2025 کے قواعد)",
       d: "19 فروری 2025 سے لیبر لا میں استعفیٰ کی تعریف اور 30 دن کی جوابی مدت مقرر ہے۔",
-      need: "معاہدے کی تفصیل، نوٹس پیریڈ اور آخری دن کا ارادہ۔",
+      need: "معاہدے کی قسم (مقررہ مدت یا غیر معینہ مدت) اور قوی افراد اکاؤنٹ کا لاگ اِن۔",
+      facts: [
+        ["قانون میں استعفیٰ", "کارکن کا تحریری بیان، بغیر دباؤ یا شرط کے، کہ وہ مقررہ مدت کا معاہدہ ختم کرنا چاہتا ہے۔ یہ کمپنی کی منظوری سے مشروط ہے (دفعہ 2)۔"],
+        ["کمپنی جواب نہ دے", "جمع کرانے کے 30 دن بعد منظور سمجھا جاتا ہے (دفعہ 79 مکرر)"],
+        ["کمپنی مؤخر کرے", "کام کی ضرورت ہو تو زیادہ سے زیادہ 60 دن، اور 30 دن ختم ہونے سے پہلے کارکن کو تحریری وجوہات دینا ضروری ہے"],
+        ["استعفیٰ واپس لینا", "جمع کرانے کے 7 دن کے اندر، بشرطیکہ کمپنی پہلے قبول نہ کر چکی ہو"],
+        ["معاہدہ کب ختم ہوتا ہے", "منظوری پر، جواب کے بغیر 30 دن گزرنے پر، یا مؤخر مدت ختم ہونے پر۔ درخواست میں بعد کی کوئی تاریخ مقرر نہیں کی جا سکتی۔"],
+        ["انتظار کے دوران", "معاہدہ برقرار رہتا ہے اور دونوں فریقوں کی ذمہ داریاں جاری رہتی ہیں۔ استعفے سے معاہدہ ختم ہونے پر کارکن کے قانونی حقوق برقرار رہتے ہیں۔"],
+        ["غیر معینہ مدت کا معاہدہ، ماہانہ تنخواہ (دفعہ 75)", "جائز وجہ سے ختم کرنے پر کارکن کم از کم 30 دن اور کمپنی کم از کم 60 دن کا تحریری نوٹس دیتی ہے۔ HRSD کی گائیڈ کے مطابق نوٹس نہ دینے والا فریق دفعہ 76 کے تحت دوسرے فریق کو معاوضہ دیتا ہے۔"]
+      ],
       steps: [
-        "استعفیٰ تحریری طور پر دیں۔ اگر کمپنی قوی استعمال کرتی ہے تو وہیں جمع کروائیں تاکہ ریکارڈ ہو۔",
-        "کمپنی استعفیٰ قبول، مؤخر یا مسترد کر سکتی ہے۔",
-        "اگر کمپنی 30 دن میں جواب نہ دے تو استعفیٰ منظور سمجھا جاتا ہے۔",
-        "معاہدے اور قانون کے مطابق نوٹس پیریڈ پورا کریں۔",
-        "حتمی حساب سے پہلے اختتامِ ملازمت کیلکولیٹر سے اپنا معاوضہ چیک کریں۔"
+        "اپنے قوی افراد اکاؤنٹ میں لاگ اِن کریں، Services اور پھر Employment Contracts کھولیں۔",
+        "معاہدہ منتخب کریں، Terminate Contract چنیں، وجہ منتخب کریں اور فارم میں مانگی گئی آخری ورکنگ تاریخ درج کریں۔",
+        "تفصیل دیکھ کر جمع کرائیں۔ HRSD کے مطابق یہ سروس مفت ہے اور کمپنی جانے کی ضرورت نہیں۔",
+        "کمپنی اوپر دی گئی مدتوں کے اندر استعفیٰ قبول یا اس کی منظوری مؤخر کر سکتی ہے۔",
+        "اختتامِ ملازمت کیلکولیٹر معاوضے کا اندازہ بتاتا ہے۔"
       ]
     },
     /* 11 */ {
@@ -3233,13 +3282,13 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
 
   /* ---------- Latest updates (dated rule changes, newest first; every item sourced in its guide) ---------- */
   const UPDATES = [
+    { date: "2026-11-05", open: "resignation-2025-rules", en: ["Resignation guide updated from the Labor Law", "Now states the 30-day reply period, the 60-day postponement, the 7-day withdrawal right and how to submit on Qiwa. The earlier line about rejection and notice was replaced."], ur: ["استعفیٰ رہنمائی لیبر لا کے مطابق تازہ کی گئی", "اب 30 دن کی جوابی مدت، 60 دن کی تاخیر، 7 دن میں واپسی کا حق اور قوی پر جمع کرانے کا طریقہ درج ہے۔ مسترد کرنے اور نوٹس والی پرانی سطر بدل دی گئی۔"] },
     { date: "2026-11-04", open: "absent-from-work-huroob", en: ["Absent from work guide: 60-day periods added", "From HRSD and Qiwa guidance: 60 days after a contract ends or a report is filed to transfer or leave, and what HRSD says happens after that."], ur: ["غیر حاضر (ہروب) رہنمائی: 60 دن کی مدتیں شامل", "HRSD اور قوی کی رہنمائی سے: معاہدہ ختم ہونے یا رپورٹ کے بعد ٹرانسفر یا روانگی کے لیے 60 دن، اور اس کے بعد HRSD کے مطابق کیا ہوتا ہے۔"] },
     { date: "2026-11-03", open: "family-visit-visa", en: ["Family visit visa guide corrected", "From MOFA: a work iqama is needed, first-degree relatives only, log in with Nafath, and the Chamber of Commerce or employer authenticates the form."], ur: ["فیملی وزٹ ویزا رہنمائی درست کی گئی", "MOFA کے مطابق: ورک اقامہ ضروری ہے، صرف فرسٹ ڈگری رشتہ دار، نفاذ سے لاگ اِن، اور فارم کی تصدیق چیمبر آف کامرس یا کمپنی سے۔"] },
     { date: "2026-11-03", open: "family-visa", en: ["Reported: family visas for highly skilled workers", "Announced 6 Oct 2026: family entry visas alongside the work visa for qualifying workers. Occupations and steps were still to be confirmed."], ur: ["رپورٹ شدہ: اعلیٰ ہنر مند ورکرز کے لیے فیملی ویزے", "6 اکتوبر 2026 کا اعلان: اہل ورکرز کے لیے ورک ویزا کے ساتھ خاندان کے انٹری ویزے۔ پیشوں اور طریقہ کار کی تصدیق ابھی باقی تھی۔"] },
     { date: "2026-11-02", open: "exit-re-entry-visa", en: ["New: exit re-entry cost calculator", "Estimate the fee by visa type and months, or an extension from outside KSA."], ur: ["نیا: خروج و عودہ خرچ کیلکولیٹر", "ویزا کی قسم اور مہینوں کے حساب سے فیس، یا سعودی عرب سے باہر توسیع کے خرچ کا اندازہ لگائیں۔"] },
     { date: "2026-11-02", open: "public-bank-holidays", en: ["New: public and bank holidays, and lost documents", "Two new guides: holiday days and 2027 bank closure dates, and what happens when a passport or iqama is lost."], ur: ["نئی: سرکاری اور بینک تعطیلات، اور گمشدہ دستاویزات", "دو نئی رہنمائیاں: تعطیلات اور 2027 میں بینک بند ہونے کی تاریخیں، اور پاسپورٹ یا اقامہ گم ہونے پر کیا ہوتا ہے۔"] },
     { date: "2026-11-01", open: "airports-terminals-parking", en: ["Airport status update", "Reported: Riyadh Terminal 1 domestic, Terminal 2 some international; some foreign airlines have resumed, many remain paused. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ کے مطابق: ریاض ٹرمینل 1 اندرونِ ملک، ٹرمینل 2 کچھ بین الاقوامی؛ کچھ غیر ملکی ایئرلائنز بحال، بہت سی اب بھی بند۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
-    { date: "2026-10-31", open: "iqama-renewal", en: ["New: iqama renewal, labour complaints and National Address", "Three new guides with fees, steps and official links, plus a dependent fee calculator."], ur: ["نئی: اقامہ تجدید، لیبر شکایت اور نیشنل ایڈریس", "فیس، طریقہ کار اور سرکاری لنکس کے ساتھ تین نئی رہنمائیاں، اور مرافقین فیس کیلکولیٹر۔"] },
     { date: "2026-07-08", open: "iqama-renewal", en: ["Work permit grace period to 31 December 2026", "HRSD announced a grace period for work permits expired over 12 months and workers with no permit issued over 6 months after joining."], ur: ["ورک پرمٹ کی رعایتی مدت 31 دسمبر 2026 تک", "HRSD نے 12 ماہ سے زیادہ ایکسپائر ورک پرمٹ اور شمولیت کے 6 ماہ بعد بھی پرمٹ جاری نہ ہونے والے ورکرز کے لیے رعایتی مدت کا اعلان کیا۔"] },
   ];
   function renderUpdates() {
