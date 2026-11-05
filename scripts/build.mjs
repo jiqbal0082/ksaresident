@@ -373,12 +373,12 @@ const PL = {
         dir: 'Get directions', open: 'Open in Google Maps', mapTitle: (n) => `Map of ${n}`,
         note: '<b>General information.</b> History is summarised from established sources, and visiting rules come from official guidance, which can change. For religious guidance, consult a qualified scholar.',
         checked: (d, src, lbl) => `Last checked: ${d}. Confirm current visiting rules on the official source: <a href="${src}" target="_blank" rel="noopener">${lbl}</a>`,
-        more: 'More holy places', indexTitle: 'Holy places of Makkah and Madinah', indexLead: 'History, what to know before you visit, and directions on Google Maps for 13 places in Makkah and Madinah.' },
+        more: 'More holy places', indexTitle: 'Holy places of Makkah and Madinah', indexLead: `History, what to know before you visit, and directions on Google Maps for ${PLACES.length} places in Makkah and Madinah.` },
   ur: { places: 'مقدس مقامات', makkah: 'مکہ مکرمہ', madinah: 'مدینہ منورہ', history: 'تاریخ', facts: 'اہم معلومات', visit: 'زیارت سے پہلے',
         dir: 'راستہ دیکھیں', open: 'گوگل میپس میں کھولیں', mapTitle: (n) => `${n} کا نقشہ`,
         note: '<b>عمومی معلومات۔</b> تاریخ مستند ذرائع سے مختصراً لی گئی ہے اور زیارت کے قواعد سرکاری ہدایات سے ہیں، جو بدل سکتی ہیں۔ دینی رہنمائی کے لیے مستند عالم سے رجوع کریں۔',
         checked: (d, src, lbl) => `آخری جانچ: ${d}۔ زیارت کے موجودہ قواعد کی تصدیق سرکاری ذریعے سے کریں: <a href="${src}" target="_blank" rel="noopener" dir="ltr">${lbl}</a>`,
-        more: 'مزید مقدس مقامات', indexTitle: 'مکہ اور مدینہ کے مقدس مقامات', indexLead: 'مکہ اور مدینہ کے 13 مقامات کی تاریخ، زیارت سے پہلے ضروری معلومات، اور گوگل میپس پر راستہ۔' }
+        more: 'مزید مقدس مقامات', indexTitle: 'مکہ اور مدینہ کے مقدس مقامات', indexLead: `مکہ اور مدینہ کے ${PLACES.length} مقامات کی تاریخ، زیارت سے پہلے ضروری معلومات، اور گوگل میپس پر راستہ۔` }
 };
 const placePath = (lang, slug) => `${lang === 'ur' ? '/ur' : ''}/places/${slug}`;
 mkdirSync('public/places', { recursive: true });
