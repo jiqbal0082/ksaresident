@@ -1169,31 +1169,33 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
   const GUIDES = [
     /* ===== Arriving & settling ===== */
     {
-      slug: "first-90-days-iqama", cat: "arrive", t: "Your first 90 days: getting your iqama",
+      slug: "first-90-days-iqama", cat: "arrive", t: "Your first 90 days: getting your iqama", checked: "2026-11-07",
       d: "What has to happen after you land on a work visa.",
       need: "Passport with work visa, signed contract, a phone number for SMS codes.",
       steps: [
-        "Complete the medical test at an approved centre. Your employer usually books it.",
-        "Your employer must buy health insurance for you before the iqama is issued. Iqama renewal also needs active insurance.",
-        "Give fingerprints at the passport office (Jawazat) if your employer asks. Everyone aged 15 and over needs them on file.",
-        "Your employer issues the iqama through Muqeem. You can then register on Absher and on Nafath with your iqama number.",
-        "Download Tawakkalna and Absher. Your digital iqama in Absher is accepted in most places."
+        "Complete the medical check at an approved centre. Your employer usually books it. Jawazat lists the medical check as needed to issue the iqama (reported, Nov 2025).",
+        "Your employer (sponsor) must arrange your health insurance. The Cooperative Health Insurance Law (Article 3) says an iqama is not issued or renewed until the insurance document is provided.",
+        "Give fingerprints at the passport office (Jawazat) if your employer asks. Reported (Jawazat, 2021): fingerprints are needed for expatriates aged 6 and over to complete iqama and travel procedures.",
+        "Your employer issues the iqama through Muqeem or Absher. You can then register on Absher and on Nafath with your iqama number.",
+        "Download Tawakkalna and Absher. Absher Individuals holds your Resident Digital ID; Jawazat has said it can be used to verify your identity when you do not carry the card (reported, 2021)."
       ],
-      warn: "Do not hand over your passport permanently. Keeping a worker's passport is not allowed.",
-      src: "https://www.absher.sa", srcLabel: "absher.sa"
+      warn: "Do not hand over your passport permanently. The Labor Law Implementing Regulations (Article 6) say an employer may not keep a non-Saudi worker's passport, iqama or medical insurance card.",
+      src: "https://www.absher.sa", srcLabel: "absher.sa",
+      more: [["HRSD, Implementing Regulations of the Labor Law, Art. 6 (PDF)", "https://www.hrsd.gov.sa/sites/default/files/2023-02/The%20Implementing%20Regulations%20of%20Labor%20Law%20and%20its%20Annexes.pdf"], ["Cooperative Health Insurance Law, Art. 3 (text, Gulf Research Center)", "https://gulfmigration.grc.net/saudi-arabia-the-cooperative-health-insurance-law-no-71/"], ["Reported: Saudi Gazette, fingerprints for ages 6 and over (Mar 2021)", "https://saudigazette.com.sa/article/604555"], ["Reported: Saudi Expatriates, Jawazat on issuing the resident ID (Nov 2025)", "https://www.saudi-expatriates.com/2025/11/jawazat-explains-how-to-get-resident-id-via-absher.html"], ["Reported: Zawya, Resident Digital ID in Absher (2021)", "https://www.zawya.com/en/legal/saudis-jawazat-launches-digital-muqeem-id-b4uhar23"]]
     },
     {
-      slug: "sim-bank-absher", cat: "arrive", t: "SIM card, bank account and Absher",
+      slug: "sim-bank-absher", cat: "arrive", t: "SIM card, bank account and Absher", checked: "2026-11-07",
       d: "The three things everything else depends on.",
       need: "Valid iqama (or border number at the start).",
       steps: [
-        "Buy a SIM from STC, Mobily, Zain, Lebara, Salam or Virgin. It is registered to your iqama with fingerprints at the shop.",
-        "Check which numbers are registered in your name in Absher. Cancel any number you do not recognise, because you are responsible for it.",
-        "Open a bank account with your iqama. Your salary must be paid into a bank account under the Wage Protection System.",
-        "Register on Absher Individuals. Every government service, fine and visa runs through it, and OTP codes go to your registered mobile."
+        "Buy a SIM from a licensed mobile provider. It is registered to your iqama. The regulator (CST) requires mobile subscribers to be verified by fingerprint or through Absher.",
+        "Check which numbers are registered under your iqama with the CST service \"Inquire about my numbers\" (cst.gov.sa). If you see a number you do not recognise, complain to that provider. If it is not solved within 5 working days, CST lets you escalate the complaint.",
+        "Open a bank account with your iqama. Under HRSD's Wage Protection Program (Mudad), private-sector salaries are transferred electronically through banks and financial institutions.",
+        "Register on Absher Individuals. Many services, such as visas, fines and iqama services, run through it, and OTP codes go to your registered mobile."
       ],
-      warn: "Never let anyone register a SIM or open an account using your iqama. Crimes committed with that number can be traced to you.",
-      src: "https://www.absher.sa", srcLabel: "absher.sa"
+      warn: "Never let anyone else register a SIM or open an account using your iqama. The number or account is linked to your identity.",
+      src: "https://www.absher.sa", srcLabel: "absher.sa",
+      more: [["CST, Inquire about my numbers", "https://www.cst.gov.sa/en/services/nquire-about-my-numbers"], ["CST, SIM verification by fingerprint or Absher (Jul 2016)", "https://www.cst.gov.sa/en/media-center/news/CITC-announces-the-commencement-of-service-suspension-for-unverified-SIM-cards"], ["HRSD, Wage Protection Program (Mar 2026)", "https://www.hrsd.gov.sa/en/media-center/news/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC-%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D8%A3%D8%AC%D9%88%D8%B1"]]
     },
     {
       slug: "renting-home-ejar", cat: "arrive", t: "Renting a home (Ejar)",
@@ -1540,8 +1542,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       d: "Find the right terminal, get there, and avoid drop-off and parking fees.",
       need: "Your boarding pass or airline app (it shows your terminal).",
       facts: [
-        ["Airport status (reported, 1 Nov 2026)", "Changes daily. Confirm your flight with your airline before you leave for the airport."],
-        ["Riyadh (RUH)", "Limited operation: Terminal 1 for domestic flights, Terminal 2 for some international flights, mainly by Saudi airlines. Each flight needs prior GACA permission. Some Riyadh flights operate from Qassim airport (ELQ), with bus links to Riyadh."],
+        ["Airport status (reported, 1 to 6 Nov 2026)", "Changes daily. Confirm your flight with your airline before you leave for the airport."],
+        ["Riyadh (RUH)", "Limited operation: Terminal 1 for domestic flights, Terminal 2 for some international flights, mainly by Saudi airlines. Each flight needs prior GACA permission. Some Riyadh flights operate through Qassim (ELQ) or Dammam (DMM) airports, with buses to Riyadh (reported 6 Nov)."],
         ["Jeddah (JED)", "Operating, with some delays and cancellations"],
         ["Dammam (DMM)", "Operating, with some delays and cancellations"],
         ["Other airports", "Status may differ. Check your airline or the airport's website."],
@@ -1568,7 +1570,7 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       ],
       warn: "Flight schedules can change at short notice. Check your flight status in the airline app before you leave for the airport.",
       src: "https://www.kkia.sa/en/Parking-And-Transport", srcLabel: "kkia.sa (Riyadh airport)",
-      more: [["Gulf News, flight updates by airline (1 Nov 2026)", "https://gulfnews.com/business/aviation/uae-flight-updates-airline-returns-cancellations-and-delays-on-nov-1-1.500731484"], ["Nomad Lawyer, Riyadh terminals and flights (30 Oct 2026)", "https://www.nomadlawyer.org/saudi-arabia-resumes-limited-india-flights-riyadh-airport-disruptions-2026"], ["Time Out Riyadh, flight updates (28 Oct 2026)", "https://www.timeoutriyadh.com/news/flight-cancellations-latest-news"], ["Wego, Saudi flight status (29 Oct 2026)", "https://blog.wego.com/saudi-arabia-airspace-flights-status-affected-airlines-what-travelers-need-to-know/"], ["Wego, Saudi flight status (Oct 2026)", "https://blog.wego.com/saudi-arabia-flight-resumption-2026/"], ["flynas, Riyadh terminal update", "https://www.flynas.com/en/riyadh-terminal-update"], ["Time Out Riyadh, terminal changes (Mar 2026)", "https://www.timeoutriyadh.com/news/king-khalid-international-airport"], ["kaia.sa (Jeddah airport)", "https://www.kaia.sa/About-KAIA"], ["Khaleej Times, Jeddah terminal moves (Oct 2026)", "https://www.khaleejtimes.com/aviation/jeddah-airport-move-north-terminal-flights-to-t4-hajj-umrah-terminals-oct-17"], ["Gulf News, Jeddah baggage advice (2023)", "https://gulfnews.com/world/gulf/saudi/saudi-arabia-airport-issues-advice-on-prohibited-baggage-1.95323464"]]
+      more: [["The National, Saudi flight schedules by airline (6 Nov 2026)", "https://www.thenationalnews.com/travel/2026/11/06/saudi-arabia-flight-cancellations-which-airlines-are-suspending-services-and-until-when/"], ["Gulf News, flight updates by airline (1 Nov 2026)", "https://gulfnews.com/business/aviation/uae-flight-updates-airline-returns-cancellations-and-delays-on-nov-1-1.500731484"], ["Nomad Lawyer, Riyadh terminals and flights (30 Oct 2026)", "https://www.nomadlawyer.org/saudi-arabia-resumes-limited-india-flights-riyadh-airport-disruptions-2026"], ["Time Out Riyadh, flight updates (28 Oct 2026)", "https://www.timeoutriyadh.com/news/flight-cancellations-latest-news"], ["Wego, Saudi flight status (29 Oct 2026)", "https://blog.wego.com/saudi-arabia-airspace-flights-status-affected-airlines-what-travelers-need-to-know/"], ["Wego, Saudi flight status (Oct 2026)", "https://blog.wego.com/saudi-arabia-flight-resumption-2026/"], ["flynas, Riyadh terminal update", "https://www.flynas.com/en/riyadh-terminal-update"], ["Time Out Riyadh, terminal changes (Mar 2026)", "https://www.timeoutriyadh.com/news/king-khalid-international-airport"], ["kaia.sa (Jeddah airport)", "https://www.kaia.sa/About-KAIA"], ["Khaleej Times, Jeddah terminal moves (Oct 2026)", "https://www.khaleejtimes.com/aviation/jeddah-airport-move-north-terminal-flights-to-t4-hajj-umrah-terminals-oct-17"], ["Gulf News, Jeddah baggage advice (2023)", "https://gulfnews.com/world/gulf/saudi/saudi-arabia-airport-issues-advice-on-prohibited-baggage-1.95323464"]]
     },
     {
       slug: "flight-delay-cancellation-rights", cat: "travel", t: "Flight delayed, cancelled or overbooked: your rights",
@@ -1913,25 +1915,25 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       d: "ورک ویزا پر پہنچنے کے بعد کیا ہونا ضروری ہے۔",
       need: "ورک ویزا والا پاسپورٹ، دستخط شدہ معاہدہ، اور ایس ایم ایس کوڈ کے لیے فون نمبر۔",
       steps: [
-        "منظور شدہ مرکز پر میڈیکل ٹیسٹ کروائیں۔ عموماً کمپنی بکنگ کرتی ہے۔",
-        "اقامہ جاری ہونے سے پہلے کمپنی پر آپ کی ہیلتھ انشورنس خریدنا لازم ہے۔ اقامہ کی تجدید کے لیے بھی فعال انشورنس ضروری ہے۔",
-        "کمپنی کہے تو جوازات میں فنگر پرنٹس دیں۔ 15 سال یا زیادہ عمر کے ہر شخص کے فنگر پرنٹس ریکارڈ میں ہونا ضروری ہیں۔",
-        "کمپنی مقیم کے ذریعے اقامہ جاری کرتی ہے۔ اس کے بعد اپنے اقامہ نمبر سے ابشر اور نفاذ پر رجسٹر کریں۔",
-        "توکلنا اور ابشر ایپ ڈاؤن لوڈ کریں۔ ابشر میں ڈیجیٹل اقامہ زیادہ تر جگہوں پر قبول ہے۔"
+        "منظور شدہ مرکز پر میڈیکل چیک اپ کروائیں۔ عموماً کمپنی بکنگ کرتی ہے۔ جوازات کے مطابق اقامہ جاری ہونے کے لیے میڈیکل چیک اپ ضروری ہے (رپورٹ شدہ، نومبر 2025)۔",
+        "آپ کی ہیلتھ انشورنس کا انتظام کمپنی (کفیل) کی ذمہ داری ہے۔ کوآپریٹو ہیلتھ انشورنس قانون (دفعہ 3) کے مطابق انشورنس دستاویز فراہم ہونے تک اقامہ نہ جاری ہوتا ہے نہ اس کی تجدید۔",
+        "کمپنی کہے تو جوازات میں فنگر پرنٹس دیں۔ رپورٹ شدہ (جوازات، 2021): اقامہ اور سفر کے کاموں کے لیے 6 سال یا زیادہ عمر کے غیر ملکیوں کے فنگر پرنٹس ضروری ہیں۔",
+        "کمپنی مقیم یا ابشر کے ذریعے اقامہ جاری کرتی ہے۔ اس کے بعد اپنے اقامہ نمبر سے ابشر اور نفاذ پر رجسٹر کریں۔",
+        "توکلنا اور ابشر ایپ ڈاؤن لوڈ کریں۔ ابشر افراد میں آپ کی ڈیجیٹل مقیم آئی ڈی ہوتی ہے؛ جوازات کے مطابق کارڈ ساتھ نہ ہو تو اس سے شناخت کی تصدیق ہو سکتی ہے (رپورٹ شدہ، 2021)۔"
       ],
-      warn: "اپنا پاسپورٹ مستقل طور پر کسی کے حوالے نہ کریں۔ ملازم کا پاسپورٹ اپنے پاس رکھنا قانوناً منع ہے۔"
+      warn: "اپنا پاسپورٹ مستقل طور پر کسی کے حوالے نہ کریں۔ لیبر قانون کے انتظامی ضوابط (دفعہ 6) کے مطابق کمپنی غیر سعودی ملازم کا پاسپورٹ، اقامہ یا میڈیکل انشورنس کارڈ اپنے پاس نہیں رکھ سکتی۔"
     },
     /* 2 */ {
       t: "سم کارڈ، بینک اکاؤنٹ اور ابشر",
       d: "تین چیزیں جن پر باقی سب کام منحصر ہیں۔",
       need: "درست اقامہ (شروع میں بارڈر نمبر)۔",
       steps: [
-        "STC، موبائلی، زین، لیبارا، سلام یا ورجن سے سم لیں۔ دکان پر فنگر پرنٹ کے ساتھ سم آپ کے اقامہ پر رجسٹر ہوتی ہے۔",
-        "ابشر میں چیک کریں کہ آپ کے نام پر کون سے نمبر رجسٹر ہیں۔ جو نمبر آپ کا نہیں اسے فوراً منسوخ کریں، کیونکہ اس کی ذمہ داری آپ پر ہے۔",
-        "اقامہ کے ساتھ بینک اکاؤنٹ کھولیں۔ ویج پروٹیکشن سسٹم کے تحت تنخواہ بینک اکاؤنٹ میں آنا ضروری ہے۔",
-        "ابشر افراد پر رجسٹر کریں۔ ہر سرکاری سروس، جرمانہ اور ویزا اسی سے ہوتا ہے اور او ٹی پی آپ کے رجسٹرڈ موبائل پر آتا ہے۔"
+        "کسی لائسنس یافتہ موبائل کمپنی سے سم لیں۔ سم آپ کے اقامہ پر رجسٹر ہوتی ہے۔ ریگولیٹر (CST) کے مطابق موبائل صارف کی تصدیق فنگر پرنٹ یا ابشر کے ذریعے ضروری ہے۔",
+        "CST کی سروس \"Inquire about my numbers\" (cst.gov.sa) سے چیک کریں کہ آپ کے اقامہ پر کون سے نمبر رجسٹر ہیں۔ کوئی انجان نمبر ہو تو اس کمپنی سے شکایت کریں۔ 5 کام کے دنوں میں حل نہ ہو تو CST میں شکایت آگے بڑھائی جا سکتی ہے۔",
+        "اقامہ کے ساتھ بینک اکاؤنٹ کھولیں۔ HRSD کے ویج پروٹیکشن پروگرام (مدد) کے تحت نجی شعبے کی تنخواہیں بینکوں اور مالیاتی اداروں کے ذریعے الیکٹرانک طور پر منتقل ہوتی ہیں۔",
+        "ابشر افراد پر رجسٹر کریں۔ ویزا، جرمانے اور اقامہ جیسی بہت سی سروسز اسی سے ہوتی ہیں اور او ٹی پی آپ کے رجسٹرڈ موبائل پر آتا ہے۔"
       ],
-      warn: "کسی کو بھی اپنے اقامہ پر سم رجسٹر کرنے یا اکاؤنٹ کھولنے نہ دیں۔ اس نمبر سے ہونے والا جرم آپ تک پہنچ سکتا ہے۔"
+      warn: "کسی اور کو اپنے اقامہ پر سم رجسٹر کرنے یا اکاؤنٹ کھولنے نہ دیں۔ وہ نمبر یا اکاؤنٹ آپ کی شناخت سے جڑا ہوتا ہے۔"
     },
     /* 3 */ {
       t: "گھر کرائے پر لینا (ایجار)",
@@ -2209,8 +2211,8 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
       d: "صحیح ٹرمینل تلاش کریں، وہاں پہنچیں، اور ڈراپ آف اور پارکنگ فیس سے بچیں۔",
       need: "بورڈنگ پاس یا ایئرلائن ایپ (اس پر آپ کا ٹرمینل لکھا ہوتا ہے)۔",
       facts: [
-        ["ایئرپورٹس کی صورتحال (رپورٹ شدہ، 1 نومبر 2026)", "روزانہ بدل رہی ہے۔ ایئرپورٹ جانے سے پہلے اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"],
-        ["ریاض (RUH)", "محدود آپریشن: ٹرمینل 1 سے اندرونِ ملک پروازیں، ٹرمینل 2 سے زیادہ تر سعودی ایئرلائنز کی کچھ بین الاقوامی پروازیں۔ ہر پرواز کے لیے GACA کی پیشگی اجازت ضروری ہے۔ ریاض کی کچھ پروازیں قصیم ایئرپورٹ (ELQ) سے چل رہی ہیں، جہاں سے ریاض کے لیے بس سروس ہے۔"],
+        ["ایئرپورٹس کی صورتحال (رپورٹ شدہ، 1 تا 6 نومبر 2026)", "روزانہ بدل رہی ہے۔ ایئرپورٹ جانے سے پہلے اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"],
+        ["ریاض (RUH)", "محدود آپریشن: ٹرمینل 1 سے اندرونِ ملک پروازیں، ٹرمینل 2 سے زیادہ تر سعودی ایئرلائنز کی کچھ بین الاقوامی پروازیں۔ ہر پرواز کے لیے GACA کی پیشگی اجازت ضروری ہے۔ ریاض کی کچھ پروازیں قصیم (ELQ) یا دمام (DMM) ایئرپورٹ کے ذریعے چل رہی ہیں، جہاں سے ریاض کے لیے بسیں ہیں (رپورٹ شدہ، 6 نومبر)۔"],
         ["جدہ (JED)", "فعال، کچھ تاخیر اور منسوخیوں کے ساتھ"],
         ["دمام (DMM)", "فعال، کچھ تاخیر اور منسوخیوں کے ساتھ"],
         ["دیگر ایئرپورٹس", "صورتحال مختلف ہو سکتی ہے۔ اپنی ایئرلائن یا ایئرپورٹ کی ویب سائٹ چیک کریں۔"],
@@ -3282,13 +3284,13 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
 
   /* ---------- Latest updates (dated rule changes, newest first; every item sourced in its guide) ---------- */
   const UPDATES = [
+    { date: "2026-11-06", open: "airports-terminals-parking", en: ["Airport status update", "Reported 6 Nov: Riyadh still on limited operation; some Riyadh flights go through Qassim or Dammam airports with buses to Riyadh. Many foreign airlines remain paused. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ شدہ، 6 نومبر: ریاض میں آپریشن اب بھی محدود؛ ریاض کی کچھ پروازیں قصیم یا دمام ایئرپورٹ کے ذریعے، جہاں سے ریاض کے لیے بسیں ہیں۔ بہت سی غیر ملکی ایئرلائنز اب بھی بند۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
     { date: "2026-11-05", open: "resignation-2025-rules", en: ["Resignation guide updated from the Labor Law", "Now states the 30-day reply period, the 60-day postponement, the 7-day withdrawal right and how to submit on Qiwa. The earlier line about rejection and notice was replaced."], ur: ["استعفیٰ رہنمائی لیبر لا کے مطابق تازہ کی گئی", "اب 30 دن کی جوابی مدت، 60 دن کی تاخیر، 7 دن میں واپسی کا حق اور قوی پر جمع کرانے کا طریقہ درج ہے۔ مسترد کرنے اور نوٹس والی پرانی سطر بدل دی گئی۔"] },
     { date: "2026-11-04", open: "absent-from-work-huroob", en: ["Absent from work guide: 60-day periods added", "From HRSD and Qiwa guidance: 60 days after a contract ends or a report is filed to transfer or leave, and what HRSD says happens after that."], ur: ["غیر حاضر (ہروب) رہنمائی: 60 دن کی مدتیں شامل", "HRSD اور قوی کی رہنمائی سے: معاہدہ ختم ہونے یا رپورٹ کے بعد ٹرانسفر یا روانگی کے لیے 60 دن، اور اس کے بعد HRSD کے مطابق کیا ہوتا ہے۔"] },
     { date: "2026-11-03", open: "family-visit-visa", en: ["Family visit visa guide corrected", "From MOFA: a work iqama is needed, first-degree relatives only, log in with Nafath, and the Chamber of Commerce or employer authenticates the form."], ur: ["فیملی وزٹ ویزا رہنمائی درست کی گئی", "MOFA کے مطابق: ورک اقامہ ضروری ہے، صرف فرسٹ ڈگری رشتہ دار، نفاذ سے لاگ اِن، اور فارم کی تصدیق چیمبر آف کامرس یا کمپنی سے۔"] },
     { date: "2026-11-03", open: "family-visa", en: ["Reported: family visas for highly skilled workers", "Announced 6 Oct 2026: family entry visas alongside the work visa for qualifying workers. Occupations and steps were still to be confirmed."], ur: ["رپورٹ شدہ: اعلیٰ ہنر مند ورکرز کے لیے فیملی ویزے", "6 اکتوبر 2026 کا اعلان: اہل ورکرز کے لیے ورک ویزا کے ساتھ خاندان کے انٹری ویزے۔ پیشوں اور طریقہ کار کی تصدیق ابھی باقی تھی۔"] },
     { date: "2026-11-02", open: "exit-re-entry-visa", en: ["New: exit re-entry cost calculator", "Estimate the fee by visa type and months, or an extension from outside KSA."], ur: ["نیا: خروج و عودہ خرچ کیلکولیٹر", "ویزا کی قسم اور مہینوں کے حساب سے فیس، یا سعودی عرب سے باہر توسیع کے خرچ کا اندازہ لگائیں۔"] },
     { date: "2026-11-02", open: "public-bank-holidays", en: ["New: public and bank holidays, and lost documents", "Two new guides: holiday days and 2027 bank closure dates, and what happens when a passport or iqama is lost."], ur: ["نئی: سرکاری اور بینک تعطیلات، اور گمشدہ دستاویزات", "دو نئی رہنمائیاں: تعطیلات اور 2027 میں بینک بند ہونے کی تاریخیں، اور پاسپورٹ یا اقامہ گم ہونے پر کیا ہوتا ہے۔"] },
-    { date: "2026-11-01", open: "airports-terminals-parking", en: ["Airport status update", "Reported: Riyadh Terminal 1 domestic, Terminal 2 some international; some foreign airlines have resumed, many remain paused. Confirm your flight with your airline."], ur: ["ایئرپورٹس کی صورتحال", "رپورٹ کے مطابق: ریاض ٹرمینل 1 اندرونِ ملک، ٹرمینل 2 کچھ بین الاقوامی؛ کچھ غیر ملکی ایئرلائنز بحال، بہت سی اب بھی بند۔ اپنی پرواز کی تصدیق ایئرلائن سے کریں۔"] },
     { date: "2026-07-08", open: "iqama-renewal", en: ["Work permit grace period to 31 December 2026", "HRSD announced a grace period for work permits expired over 12 months and workers with no permit issued over 6 months after joining."], ur: ["ورک پرمٹ کی رعایتی مدت 31 دسمبر 2026 تک", "HRSD نے 12 ماہ سے زیادہ ایکسپائر ورک پرمٹ اور شمولیت کے 6 ماہ بعد بھی پرمٹ جاری نہ ہونے والے ورکرز کے لیے رعایتی مدت کا اعلان کیا۔"] },
   ];
   function renderUpdates() {
