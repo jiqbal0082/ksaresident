@@ -1494,15 +1494,25 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     {
       slug: "car-accident-najm", cat: "drive", t: "If you have an accident",
       d: "Minor accidents are handled by Najm, not the police.",
+      checked: "2026-11-10",
+      facts: [
+        ["Who handles it (reported)", "Najm, when at least one of the cars is insured. Traffic police (993) for serious accidents or when no car is insured"],
+        ["Minor accidents with no injuries", "Report in the Najm app, take photos, then clear the road (remote review by the Traffic Department and Najm, launched 2022)"],
+        ["Contacting Najm (reported)", "Najm app, call 199033, or WhatsApp 920000560"],
+        ["After the report", "Najm sends the accident report by SMS to everyone involved. It is used for the insurance claim"],
+        ["Emergency numbers", "911 in Riyadh, Makkah, Madinah and the Eastern Province; 997 ambulance; 993 traffic police elsewhere"]
+      ],
       steps: [
         "Stop, switch on hazard lights and check for injuries. Call 997 for an ambulance if anyone is hurt.",
         "Do not move the cars if someone is injured or the damage is serious. Call 911 (or 993 where 911 is not active).",
         "For minor accidents with no injuries, report through the Najm app or call Najm, and move the cars to the side.",
         "Take photos of both cars, plates and the scene.",
-        "Wait for the Najm report. Your insurer uses it to decide who pays."
+        "Have your driving licence, vehicle registration (Istimara) and insurance details ready for Najm.",
+        "Wait for the Najm report by SMS. You can follow the case in the Najm app and use the report for the insurance claim."
       ],
       warn: "Never drive away from an accident, even a small one.",
-      src: "https://www.najm.sa", srcLabel: "najm.sa"
+      src: "https://www.najm.sa", srcLabel: "najm.sa",
+      more: [["Saudi Gazette, Traffic Department and Najm remote review of minor accidents (Apr 2022)", "https://saudigazette.com.sa/article/619253"], ["Reported: Gulf News, steps after an accident in Saudi Arabia (Sep 2024)", "https://gulfnews.com/living-in-uae/transport/saudi-arabia-involved-in-a-car-accident-heres-what-you-need-to-do-1.1726060913184"], ["Eye of Riyadh, Najm paperless accident reports by SMS (Aug 2020)", "https://mail.eyeofriyadh.com/news/details/najm-launches-new-paperless-accident-service"], ["Zawya, 911 emergency centres (Jun 2026)", "https://www.zawya.com/en/world/middle-east/saudi-911-emergency-centers-handle-26mln-calls-in-june-nu0xxnh5"], ["Gulf News, Saudi phone numbers list (2023)", "https://gulfnews.com/living-in-uae/ask-us/saudi-arabia-19-telephone-numbers-every-tourist-and-resident-must-save-1.1681300190393"]]
     },
 
     /* ===== Travel & flights ===== */
@@ -1676,21 +1686,28 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     {
       slug: "hajj-for-residents", cat: "hajj", t: "Hajj as a resident",
       d: "Only with an official Hajj permit booked through Nusuk.",
-      need: "Valid iqama. Eligibility rules (for example, how recently you last performed Hajj) are shown in Nusuk when registration opens.",
+      checked: "2026-11-10",
+      need: "Valid iqama. Eligibility rules for each season are shown in Nusuk when registration opens.",
       steps: [
-        "Register in the Nusuk app or website when domestic Hajj registration opens (usually months before Hajj).",
-        "Choose a licensed domestic Hajj company and package, and pay through the platform.",
-        "Complete the required vaccinations listed by the Ministry of Health.",
-        "Collect your Hajj permit and Nusuk card. You must carry the card at all checkpoints and holy sites.",
-        "Request Hajj leave from your employer early (paid once, after 2 years of service)."
+        "Register in the Nusuk app or nusuk.sa, logging in with Nafath, when domestic Hajj registration opens. For Hajj 2026 it opened on 24 February 2026.",
+        "Complete your profile and the eligibility check, and add any companions.",
+        "Choose a package. Contracts are only with licensed companies listed on Nusuk.",
+        "Pay through the platform (SADAD). The Hajj permit is issued after payment.",
+        "Get the vaccinations the Ministry of Health lists for that season. Appointments are booked in the Sehhaty app.",
+        "Carry your Nusuk card at all times during Hajj. Pilgrims living in Saudi Arabia can show the digital card in Tawakkalna.",
+        "Request Hajj leave from your employer early."
       ],
       facts: [
+        ["Eligibility (announced for Hajj 2026)", "Age 15 or over and the approved health requirements; residents need a valid iqama, with priority for iqamas issued more than a year earlier. People who had never performed Hajj came first in the priority phase"],
+        ["Vaccinations (Ministry of Health, Hajj 2026)", "Meningococcal vaccine required unless taken in the past 5 years; seasonal flu and COVID-19 vaccines recommended"],
+        ["Hajj leave (HRSD)", "10 to 15 days paid, including the Eid al-Adha holiday, once during your service, if you have not performed Hajj before and have at least 2 consecutive years with the employer. The employer decides how many staff take it each year"],
+        ["Help line", "Unified number 1966 (Nusuk)"],
         ["Hajj without a permit (announced for Hajj 2026)", "Fine of up to SAR 20,000. The Ministry of Interior said residents and overstayers who enter without a permit are deported and barred from entering for 10 years (reported Apr 2026)"],
         ["Transporting, sheltering or applying for visas for pilgrims without permits (announced for Hajj 2026)", "Fine of up to SAR 100,000, rising with the number of people involved (reported Apr 2026)"]
       ],
       warn: "There is no Hajj on a visit visa, tourist visa or Umrah visa.",
       src: "https://www.nusuk.sa", srcLabel: "nusuk.sa",
-      more: [["Arab News, Ministry of Interior Hajj 2026 penalties (15 Apr 2026)", "https://www.arabnews.pk/node/2640010"], ["Khaleej Times, Hajj 2026 permit rules and fines", "https://www.khaleejtimes.com/world/gulf/hajj-2026-rules-saudi-arabia-permit-violations-fine-deportation"]]
+      more: [["Ministry of Hajj and Umrah, booking a Hajj package for domestic pilgrims", "https://haj.gov.sa/en/E-Services/Booking-a-Hajj-Package-for-Domestic-Pilgrims"], ["Ministry of Health, Hajj 1447H vaccination campaign (27 Feb 2026)", "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/News-2026-02-27-001.aspx"], ["Arab News, domestic Hajj registration opens via Nusuk (Feb 2026)", "https://www.arabnews.com/node/2634248/saudi-arabia"], ["Saudi Gazette, HRSD on Hajj leave (May 2025)", "https://www.saudigazette.com.sa/article/651415"], ["Gulf News, Nusuk card for Hajj 2026 (Apr 2026)", "https://gulfnews.com/living-in-uae/ask-us/nusuk-card-for-hajj-2026-everything-pilgrims-need-to-know-1.500505196"], ["Zawya, Ministry of Interior: visit visas do not permit Hajj (2026)", "https://www.zawya.com/en/business/travel-and-tourism/saudi-interior-ministry-visit-visas-do-not-permit-hajj-c8tdz2zs"], ["Arab News, Ministry of Interior Hajj 2026 penalties (15 Apr 2026)", "https://www.arabnews.pk/node/2640010"], ["Khaleej Times, Hajj 2026 permit rules and fines", "https://www.khaleejtimes.com/world/gulf/hajj-2026-rules-saudi-arabia-permit-violations-fine-deportation"]]
     },
     {
       slug: "makkah-entry-permit", cat: "hajj", t: "Entering Makkah during the Hajj season",
@@ -2218,7 +2235,15 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
         "اگر کوئی زخمی ہو یا نقصان زیادہ ہو تو گاڑیاں نہ ہٹائیں۔ 911 پر کال کریں (جہاں 911 فعال نہیں وہاں 993)۔",
         "بغیر زخمی کے معمولی حادثے میں نجم ایپ سے رپورٹ کریں یا نجم کو کال کریں، اور گاڑیاں سائیڈ پر کر لیں۔",
         "دونوں گاڑیوں، نمبر پلیٹ اور جگہ کی تصاویر لیں۔",
-        "نجم رپورٹ کا انتظار کریں۔ انشورنس کمپنی اسی سے طے کرتی ہے کہ کون ادا کرے گا۔"
+        "نجم کے لیے اپنا ڈرائیونگ لائسنس، گاڑی کی رجسٹریشن (استمارہ) اور انشورنس کی تفصیل تیار رکھیں۔",
+        "ایس ایم ایس پر نجم رپورٹ کا انتظار کریں۔ آپ نجم ایپ میں کیس دیکھ سکتے ہیں اور انشورنس کلیم کے لیے یہی رپورٹ استعمال ہوتی ہے۔"
+      ],
+      facts: [
+        ["کون دیکھتا ہے (رپورٹ کے مطابق)", "نجم، جب کم از کم ایک گاڑی کی انشورنس ہو۔ سنگین حادثے میں یا جب کسی گاڑی کی انشورنس نہ ہو تو ٹریفک پولیس (993)"],
+        ["بغیر زخمی کے معمولی حادثہ", "نجم ایپ میں رپورٹ کریں، تصاویر لیں، پھر سڑک خالی کر دیں (ٹریفک ڈپارٹمنٹ اور نجم کا ریموٹ جائزہ، 2022 سے)"],
+        ["نجم سے رابطہ (رپورٹ کے مطابق)", "نجم ایپ، 199033 پر کال، یا واٹس ایپ 920000560"],
+        ["رپورٹ کے بعد", "نجم حادثے کی رپورٹ ایس ایم ایس سے تمام فریقوں کو بھیجتا ہے۔ یہی انشورنس کلیم میں استعمال ہوتی ہے"],
+        ["ایمرجنسی نمبر", "ریاض، مکہ، مدینہ اور مشرقی صوبے میں 911؛ ایمبولینس 997؛ باقی جگہوں پر ٹریفک پولیس 993"]
       ],
       warn: "حادثے کی جگہ سے کبھی نہ بھاگیں، چاہے حادثہ چھوٹا ہو۔"
     },
@@ -2374,15 +2399,21 @@ html[lang="ur"] .city b { font-family: var(--urdu); line-height: 1.9; }
     /* 19 */ {
       t: "مقیم کے طور پر حج",
       d: "صرف نسک سے بک کیے گئے سرکاری حج پرمٹ کے ساتھ۔",
-      need: "درست اقامہ۔ اہلیت کے قواعد (مثلاً آخری حج کتنا پہلے کیا) رجسٹریشن کھلنے پر نسک میں دکھائے جاتے ہیں۔",
+      need: "درست اقامہ۔ ہر سیزن کے اہلیت کے قواعد رجسٹریشن کھلنے پر نسک میں دکھائے جاتے ہیں۔",
       steps: [
-        "اندرونِ ملک حج رجسٹریشن کھلنے پر (عموماً حج سے کئی ماہ پہلے) نسک ایپ یا ویب سائٹ پر رجسٹر کریں۔",
-        "لائسنس یافتہ حج کمپنی اور پیکج چنیں اور پلیٹ فارم سے ادائیگی کریں۔",
-        "وزارت صحت کی بتائی ہوئی ویکسین لگوائیں۔",
-        "حج پرمٹ اور نسک کارڈ حاصل کریں۔ تمام چیک پوائنٹس اور مقدس مقامات پر کارڈ ساتھ رکھنا لازمی ہے۔",
-        "کمپنی سے حج کی چھٹی جلدی مانگیں (2 سال ملازمت کے بعد ایک بار تنخواہ کے ساتھ)۔"
+        "اندرونِ ملک حج رجسٹریشن کھلنے پر نسک ایپ یا nusuk.sa پر نفاذ کے ذریعے لاگ اِن کر کے رجسٹر کریں۔ حج 2026 کے لیے رجسٹریشن 24 فروری 2026 کو کھلی تھی۔",
+        "اپنی پروفائل اور اہلیت کی جانچ مکمل کریں، اور اگر ساتھی ہوں تو انہیں شامل کریں۔",
+        "پیکج چنیں۔ معاہدہ صرف نسک پر درج لائسنس یافتہ کمپنیوں سے ہوتا ہے۔",
+        "پلیٹ فارم (سداد) سے ادائیگی کریں۔ ادائیگی کے بعد حج پرمٹ جاری ہوتا ہے۔",
+        "اس سیزن کے لیے وزارتِ صحت کی بتائی ہوئی ویکسین لگوائیں۔ اپوائنٹمنٹ صحتی (Sehhaty) ایپ میں بک ہوتی ہے۔",
+        "حج کے دوران نسک کارڈ ہر وقت ساتھ رکھیں۔ سعودی عرب میں رہنے والے حاجی توکلنا میں ڈیجیٹل کارڈ دکھا سکتے ہیں۔",
+        "کمپنی سے حج کی چھٹی جلدی مانگیں۔"
       ],
       facts: [
+        ["اہلیت (حج 2026 کے لیے اعلان)", "عمر 15 سال یا زیادہ اور منظور شدہ صحت کی شرائط؛ مقیم کے لیے درست اقامہ، اور ایک سال سے پہلے جاری ہونے والے اقامے کو ترجیح۔ ترجیحی مرحلے میں پہلی بار حج کرنے والے پہلے تھے"],
+        ["ویکسین (وزارتِ صحت، حج 2026)", "میننجائٹس (میننگوکوکل) ویکسین لازمی، سوائے اس کے کہ پچھلے 5 سال میں لگ چکی ہو؛ موسمی فلو اور کووڈ-19 ویکسین کی سفارش"],
+        ["حج کی چھٹی (وزارتِ افرادی قوت)", "10 سے 15 دن تنخواہ کے ساتھ، عید الاضحیٰ کی چھٹی سمیت، ملازمت کے دوران ایک بار، اگر آپ نے پہلے حج نہیں کیا اور اسی کمپنی میں کم از کم 2 سال مسلسل ملازمت ہو۔ ہر سال کتنے ملازمین یہ چھٹی لیں، یہ کمپنی طے کرتی ہے"],
+        ["ہیلپ لائن", "متحدہ نمبر 1966 (نسک)"],
         ["بغیر پرمٹ حج (حج 2026 کے لیے اعلان)", "20,000 ریال تک جرمانہ۔ وزارتِ داخلہ کے مطابق بغیر پرمٹ داخل ہونے والے مقیم اور ویزا ختم ہونے کے بعد رکنے والے ملک بدر کیے جاتے ہیں اور 10 سال تک داخلے پر پابندی ہوتی ہے (رپورٹ اپریل 2026)"],
         ["بغیر پرمٹ حاجیوں کو لے جانا، ٹھہرانا یا ان کے لیے ویزا کی درخواست دینا (حج 2026 کے لیے اعلان)", "100,000 ریال تک جرمانہ، جو افراد کی تعداد کے ساتھ بڑھتا ہے (رپورٹ اپریل 2026)"]
       ],
