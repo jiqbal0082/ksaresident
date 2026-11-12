@@ -128,6 +128,32 @@ footer.site .fcol h2::before,footer.site .fcol h2::after{content:none;display:no
 @media (min-width:760px){.fgrid{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,.9fr) minmax(0,1.4fr)}.fabout,.fcontact{grid-column:auto}.flegal{grid-template-columns:minmax(0,1fr) auto;column-gap:32px;align-items:end}}
 .mail{font-family:var(--mono);direction:ltr;unicode-bidi:isolate;color:var(--accent);overflow-wrap:anywhere;font-size:.84rem}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hright{display:flex;align-items:center;gap:8px;flex:none}
+.gsbtn{display:grid;place-items:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;padding:0;flex:none}
+.gsbtn svg{width:20px;height:20px}
+.ssearch{display:none}
+.ssearch.open{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;position:fixed;inset:0 0 auto 0;z-index:40;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 8px 24px rgba(70,52,20,.15)}
+.gsbox{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:0 14px;color:var(--muted);margin:0}
+.gsbox svg{width:18px;height:18px;flex:none}
+.gsbox:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.gsbox input{border:0;background:transparent;padding:10px 0;font:400 1rem/1.4 var(--body);min-width:0;flex:1;color:var(--ink)}
+.gsbox input:focus-visible{outline:none}
+html[lang="ur"] .gsbox input{font-family:"IBM Plex Sans Arabic",sans-serif}
+.gsclose{border:0;background:transparent;color:var(--muted);font-size:1.1rem;padding:8px 10px;cursor:pointer;min-height:40px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.gsres{grid-column:1/-1;display:grid;background:var(--surface);color:var(--ink);border-radius:12px;overflow:hidden auto;max-height:70vh;box-shadow:0 10px 30px rgba(0,0,0,.18);font-family:var(--body)}
+.gsres[hidden]{display:none}
+.snav .gsres a{display:grid;justify-items:stretch;gap:2px;padding:11px 14px;border-top:1px solid var(--line);border-bottom:0;color:var(--ink);text-decoration:none;font-size:1rem;font-weight:400;line-height:1.45;text-align:start;white-space:normal}
+.snav .gsbox svg{display:block;width:18px;height:18px;flex:none}
+.snav .gsres a:first-child{border-top:0}.snav .gsres a:hover,.snav .gsres a:focus-visible{background:var(--accent-soft);color:var(--ink)}
+.gsres b{font-weight:600}.gsres small{color:var(--muted);font-size:.85rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gsres .none{padding:12px 14px;color:var(--muted)}
+html[lang="ur"] .gsres{font-family:"IBM Plex Sans Arabic",sans-serif}
+@media (min-width:1000px){
+  .gsbtn,.gsclose{display:none}
+  .ssearch,.ssearch.open{display:block;position:relative;inset:auto;padding:0;background:none;border:0;box-shadow:none;margin-inline-start:auto;align-self:center;width:280px;z-index:30}
+  .gsres{position:absolute;top:calc(100% + 8px);inset-inline-end:0;width:440px}
+}
 `;
 
 const CSS = CHROME_CSS + `
@@ -264,6 +290,22 @@ const CHECK_ICO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
 
 // Header, information bar and section menu, shared by generated pages and the hand-written pages.
 // cur: 'guides' | 'places' | '' ; altPath: the same page in the other language (omit when the page holds all languages).
+const SEARCH_L = {
+  en: { label: 'Search the site', ph: 'Search the site…', close: 'Close search', none: 'No results. Try another word.', tool: 'Free tool', place: 'Holy place', fact: 'In guide' },
+  ur: { label: 'ویب سائٹ میں تلاش کریں', ph: 'ویب سائٹ میں تلاش کریں…', close: 'تلاش بند کریں', none: 'کوئی نتیجہ نہیں۔ کوئی اور لفظ آزمائیں۔', tool: 'مفت ٹول', place: 'مقدس مقام', fact: 'رہنمائی میں' }
+};
+// Small in-browser search for generated and hand-written pages. Loads /search-index.json on first use; nothing is sent anywhere.
+const SEARCH_JS = (lang) => `(function(){var L=${JSON.stringify(SEARCH_L[lang])},lg="${lang}",w=document.getElementById("gsWrap"),b=document.getElementById("gsBtn"),q=document.getElementById("gq"),r=document.getElementById("gqres"),x=document.getElementById("gsClose"),D=null,P=null;if(!w||!q)return;
+function e(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function load(){if(!P)P=fetch("/search-index.json").then(function(x){return x.json()}).then(function(j){D=j[lg]||j.en;return D}).catch(function(){P=null;return null});return P}
+function run(){var v=q.value.trim().toLowerCase();if(v.length<2){r.hidden=true;r.innerHTML="";return}if(!D){load().then(function(d){if(d)run()});return}var o=[];D.forEach(function(i){var s=i.t.toLowerCase().indexOf(v)>=0?5:i.d.toLowerCase().indexOf(v)>=0?3:i.h.indexOf(v)>=0?1:0;if(i.k==="tool"&&s)s+=1;if(s)o.push([s,i]);(i.f||[]).forEach(function(f){if((f[0]+" "+f[1]).toLowerCase().indexOf(v)>=0){var t=f[0]+": "+f[1];if(t.length>110)t=t.slice(0,108).replace(/\\s+\\S*$/,"")+"…";o.push([2,{u:i.u,t:t,d:L.fact+": "+i.t}])}})});o.sort(function(a,c){return c[0]-a[0]});
+r.innerHTML=o.length?o.slice(0,8).map(function(p){var i=p[1];return'<a href="'+e(i.u)+'"><b>'+e(i.t)+'</b><small>'+e(i.k==="tool"?L.tool:i.k==="place"?L.place+" · "+i.d:i.d)+'</small></a>'}).join(""):'<div class="none">'+L.none+'</div>';r.hidden=false}
+function op(o){w.classList.toggle("open",o);if(b)b.setAttribute("aria-expanded",String(o));if(o){load();setTimeout(function(){q.focus()},30)}else{q.value="";r.hidden=true;r.innerHTML=""}}
+q.addEventListener("focus",load);q.addEventListener("input",run);
+q.addEventListener("keydown",function(ev){if(ev.key==="Escape")op(false);if(ev.key==="Enter"){var f=r.querySelector("a");if(f){ev.preventDefault();location.href=f.getAttribute("href")}}});
+if(b)b.addEventListener("click",function(){op(!w.classList.contains("open"))});if(x)x.addEventListener("click",function(){op(false)});
+document.addEventListener("click",function(ev){if(!ev.target.closest("#gsWrap")&&!ev.target.closest("#gsBtn")){if(w.classList.contains("open")&&!matchMedia("(min-width:1000px)").matches)op(false);else r.hidden=true}})})();`;
+
 function siteTop(lang, cur, altPath, path) {
   const L = T[lang];
   const pre = lang === 'ur' ? '/ur' : '';
@@ -282,12 +324,16 @@ function siteTop(lang, cur, altPath, path) {
   const self = (code, label) => `<a href="${path || '#'}" lang="${code}" aria-current="true">${label}</a>`;
   const other = (code, label) => `<a href="${altPath}" lang="${code}" hreflang="${code}">${label}</a>`;
   const langs = altPath ? `<nav class="langs" aria-label="${L.langLabel}">${lang === 'en' ? self('en', 'English') + other('ur', 'اردو') : other('en', 'English') + self('ur', 'اردو')}</nav>` : '';
+  const S = SEARCH_L[lang];
+  const sIco = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>';
+  const search = `<div class="ssearch" id="gsWrap" role="search"><label class="gsbox" for="gq">${sIco}<span class="sr">${S.label}</span><input id="gq" type="search" autocomplete="off" placeholder="${S.ph}"></label><button type="button" class="gsclose" id="gsClose" aria-label="${S.close}">✕</button><div class="gsres" id="gqres" hidden></div></div>`;
   return `<header class="top"><div class="wrap">
   <a class="brand" href="${lang === 'ur' ? '/?lang=ur' : '/'}">${MARK}<span class="btxt"><b>KSA Life Guide</b><span>${L.tag}</span></span></a>
-  ${langs}
+  <div class="hright">${langs}<button type="button" class="gsbtn" id="gsBtn" aria-label="${S.label}" aria-expanded="false" aria-controls="gsWrap">${sIco}</button></div>
 </div></header>
 <div class="bar" role="note"><div class="wrap">${L.bar}</div></div>
-<nav class="snav" aria-label="${L.navLabel}"><div class="wrap">${items.map(([id, href, label, icon]) => `<a href="${href}" class="n${order[id]}${id === 'help' ? ' dt' : ''}"${id === cur ? ' aria-current="page"' : ''}>${icon}${label}</a>`).join('')}</div></nav>`;
+<nav class="snav" aria-label="${L.navLabel}"><div class="wrap">${items.map(([id, href, label, icon]) => `<a href="${href}" class="n${order[id]}${id === 'help' ? ' dt' : ''}"${id === cur ? ' aria-current="page"' : ''}>${icon}${label}</a>`).join('')}${search}</div></nav>
+<script>${SEARCH_JS(lang)}</script>`;
 }
 
 function siteFooter(lang) {
@@ -559,6 +605,29 @@ const entry = (loc, alt) => `  <url>
     <xhtml:link rel="alternate" hreflang="${loc.startsWith('/ur') ? 'ur' : 'en'}" href="${SITE}${loc}"/>
     <xhtml:link rel="alternate" hreflang="${loc.startsWith('/ur') ? 'en' : 'ur'}" href="${SITE}${alt}"/>` : ''}
   </url>`;
+/* ---------- Search index for the search box on generated and hand-written pages ---------- */
+{
+  const low = (a) => a.filter(Boolean).join(' ').toLowerCase();
+  const TOOLS_IDX = {
+    en: [['End-of-service calculator', '/calculator', 'end of service eosb gratuity award resign resignation termination article 84 85'], ['Dependent fee calculator', '/dependent-fee', 'dependent fee levy family dependents 400 iqama renewal'], ['Exit re-entry cost calculator', '/exit-reentry-cost', 'exit re-entry reentry visa fee cost single multiple extension'], ['Scam message check', '/scam-check', 'scam fraud phishing sms whatsapp fake link otp'], ['Emergency numbers and official portals', '/numbers', 'emergency police ambulance fire 911 999 997 998 937 number phone portal absher qiwa gosi nusuk najiz musaned ejar']],
+    ur: [['اختتامِ ملازمت کیلکولیٹر', '/calculator?lang=ur', 'end of service eosb معاوضہ استعفیٰ اختتام ملازمت'], ['مرافقین فیس کیلکولیٹر', '/dependent-fee?lang=ur', 'dependent fee مرافقین فیس اقامہ'], ['خروج و عودہ خرچ کیلکولیٹر', '/exit-reentry-cost?lang=ur', 'exit re-entry خروج و عودہ ویزا فیس'], ['فراڈ پیغام چیک', '/scam-check?lang=ur', 'scam فراڈ دھوکہ پیغام'], ['ایمرجنسی نمبرز اور سرکاری پورٹلز', '/numbers?lang=ur', 'emergency ایمرجنسی پولیس ایمبولینس نمبر پورٹل absher qiwa']]
+  };
+  const idx = { en: [], ur: [] };
+  for (const lang of ['en', 'ur']) {
+    const pre = lang === 'ur' ? '/ur' : '';
+    TOOLS_IDX[lang].forEach(([t, u, words]) => idx[lang].push({ k: 'tool', t, d: '', u, h: low([t, words]) }));
+    EN.forEach((g0, i) => {
+      const g = lang === 'ur' ? { ...g0, ...UR[i] } : g0;
+      idx[lang].push({ k: 'guide', t: g.t, d: g.d, u: `${pre}/guides/${g0.slug}`, h: low([g.need, ...(g.steps || []), g.warn]), f: (g.facts || []).map(([a, b]) => [a, b]) });
+    });
+    PLACES.forEach((p0, i) => {
+      const p = lang === 'ur' ? { ...p0, ...PLACES_UR[i] } : p0;
+      idx[lang].push({ k: 'place', t: p.name, d: p.d, u: `${pre}/places/${p0.slug}`, h: low([p.name, p0.name, p0.ar, ...(p.history || [])]) });
+    });
+  }
+  writeFileSync('public/search-index.json', JSON.stringify(idx));
+}
+
 writeFileSync('public/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${single.map((p) => entry(p)).join('\n')}
